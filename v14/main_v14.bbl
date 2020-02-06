@@ -1,0 +1,230 @@
+\begin{thebibliography}{33}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Baena-Garc{\i}a et~al.(2006)Baena-Garc{\i}a, del Campo-{\'A}vila,
+  Fidalgo, Bifet, Gavalda, and Morales-Bueno]{baena2006early}
+Manuel Baena-Garc{\i}a, Jos{\'e} del Campo-{\'A}vila, Ra{\'u}l Fidalgo, Albert
+  Bifet, R~Gavalda, and R~Morales-Bueno.
+\newblock Early drift detection method.
+\newblock In \emph{Fourth international workshop on knowledge discovery from
+  data streams}, volume~6, pages 77--86, 2006.
+
+\bibitem[Barakat(2016)]{barakat2016context}
+Lida Barakat.
+\newblock A context-driven data weighting approach for handling concept drift
+  in classification.
+\newblock In \emph{Proceedings of the 9th International Conference on Computer
+  Recognition Systems CORES 2015}, pages 383--393. Springer, 2016.
+
+\bibitem[Barakat et~al.(2018)Barakat, Pavlidis, and Crone]{barakat2018context}
+Lida Barakat, Nicos Pavlidis, and Sven Crone.
+\newblock \emph{A context-aware approach for handling concept drift in
+  classification}.
+\newblock PhD thesis, Lancaster University, 2018.
+
+\bibitem[Barros and Santos(2018)]{barros2018large}
+Roberto Souto~Maior Barros and Silas Garrido T~Carvalho Santos.
+\newblock A large-scale comparison of concept drift detectors.
+\newblock \emph{Information Sciences}, 451:\penalty0 348--370, 2018.
+
+\bibitem[Bickel and Doksum(2015)]{bickel2015mathematical}
+Peter~J Bickel and Kjell~A Doksum.
+\newblock \emph{Mathematical statistics: basic ideas and selected topics,
+  volume I}, volume 117.
+\newblock CRC Press, 2015.
+
+\bibitem[Bottou et~al.(2018)Bottou, Curtis, and
+  Nocedal]{bottou2018optimization}
+L{\'e}on Bottou, Frank~E Curtis, and Jorge Nocedal.
+\newblock Optimization methods for large-scale machine learning.
+\newblock \emph{Siam Review}, 60\penalty0 (2):\penalty0 223--311, 2018.
+
+\bibitem[Bui and Apley(2018)]{bui2018monitoring}
+Anh~Tuan Bui and Daniel~W Apley.
+\newblock A monitoring and diagnostic approach for stochastic textured
+  surfaces.
+\newblock \emph{Technometrics}, 60\penalty0 (1):\penalty0 1--13, 2018.
+
+\bibitem[Calandra et~al.(2012)Calandra, Raiko, Deisenroth, and
+  Pouzols]{calandra2012learning}
+Roberto Calandra, Tapani Raiko, Marc~Peter Deisenroth, and Federico~Montesino
+  Pouzols.
+\newblock Learning deep belief networks from non-stationary streams.
+\newblock In \emph{International Conference on Artificial Neural Networks},
+  pages 379--386. Springer, 2012.
+
+\bibitem[Carmona-Cejudo et~al.(2010)Carmona-Cejudo, Baena-Garc{\'i}a, del
+  Campo-{\'A}vila, Morales-Bueno, and Bifet]{carmona2010gnusmail}
+Jos{\'e}~M. Carmona-Cejudo, Manuel Baena-Garc{\'i}a, Jos{\'e} del
+  Campo-{\'A}vila, Rafael Morales-Bueno, and Albert Bifet.
+\newblock {GNUsmail}: {Open} framework for on-line email classification.
+\newblock In \emph{Frontiers in Artificial Intelligence and Applications 215},
+  pages 1141--1142. IOS Press, 2010.
+
+\bibitem[Chu et~al.(1995)Chu, Hornik, and Kaun]{chu1995mosum}
+Chia-Shang~J Chu, Kurt Hornik, and Chung-Ming Kaun.
+\newblock Mosum tests for parameter constancy.
+\newblock \emph{Biometrika}, 82\penalty0 (3):\penalty0 603--617, 1995.
+
+\bibitem[dos Reis et~al.(2016)dos Reis, Flach, Matwin, and
+  Batista]{dos2016fast}
+Denis~Moreira dos Reis, Peter Flach, Stan Matwin, and Gustavo Batista.
+\newblock Fast unsupervised online drift detection using incremental
+  kolmogorov-smirnov test.
+\newblock In \emph{Proceedings of the 22nd ACM SIGKDD International Conference
+  on Knowledge Discovery and Data Mining}, pages 1545--1554. ACM, 2016.
+
+\bibitem[Fong et~al.(2015)Fong, Di, and Permar]{fong2015change}
+Youyi Fong, Chongzhi Di, and Sallie Permar.
+\newblock Change point testing in logistic regression models with interaction
+  term.
+\newblock \emph{Statistics in medicine}, 34\penalty0 (9):\penalty0 1483--1494,
+  2015.
+
+\bibitem[Fr{\'\i}as-Blanco et~al.(2015)Fr{\'\i}as-Blanco, del Campo-{\'A}vila,
+  Ramos-Jim{\'e}nez, Morales-Bueno, Ortiz-D{\'\i}az, and
+  Caballero-Mota]{frias2015online}
+Isvani Fr{\'\i}as-Blanco, Jos{\'e} del Campo-{\'A}vila, Gonzalo
+  Ramos-Jim{\'e}nez, Rafael Morales-Bueno, Agust{\'\i}n Ortiz-D{\'\i}az, and
+  Yail{\'e} Caballero-Mota.
+\newblock Online and non-parametric drift detection methods based on
+  hoeffding's bounds.
+\newblock \emph{IEEE Transactions on Knowledge and Data Engineering},
+  27\penalty0 (3):\penalty0 810--823, 2015.
+
+\bibitem[Gama et~al.(2004)Gama, Medas, Castillo, and
+  Rodrigues]{gama2004learning}
+Joao Gama, Pedro Medas, Gladys Castillo, and Pedro Rodrigues.
+\newblock Learning with drift detection.
+\newblock In \emph{Brazilian symposium on artificial intelligence}, pages
+  286--295. Springer, 2004.
+
+\bibitem[Gomes et~al.(2017)Gomes, Barddal, Enembreck, and
+  Bifet]{gomes2017survey}
+Heitor~Murilo Gomes, Jean~Paul Barddal, Fabr{\'\i}cio Enembreck, and Albert
+  Bifet.
+\newblock A survey on ensemble learning for data stream classification.
+\newblock \emph{ACM Computing Surveys (CSUR)}, 50\penalty0 (2):\penalty0 23,
+  2017.
+
+\bibitem[Gon{\c{c}}alves~Jr et~al.(2014)Gon{\c{c}}alves~Jr, de~Carvalho~Santos,
+  Barros, and Vieira]{gonccalves2014comparative}
+Paulo~M Gon{\c{c}}alves~Jr, Silas~GT de~Carvalho~Santos, Roberto~SM Barros, and
+  Davi~CL Vieira.
+\newblock A comparative study on concept drift detectors.
+\newblock \emph{Expert Systems with Applications}, 41\penalty0 (18):\penalty0
+  8144--8156, 2014.
+
+\bibitem[Im et~al.(2012)Im, Apley, Qi, and Shan]{im2012time}
+JK~Im, Daniel~W Apley, C~Qi, and X~Shan.
+\newblock A time-dependent proportional hazards survival model for credit risk
+  analysis.
+\newblock \emph{Journal of the Operational Research Society}, 63\penalty0
+  (3):\penalty0 306--321, 2012.
+
+\bibitem[Katakis et~al.(2006)Katakis, Tsoumakas, and
+  Vlahavas]{katakis2006dynamic}
+Ioannis Katakis, Grigorios Tsoumakas, and Ioannis Vlahavas.
+\newblock Dynamic feature space and incremental feature selection for the
+  classification of textual data streams.
+\newblock \emph{Knowledge Discovery from Data Streams}, pages 107--116, 2006.
+
+\bibitem[Katakis et~al.(2008)Katakis, Tsoumakas, and
+  Vlahavas]{katakis2008ensemble}
+Ioannis Katakis, Grigorios Tsoumakas, and Ioannis~P Vlahavas.
+\newblock An ensemble of classifiers for coping with recurring contexts in data
+  streams.
+\newblock In \emph{ECAI}, pages 763--764, 2008.
+
+\bibitem[Koren(2009)]{koren2009collaborative}
+Yehuda Koren.
+\newblock Collaborative filtering with temporal dynamics.
+\newblock In \emph{Proceedings of the 15th ACM SIGKDD international conference
+  on Knowledge discovery and data mining}, pages 447--456. ACM, 2009.
+
+\bibitem[Lemaire et~al.(2014)Lemaire, Salperwyck, and Bondu]{lemaire2014survey}
+Vincent Lemaire, Christophe Salperwyck, and Alexis Bondu.
+\newblock A survey on supervised classification on data streams.
+\newblock In \emph{European Business Intelligence Summer School}, pages
+  88--125. Springer, 2014.
+
+\bibitem[Losing et~al.(2018)Losing, Hammer, and Wersing]{losing2018incremental}
+Viktor Losing, Barbara Hammer, and Heiko Wersing.
+\newblock Incremental on-line learning: A review and comparison of state of the
+  art algorithms.
+\newblock \emph{Neurocomputing}, 275:\penalty0 1261--1274, 2018.
+
+\bibitem[Montgomery(2007)]{montgomery2007introduction}
+Douglas~C Montgomery.
+\newblock \emph{Introduction to statistical quality control}.
+\newblock John Wiley \&amp; Sons, 2007.
+
+\bibitem[Moreno-Torres et~al.(2012)Moreno-Torres, Raeder, Alaiz-Rodr{\'\i}Guez,
+  Chawla, and Herrera]{moreno2012unifying}
+Jose~G Moreno-Torres, Troy Raeder, Roc{\'\i}O Alaiz-Rodr{\'\i}Guez, Nitesh~V
+  Chawla, and Francisco Herrera.
+\newblock A unifying view on dataset shift in classification.
+\newblock \emph{Pattern Recognition}, 45\penalty0 (1):\penalty0 521--530, 2012.
+
+\bibitem[Ross et~al.(2012)Ross, Adams, Tasoulis, and
+  Hand]{ross2012exponentially}
+Gordon~J Ross, Niall~M Adams, Dimitris~K Tasoulis, and David~J Hand.
+\newblock Exponentially weighted moving average charts for detecting concept
+  drift.
+\newblock \emph{Pattern recognition letters}, 33\penalty0 (2):\penalty0
+  191--198, 2012.
+
+\bibitem[Tsymbal(2004)]{tsymbal2004problem}
+Alexey Tsymbal.
+\newblock The problem of concept drift: definitions and related work.
+\newblock \emph{Computer Science Department, Trinity College Dublin},
+  106\penalty0 (2), 2004.
+
+\bibitem[Tsymbal et~al.(2008)Tsymbal, Pechenizkiy, Cunningham, and
+  Puuronen]{tsymbal2008dynamic}
+Alexey Tsymbal, Mykola Pechenizkiy, P{\'a}draig Cunningham, and Seppo Puuronen.
+\newblock Dynamic integration of classifiers for handling concept drift.
+\newblock \emph{Information fusion}, 9\penalty0 (1):\penalty0 56--68, 2008.
+
+\bibitem[Wang et~al.(2003)Wang, Fan, Yu, and Han]{wang2003mining}
+Haixun Wang, Wei Fan, Philip~S Yu, and Jiawei Han.
+\newblock Mining concept-drifting data streams using ensemble classifiers.
+\newblock In \emph{Proceedings of the ninth ACM SIGKDD international conference
+  on Knowledge discovery and data mining}, pages 226--235. AcM, 2003.
+
+\bibitem[Wang and Abraham(2015)]{wang2015concept}
+Heng Wang and Zubin Abraham.
+\newblock Concept drift detection for streaming data.
+\newblock In \emph{2015 International Joint Conference on Neural Networks
+  (IJCNN)}, pages 1--9. IEEE, 2015.
+
+\bibitem[Xia et~al.(2009)Xia, Guo, and Zhao]{xia2009monitoring}
+Zhiming Xia, Pengjiang Guo, and Wenzhi Zhao.
+\newblock Monitoring structural changes in generalized linear models.
+\newblock \emph{Communications in Statistics---Theory and Methods}, 38\penalty0
+  (11):\penalty0 1927--1947, 2009.
+
+\bibitem[Zeileis(2005)]{zeileis2005unified}
+Achim Zeileis.
+\newblock A unified approach to structural change tests based on ml scores, f
+  statistics, and ols residuals.
+\newblock \emph{Econometric Reviews}, 24\penalty0 (4):\penalty0 445--466, 2005.
+
+\bibitem[Zeileis and Hornik(2007)]{zeileis2007generalized}
+Achim Zeileis and Kurt Hornik.
+\newblock Generalized m-fluctuation tests for parameter instability.
+\newblock \emph{Statistica Neerlandica}, 61\penalty0 (4):\penalty0 488--508,
+  2007.
+
+\bibitem[{\v{Z}}liobait{\.e} et~al.(2016){\v{Z}}liobait{\.e}, Pechenizkiy, and
+  Gama]{vzliobaite2016overview}
+Indr{\.e} {\v{Z}}liobait{\.e}, Mykola Pechenizkiy, and Joao Gama.
+\newblock An overview of concept drift applications.
+\newblock In \emph{Big Data Analysis: New Algorithms for a New Society}, pages
+  91--114. Springer, 2016.
+
+\end{thebibliography}

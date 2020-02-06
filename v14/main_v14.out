@@ -1,0 +1,25 @@
+\BOOKMARK [1][-]{section.1}{Introduction}{}% 1
+\BOOKMARK [1][-]{section.2}{Related Works}{}% 2
+\BOOKMARK [1][-]{section.3}{Monitoring the Score Function for Concept Drift}{}% 3
+\BOOKMARK [2][-]{subsection.3.1}{The Score Function as a Basis for Concept Drift Monitoring}{section.3}% 4
+\BOOKMARK [2][-]{subsection.3.2}{Stochastic Gradient Descent and Sample Score Vectors}{section.3}% 5
+\BOOKMARK [2][-]{subsection.3.3}{MEWMA Control Chart for Monitoring the Score Function}{section.3}% 6
+\BOOKMARK [2][-]{subsection.3.4}{Comparison between Monitoring the Score Function and Other Metrics}{section.3}% 7
+\BOOKMARK [3][-]{subsubsection.3.4.1}{Simple Logistic Regression}{subsection.3.4}% 8
+\BOOKMARK [3][-]{subsubsection.3.4.2}{Other Models}{subsection.3.4}% 9
+\BOOKMARK [3][-]{subsubsection.3.4.3}{Non-Zero Mean of Score Function with Concept Drift}{subsection.3.4}% 10
+\BOOKMARK [2][-]{subsection.3.5}{Monitoring Sample Score Vectors with the High-Dimension Vector of Parameters}{section.3}% 11
+\BOOKMARK [2][-]{subsection.3.6}{Score function of Penalized Models}{section.3}% 12
+\BOOKMARK [1][-]{section.4}{Decoupling of Concept Drift for Multivariate Regression and Classification}{}% 13
+\BOOKMARK [2][-]{subsection.4.1}{Concept Drift Decoupling}{section.4}% 14
+\BOOKMARK [2][-]{subsection.4.2}{Variance Inflation for Covariates without Concept Drift}{section.4}% 15
+\BOOKMARK [1][-]{section.5}{Demonstration of Monitoring the Score Function}{}% 16
+\BOOKMARK [2][-]{subsection.5.1}{Concept Drifts with No Error Rate Change}{section.5}% 17
+\BOOKMARK [2][-]{subsection.5.2}{Simulations on Median Run-Length \(MRL\)}{section.5}% 18
+\BOOKMARK [2][-]{subsection.5.3}{Concept Drift Diagnoses}{section.5}% 19
+\BOOKMARK [3][-]{subsubsection.5.3.1}{Simulated Dataset for Linear Regression}{subsection.5.3}% 20
+\BOOKMARK [3][-]{subsubsection.5.3.2}{Simulated Dataset for Logistic Regression}{subsection.5.3}% 21
+\BOOKMARK [1][-]{section.6}{Real Datasets}{}% 22
+\BOOKMARK [2][-]{subsection.6.1}{Credit Risk Dataset}{section.6}% 23
+\BOOKMARK [2][-]{subsection.6.2}{Bike Sharing Dataset}{section.6}% 24
+\BOOKMARK [1][-]{section.7}{Conclusion}{}% 25
