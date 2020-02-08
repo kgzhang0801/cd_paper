@@ -6,7 +6,7 @@
 %
 % It also sets the bibliographystyle to plainnat; for more information on
 % natbib citation styles, see the natbib documentation, a copy of which
-% is archived at http://www.jmlr.org/format/natbib.pdf
+% is archived at http://www.jmlr.org/format/natbib.png
 
 \usepackage{jmlr2e}
 \usepackage{setspace}
@@ -330,22 +330,22 @@ To analyze the performance of control charts for any specific monitoring statist
 The process of monitoring the score function using MEWMA control chart is shown in the Figure~\ref{fig:proc_mon_score}. For other scalar metrics or components of the score function, we use EWMA control chart because the statistics calculated by equation (\ref{eqn:ewma}) becomes scalar. The main difference is that in MEWMA control chart the monitored statistics is a summary statistics of vectors and is positive, but in EWMA control chart the statistics can fluctuate up and down. Other monitoring steps are similar. More specifically, in the Step 1, we collect a batch of responses and covariates in order, $\{\bm {x}_i, y_i\} _{i=1} ^{N}$, where $N$ is the sample size. The retrospective analysis using MEWMA and score clustering is conducted to rule out concept drift as much as possible, by resizing the dataset. Then, the dataset without concept drift is divided into two parts: $ \mathcal{D}_1 := \{\bm {x}_i, y_i\} _{i=1} ^{N_1}$ and $\mathcal{D}_2 := \{\bm {x}_i, y_i\} _{i=N_1+1} ^{N}$. The first dataset, $\mathcal{D}_1$, is used to train a parametric model and the second one, $\mathcal{D}_2$, is used in Phase-I for monitoring statistics and calculating control limits ($UCL$ and $LCL$). The Step 1 can iterate recursively by reducing the size of the dataset, $N$, to ensure that the control chart in Phase-I detects no out-of-control data and control limits are obtained. In the Step 2, given control limits from Phase-I, in Phase-II, the control chart is applied to sample score vectors or other metrics of more data points ($i > N$) to signal the starting position of concept drift, if ever happens. The Phase-II analysis can be used in data exploration when all the data are available and the existence and starting position of concept drift is interested in; or in prediction when data points come one-by-one and the aim is to monitor concept drifts. 
 \begin{figure}[!htbp]
 \centering
-%  \includegraphics[width = 0.5\linewidth]{../figures/gen_fig1.pdf}
+%  \includegraphics[width = 0.5\linewidth]{../figures/gen_fig1.png}
  \begin{subfigure}[t]{0.49\linewidth}
          \centering
-         \includegraphics[width = 1\linewidth]{../figures/v14/flow_chart/Retrospective.pdf}
+         \includegraphics[width = 1\linewidth]{../figures/v14/flow_chart/Retrospective.png}
          \caption{Retrospective Analysis.}
          \label{fig:retro_analysis}
   \end{subfigure}
   \begin{subfigure}[t]{0.49\linewidth}
          \centering
-         \includegraphics[width = 1\linewidth]{../figures/v14/flow_chart/Monitoring.pdf}
+         \includegraphics[width = 1\linewidth]{../figures/v14/flow_chart/Monitoring.png}
          \caption{Monitoring.}
          \label{fig:Monitoring}
   \end{subfigure}
   \begin{subfigure}[t]{0.49\linewidth}
          \centering
-         \includegraphics[width = 1\linewidth]{../figures/v14/flow_chart/Diagnose.pdf}
+         \includegraphics[width = 1\linewidth]{../figures/v14/flow_chart/Diagnose.png}
          \caption{Diagnosis.}
          \label{fig:diagnosis}
   \end{subfigure}
@@ -361,21 +361,21 @@ The score function is the first order derivative of the negative log-likelihood 
 \centering
  \begin{subfigure}[t]{0.4\linewidth}
          \centering
-         \includegraphics[width=\textwidth]{../figures/v14/demons_fig/2D_logi_orig.pdf}
+         \includegraphics[width=\textwidth]{../figures/v14/demons_fig/2D_logi_orig.png}
          \caption{The Original Data generating process and model.}
          \label{fig:logi_err_rate_unch_a}
   \end{subfigure}
   \begin{subfigure}[t]{0.4\linewidth}
          \centering
-         \includegraphics[width=\textwidth]{../figures/v14/demons_fig/2D_logi_cd.pdf}
+         \includegraphics[width=\textwidth]{../figures/v14/demons_fig/2D_logi_cd.png}
          \caption{The drifted data generating process.}
          \label{fig:logi_err_rate_unch_b}
   \end{subfigure}
-%  \includegraphics[width = 0.3\linewidth]{../figures/v14/demons_fig/2D_logi_orig.pdf}
-%  \includegraphics[width = 0.3\linewidth]{../figures/v14/demons_fig/2D_logi_cd.pdf}
+%  \includegraphics[width = 0.3\linewidth]{../figures/v14/demons_fig/2D_logi_orig.png}
+%  \includegraphics[width = 0.3\linewidth]{../figures/v14/demons_fig/2D_logi_cd.png}
  \begin{subfigure}[t]{0.6\linewidth}
          \centering
-	 \includegraphics[width = \textwidth]{../figures/v14/demons_fig/2D_logi.pdf}
+	 \includegraphics[width = \textwidth]{../figures/v14/demons_fig/2D_logi.png}
          \caption{The overlap shaded area show unchanged expected error rate.}
          \label{fig:logi_err_rate_unch_c}
   \end{subfigure}
@@ -394,19 +394,19 @@ where $p ^{(1)} = P(Y=1|\bm {X}, \bm { \theta} ^{(1)})$ and the superscript indi
 \centering
  \begin{subfigure}[t]{0.49\linewidth}
          \centering
-         \includegraphics[width=\textwidth]{../figures/v14/demons_fig/2D_err_logi.pdf}
+         \includegraphics[width=\textwidth]{../figures/v14/demons_fig/2D_err_logi.png}
          \caption{The penalty function before and after concept drift by monitoring error.}
          \label{fig:logi_err_rate_penal}
   \end{subfigure}
 %  \begin{subfigure}[t]{0.32\linewidth}
 %         \centering
-%         \includegraphics[width=\textwidth]{../figures/v14/demons_fig/2D_dev_logi.pdf}
+%         \includegraphics[width=\textwidth]{../figures/v14/demons_fig/2D_dev_logi.png}
 %         \caption{The penalty function before and after concept drift by monitoring deviance.}
 %         \label{fig:logi_dev_rate_penal}
 %  \end{subfigure}
  \begin{subfigure}[t]{0.49\linewidth}
          \centering
-	 \includegraphics[width = \textwidth]{../figures/v14/demons_fig/2D_score_logi.pdf}
+	 \includegraphics[width = \textwidth]{../figures/v14/demons_fig/2D_score_logi.png}
          \caption{The penalty function before and after concept drift by monitoring Hotelling $T^2$ of the score function.}
          \label{fig:logi_score_rate_penal}
   \end{subfigure}
@@ -582,17 +582,19 @@ We also simulate abrupt and gradual concept drifts to test the performance of de
 \centering
 \begin{subfigure}[t]{0.49\linewidth}
          \centering
-           \includegraphics[width = \linewidth, trim=0in 2.6in 0in 0in, clip]{../figures/v14/sim_11/non_nnet_unif_ch_f_trans/1_sim11_logi_1e-08_0_0015_1.pdf}
+        %   \includegraphics[width = \linewidth, trim=0in 2.6in 0in 0in, clip]{../figures/v14/sim_11/non_nnet_unif_ch_f_trans/1_sim11_logi_1e-08_0_0015_1.png}
+           \includegraphics[width = \linewidth]{../figures/v14/sim_11/non_nnet_nonunif_ch_f_0_2/1_sim11_logi_1e-08_0_0015_1.png}
          \caption{Concept drift results mean change in score-based method but no mean change in error rate.}
          \label{fig:exp_no_err_ch_a}
   \end{subfigure}
 \begin{subfigure}[t]{0.49\linewidth}
          \centering
-	  \includegraphics[width = \linewidth, trim=0in 2.6in 0in 0in, clip]{../figures/v14/sim_11/non_nnet_unif_ch_f_trans_followup/1_sim11_logi_1e-08_0_0015_1.pdf}
+	       %\includegraphics[width = \linewidth, trim=0in 2.6in 0in 0in, clip]{../figures/v14/sim_11/non_nnet_unif_ch_f_trans_followup/1_sim11_logi_1e-08_0_0015_1.png}
+	       \includegraphics[width = \linewidth]{../figures/v14/sim_11/non_nnet_nonunif_ch_f_0_2_followup/1_sim11_logi_1e-08_0_0015_1.png}
          \caption{After retrained on the drifted dataset, the performance of model increased, according to lower limits in prediction error.}
          \label{fig:exp_no_err_ch_b}
   \end{subfigure}
-%  \includegraphics[width = 0.8\linewidth]{../figures/sim_2_pinv_pdf/sim2_ewma_2_metric_with_reg_1e-08_0_005.pdf}
+%  \includegraphics[width = 0.8\linewidth]{../figures/sim_2_pinv_pdf/sim2_ewma_2_metric_with_reg_1e-08_0_005.png}
 %  \includegraphics[width = 0.48\linewidth]{../figures/sim_2_pinv/sim2_ewma_log_lik_with_reg_1e-08_0_005.png}
   \caption{A logistic regression example with two covariates, where before blue vertical line is Phase-I and the green vertical line is the boundary between concept drift in the Phase-II. This example shows that score-based method can detect concept drift which has no change in error. This detection provides an opportunity for improvement as shown in the lower limits on the right plot.}
   \label{fig:exp_no_err_ch}
@@ -809,16 +811,17 @@ For a fair comparison, error rate, residual, and score-based metrics are applied
 \label{sss:lin_ind_pred}
 \begin{figure}[!hpt]
 \centering
-  \includegraphics[width = 0.6\linewidth]{../figures/v14/sim_2/reg/neg_single_3_sim2_mlines_with_regu_1e-08_0_005.pdf}
-%  \includegraphics[width = 0.8\linewidth]{../figures/sim_2_pinv_pdf/neg_single_sim2_mlines_with_regu_1e-08_0_005.pdf}
+  \includegraphics[width = 0.6\linewidth]{../figures/v14/sim_2/reg/neg_single_3_sim2_mlines_with_regu_1e-08_0_005.png}
+%  \includegraphics[width = 0.8\linewidth]{../figures/sim_2_pinv_pdf/neg_single_sim2_mlines_with_regu_1e-08_0_005.png}
   \caption{Abrupt concept drift of linear model with independent covariates (colorful in electronic version). For conciseness, here only show EWMA (or MEWMA) control charts for the $1$st (blue), $5$th (red), intercept (green), and Hotelling $T^2$ (black). The blue and green vertical lines mark the boundaries of Phase-I/II and before/after concept drift. The lines of monitored statistics in control charts have the same style and color with lines of their control limits correspondingly.}
   \label{fig:lin_reg_ind_X}
 \end{figure}
 In this simulation, the dataset is generated by a {linear} model $y = \bm {x}^T\bm { \theta} + \epsilon$. The $10$ {covariates} {$\bm {x}=[x_1, x_2, \cdots, x _{10}]$} are independent Gaussian distributed with mean $0$ and variance $1$; the variance of random error $ \epsilon$ is $1$; the EWMA parameter is $0.027562$ chosen by ensuring around $50\%$ signal ratio after concept drift; there is no penalization in training the model because the number of parameters is small comparing to the sample size; the alarm rate for calculating the control limits is $99.9\%$; the sizes of the dataset used in training, validation, Phase-I, and Phase-II are $10000$, $2000$, $20000$, and $40000$. The responses in training, validation, and Phase-I are generated with coefficients all equal to $1$. In the first half of Phase-II, the coefficients are unchanged, but in the second half, the first four coefficients are multiplied by $1- \alpha=0.7$, where $ \alpha=0.3$ is defined as the changing factor. Other coefficients are unchanged.
 \begin{figure}[!htp]
 \centering
-  \includegraphics[width = 0.6\linewidth, trim=0in 2.6in 0in 0in, clip]{../figures/v14/sim_2/reg/3_sim2_lin_1e-08_0_005_1.pdf}
-%  \includegraphics[width = 0.8\linewidth]{../figures/sim_2_pinv_pdf/sim2_ewma_2_metric_with_reg_1e-08_0_005.pdf}
+%   \includegraphics[width = 0.6\linewidth, trim=0in 2.6in 0in 0in, clip]{../figures/v14/sim_2/reg/3_sim2_lin_1e-08_0_005_1.png}
+\includegraphics[width = 0.6\linewidth]{../figures/v14/sim_2/reg/3_sim2_lin_1e-08_0_005_1.png}
+%  \includegraphics[width = 0.8\linewidth]{../figures/sim_2_pinv_pdf/sim2_ewma_2_metric_with_reg_1e-08_0_005.png}
 %  \includegraphics[width = 0.48\linewidth]{../figures/sim_2_pinv/sim2_ewma_log_lik_with_reg_1e-08_0_005.png}
   \caption{Abrupt concept drift of linear model with independent covariates (colorful in electronic version). Control charts of Hotelling $T^2$ of the score function and EWMA of the absolute residual are compared. The lines of monitored statistics in control charts have the same style and color with lines of their control limits correspondingly.}
   \label{fig:lin_reg_ind_X_comp}
@@ -834,10 +837,10 @@ To compare control charts of Hotelling $T^2$ of the score function and EWMA of t
 \label{sss:lin_not_ind_pred}
 \begin{figure}[!htbp]
 \centering
-\includegraphics[width = 0.4\linewidth]{../figures/v14/sim_4/reg/PII_neg_single_1_sim4_mlines_with_regu_1e-08_0_005.pdf}
-\includegraphics[width = 0.4\linewidth]{../figures/v14/sim_4/reg/PII_neg_single_1_sim4_fisher_mlines_with_regu_1e-08_0_005.pdf}
-%\includegraphics[width = 0.4\linewidth]{../figures/sim_4_1_pinv_pdf/PII_neg_single_sim4_mlines_with_regu_1e-08_0_005.pdf}
-%\includegraphics[width = 0.4\linewidth]{../figures/sim_4_1_pinv_pdf/PII_pos_single_sim4_mlines_fisher_with_regu_1e-08_0_005.pdf}
+\includegraphics[width = 0.4\linewidth]{../figures/v14/sim_4/reg/PII_neg_single_1_sim4_mlines_with_regu_1e-08_0_005.png}
+\includegraphics[width = 0.4\linewidth]{../figures/v14/sim_4/reg/PII_neg_single_1_sim4_fisher_mlines_with_regu_1e-08_0_005.png}
+%\includegraphics[width = 0.4\linewidth]{../figures/sim_4_1_pinv_pdf/PII_neg_single_sim4_mlines_with_regu_1e-08_0_005.png}
+%\includegraphics[width = 0.4\linewidth]{../figures/sim_4_1_pinv_pdf/PII_pos_single_sim4_mlines_fisher_with_regu_1e-08_0_005.png}
 %  \includegraphics[width = 1\linewidth]{../figures/sim_3/PII_pos_sim3_mlines_with_regu_1e-08_0_001.png}
 %  \includegraphics[width = 1\linewidth]{../figures/sim_3/PII_neg_sim3_mlines_fisher_with_regu_1e-08_0_001.png}
   \caption{Abrupt concept drift of linear model with correlated {covariates} (colorful in electronic version). Comparison are made between before (left) and after (right) being scaled by {the inverse of the estimated} Fisher Information Matrix, {$\mathbf {I} ( {\bm{\theta}} ^{(0)})$.} For legibility, here only show EWMA (or MEWMA) control charts for the $1$st (blue), $5$th (red), $7$th (green), intercept (cyan), and Hotelling $T^2$ (black). The lines of monitored statistics in control charts have the same style and color with lines of their control limits correspondingly.}
@@ -850,10 +853,10 @@ Then, we manually introduce correlation between {covariates} by setting $0.5 x_1
 \label{sss:lin_not_ind_pred_grad_cd}
 \begin{figure}[!htbp]
 \centering
-\includegraphics[width = 0.4\linewidth]{../figures/v14/sim_6/reg/PII_neg_single_1_sim6_mlines_with_regu_1e-08_0_005.pdf}
-\includegraphics[width = 0.4\linewidth]{../figures/v14/sim_6/reg/PII_neg_single_1_sim6_fisher_mlines_with_regu_1e-08_0_005.pdf}
-%\includegraphics[width = 0.4\linewidth]{../figures/sim_6_1_pinv_pdf/PII_neg_single_sim6_mlines_with_regu_1e-08_0_005.pdf}
-%\includegraphics[width = 0.4\linewidth]{../figures/sim_6_1_pinv_pdf/PII_pos_single_sim6_mlines_fisher_with_regu_1e-08_0_005.pdf}
+\includegraphics[width = 0.4\linewidth]{../figures/v14/sim_6/reg/PII_neg_single_1_sim6_mlines_with_regu_1e-08_0_005.png}
+\includegraphics[width = 0.4\linewidth]{../figures/v14/sim_6/reg/PII_neg_single_1_sim6_fisher_mlines_with_regu_1e-08_0_005.png}
+%\includegraphics[width = 0.4\linewidth]{../figures/sim_6_1_pinv_pdf/PII_neg_single_sim6_mlines_with_regu_1e-08_0_005.png}
+%\includegraphics[width = 0.4\linewidth]{../figures/sim_6_1_pinv_pdf/PII_pos_single_sim6_mlines_fisher_with_regu_1e-08_0_005.png}
  \caption{Gradual concept drift of linear model with correlated {covariates} (colorful in electronic version). Comparison are made between before (left) and after (right) being scaled by {the inverse of the estimated} Fisher Information Matrix, {$\mathbf {I} ( {\bm{\theta}} ^{(0)})$.} For legibility, here only show EWMA (or MEWMA) control charts for the $1$st (blue), $5$th (red), $7$th (green), intercept (cyan), and Hotelling $T^2$ (black). The left (right) vertical axis is for univariate (multivariate) control charts. The lines of monitored statistics in control charts have the same style and color with lines of their control limits correspondingly.}
   \label{fig:lin_reg_not_ind_X_grad_cd}
 \end{figure}
@@ -861,8 +864,9 @@ In real applications, many concept drifts happen in a gradual way. In this datas
 \begin{figure}[!htbp]
 \centering
 % \includegraphics[width = 0.48\linewidth]{../figures/sim_6_1_pinv_pdf/sim6_ewma_resi_with_reg_1e-08_0_005.png}
-%\includegraphics[width = 0.8\linewidth]{../figures/sim_6_1_pinv_pdf/sim6_ewma_2_metric_with_reg_1e-08_0_005.pdf}
-\includegraphics[width = 0.6\linewidth, trim=0in 2.6in 0in 0in, clip]{../figures/v14/sim_6/reg/1_sim6_lin_1e-08_0_005_1.pdf}
+%\includegraphics[width = 0.8\linewidth]{../figures/sim_6_1_pinv_pdf/sim6_ewma_2_metric_with_reg_1e-08_0_005.png}
+% \includegraphics[width = 0.6\linewidth, trim=0in 2.6in 0in 0in, clip]{../figures/v14/sim_6/reg/1_sim6_lin_1e-08_0_005_1.png}
+\includegraphics[width = 0.6\linewidth]{../figures/v14/sim_6/reg/1_sim6_lin_1e-08_0_005_1.png}
   \caption{Gradual concept drift of linear model with correlated covariates (colorful in electronic version). Control charts of Hotelling $T^2$ of the score function and EWMA of the absolute residual are compared. The lines of monitored statistics in control charts have the same style and color with lines of their control limits correspondingly.}
   \label{fig:lin_reg_ind_X_grad_cd_comp}
 \end{figure}
@@ -877,10 +881,10 @@ The EWMA and MEWMA control charts before (left) and after (right) scaled by {the
 \label{sss:log_ind_pred}
 \begin{figure}[!htbp]
 \centering
-\includegraphics[width = 0.4\linewidth]{../figures/v14/sim_5/logi_no_muco/PII_pos_single_1_sim5_mlines_with_regu_1e-08_0_005.pdf}
-\includegraphics[width = 0.4\linewidth]{../figures/v14/sim_5/logi_no_muco/PII_pos_single_1_sim5_fisher_mlines_with_regu_1e-08_0_005.pdf}
-%\includegraphics[width = 0.4\linewidth]{../figures/sim_3_pinv_pdf/PII_pos_single_sim3_mlines_with_regu_1e-08_0_005.pdf}
-%\includegraphics[width = 0.4\linewidth]{../figures/sim_3_pinv_pdf/PII_neg_single_sim3_mlines_fisher_with_regu_1e-08_0_005.pdf}
+\includegraphics[width = 0.4\linewidth]{../figures/v14/sim_5/logi_no_muco/PII_pos_single_1_sim5_mlines_with_regu_1e-08_0_005.png}
+\includegraphics[width = 0.4\linewidth]{../figures/v14/sim_5/logi_no_muco/PII_pos_single_1_sim5_fisher_mlines_with_regu_1e-08_0_005.png}
+%\includegraphics[width = 0.4\linewidth]{../figures/sim_3_pinv_pdf/PII_pos_single_sim3_mlines_with_regu_1e-08_0_005.png}
+%\includegraphics[width = 0.4\linewidth]{../figures/sim_3_pinv_pdf/PII_neg_single_sim3_mlines_fisher_with_regu_1e-08_0_005.png}
 %  \includegraphics[width = 1\linewidth]{../figures/sim_3/PII_pos_sim3_mlines_with_regu_1e-08_0_001.png}
 %  \includegraphics[width = 1\linewidth]{../figures/sim_3/PII_neg_sim3_mlines_fisher_with_regu_1e-08_0_001.png}
   \caption{Abrupt concept drift of logistic regression with independent {covariates} (colorful in electronic version). Comparison are made between before (left) and after (right) being scaled by {the inverse of the estimated} Fisher Information Matrix, {$\mathbf {I} ( {\bm{\theta}} ^{(0)})$.} For legibility, here only show EWMA (or MEWMA) control charts for the $1$st (blue), $5$th (red), $7$th (green), intercept (cyan), and Hotelling $T^2$ (black). The lines of monitored statistics in control charts have the same style and color with lines of their control limits correspondingly.}
@@ -890,11 +894,12 @@ The EWMA and MEWMA control charts before (left) and after (right) scaled by {the
 This simulated dataset has the same parameter as that in the corresponding Section~\ref{sss:lin_ind_pred}, except that here the model becomes {logistic model} {$p(y=1|\bm {x})= \sigma (\bm {x}^T\bm { \theta})$,} where $\sigma (\cdot)$ is the sigmoid function.
 \begin{figure}[!htbp]
 \centering
-\includegraphics[width = 0.6\linewidth, trim=0in 2.6in 0in 0in, clip]{../figures/v14/sim_5/logi_no_muco/1_sim5_logi_1e-08_0_005_1.pdf}    
-%  \includegraphics[width = 0.49\linewidth]{../figures/sim_3_pinv_pdf/sim3_ewma_2_metric_with_reg_1e-08_0_005.pdf}
-%  \includegraphics[width = 0.49\linewidth]{../figures/sim_3_pinv_pdf/sim3_ewma_2_metric_with_reg_1e-08_0_002.pdf}
-%  \includegraphics[width = 0.24\linewidth]{../figures/sim_3_pinv_pdf/sim3_ewma_dev_with_reg_1e-08_0_005.pdf}
-%  \includegraphics[width = 0.24\linewidth]{../figures/sim_3_pinv_pdf/sim3_ewma_dev_with_reg_1e-08_0_001.pdf}
+% \includegraphics[width = 0.6\linewidth, trim=0in 2.6in 0in 0in, clip]{../figures/v14/sim_5/logi_no_muco/1_sim5_logi_1e-08_0_005_1.png}
+\includegraphics[width = 0.6\linewidth]{../figures/v14/sim_5/logi_no_muco/1_sim5_logi_1e-08_0_005_1.png}
+%  \includegraphics[width = 0.49\linewidth]{../figures/sim_3_pinv_pdf/sim3_ewma_2_metric_with_reg_1e-08_0_005.png}
+%  \includegraphics[width = 0.49\linewidth]{../figures/sim_3_pinv_pdf/sim3_ewma_2_metric_with_reg_1e-08_0_002.png}
+%  \includegraphics[width = 0.24\linewidth]{../figures/sim_3_pinv_pdf/sim3_ewma_dev_with_reg_1e-08_0_005.png}
+%  \includegraphics[width = 0.24\linewidth]{../figures/sim_3_pinv_pdf/sim3_ewma_dev_with_reg_1e-08_0_001.png}
   \caption{Abrupt concept drift of logistic regression with independent covariates (colorful in electronic version). Control charts of Hotelling $T^2$ of the score function and EWMA of the error rate are compared. The lines of monitored statistics in control charts have the same style and color with lines of their control limits correspondingly.}
   \label{fig:log_reg_ind_X_comp}
 \end{figure}
@@ -908,10 +913,10 @@ As the comparison in the Section~\ref{sss:lin_ind_pred}, in Figure~\ref{fig:log_
 \label{sss:log_not_ind_pred}
 \begin{figure}[!htbp]
 \centering
-\includegraphics[width = 0.4\linewidth]{../figures/v14/sim_5/logi/PII_pos_single_1_sim5_mlines_with_regu_1e-08_0_005.pdf}
-\includegraphics[width = 0.4\linewidth]{../figures/v14/sim_5/logi/PII_pos_single_1_sim5_fisher_mlines_with_regu_1e-08_0_005.pdf}
-%  \includegraphics[width = 0.4\linewidth]{../figures/sim_3_1_pinv_pdf/PII_pos_single_sim3_mlines_with_regu_1e-08_0_005.pdf}
-%  \includegraphics[width = 0.4\linewidth]{../figures/sim_3_1_pinv_pdf/PII_neg_single_sim3_mlines_fisher_with_regu_1e-08_0_005.pdf}
+\includegraphics[width = 0.4\linewidth]{../figures/v14/sim_5/logi/PII_pos_single_1_sim5_mlines_with_regu_1e-08_0_005.png}
+\includegraphics[width = 0.4\linewidth]{../figures/v14/sim_5/logi/PII_pos_single_1_sim5_fisher_mlines_with_regu_1e-08_0_005.png}
+%  \includegraphics[width = 0.4\linewidth]{../figures/sim_3_1_pinv_pdf/PII_pos_single_sim3_mlines_with_regu_1e-08_0_005.png}
+%  \includegraphics[width = 0.4\linewidth]{../figures/sim_3_1_pinv_pdf/PII_neg_single_sim3_mlines_fisher_with_regu_1e-08_0_005.png}
   \caption{
 Abrupt concept drift of logistic regression with correlated {covariates} (colorful in electronic version). Comparison are made between before (left) and after (right) being scaled by {the inverse of the estimated} Fisher Information Matrix, {$\mathbf {I} ( {\bm{\theta}} ^{(0)})$.} For legibility, here only show EWMA (or MEWMA) control charts for the $1$st (blue), $5$th (red), $7$th (green), intercept (cyan), and Hotelling $T^2$ (black). The lines of monitored statistics in control charts have the same style and color with lines of their control limits correspondingly.
 % Concept drift of logistic regression with correlated {covariates} (colorful in electronic version). Comparison are made between before (above) and after (below) being scaled by {the inverse of the estimated} Fisher Information Matrix, {$\mathbf {I} ( {\bm{\theta}} ^{(0)})$.} 
@@ -925,10 +930,10 @@ As in the Section~\ref{sss:lin_not_ind_pred}, we introduce correlation between {
 \label{sss:log_not_ind_pred_assum}
 \begin{figure}[!htbp]
 \centering
-\includegraphics[width = 0.4\linewidth]{../figures/v14/sim_5/logi_small/PII_pos_single_1_sim5_mlines_with_regu_1e-08_0_005.pdf}
-\includegraphics[width = 0.4\linewidth]{../figures/v14/sim_5/logi_small/PII_pos_single_1_sim5_fisher_mlines_with_regu_1e-08_0_005.pdf}
-%  \includegraphics[width = 0.4\linewidth]{../figures/sim_5_1_pinv_pdf/PII_pos_single_sim5_mlines_with_regu_1e-08_0_005.pdf}
-%  \includegraphics[width = 0.4\linewidth]{../figures/sim_5_1_pinv_pdf/PII_neg_single_sim5_mlines_fisher_with_regu_1e-08_0_005.pdf}
+\includegraphics[width = 0.4\linewidth]{../figures/v14/sim_5/logi_small/PII_pos_single_1_sim5_mlines_with_regu_1e-08_0_005.png}
+\includegraphics[width = 0.4\linewidth]{../figures/v14/sim_5/logi_small/PII_pos_single_1_sim5_fisher_mlines_with_regu_1e-08_0_005.png}
+%  \includegraphics[width = 0.4\linewidth]{../figures/sim_5_1_pinv_pdf/PII_pos_single_sim5_mlines_with_regu_1e-08_0_005.png}
+%  \includegraphics[width = 0.4\linewidth]{../figures/sim_5_1_pinv_pdf/PII_neg_single_sim5_mlines_fisher_with_regu_1e-08_0_005.png}
   \caption{
  Abrupt concept drift of logistic regression with correlated covariates (colorful in electronic version). Simulated data are modified to reduce the magnitude of $ \bm {x}_i^T\bm { \theta}^{(1)}$ and $  \bm {x}_i^T\bm { \theta}^{(0)}$. Comparison are made between before (left) and after (right) being scaled by the inverse of the estimated Fisher Information Matrix, $\mathbf {I} ( {\bm{\theta}} ^{(0)})$. For legibility, here only show EWMA (or MEWMA) control charts for the $1$st (blue), $5$th (red), $7$th (green), intercept (cyan), and Hotelling $T^2$ (black). The lines of monitored statistics in control charts have the same style and color with lines of their control limits correspondingly.
 %Concept drift of logistic regression with correlated covariates.  Simulated data are modified to reduce the magnitude of $ \bm {x}_i^T\bm { \theta}^{ (1)}$ and $  \bm {x}_i^T\bm { \theta}^{ (0)}$. Comparison are made between before (above) and after (below) being scaled by the inverse of the estimated Fisher Information Matrix, $\mathbf {I} ( {\bm{\theta}} ^{(0)})$. 
@@ -943,17 +948,18 @@ To test this argument, we follow the dataset generating process in the Section~\
 This property of logistic regression can be extended to gradual concept drifts. Modifying the above dataset as in the section \ref{sss:lin_not_ind_pred_grad_cd}, meaning change the abrupt concept drift to linear one.
 \begin{figure}[!htbp]
 \centering
-\includegraphics[width = 0.4\linewidth]{../figures/v14/sim_7/logi_small/PII_pos_single_1_sim7_mlines_with_regu_1e-08_0_005.pdf}
-\includegraphics[width = 0.4\linewidth]{../figures/v14/sim_7/logi_small/PII_pos_single_1_sim7_fisher_mlines_with_regu_1e-08_0_005.pdf}
-%\includegraphics[width = 0.4\linewidth]{../figures/sim_7_1_pinv_pdf/PII_pos_single_sim7_mlines_with_regu_1e-08_0_005.pdf}
-%\includegraphics[width = 0.4\linewidth]{../figures/sim_7_1_pinv_pdf/PII_neg_single_sim7_mlines_fisher_with_regu_1e-08_0_005.pdf}
+\includegraphics[width = 0.4\linewidth]{../figures/v14/sim_7/logi_small/PII_pos_single_1_sim7_mlines_with_regu_1e-08_0_005.png}
+\includegraphics[width = 0.4\linewidth]{../figures/v14/sim_7/logi_small/PII_pos_single_1_sim7_fisher_mlines_with_regu_1e-08_0_005.png}
+%\includegraphics[width = 0.4\linewidth]{../figures/sim_7_1_pinv_pdf/PII_pos_single_sim7_mlines_with_regu_1e-08_0_005.png}
+%\includegraphics[width = 0.4\linewidth]{../figures/sim_7_1_pinv_pdf/PII_neg_single_sim7_mlines_fisher_with_regu_1e-08_0_005.png}
  \caption{Gradual concept drift of logistic regression with correlated {covariates} (colorful in electronic version). Comparison are made between before (left) and after (right) being scaled by {the inverse of the estimated} Fisher Information Matrix, {$\mathbf {I} ( {\bm{\theta}} ^{(0)})$.} For legibility, here only show EWMA (or MEWMA) control charts for the $1$st (blue), $5$th (red), $7$th (green), intercept (cyan), and Hotelling $T^2$ (black). The left (right) vertical axis is for univariate (multivariate) control charts. The lines of monitored statistics in control charts have the same style and color with lines of their control limits correspondingly.}
   \label{fig:log_reg_not_ind_X_grad_cd}
 \end{figure}
 \begin{figure}[!htbp]
 \centering
-\includegraphics[width = 0.6\linewidth, trim=0in 2.6in 0in 0in, clip]{../figures/v14/sim_7/logi_small/1_sim7_logi_1e-08_0_005_1.pdf}    
-% \includegraphics[width = 0.8\linewidth]{../figures/sim_7_1_pinv_pdf/sim7_ewma_2_metric_with_reg_1e-08_0_005.pdf}
+% \includegraphics[width = 0.6\linewidth, trim=0in 2.6in 0in 0in, clip]{../figures/v14/sim_7/logi_small/1_sim7_logi_1e-08_0_005_1.png}
+\includegraphics[width = 0.6\linewidth]{../figures/v14/sim_7/logi_small/1_sim7_logi_1e-08_0_005_1.png}
+% \includegraphics[width = 0.8\linewidth]{../figures/sim_7_1_pinv_pdf/sim7_ewma_2_metric_with_reg_1e-08_0_005.png}
 %\includegraphics[width = 0.48\linewidth]{../figures/sim_7_1_pinv_pdf/sim7_ewma_dev_with_reg_1e-08_0_005.png}
   \caption{Gradual concept drift of logistic regression with correlated covariates (colorful in electronic version). Control charts of Hotelling $T^2$ of the score function and EWMA of the absolute residual are compared. The lines of monitored statistics in control charts have the same style and color with lines of their control limits correspondingly.}
   \label{fig:log_reg_ind_X_grad_cd_comp}
@@ -971,12 +977,12 @@ The concept drifts is usually hard to directly testify in real life, because the
 \label{ss:cr_ds}
 \begin{figure}[!htbp]
 \centering
-%  \includegraphics[width = 0.49\linewidth]{../figures/v14/credit_default/lin_model_pinv_pdf/credit_ewma_2_metric_with_reg_21_544346128_0_001.pdf}
-	\includegraphics[width = 0.49\linewidth, trim=0in 2.6in 0in 0in, clip]{../figures/v14/credit_default/logi_scal_train_PI/credit_logi_1e-08_0_0001_0_001_99_0.pdf}
-%    \includegraphics[width = 0.24\linewidth]{../figures/v14/credit_default/lin_model_pinv_pdf/credit_ewma_dev_with_reg_21_544346128_0_001.pdf}
-%    \includegraphics[width = 0.49\linewidth]{../figures/v14/credit_default/nnet_model_pinv_pdf/credit_ewma_2_metric_with_reg_0_001_0_001.pdf}
-\includegraphics[width = 0.49\linewidth, trim=0in 2.6in 0in 0in, clip]{../figures/v14/credit_default/logi_nnet_scal_train_PI/credit_logi_0_001_0_0001_0_001_99_0.pdf}
-%     \includegraphics[width = 0.24\linewidth]{../figures/v14/credit_default/nnet_model_pinv_pdf/credit_ewma_dev_with_reg_0_001_0_001.pdf}    
+%  \includegraphics[width = 0.49\linewidth]{../figures/v14/credit_default/lin_model_pinv_pdf/credit_ewma_2_metric_with_reg_21_544346128_0_001.png}
+	\includegraphics[width = 0.49\linewidth, trim=0in 2.6in 0in 0in, clip]{../figures/v14/credit_default/logi_scal_train_PI/credit_logi_1e-08_0_0001_0_001_99_0.png}
+%    \includegraphics[width = 0.24\linewidth]{../figures/v14/credit_default/lin_model_pinv_pdf/credit_ewma_dev_with_reg_21_544346128_0_001.png}
+%    \includegraphics[width = 0.49\linewidth]{../figures/v14/credit_default/nnet_model_pinv_pdf/credit_ewma_2_metric_with_reg_0_001_0_001.png}
+\includegraphics[width = 0.49\linewidth, trim=0in 2.6in 0in 0in, clip]{../figures/v14/credit_default/logi_nnet_scal_train_PI/credit_logi_0_001_0_0001_0_001_99_0.png}
+%     \includegraphics[width = 0.24\linewidth]{../figures/v14/credit_default/nnet_model_pinv_pdf/credit_ewma_dev_with_reg_0_001_0_001.png}    
   \caption{
 Control charts monitoring MEWMA of Hotelling $T^2$ of the score function and EWMA of the prediction error are compared using credit risk dataset. The left plots are from logistic regression, and the right from MLP with one hidden layer of $50$ nodes. The tilted numbers along the x-axis, as the indices of month, are the time of credit card defaults. For example, $601$ stands for 2006-Jan. So the index $712$ is for the 2007-Dec, right after which a $15$-month significant drop began (S\&P 500 from $1478.49$ on 2007-Dec.28 to $683.38$ on 2009-Mar.28).
 %MEWMA of Hotelling $T^2$ control charts are used to monitor the concept drift of credit risk dataset. The above two plots are from logistic regression, and the below from neural network with one hidden layer of $50$ nodes. The left and the right vertical axis is for control chart and cumulative prediction accuracy. The tilted numbers along the x-axis, as the indices of month, are the time at openings of credit card accounts. For example, $601$ stands for Jan.06. So the index $712$ is for the Dec.07, right after which a $15$-month significant drop began (S\&P 500 from $1478.49$ on Dec.28,07 to $735.09$ on Feb.28,08).
@@ -991,10 +997,10 @@ Figure~\ref{fig:credit_default} consists of Phase-I and Phase-II MEWMA Hotelling
 
 \begin{figure}[!htbp]
 \centering
-%  \includegraphics[width = 0.48\linewidth]{../figures/v14/credit_default/lin_model_pinv_pdf/PII_pos_single_credit_mlines_with_regu_21_544346128_0_001.pdf}
-%  \includegraphics[width = 0.48\linewidth]{../figures/v14/credit_default/lin_model_pinv_pdf/PII_neg_single_credit_mlines_fisher_with_regu_21_544346128_0_001.pdf}
- \includegraphics[width = 0.48\linewidth]{../figures/v14/credit_default/logi_scal_train_PI/PII_pos_single_credit_mlines_with_regu_1e-08_0_0001_0_001_99_0.pdf}
-  \includegraphics[width = 0.48\linewidth]{../figures/v14/credit_default/logi_scal_train_PI/PII_pos_single_credit_fisher_mlines_with_regu_1e-08_0_0001_0_001_99_0.pdf}
+%  \includegraphics[width = 0.48\linewidth]{../figures/v14/credit_default/lin_model_pinv_pdf/PII_pos_single_credit_mlines_with_regu_21_544346128_0_001.png}
+%  \includegraphics[width = 0.48\linewidth]{../figures/v14/credit_default/lin_model_pinv_pdf/PII_neg_single_credit_mlines_fisher_with_regu_21_544346128_0_001.png}
+ \includegraphics[width = 0.48\linewidth]{../figures/v14/credit_default/logi_scal_train_PI/PII_pos_single_credit_mlines_with_regu_1e-08_0_0001_0_001_99_0.png}
+  \includegraphics[width = 0.48\linewidth]{../figures/v14/credit_default/logi_scal_train_PI/PII_pos_single_credit_fisher_mlines_with_regu_1e-08_0_0001_0_001_99_0.png}
   \caption{
   MEWMA and EWMA control charts for logistic regression of credit risk dataset (colorful in electronic version). Comparison are made between before (left) and after (right) being scaled by the inverse of the estimated Fisher Information Matrix, $\mathbf {I} ( {\bm{\theta}} ^{(0)})$. For legibility, here only show EWMA (or MEWMA) control charts for the $1$st (blue), $2$nd (red), $3$rd (green), $8$th (cyan), intercept (orange), and Hotelling $T^2$ (black). The lines of monitored statistics in control charts have the same style and color with lines of their control limits correspondingly.
 %MEWMA and EWMA control charts for logistic regression of credit risk dataset. Comparison are made between before (above) and after (below) being scaled by the inverse of the estimated Fisher Information Matrix, $\mathbf {I} ( {\bm{\theta}} ^{(0)})$. 
@@ -1008,13 +1014,13 @@ To demonstrate the diagnostic functionality on this real dataset, EWMA of sample
 \label{ss:bs_ds}
 \begin{figure}[!htbp]
 \centering
-\includegraphics[width = 0.49\linewidth, trim=0in 2.6in 0in 0in, clip]{../figures/v14/bike_sharing/reg_scal_train/bike_reg_1e-08_0_0001_0_005_99_0.pdf}
-\includegraphics[width = 0.49\linewidth, trim=0in 2.6in 0in 0in, clip]{../figures/v14/bike_sharing/reg_nnet_scal_train/bike_reg_0_1_0_0001_0_005_99_0.pdf}
-%  \includegraphics[width = 0.49\linewidth]{../figures/v14/bike_sharing/lin_model_old_pinv_pdf/bike_ewma_2_metric_with_reg_0_1_0_005.pdf}
-%  \includegraphics[width = 0.49\linewidth]{../figures/v14/bike_sharing/nnet_model_old_pinv_pdf/bike_ewma_2_metric_with_reg_0_1_0_005.pdf}
-    %\includegraphics[width = 0.24\linewidth]{../figures/v14/bike_sharing/lin_model_old_pinv_pdf/bike_ewma_log_lik_with_reg_0_1_0_005.pdf}
-    %\includegraphics[width = 0.49\linewidth]{../figures/v14/bike_sharing/nnet_model_old_pinv_pdf/bike_ewma_resi_with_reg_0_1_0_005.pdf}
-     %\includegraphics[width = 0.24\linewidth]{../figures/v14/bike_sharing/nnet_model_old_pinv_pdf/bike_ewma_log_lik_with_reg_0_1_0_005.pdf}    
+\includegraphics[width = 0.49\linewidth, trim=0in 2.6in 0in 0in, clip]{../figures/v14/bike_sharing/reg_scal_train/bike_reg_1e-08_0_0001_0_005_99_0.png}
+\includegraphics[width = 0.49\linewidth, trim=0in 2.6in 0in 0in, clip]{../figures/v14/bike_sharing/reg_nnet_scal_train/bike_reg_0_1_0_0001_0_005_99_0.png}
+%  \includegraphics[width = 0.49\linewidth]{../figures/v14/bike_sharing/lin_model_old_pinv_pdf/bike_ewma_2_metric_with_reg_0_1_0_005.png}
+%  \includegraphics[width = 0.49\linewidth]{../figures/v14/bike_sharing/nnet_model_old_pinv_pdf/bike_ewma_2_metric_with_reg_0_1_0_005.png}
+    %\includegraphics[width = 0.24\linewidth]{../figures/v14/bike_sharing/lin_model_old_pinv_pdf/bike_ewma_log_lik_with_reg_0_1_0_005.png}
+    %\includegraphics[width = 0.49\linewidth]{../figures/v14/bike_sharing/nnet_model_old_pinv_pdf/bike_ewma_resi_with_reg_0_1_0_005.png}
+     %\includegraphics[width = 0.24\linewidth]{../figures/v14/bike_sharing/nnet_model_old_pinv_pdf/bike_ewma_log_lik_with_reg_0_1_0_005.png}    
   \caption{
 Control charts monitoring MEWMA of Hotelling $T^2$ of the score function and EWMA of the absolute residual are compared using bike sharing dataset. The left plots are from linear regression, and the right from MLP with one hidden layer of $50$ nodes. The tilted numbers along the x-axis, as the indices of year, are the time of bike sharing data collected.
 %MEWMA of Hotelling $T^2$ control charts are used to monitor the concept drift of credit risk dataset. The above two plots are from logistic regression, and the below from neural network with one hidden layer of $50$ nodes. The left and the right vertical axis is for control chart and cumulative prediction accuracy. The tilted numbers along the x-axis, as the indices of month, are the time at openings of credit card accounts. For example, $601$ stands for Jan.06. So the index $712$ is for the Dec.07, right after which a $15$-month significant drop began (S\&P 500 from $1478.49$ on Dec.28,07 to $735.09$ on Feb.28,08).
@@ -1025,10 +1031,10 @@ Control charts monitoring MEWMA of Hotelling $T^2$ of the score function and EWM
 The bike sharing dataset\footnote{https://www.capitalbikeshare.com/system-data} comes from hourly log of bike rental in Washington D.C. area from 2011 to 2018. The covariates, including temperature, windspeed, humidity, season, hour of days, working day, and so on\footnote{http://www.freemeteo.com}, are centered. A linear regression model is trained and validated on the data from 2011 and 2012 data. Data from 2013 to 2014 are used for Phase-I for establishing the control limits and the rest of data are used for Phase-II to detect gradual concept drift. The EWMA parameter $ \lambda = 0.005$.
 \begin{figure}[!htbp]
 \centering
-\includegraphics[width = 0.48\linewidth]{../figures/v14/bike_sharing/reg_scal_train/PII_pos_single_bike_mlines_with_regu_1e-08_0_0001_0_005_99_0.pdf}
-\includegraphics[width = 0.48\linewidth]{../figures/v14/bike_sharing/reg_scal_train/PII_pos_single_bike_fisher_mlines_with_regu_1e-08_0_0001_0_005_99_0.pdf}
-%  \includegraphics[width = 0.48\linewidth]{../figures/v14/bike_sharing/lin_model_old_pinv_pdf/PII_pos_single_bike_mlines_with_regu_0_1_0_005.pdf}
-%  \includegraphics[width = 0.48\linewidth]{../figures/v14/bike_sharing/lin_model_old_pinv_pdf/PII_pos_single_bike_mlines_fisher_with_regu_0_1_0_005.pdf}
+\includegraphics[width = 0.48\linewidth]{../figures/v14/bike_sharing/reg_scal_train/PII_pos_single_bike_mlines_with_regu_1e-08_0_0001_0_005_99_0.png}
+\includegraphics[width = 0.48\linewidth]{../figures/v14/bike_sharing/reg_scal_train/PII_pos_single_bike_fisher_mlines_with_regu_1e-08_0_0001_0_005_99_0.png}
+%  \includegraphics[width = 0.48\linewidth]{../figures/v14/bike_sharing/lin_model_old_pinv_pdf/PII_pos_single_bike_mlines_with_regu_0_1_0_005.png}
+%  \includegraphics[width = 0.48\linewidth]{../figures/v14/bike_sharing/lin_model_old_pinv_pdf/PII_pos_single_bike_mlines_fisher_with_regu_0_1_0_005.png}
   \caption{
   MEWMA and EWMA control charts for linear regression of bike sharing dataset (colorful in electronic version). Comparison are made between before (left) and after (right) being scaled by the inverse of the estimated Fisher Information Matrix, $\mathbf {I} ( {\bm{\theta}} ^{(0)})$. For legibility, here only show EWMA (or MEWMA) control charts for the temperature (blue), windspeed (red), humidity (green), label of $9$am of days (cyan), intercept (orange), and Hotelling $T^2$ (black). The lines of monitored statistics in control charts have the same style and color with lines of their control limits correspondingly.
 %MEWMA and EWMA control charts for linear regression of bike sharing dataset. Comparison are made between before (above) and after (below) being scaled by the inverse of the estimated Fisher Information Matrix, $\mathbf {I} ( {\bm{\theta}} ^{(0)})$. 
@@ -1039,12 +1045,12 @@ The bike sharing dataset\footnote{https://www.capitalbikeshare.com/system-data} 
 In Figure~\ref{fig:bike_sharing}, we see the MEWMA of Hotelling $T^2$ of the score function and EWMA of the absolute residual. The models involved are linear regression and MLP, similar to that in the Section~\ref{ss:cr_ds}. Clearly, we see some seasonality in both Phase-I and Phase-II. The trend is increasing with year. For each start of season (year), we can see that monitoring the score function can still provide a little bit earlier detection than other performance metrics. In Figure~\ref{fig:bike_sharing_diag}, the MEWMA of Hotelling $T^2$ (top one) shows gradual deviation exceeding UCL each year with seasonality, a phenomenon indicating gradual concept drift. Before scaling, all of covariates have large absolute deviation from zero (exceeding control limits), while the lines of windspeed (red) and hour of $9$am (cyan) have relatively small deviation. After scaling, the deviations from mean for all covariates are less significant, but the most apparent one (in terms of deviating from mean zero) is the intercept (orange). This explains the fact that the popularity of bike rental is probably the main factor that drives the concept drift: due to the recent boosting of industry of sharing economy, bike rental becomes increasingly popular over the last several years. Comparing with credit risk dataset, the concept drift in bike sharing are more gradual. 
 \begin{figure}[!htbp]
 \centering
- \includegraphics[width = 0.49\linewidth, trim=0in 2.6in 0in 0in, clip]{../figures/v14/bike_sharing/reg_norm_scal_train/bike_reg_1e-08_0_0001_0_005_99_0.pdf}
-  \includegraphics[width = 0.49\linewidth, trim=0in 2.6in 0in 0in, clip]{../figures/v14/bike_sharing/reg_norm_nnet_scal_train/bike_reg_0_1_0_0001_0_005_99_0.pdf}
-%  \includegraphics[width = 0.49\linewidth]{../figures/v14/bike_sharing/lin_model_pinv_pdf/bike_ewma_2_metric_with_reg_0_1_0_005.pdf}
-%  \includegraphics[width = 0.49\linewidth]{../figures/v14/bike_sharing/nnet_model_pinv_pdf/bike_ewma_2_metric_with_reg_10_0_005.pdf}
-    %\includegraphics[width = 0.24\linewidth]{../figures/v14/bike_sharing/lin_model_pinv_pdf/bike_ewma_log_lik_with_reg_0_1_0_005.pdf}
-     %\includegraphics[width = 0.24\linewidth]{../figures/v14/bike_sharing/nnet_model_pinv_pdf/bike_ewma_log_lik_with_reg_10_0_005.pdf}    
+ \includegraphics[width = 0.49\linewidth, trim=0in 2.6in 0in 0in, clip]{../figures/v14/bike_sharing/reg_norm_scal_train/bike_reg_1e-08_0_0001_0_005_99_0.png}
+  \includegraphics[width = 0.49\linewidth, trim=0in 2.6in 0in 0in, clip]{../figures/v14/bike_sharing/reg_norm_nnet_scal_train/bike_reg_0_1_0_0001_0_005_99_0.png}
+%  \includegraphics[width = 0.49\linewidth]{../figures/v14/bike_sharing/lin_model_pinv_pdf/bike_ewma_2_metric_with_reg_0_1_0_005.png}
+%  \includegraphics[width = 0.49\linewidth]{../figures/v14/bike_sharing/nnet_model_pinv_pdf/bike_ewma_2_metric_with_reg_10_0_005.png}
+    %\includegraphics[width = 0.24\linewidth]{../figures/v14/bike_sharing/lin_model_pinv_pdf/bike_ewma_log_lik_with_reg_0_1_0_005.png}
+     %\includegraphics[width = 0.24\linewidth]{../figures/v14/bike_sharing/nnet_model_pinv_pdf/bike_ewma_log_lik_with_reg_10_0_005.png}    
   \caption{
 Control charts monitoring MEWMA of Hotelling $T^2$ of the score function and EWMA of the absolute residual are compared using bike sharing dataset with responses dividing by yearly moving average. The left two plots are from linear regression, and the right from MLP with one hidden layer of $50$ nodes. The tilted numbers along the x-axis, as the indices of year, are the time of bike sharing data collected.
 %MEWMA of Hotelling $T^2$ control charts are used to monitor the concept drift of credit risk dataset. The above two plots are from logistic regression, and the below from neural network with one hidden layer of $50$ nodes. The left and the right vertical axis is for control chart and cumulative prediction accuracy. The tilted numbers along the x-axis, as the indices of month, are the time at openings of credit card accounts. For example, $601$ stands for Jan.06. So the index $712$ is for the Dec.07, right after which a $15$-month significant drop began (S\&P 500 from $1478.49$ on Dec.28,07 to $735.09$ on Feb.28,08).
@@ -1054,10 +1060,10 @@ Control charts monitoring MEWMA of Hotelling $T^2$ of the score function and EWM
 
 \begin{figure}[!htbp]
 \centering
-\includegraphics[width = 0.48\linewidth]{../figures/v14/bike_sharing/reg_norm_scal_train/PII_neg_single_bike_mlines_with_regu_1e-08_0_0001_0_005_99_0.pdf}
-\includegraphics[width = 0.48\linewidth]{../figures/v14/bike_sharing/reg_norm_scal_train/PII_neg_single_bike_fisher_mlines_with_regu_1e-08_0_0001_0_005_99_0.pdf}
-%  \includegraphics[width = 0.48\linewidth]{../figures/v14/bike_sharing/lin_model_pinv_pdf/PII_pos_single_bike_mlines_with_regu_0_1_0_005.pdf}
-%  \includegraphics[width = 0.48\linewidth]{../figures/v14/bike_sharing/lin_model_pinv_pdf/PII_pos_single_bike_mlines_fisher_with_regu_0_1_0_005.pdf}
+\includegraphics[width = 0.48\linewidth]{../figures/v14/bike_sharing/reg_norm_scal_train/PII_neg_single_bike_mlines_with_regu_1e-08_0_0001_0_005_99_0.png}
+\includegraphics[width = 0.48\linewidth]{../figures/v14/bike_sharing/reg_norm_scal_train/PII_neg_single_bike_fisher_mlines_with_regu_1e-08_0_0001_0_005_99_0.png}
+%  \includegraphics[width = 0.48\linewidth]{../figures/v14/bike_sharing/lin_model_pinv_pdf/PII_pos_single_bike_mlines_with_regu_0_1_0_005.png}
+%  \includegraphics[width = 0.48\linewidth]{../figures/v14/bike_sharing/lin_model_pinv_pdf/PII_pos_single_bike_mlines_fisher_with_regu_0_1_0_005.png}
   \caption{
   MEWMA and EWMA control charts for linear regression of bike sharing dataset with responses dividing by yearly moving average (colorful in electronic version). Comparison are made between before (left) and after (right) being scaled by the inverse of the estimated Fisher Information Matrix, $\mathbf {I} ( {\bm{\theta}} ^{(0)})$. For legibility, here only show EWMA (or MEWMA) control charts for the temperature (blue), windspeed (red), humidity (green), label of $9$am of days (cyan), intercept (orange), and Hotelling $T^2$ (black). The lines of monitored statistics in control charts have the same style and color with lines of their control limits correspondingly.
 %MEWMA and EWMA control charts for linear regression of bike sharing dataset. Comparison are made between before (above) and after (below) being scaled by the inverse of the estimated Fisher Information Matrix, $\mathbf {I} ( {\bm{\theta}} ^{(0)})$. 
