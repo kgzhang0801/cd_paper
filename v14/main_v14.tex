@@ -1019,8 +1019,10 @@ To demonstrate the diagnostic functionality on this real dataset, EWMA of sample
 \label{ss:bs_ds}
 \begin{figure}[!htbp]
 \centering
-\includegraphics[width = 0.49\linewidth, trim=0in 2.6in 0in 0in, clip]{../figures/v14/bike_sharing/reg_scal_train/bike_reg_1e-08_0_0001_0_005_99_0.png}
-\includegraphics[width = 0.49\linewidth, trim=0in 2.6in 0in 0in, clip]{../figures/v14/bike_sharing/reg_nnet_scal_train/bike_reg_0_1_0_0001_0_005_99_0.png}
+% \includegraphics[width = 0.49\linewidth, trim=0in 2.6in 0in 0in, clip]{../figures/v14/bike_sharing/reg_scal_train/bike_reg_1e-08_0_0001_0_005_99_0.png}
+% \includegraphics[width = 0.49\linewidth, trim=0in 2.6in 0in 0in, clip]{../figures/v14/bike_sharing/reg_nnet_scal_train/bike_reg_0_1_0_0001_0_005_99_0.png}
+\includegraphics[width = 0.49\linewidth]{../figures/v14/bike_sharing/reg_scal_train/bike_reg_1e-08_0_0001_0_005_99_0.png}
+\includegraphics[width = 0.49\linewidth]{../figures/v14/bike_sharing/reg_nnet_scal_train/bike_reg_0_1_0_0001_0_005_99_0.png}
 %  \includegraphics[width = 0.49\linewidth]{../figures/v14/bike_sharing/lin_model_old_pinv_pdf/bike_ewma_2_metric_with_reg_0_1_0_005.png}
 %  \includegraphics[width = 0.49\linewidth]{../figures/v14/bike_sharing/nnet_model_old_pinv_pdf/bike_ewma_2_metric_with_reg_0_1_0_005.png}
     %\includegraphics[width = 0.24\linewidth]{../figures/v14/bike_sharing/lin_model_old_pinv_pdf/bike_ewma_log_lik_with_reg_0_1_0_005.png}
@@ -1050,8 +1052,10 @@ The bike sharing dataset\footnote{https://www.capitalbikeshare.com/system-data} 
 In Figure~\ref{fig:bike_sharing}, we see the MEWMA of Hotelling $T^2$ of the score function and EWMA of the absolute residual. The models involved are linear regression and MLP, similar to that in the Section~\ref{ss:cr_ds}. Clearly, we see some seasonality in both Phase-I and Phase-II. The trend is increasing with year. For each start of season (year), we can see that monitoring the score function can still provide a little bit earlier detection than other performance metrics. In Figure~\ref{fig:bike_sharing_diag}, the MEWMA of Hotelling $T^2$ (top one) shows gradual deviation exceeding UCL each year with seasonality, a phenomenon indicating gradual concept drift. Before scaling, all of covariates have large absolute deviation from zero (exceeding control limits), while the lines of windspeed (red) and hour of $9$am (cyan) have relatively small deviation. After scaling, the deviations from mean for all covariates are less significant, but the most apparent one (in terms of deviating from mean zero) is the intercept (orange). This explains the fact that the popularity of bike rental is probably the main factor that drives the concept drift: due to the recent boosting of industry of sharing economy, bike rental becomes increasingly popular over the last several years. Comparing with credit risk dataset, the concept drift in bike sharing are more gradual. 
 \begin{figure}[!htbp]
 \centering
- \includegraphics[width = 0.49\linewidth, trim=0in 2.6in 0in 0in, clip]{../figures/v14/bike_sharing/reg_norm_scal_train/bike_reg_1e-08_0_0001_0_005_99_0.png}
-  \includegraphics[width = 0.49\linewidth, trim=0in 2.6in 0in 0in, clip]{../figures/v14/bike_sharing/reg_norm_nnet_scal_train/bike_reg_0_1_0_0001_0_005_99_0.png}
+%  \includegraphics[width = 0.49\linewidth, trim=0in 2.6in 0in 0in, clip]{../figures/v14/bike_sharing/reg_norm_scal_train/bike_reg_1e-08_0_0001_0_005_99_0.png}
+%   \includegraphics[width = 0.49\linewidth, trim=0in 2.6in 0in 0in, clip]{../figures/v14/bike_sharing/reg_norm_nnet_scal_train/bike_reg_0_1_0_0001_0_005_99_0.png}
+\includegraphics[width = 0.49\linewidth]{../figures/v14/bike_sharing/reg_norm_scal_train/bike_reg_1e-08_0_0001_0_005_99_0.png}
+\includegraphics[width = 0.49\linewidth]{../figures/v14/bike_sharing/reg_norm_nnet_scal_train/bike_reg_0_1_0_0001_0_005_99_0.png}
 %  \includegraphics[width = 0.49\linewidth]{../figures/v14/bike_sharing/lin_model_pinv_pdf/bike_ewma_2_metric_with_reg_0_1_0_005.png}
 %  \includegraphics[width = 0.49\linewidth]{../figures/v14/bike_sharing/nnet_model_pinv_pdf/bike_ewma_2_metric_with_reg_10_0_005.png}
     %\includegraphics[width = 0.24\linewidth]{../figures/v14/bike_sharing/lin_model_pinv_pdf/bike_ewma_log_lik_with_reg_0_1_0_005.png}
