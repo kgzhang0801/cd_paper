@@ -263,7 +263,7 @@ In summary, according to equations~(\ref{eqn:score_exp_zero}) and~(\ref{eqn:exp_
   \label{fig:logi_err_rate_unch}
 \end{figure}
 
-To illustrate, we can construct an example of logistic regression that concept drift happens without change in error rate. As shown in the Figure~\ref{fig:logi_err_rate_unch}, the blue solid line is the original model where binary data are generated according to Bernoulli distribution at each horizontal position $x$. We assume that the trained model almost perfectly captures the original model, so that the decision boundary is the $x=0$ (assuming we simplify the distribution of $x$ as uniform over $[-6, 6]$). After concept drift, the data generating model becomes the red line, where the optimal decision boundary has been changed. Error rate of the logistic regression model given predictor $\bm {X}$ can be written as a function (we call it ``penalty function"):
+To illustrate, we can construct an example of logistic regression that concept drift happens without change in error rate. As shown in the Figure~\ref{fig:logi_err_rate_unch}, the blue solid line is the original model where binary data are generated according to Bernoulli distribution at each horizontal position $x$. We assume that the trained model almost perfectly captures the original model, so that the decision boundary is the $x=0$ (assuming the distribution of $x$ is uniform over $[-6, 6]$). After concept drift, the data generating model becomes the red line, where the optimal decision boundary has been changed. Error rate of the logistic regression model given predictor $\bm {X}$ can be written as a function (we call it ``penalty function"):
 \begin{align}
 C _{err}(\bm {X}) = p ^{(1)}I(\hat{y}=0)+(1-p ^{(1)})I(\hat{y}=1)
 \label{eqn:penal_err}
