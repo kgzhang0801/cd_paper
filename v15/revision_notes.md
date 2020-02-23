@@ -16,3 +16,6 @@
 - p2-l25: What kinds of papers I should cite here.
 - p9-l278: We are monitoring the mean change of score. But the score we obtained is an approximated version from SGD. So I think it worths discussion, because SGD should somehow relates to the true parameters when some conditions are satistified.
 - p13-Figure1: How should I show those figures?
+
+## Things I need to improve
+- Find more citations that are proper and suitable.
