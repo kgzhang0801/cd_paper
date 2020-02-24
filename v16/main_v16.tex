@@ -12,6 +12,9 @@
 \usepackage{setspace}
 %\singlespacing
 \onehalfspacing % Line space
+\usepackage{mathtools} % vertical centered colon
+\usepackage{amsmath} % For \argmax
+\DeclareMathOperator*{\argmax}{argmax} % thin space, limits underneath in displays
 
 \setlength{\marginparwidth}{2.5cm} % For notes in margin, can be delete for final version.
 
@@ -205,19 +208,21 @@ To {monitor supervised learning models for} concept {drifts}, we propose a syste
 %Also there is a discussion about the randomness of the control chart monitored.
 %Some examples of the score functions.
 
-Supervised learning model is used to approximate the real underlying distribution of data set (``All models are wrong, but some are useful"~(\cite{box1976science})). If parameterized, the distribution can be denoted as $P(Y|\bm{X};\bm{\theta})$, which is inherent to the supervised learning model. For example, for a regression neural network, the conditional mean $E[Y|\bm{X};\bm{\theta}]$ is modeled as a neural network, and $Y$ is assumed to be its mean plus Gaussian error; or for a classification neural network, $Y$ is multinomial with class probabilities that are modeled as a neural network. Then, fitting the model entails estimating the parameters $\bm{\theta}$ by maximizing the log-likelihood, which is equivalent to minimizing the error sum of squares for regression with Gaussian errors. Given a parametric distribution or {marginal} likelihood function\footnote{Here, $P(Y|\bm{X};\bm{\theta})$ can represent either a function of $\bm { \theta}$ or a function of random variable $Y$ given predictor variable $\bm {X}$ and $\bm { \theta}$.}, {$P(Y | \bm {X}; \bm{\theta})$}, and i.i.d. data set $\{(\bm {x}_i, y_i) | i = 1,2, \cdots, n\}$ following this distribution, the score function, a fundamental concept in statistics, for $ (\bm {x}_i, y_i)$ is defined as 
+Supervised learning model is used to approximate the real underlying distribution of data set. If parameterized, the distribution can be denoted as $P(Y|\bm{X};\bm{\theta})$, which is inherent to the supervised learning model. For example, for a regression neural network, the conditional mean $E[Y|\bm{X};\bm{\theta}]$ is modeled as a neural network, and $Y$ is assumed to be its mean plus Gaussian error; or for a classification neural network, $Y$ is multinomial with class probabilities that are modeled as a neural network. Then, fitting the model entails estimating the parameters $\bm{\theta}$ by maximizing the log-likelihood (an empirical approximation to $E_{\bm{\theta}^{(0)}}[\ln{P(Y|\bm{X};\bm{\theta})}]$), which is equivalent to minimizing the error sum of squares for regression with Gaussian errors. This is because, according to Shannon's Lamma~(\cite{shannon1948mathematical}), if the model is correct and identifiable the true parameter, $\bm{\theta}^{(0)}$, \textit{uniquely maximizes} the expectation of log-likelihood, $E_{\bm{\theta}^{(0)}}[\ln{P(Y|\bm{X};\bm{\theta})}]$. 
+
+Given a parametric distribution or {marginal} likelihood function\footnote{Here, $P(Y|\bm{X};\bm{\theta})$ can represent either a function of $\bm { \theta}$ or a function of random variable $Y$ given predictor variable $\bm {X}$ and $\bm { \theta}$.}, {$P(Y | \bm {X}; \bm{\theta})$}, and i.i.d. data set $\{(\bm {x}_i, y_i) | i = 1,2, \cdots, n\}$ following this distribution, the score function, a fundamental concept in statistics, for $ (\bm {x}_i, y_i)$ is defined as 
 \begin{align}
-\bm{s}(\bm { \theta}; (\bm {x}_i, y_i)) = \nabla _{\bm { \theta}} { \ln P(y_i | \bm {x}_i; \bm{\theta})}
+\bm{s}(\bm { \theta}; (\bm {x}_i, y_i)) = \nabla _{\bm { \theta}} { \ln {P(y_i | \bm {x}_i; \bm{\theta})}}
 \label{eqn:score_func}
 \end{align}
-where $\nabla _{\bm { \theta}}$ is the derivative operator w.r.t. a vector of parameters, $\bm {\theta}$. From fundamental theory (Proposition 3.4.4 from~(\cite{bickel2015mathematical})), under certain regularity conditions, if the model is correct and we have a true parameter vector {$\bm { \theta} ^{ (0)}$}, the expectation of score function evaluated at $\bm { \theta} ^{ (0)}$ equals to zero: 
+where $\nabla _{\bm { \theta}}$ is the derivative operator w.r.t. a vector of parameters, $\bm {\theta}$. From fundamental theory (Proposition 3.4.4 from~(\cite{bickel2015mathematical})), under certain regularity conditions, if the model is correct and we have a true parameter vector {$\bm { \theta} ^{ (0)}$}, the expectation of score function evaluated at $\bm { \theta} ^{ (0)}$ equals to zero:
 \begin{align}
 E_{\bm { \theta} ^{ (0)}}[\bm{s}(\bm { \theta}^{ (0)};(\bm {X}, Y))|\bm {X}] = \bm{0}
 \label{eqn:score_exp_zero}
 \end{align}
 where the subscript of expectation, $\bm { \theta} ^{ (0)}$, means the expectation is with respect to $Y|\bm{X}$ following the distribution $P(Y|\bm{X};\bm{\theta}^{(0)})$. In other words, the expected score function evaluated at the true parameters, $\bm { \theta} ^{ (0)}$, is identically zero.
 
-Concept drift is defined as the change of $ P (Y|\bm {X})$, so that monitoring mean of the score function can signal if there is a concept drift. Specifically for this study, concept drift means change of parameters in conditional probability, $P(Y|\bm {X}; \bm { \theta})$. To test whether those parameters drift, we can simply monitor the mean of sample score vectors, because the expectation of the score function evaluated at different parameters, $\bm { \theta} ^{ (1)}$, from the true one ($\bm { \theta} ^{ (1)} \neq \bm { \theta} ^{ (0)}$) would result in non-zero mean. We can make this conclusion mathematically for generalized linear model, which encompasses many models used in many applications. Formally, generalized linear models have marginal likelihood and score function as following:
+Concept drift is defined as the change of $ P (Y|\bm {X})$, so that monitoring mean of the score function can signal if there is a concept drift. Specifically for this study, concept drift means change of parameters in conditional probability, $P(Y|\bm {X}; \bm { \theta})$. To test whether those parameters drift, we can simply monitor the mean of sample score vectors, because the expectation of the score function evaluated at different parameters, $\bm { \theta} ^{ (1)}$, from the true one ($\bm { \theta} ^{ (1)} \neq \bm { \theta} ^{ (0)}$) would result in non-zero mean. We can make this conclusion mathematically for generalized linear model (GLM)~(\cite{nelder1972generalized}), which encompasses many models used in many applications. Formally, GLM have marginal likelihood and score function as following:
 \begin{align}
 \begin{aligned}
 P(y;\bm { \theta} ^{(0)}, \phi) =& \exp\{\frac{y \psi(\bm { \theta} ^{(0)})-b( \psi(\bm { \theta} ^{(0)}))}{ a ( \phi)} + c(y; \phi)\} \\
@@ -225,7 +230,7 @@ P(y;\bm { \theta} ^{(0)}, \phi) =& \exp\{\frac{y \psi(\bm { \theta} ^{(0)})-b( \
 \end{aligned}
 \label{eqn:score_glm}
 \end{align}
-where function $b(\cdot)$ and $ \psi(\cdot)$ also depends on value of predictor $\bm { X}$, but omitted for simple notation; $ a ( \phi)$ is a positive scaling factor. In generalized linear model, $ g(E[y]) = \psi ( \bm { \theta})=\bm {x}^T\bm { \theta}$ is called link function. The expectation of the score function when $P(Y|\bm {X};\bm{\theta})$ has parameter with value $\bm { \theta} ^{(1)}$ and the change of parameter $ \Delta \bm { \theta}= \bm { \theta}^{(1)}-\bm { \theta}^{(0)}$ is small, using Taylor expansion, we can get:
+where function $b(\cdot)$ and $ \psi(\cdot)$ also depends on value of predictor $\bm { X}$, but omitted for simple notation; $ a ( \phi)$ is a positive scaling factor. In GLM, $ g(E[y]) = \psi ( \bm { \theta})=\bm {x}^T\bm { \theta}$ is called link function. The expectation of the score function when $P(Y|\bm {X};\bm{\theta})$ has parameter with value $\bm { \theta} ^{(1)}$ and the change of parameter $ \Delta \bm { \theta}= \bm { \theta}^{(1)}-\bm { \theta}^{(0)}$ is small, using Taylor expansion, we can get:
 \begin{align}
 \begin{aligned}
 E _{\bm { \theta} ^{(1)}}[\bm {s}(\bm { \theta} ^{(0)};(\bm {X}, Y))] \approx& \frac{1}{a ( \phi)}E[b''( \psi( \bm { \theta} ^{(0)}))\nabla _{ \bm { \theta}} \psi ( \bm { \theta} ^{ (0)}) \nabla _{ \bm { \theta}}^T \psi ( \bm { \theta} ^{ (0)})] \Delta \bm { \theta} \\
@@ -235,7 +240,7 @@ E _{\bm { \theta} ^{(1)}}[\bm {s}(\bm { \theta} ^{(0)};(\bm {X}, Y))] \approx& \
 \end{align}
 where the expectation without subscript is with respect to $\bm {X}$. It is known that $Var[y] = a ( \phi)b''(\psi ( \bm { \theta} ^{ (0)}))$ so that $b''(\psi ( \bm { \theta} ^{ (0)}))>0$ always holds, assuming response $y$ always has randomness. This indicates the matrix in the function~(\ref{eqn:exp_score_glm}) is always positive-defined if the distribution of $\bm {X}$ is not degenerated. Then, any methods for detecting multivariate mean change can be applied to this concept drift detection problem, which opens up a whole toolbox in SPC with several decades of research. Notice that this conclusion actually also holds when $ \psi ( \bm { \theta})$ is not a linear function of $\bm { \theta}$. For example, neural network can be used to model this function, and $\bm { \theta}$ is the vector or weights and biases of the neural net. In later simulation study as shown in Section~\ref{s:demon_cd}, score-based method also works on neural network. 
 
-In summary, according to equations~(\ref{eqn:score_exp_zero}) and~(\ref{eqn:exp_score_glm}), we can conclude that \textit{the mean of the score function changes if and only if $P(Y|\bm{X};\bm{\theta})$ changes, for generalized linear models}. This is a powerful and desirable property of our score-based method. Error-based methods do not enjoy this property. 
+In summary, according to equations~(\ref{eqn:score_exp_zero}) and~(\ref{eqn:exp_score_glm}), we can conclude that \textit{the mean of the score function changes if and only if $P(Y|\bm{X};\bm{\theta})$ changes, for generalized linear models}. This is a powerful and desirable property of score-based method. Error-based methods do not enjoy this property. 
 
 \begin{figure}[!htbp]
 \centering
@@ -253,7 +258,7 @@ In summary, according to equations~(\ref{eqn:score_exp_zero}) and~(\ref{eqn:exp_
   \end{subfigure}
 %  \includegraphics[width = 0.3\linewidth]{../figures/v14/demons_fig/2D_logi_orig.png}
 %  \includegraphics[width = 0.3\linewidth]{../figures/v14/demons_fig/2D_logi_cd.png}
- \begin{subfigure}[t]{0.6\linewidth}
+ \begin{subfigure}[t]{0.5\linewidth}
          \centering
 	 \includegraphics[width = \textwidth, trim=.2in .2in .7in .45in, clip]{../figures/v14/demons_fig/2D_logi.png}
          \caption{The overlap shaded area show unchanged expected error rate.}
@@ -263,56 +268,7 @@ In summary, according to equations~(\ref{eqn:score_exp_zero}) and~(\ref{eqn:exp_
   \label{fig:logi_err_rate_unch}
 \end{figure}
 
-To illustrate the property observed from derivation~\ref{eqn:exp_score_glm} in a concrete example, we can construct a logistic regression that concept drift happens without change in error rate. As shown in the Figure~\ref{fig:logi_err_rate_unch}, the blue solid line is the original model where binary data are generated according to Bernoulli distribution at each horizontal position $x$. We assume that the trained model almost perfectly captures the original model, so that the decision boundary is the $x=0$ (assuming the distribution of $x$ is a truncated normal over $[-6, 6]$). After concept drift, the data generating model becomes the red line, where the optimal decision boundary has been changed. Error rate of the logistic regression model given predictor $\bm {X}$ can be written as a function (we call it ``penalty function"):
-\begin{align}
-C _{err}^{(i)}(\bm {X}) = p ^{(i)}I(\hat{y}=0)+(1-p ^{(i)})I(\hat{y}=1)
-\label{eqn:penal_err}
-\end{align}
-where $p ^{(i)} = P(Y=1|\bm {X}; \bm { \theta} ^{(i)})$, ($i=0,1$), and the superscript, $i$, indicates whether this probability function is from original distribution under which the model is trained ($i=0$) or the distribution of new samples during prediction (after a decision model being trained, $i=1$). Thus, if concept drift happens after training, $p ^{(1)} \neq p ^{(0)}$; otherwise, they are equal. Notice that the probability function $p ^{(1)}$ depends on predictor vector $\bm {X}$, but omitted for clean notation. Given the distribution of covariates $\bm {X}$ and decision rule (model) $\hat{y}$, the expectation of this penalty function are those shaded areas in the Figure~\ref{fig:logi_err_rate_unch_a} and \ref{fig:logi_err_rate_unch_b} for the original (blue) and the drifted (yellow) data generating process. In the Figure~\ref{fig:logi_err_rate_unch_c}, the drifted data generating process decreases the error by those blue shaded area but adds the red shaded area as new error. Because the two areas are equal, the expected error rate remains the same. If we only monitor the error rate or any metrics derived from it, the concept drift would be missed. More important, this concept drift changes the optimal decision boundary, so that retraining the model can potentially obtain higher accuracy. 
-
-\begin{figure}[!htbp]
-\centering
- \begin{subfigure}[t]{0.49\linewidth}
-         \centering
-         \includegraphics[width=\textwidth, trim=.2in .2in .7in .45in, clip]{../figures/v14/demons_fig/2D_err_logi_trunc_norm.png}
-         \caption{The penalty function before and after concept drift by monitoring error.}
-         \label{fig:logi_err_rate_penal}
-  \end{subfigure}
-%  \begin{subfigure}[t]{0.32\linewidth}
-%         \centering
-%         \includegraphics[width=\textwidth]{../figures/v14/demons_fig/2D_dev_logi.png}
-%         \caption{The penalty function before and after concept drift by monitoring deviance.}
-%         \label{fig:logi_dev_rate_penal}
-%  \end{subfigure}
- \begin{subfigure}[t]{0.49\linewidth}
-         \centering
-% 	 \includegraphics[width = \textwidth, trim=.2in .2in .7in .5in, clip]{../figures/v14/demons_fig/2D_score_logi.png}
-    \includegraphics[width = \textwidth, trim=.2in .2in .7in .45in, clip]{../figures/v14/demons_fig/2D_score_logi_modi_trunc_norm.png}
-         \caption{The penalty function before and after concept drift by monitoring Hotelling $T^2$ of the score function.}
-         \label{fig:logi_score_rate_penal}
-  \end{subfigure}
-  \caption{The comparison of penalty functions by monitoring classification error and Hotelling $T^2$ of EWMA of the score function.}
-  \label{fig:logi_med_penal}
-\end{figure}
-
-This can be generalized into other penalty functions for metrics like Hotelling $T^2$ of EWMA of the score function as mentioned in the Section~\ref{ss:MEWMA}. For more intuitive comparison, penalties are put close to horizontal line $y=0$, so that the expectation of monitored penalty equals the area under the curve in the Figure~\ref{fig:logi_med_penal}.
-%The penalty function for deviance is:
-%\begin{align}
-%C _{dev}(\bm {X})=-p ^{(1)}\log p ^{(0)}-(1-p ^{(1)})\log(1-p ^{(0)})
-%\label{eqn:penal_dev}
-%\end{align}
-%where $p ^{(0)} = P(Y=1|\bm {X}, \bm { \theta} ^{(0)})$. And 
-The penalty function for score function is:
-\begin{align}
-C _{score}^{(i)}(\bm {X}) = (p ^{(i)} (1 - p ^{(0)}) + p ^{(0)}(p ^{(0)}-p ^{(i)})) \bm {X}^T\bm { \Sigma}^{-1}\bm {X}
-\label{eqn:penal_score}
-\end{align}
-where $\bm { \Sigma} = E _{\bm {X}}[p ^{(0)}(1-p ^{(0)})\bm {X}\bm {X}^T]$ is the covariance matrix of the score function of the logistic model under training distribution, and the subscript of the expectation means it is over the distribution of covariates $\bm {X}$. As we can see in the Figure~\ref{fig:logi_med_penal}, after concept drift, error has the decreased part (blue shaded area) and increased part (red shaded area), which are approximately equal. However, the Hotelling $T^2$ of EWMA of the score function have the increased part larger than the decreased part, which indicates that it is more sensitive to monitor concept drift. The reason that this only has increased part is because score function are applied EWMA first and then Hotelling $T^2$. Reversing the order of applying EWMA and Hotelling $T^2$ would void this property, because random noises cannot be average out. According to the penalty function~(\ref{eqn:penal_score}) and~(\ref{eqn:penal_err}) and after some derivation, we can see that it makes sense that if two probability functions, $p ^{(0)}$ and $p ^{(1)}$ are different, we have $\int_{x}(C _{score}^{(1)}(\bm {x})-C _{score}^{(0)}(\bm {x}))p(x)dx>0$ but the sign of $\int_{x}(C _{err}^{(1)}(\bm {x})-C _{err}^{(0)}(\bm {x}))p(x)dx$ is uncertain, which means score-based method directly monitors the deviation of $p ^{(1)}$ from $p ^{(0)}$ while error-based method is not. In other words, score-based method monitors exactly the concept drift. Of course, in real application there is always variance in the monitored penalty function due to finite sample size, so that the curves in Figure~\ref{fig:logi_med_penal} is not always smooth, but the analysis is a good approximation. Here the simple logistic regression gives an intuition why score function performs better in monitoring concept drift of parametric models. 
-
-
-According to our knowledge, no literature from the field of concept drift addresses the problem using the score function. The score function has several advantages. First, concept drifts (or change of parameters in the context of this study) guarantees a non-zero mean, while the error (e.g. classification error) does not have such property. Second, it is a vector with dimension of the number of parameters in the model, so that it provides more granular information about potential change of parameters comparing with other scalar metrics. Third, it is independent to specific models or problems so that it is a general method for parametric supervised learning, unlike error-based metrics (e.g., recall, precision, F1 score) exclusively designed for binary classification. The last but not least, when we make prediction on newly incoming data or use mini-batch Gradient Descent or online learning to finely tune parameters of models, the cost function is just a sum of log-likelihood functions of the mini-batch, $\sum _{i=1} ^{m} \ln f(\bm{\theta}; (\bm {x}_i, y_i))$, so that sample score vectors are by-products while taking gradient, $\nabla _{\bm { \theta}} \sum _{i=1} ^{m} \ln f(\bm{\theta}; (\bm {x}_i, y_i)) = \sum_{i=1}^{m} \bm{s}(\bm { \theta};(\bm {x}_i, y_i))$, making computation really cheap. 
-
-To give concrete examples, let's look at multi-nomial regression. The formula and the score function of linear model are:
+To illustrate the property observed from derivation~\ref{eqn:exp_score_glm} in a concrete example, we can construct a logistic regression that concept drift happens without change in error rate. For multinomial regression. The formula defining the model and the corresponding score function are:
 %\begin{align}
 %\begin{aligned}
 %y=& \bm {x}^T\bm { \theta}^{ (0)}  + \epsilon \\
@@ -336,33 +292,85 @@ To give concrete examples, let's look at multi-nomial regression. The formula an
 \end{aligned}
 \label{eqn:multi_score}
 \end{align}
-where $\bm { \theta} ^{ (0)}$ is generated by stacking all $ \bm { \theta}_i ^{(0)}, (i=1,2,\cdots,K-1)$; $\bm {p}=[p_1, p_2, \cdots, p _{K-1}]$; $\bm {Y}$ is one-hot-coding for $Y$, without the entry corresponding to label $0$; $\otimes$ is the kronecker product. 
+where $\bm { \theta} ^{ (0)}$ is generated by stacking all $ \bm { \theta}_i ^{(0)}, (i=1,2,\cdots,K-1)$; $\bm {p}=[p_1, p_2, \cdots, p _{K-1}]$; $\bm {Y}$ is one-hot-coding for $Y$, without the entry corresponding to label $0$; $\otimes$ is the kronecker product. When $K=2$, it reduces to logistic regression. It is straightforward to check that the (conditional) expectations of the score function is $\bm {0}$. More complex models like regression or classification with neural network also have a score function are similar and skipped here. 
 
-%The formula and the score function of Poisson regression are:
+As shown in the Figure~\ref{fig:logi_err_rate_unch}, the blue solid line is the original model where binary data are generated according to Bernoulli distribution at each horizontal position $x$. We assume that the trained model almost perfectly captures the original model, so that the decision boundary is the $x=0$ (assuming the distribution of $x$ is a truncated normal over $[-6, 6]$). After concept drift, the data generating model becomes the red line, where the optimal decision boundary has been changed. Error rate of the logistic regression model given predictor $\bm {X}$ can be written as a function (we call it ``penalty function" to help explanation):
+\begin{align}
+C _{err}^{(i)}(\bm {X}) = p ^{(i)}I(\hat{y}=0)+(1-p ^{(i)})I(\hat{y}=1)
+\label{eqn:penal_err}
+\end{align}
+where $p ^{(i)} = P(Y=1|\bm {X}; \bm { \theta} ^{(i)})$, ($i=0,1$), and the superscript, $i$, indicates that this probability function is from original distribution under which the model is trained ($i=0$) or the distribution of new samples during prediction (after a decision model being trained, $i=1$). Thus, if concept drift happens after training, $p ^{(1)} \neq p ^{(0)}$; otherwise, they are equal. Notice that the probability function $p ^{(1)}$ depends on predictor vector $\bm {X}$, but omitted for clean notation. Given the distribution of covariates $\bm {X}$ and decision rule (model) $\hat{y}$, the expectation of this penalty function are those shaded areas in the Figure~\ref{fig:logi_err_rate_unch_a} and \ref{fig:logi_err_rate_unch_b} for the original (blue) and the drifted (yellow) data generating process. In the Figure~\ref{fig:logi_err_rate_unch_c}, the drifted data generating process decreases the error by those blue shaded area but adds the red shaded area as new error. Because the two areas are equal, the expected error rate remains the same. If we only monitor the error rate or any metrics derived from it, the concept drift would be missed. More important, this concept drift changes the optimal decision boundary, so that retraining the model can potentially obtain higher accuracy. 
+
+\begin{figure}[!htbp]
+\centering
+ \begin{subfigure}[t]{0.49\linewidth}
+         \centering
+         \includegraphics[width=\textwidth, trim=.2in .2in .7in .45in, clip]{../figures/v14/demons_fig/2D_err_logi_trunc_norm.png}
+         \caption{The penalty function, equation~(\ref{eqn:penal_err}), before and after concept drift by monitoring error.}
+         \label{fig:logi_err_rate_penal}
+  \end{subfigure}
+%  \begin{subfigure}[t]{0.32\linewidth}
+%         \centering
+%         \includegraphics[width=\textwidth]{../figures/v14/demons_fig/2D_dev_logi.png}
+%         \caption{The penalty function before and after concept drift by monitoring deviance.}
+%         \label{fig:logi_dev_rate_penal}
+%  \end{subfigure}
+ \begin{subfigure}[t]{0.49\linewidth}
+         \centering
+% 	 \includegraphics[width = \textwidth, trim=.2in .2in .7in .5in, clip]{../figures/v14/demons_fig/2D_score_logi.png}
+    \includegraphics[width = \textwidth, trim=.2in .2in .7in .45in, clip]{../figures/v14/demons_fig/2D_score_logi_modi_trunc_norm.png}
+         \caption{The penalty function, equation~(\ref{eqn:penal_score}), before and after concept drift by monitoring Hotelling $T^2$ of EWMA of the score function.}
+         \label{fig:logi_score_rate_penal}
+  \end{subfigure}
+  \caption{The comparison of penalty functions by monitoring classification error and Hotelling $T^2$ of EWMA of the score function.}
+  \label{fig:logi_med_penal}
+\end{figure}
+
+This can be generalized into other penalty functions for metrics like Hotelling $T^2$ of EWMA of the score function as mentioned in the Section~\ref{ss:MEWMA}. For more intuitive comparison, penalties are put close to horizontal line $y=0$, so that the expectation of monitored penalty function equals the area under the curve in the Figure~\ref{fig:logi_med_penal}.
+%The penalty function for deviance is:
 %\begin{align}
-%\begin{aligned}
-%p(y=k)=&\frac{ \lambda ^{k} \exp(- \lambda)}{k!} \\
-%s(\bm { \theta} ^{(0)};(\bm {X}, Y))=& (y- \lambda)\bm {X}
-%\end{aligned}
+%C _{dev}(\bm {X})=-p ^{(1)}\log p ^{(0)}-(1-p ^{(1)})\log(1-p ^{(0)})
+%\label{eqn:penal_dev}
 %\end{align}
-%where we define the link function as $\ln \lambda = \bm {x}^T\bm{\theta} ^{(0)}$.
+%where $p ^{(0)} = P(Y=1|\bm {X}, \bm { \theta} ^{(0)})$. And 
+The penalty function for score function is:
+\begin{align}
+C _{score}^{(i)}(\bm {X}) = (p ^{(i)} (1 - p ^{(0)}) + p ^{(0)}(p ^{(0)}-p ^{(i)})) \bm {X}^T\bm { \Sigma}^{-1}\bm {X}
+\label{eqn:penal_score}
+\end{align}
+where $\bm { \Sigma} = E _{\bm {X}}[p ^{(0)}(1-p ^{(0)})\bm {X}\bm {X}^T]$ is the covariance matrix of the score function of the logistic model under training distribution, and the subscript of the expectation means it is over the distribution of covariates $\bm {X}$. As we can see in the Figure~\ref{fig:logi_med_penal}, after concept drift, error has the decreased part (blue shaded area) and increased part (red shaded area), which are approximately equal. However, the Hotelling $T^2$ of EWMA of the score function have the increased part larger than the decreased part resulting in net positive change in the penalty function of score function, which indicates that it is more sensitive to monitor concept drift. The reason is that score function are applied EWMA first and then Hotelling $T^2$. Reversing the order of applying EWMA and Hotelling $T^2$ would void this property, because random noises cannot be averaged out. According to the penalty function~(\ref{eqn:penal_score}) and~(\ref{eqn:penal_err}) and after some derivation, we can see that it makes sense that if two probability functions, $p ^{(0)}$ and $p ^{(1)}$ are different, we have $\int_{\bm{x}}(C _{score}^{(1)}(\bm {x})-C _{score}^{(0)}(\bm {x}))p(\bm{x})d\bm{x}>0$ but the sign of $\int_{\bm{x}}(C _{err}^{(1)}(\bm {x})-C _{err}^{(0)}(\bm {x}))p(\bm{x})d\bm{x}$ is uncertain, which means score-based method directly monitors the deviation of $p ^{(1)}$ from $p ^{(0)}$ while error-based method is not. In other words, score-based method monitors exactly the concept drift. Here the simple logistic regression gives an intuition why score function performs better in monitoring concept drift of parametric models. Of course, in detecting the change of mean, noise level would also affect the sensitivity. We leave this issue in Section~\ref{s:demon_cd}: a numerical example would be presented to further support analysis here.
 
-It is straightforward to check that the (conditional) expectations of the score function is $\bm {0}$. More complex models like regression or classification with neural network also have a score function, but too involved, and are skipped here. 
+\subsection{Stochastic Gradient Descent and Working with Empirical Data}
+\label{s:sgd_score}
+With advancement in technologies of data collection, the amount of data available to train models increases significantly and thus the scale of machine learning models becomes larger and larger. Stochastic Gradient Descent (SGD) or mini-batch Gradient Descent solves the computation problem in training those large-scale models, meaning that data and parameters can fit in memory. In SGD or mini-batch Gradient Descent, the gradient of cost function is approximated by using only one data point (or small batches of training data) instead of the entire data set. Or in online setting, only the newly arrived data are used in generating the gradient. Then, in each iteration this gradient is used to update parameters. If the objective function is log-likelihood as the usual cases, sample score vectors can be obtained automatically after taking gradient ($\nabla _{\bm { \theta}} \sum _{i=1} ^{m} \ln P(y_i|\bm {x}_i;\bm{\theta}) = \sum _{i=1} ^{m} \bm{s}(\bm { \theta};(\bm {x}_i, y_i))$, where $m$ is the batch size) in batch learning or making prediction online. For example, prediction for neural networks requires forward-propagation and another backward-propagation would give the score function. The question is whether the estimated parameters such obtained using SGD would approximate the ``true" ones, if it ever exists.
 
-\subsection{Stochastic Gradient Descent and Sample Score Vectors}
-\label{ss:sgd_score}
+It is important to notice that the property of zero-mean of the score function evaluated at the true parameters, $\bm{\theta}^{(0)}$, in equation~(\ref{eqn:score_exp_zero}) and uniqueness of the true parameter that maximizes the expectation of log-likelihood, $E_{\bm{\theta}^{(0)}}[\ln{P(Y|\bm{X};\bm{\theta})}]$, only holds when the model structure is correct. As Professor Box suggested, ``All models are wrong, but some are useful"~(\cite{box1976science})), usually we cannot expect the model structure is true (meaning $\bm{\theta}^{(0)}$ does not exist), because it is just an approximation of the true predictive relationship. If the model structure is not true, the empirical version of equation~(\ref{eqn:score_exp_zero}):
+\begin{align}
+\begin{aligned}
+&\hat{E}_{\hat{\bm{\theta}}^{(0)}}[\bm{s}(\hat{\bm{\theta}}^{(0)};(\bm{X}, Y))] \vcentcolon=\frac{1}{n}\sum_{i=1}^{n}\bm{s}(\hat{\bm{\theta}}^{(0)};(\bm{x}_i, y_i))=\bm{0}\\
+&\hat{\bm{\theta}}^{(0)} \vcentcolon= \argmax_{\bm{\theta}}\hat{E}_{\hat{\bm{\theta}}^{(0)}}[\ln{P(Y|\bm{X}; \bm{\theta})}]=\argmax_{\bm{\theta}}\frac{1}{n}\sum_{i=1}^n \ln{P(y_i|\bm{x}_i;\bm{\theta})}
+\end{aligned}
+\label{eqn:score_exp_zero_emp}
+\end{align}   
+still holds, where $\hat{E}$ is sample mean and $\hat{\bm{\theta}}^{(0)}$ is maximum-likelihood estimator (MLE) by maximizing sample mean of the log-likelihood based on the observed data set, $\{(\bm{x}_i, y_i)\}_{i=1}^n$. That is, when we fit a model using MLE, the gradient of the training log-likelihood with respect to the estimated parameters or the sample mean of the scores over training data, $\nabla_{\bm{\theta}}\hat{E}_{\hat{\bm{\theta}}^{(0)}}[\ln{P(Y|\bm{X}; \hat{\bm{\theta}}^{(0)})}]\vcentcolon=\nabla_{\bm{\theta}}\frac{1}{n}\sum_{i=1}^n \ln{P(y_i|\bm{x}_i;\hat{\bm{\theta}}^{(0)})}=\frac{1}{n}\sum_{i=1}^n\bm{s}(\hat{\bm{\theta}}^{(0)};(\bm{x}_i, y_i))$, is identically zero, even if the model is not the correct structure. So, the estimated, $\hat{\bm{\theta}}^{(0)}$, takes the place of the true, $\bm{\theta}^{(0)}$. Then, if the predictive relationship changes, such that a different set of parameters, $\hat{\bm{\theta}}^{(1)}\neq \hat{\bm{\theta}}^{(0)}$, now give better prediction, the gradient of the log-likelihood, $\nabla_{\bm{\theta}}\hat{E}_{\hat{\bm{\theta}}^{(1)}}[\ln{P(Y|\bm{X}; \hat{\bm{\theta}}^{(0)})}]$, should be non-zero mean. Without confusion, in later sections, we assume there is a true set of parameters, $\bm{\theta}^{(0)}$, because we can always translate discussions to the parameters estimated empirically.
+
+In the definition of concept drift for parametric models, we always assume the true parameters for models would not change in stationary environment. Those properties discussed in the Section~\ref{ss:score_func} hold under true unknown parameters. In practical, we always work with estimation of the true parameters, e.g., MLE or an estimation obtained from SGD. In other words, the framework of monitoring the score function is derived from population version but what we truly monitor is sample version. A more rigorous discussion is followed to understand the gap between them.
+
+In supervised learning, given a likelihood function, consistent estimators, $\hat {\bm {\theta}}$ (e.g. maximum-likelihood estimator (MLE)), can be used to approximate {$\bm { \theta}^{ (0)}$} using the observed data. To make argument rigorous, we actually need to discuss whether $E_{\bm { \theta} ^{ (0)}}[\bm{s}(\hat{\bm { \theta}};(\bm {X}, Y))|\bm {X}]$ (the expectation of the score function evaluated at an estimation, $\hat { \bm { \theta}}$, to the true vector of parameters, $\bm { \theta} ^{ (0)}$) converges to $\bm {0}$. In batch learning setting, the MLE estimator, $\hat { \bm { \theta}}_ {MLE}$, is asymptotically consistent, so that $E_{\bm { \theta} ^{ (0)}}[\bm{s}(\hat{\bm { \theta}} _{MLE};(\bm {X}, Y))|\bm {X}]$ converges to $\bm {0}$ if the score function is smooth enough in terms of $\bm { \theta}$. In SGD setting, the estimation obtained should converge to\footnote{Step sizes meet certain rules.} the one obtained by batch optimization which is essentially the MLE~(\cite{bottou2018optimization}). Thus the estimator, $\hat {\bm { \theta}} _{SGD} $, obtained by SGD algorithm in stationary environment is also asymptotically consistent. Cost functions other than negative log-likelihood can be practically used to train models, but then theoretical guarantee on the score function no longer exists. In general, approximation {$E _{\bm { \theta} ^{ (0)}}[\bm{s}(\hat{\bm { \theta}};(\bm {X}, Y))|\bm{X}] = O (\hat{\bm { \theta}} - \bm { \theta}^{ (0)}) $} and converges to $\bm {0}$ when sample size $n$ goes to infinity. This is basically assuming parameters of the trained model are already very close to the true optimal value. So given an estimator $\hat {\bm { \theta}}$ to the vector of original true parameters $\bm { \theta}^{(0)}$, monitoring the mean {drift} of $\bm{s} (\hat{\bm { \theta}};(\bm {X}, Y))$ directly signals the potential concept drift, within a high-order term, {$O(\hat{\bm { \theta}} - \bm { \theta} ^{ (0)})$.} Moreover, the MEWMA approach explained in Section~\ref{ss:MEWMA} provides a way to distinguish concept drift from such high-order noise.
+
+% Because $E _{\bm { \theta} ^{ (0)}}[\bm{s}(\hat{\bm { \theta}};(\bm {X}, Y))|\bm{X}] = o (\hat{\bm { \theta}} - \bm { \theta}^{ (0)}) $, we should expect that the monitored sample score vectors have sample mean getting increasingly close to $\bm {0}$, as $\hat {\bm { \theta}}$ converging to $\bm { \theta} ^{ (0)}$. Thus, the mean drift of sample score vectors should be monitored after model training entering fine tuning phase, that is, the relative changes of parameters become small.
+
+% According to our knowledge, no literature from the field of concept drift addresses the problem using the score function. The score function has several advantages. First, concept drifts (or change of parameters in the context of this study) guarantees a non-zero mean, while the error (e.g. classification error) does not have such property. Second, it is a vector with dimension of the number of parameters in the model, so that it provides more granular information about potential change of parameters comparing with other scalar metrics. Third, it is independent to specific models or problems so that it is a general method for parametric supervised learning, unlike error-based metrics (e.g., recall, precision, F1 score) exclusively designed for binary classification. The last but not least, when we make prediction on newly incoming data or use mini-batch Gradient Descent or online learning to finely tune parameters of models, the cost function is just a sum of log-likelihood functions of the mini-batch, $\sum _{i=1} ^{m} \ln f(\bm{\theta}; (\bm {x}_i, y_i))$, so that sample score vectors are by-products while taking gradient, $\nabla _{\bm { \theta}} \sum _{i=1} ^{m} \ln f(\bm{\theta}; (\bm {x}_i, y_i)) = \sum_{i=1}^{m} \bm{s}(\bm { \theta};(\bm {x}_i, y_i))$, making computation really cheap.
+
+% \subsection{Stochastic Gradient Descent and Sample Score Vectors}
+% \label{ss:sgd_score}
 %Stochastic gradient descent relation with the sample score vectors
 %Convergence of the estimators to the true parameters and its effect on the monitored expectation. Our approximation of expectation of sample score vectors.
 %
 %The discussion between empirical and population estimators is important. Even though empirically the score function always have mean zero, yet in monitoring and and online updating the score function doesn't always have empirical zero mean. 
 
-In ``Big Data" era, the scale of machine learning models become amazingly large and the amount of data required to train models is huge. Stochastic Gradient Descent (SGD) or mini-batch Gradient Descent solves the computation problem in training those large-scale models. In SGD or mini-batch Gradient Descent, the gradient of cost function is approximated by using only one data point (or small batches of training data) instead of the entire data set. Or in online setting, only the newly arrived data are used in generating the gradient. Then, each step this gradient is used to update parameters. If the objective function is log-likelihood, sample score vectors can be obtained automatically after taking gradient ($\nabla _{\bm { \theta}} \sum _{i=1} ^{m} \ln f(\bm{\theta}; (\bm {x}_i, y_i)) = \sum _{i=1} ^{m} \bm{s}(\bm { \theta};(\bm {x}_i, y_i))$) in batch learning or making prediction online (neural networks use forward-pass to make prediction and applying another backward-pass would give the score function). 
 
-In the definition of concept drift for parametric models, we always assume the true parameters for models would not change in stationary environment. Those properties discussed in the Section~\ref{ss:score_func} hold under true unknown parameters. In practical, we always work with estimation of the true parameters, e.g., MLE or an estimation obtained from SGD. In other words, the framework of monitoring the score function is derived from population version but what we truly monitor is sample version. A more rigorous discussion is followed to understand the gap between them.
 
-In supervised learning, given a likelihood function, consistent estimators, $\hat {\bm {\theta}}$ (e.g. maximum-likelihood estimator (MLE)), can be used to approximate {$\bm { \theta}^{ (0)}$} using the observed data. To make argument rigorous, we actually need to discuss whether $E_{\bm { \theta} ^{ (0)}}[\bm{s}(\hat{\bm { \theta}};(\bm {X}, Y))|\bm {X}]$ (the expectation of the score function evaluated at an estimation, $\hat { \bm { \theta}}$, to the true vector of parameters, $\bm { \theta} ^{ (0)}$) converges to $\bm {0}$. In batch learning setting, the MLE estimator, $\hat { \bm { \theta}}_ {MLE}$, is asymptotically consistent, so that $E_{\bm { \theta} ^{ (0)}}[\bm{s}(\hat{\bm { \theta}} _{MLE};(\bm {X}, Y))|\bm {X}]$ converges to $\bm {0}$ if the score function is smooth enough in terms of $\bm { \theta}$. In online learning setting, the estimation obtained by SGD should converge to\footnote{Step sizes meet certain rules.} the one obtained by batch optimization which is essentially the MLE~(\cite{bottou2018optimization}). Thus the estimator, $\hat {\bm { \theta}} _{SGD} $, obtained by SGD algorithm in stationary environment is also asymptotically consistent. Cost functions other than negative log-likelihood can be practically used to train models, but then theoretical guarantee on the score function no longer exists. In general, approximation {$E _{\bm { \theta} ^{ (0)}}[\bm{s}(\hat{\bm { \theta}};(\bm {X}, Y))|\bm{X}] = o (\hat{\bm { \theta}} - \bm { \theta}^{ (0)}) $} and converges to $\bm {0}$ when sample size $n$ goes to infinity.  To {keep notation clean}, without specific mentioning, we neglect the high order term, $o(\hat{\bm { \theta}} - \bm { \theta} ^{ (0)})$, by assuming {$\hat {\bm { \theta}} = \bm { \theta}^{ (0)}$} in the following analysis. This is basically assuming parameters of the trained model are already very close to the true optimal value. So given an estimator $\hat {\bm { \theta}}$ to the vector of original true parameters $\bm { \theta}^{(0)}$, monitoring the mean {drift} of $\bm{s} (\hat{\bm { \theta}};(\bm {X}, Y))$ directly signals the potential concept drift, within a high order term, {$o(\hat{\bm { \theta}} - \bm { \theta} ^{ (0)})$.}
-
-Because $E _{\bm { \theta} ^{ (0)}}[\bm{s}(\hat{\bm { \theta}};(\bm {X}, Y))|\bm{X}] = o (\hat{\bm { \theta}} - \bm { \theta}^{ (0)}) $, we should expect that the monitored sample score vectors have sample mean getting increasingly close to $\bm {0}$, as $\hat {\bm { \theta}}$ converging to $\bm { \theta} ^{ (0)}$. Thus, the mean drift of sample score vectors should be monitored after model training entering fine tuning phase, that is, the relative changes of parameters become small.
 
 \subsection{MEWMA Control Chart for Monitoring the Score Function}
 \label{ss:MEWMA}
