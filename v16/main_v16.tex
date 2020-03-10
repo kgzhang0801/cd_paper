@@ -1099,11 +1099,11 @@ From Figure~\ref{fig:bike_sharing}, the upper left plot shows that the training 
      \centering
      \begin{subfigure}[t]{\linewidth}
      \centering
-         \includegraphics[width=\textwidth, trim=.0in .0in .0in .0in, clip]{../figures/v14/bike_sharing/reg_lin_cat_syr_12_tr_5/neg_single_bike_fisher_mlines_with_regu_1e-08_0_0001_0_01_99_99.png}
+         \includegraphics[width=\textwidth, trim=.0in .0in .0in .0in, clip]{../figures/v14/bike_sharing/reg_lin_cat_syr_10_tr_3/neg_single_bike_fisher_mlines_with_regu_1e-08_0_0001_0_01_99_99.png}
      \end{subfigure}
      \begin{subfigure}[t]{\linewidth}
      \centering
-         \includegraphics[width=\textwidth, trim=12.5in 0.5in 3.0in 1.0in, clip]{../figures/v14/bike_sharing/reg_lin_cat_syr_12_tr_5/neg_single_bike_fisher_mlines_with_regu_1e-08_0_0001_0_01_99_99_72.png}
+         \includegraphics[width=\textwidth, trim=12.5in 0.5in 3.0in 1.0in, clip]{../figures/v14/bike_sharing/reg_lin_cat_syr_10_tr_3/neg_single_bike_fisher_mlines_with_regu_1e-08_0_0001_0_01_99_99_72.png}
      \end{subfigure}
      \caption{Diagnosis plots for model trained using raw bike rental counts.}
      \label{fig:bs_raw_cnt}
@@ -1112,11 +1112,11 @@ From Figure~\ref{fig:bike_sharing}, the upper left plot shows that the training 
      \centering
      \begin{subfigure}[t]{\linewidth}
      \centering
-        \includegraphics[width=\textwidth, trim=.0in .0in .0in .0in, clip]{../figures/v14/bike_sharing/reg_lin_cat_norm_syr_12_pow_tr_5/neg_single_bike_fisher_mlines_with_regu_1e-08_0_0001_0_01_99_99.png}
+        \includegraphics[width=\textwidth, trim=.0in .0in .0in .0in, clip]{../figures/v14/bike_sharing/reg_lin_cat_norm_syr_10_pow_tr_3/neg_single_bike_fisher_mlines_with_regu_1e-08_0_0001_0_01_99_99.png}
      \end{subfigure}
      \begin{subfigure}[t]{\linewidth}
      \centering
-        \includegraphics[width=\textwidth, trim=12.5in 0.5in 3.0in 1.0in, clip]{../figures/v14/bike_sharing/reg_lin_cat_norm_syr_12_pow_tr_5/neg_single_bike_fisher_mlines_with_regu_1e-08_0_0001_0_01_99_99_72.png}
+        \includegraphics[width=\textwidth, trim=12.5in 0.5in 3.0in 1.0in, clip]{../figures/v14/bike_sharing/reg_lin_cat_norm_syr_10_pow_tr_3/neg_single_bike_fisher_mlines_with_regu_1e-08_0_0001_0_01_99_99_72.png}
      \end{subfigure}
      \caption{Diagnosis plots for model trained using normalized bike rental counts, by trailing yearly mean.}
      \label{fig:bs_norm_cnt}
@@ -1128,57 +1128,72 @@ From Figure~\ref{fig:bike_sharing}, the upper left plot shows that the training 
 \label{fig:bike_sharing_diag}
 \end{figure}
 
-Clearly, the retrospective analysis above provides deeper understanding in the data, which likely gives us a better model. Both Hotelling $T^2$ and absolute residuals can achieve this purpose. However, in order to understand the origin of concept drifts, we need to look into the components of score function. As shown in Figure~\ref{fig:bike_sharing_diag}, the left column are plots of EWMA of component of score function after transformation with Fisher information matrix as in Section~\ref{s:decou_cd}. We see that all components have similar pattern of drifts, from which we infer that the concept drift probably results from overall increase of the popularity of bike sharing. We select several plots into the upper sub-figure of the left column in Figure~\ref{fig:bike_sharing_diag} and put more EWMA of components together in the lower sub-figure to see this pattern clearer. With this understanding in mind, we consider normalizing the raw bike rental counting, $y$, with trailing moving average of the count within one year, $y_{MA}$. More specifically, we generate normalized response, denoted as $\tilde{y}=y/y_{MA}^\beta$, where $\beta=0.78$ is a tuning parameter and found by maximizing testing $r^2$.  
+Clearly, the retrospective analysis above provides deeper understanding in the data, which likely gives us a better model. Both Hotelling $T^2$ and absolute residuals can achieve this purpose. However, in order to understand the origin of concept drifts, we need to look into the components of score function. As shown in Figure~\ref{fig:bike_sharing_diag}, the left column are plots of EWMA of component of score function after transformation with Fisher information matrix as in Section~\ref{s:decou_cd}. We see that all components have similar pattern of drifts, from which we infer that the concept drift probably results from overall increase of the popularity of bike sharing. We select several plots into the upper sub-figure of the left column in Figure~\ref{fig:bike_sharing_diag} and put more EWMA of components together in the lower sub-figure to see this pattern clearer. With this understanding in mind, we consider normalizing the raw bike rental counting, $y$, with trailing moving average of the count within one year, $y_{MA}$. More specifically, we generate normalized response, denoted as $\tilde{y}=y/y_{MA}^\beta$, where $\beta=0.78$ is a tuning parameter and found by maximizing testing $r^2$. The model trained on this normalized response has diagnosis plots as in the right column in Figure~\ref{fig:bike_sharing_diag}. By comparing the results on the left and right columns, we see that the concept drift has largely reduced from the left to the right, justifying the normalization on response. We obtained the Phase-II testing $r^2$ as $\approx0.26$ and $\approx0.85$, respectively.
 
-
-Here, we combine the concept drift monitoring and diagnosing parts to discover and understand the potential concept drift in the data set. Then, an improved modeling process is proposed to verify the insight gained through our framework.
-
-To discover the concept drift, in Figure~\ref{fig:bike_sharing}, we see the MEWMA of Hotelling $T^2$ of the score function and EWMA of the absolute residual. Clearly, there are some seasonality in both Phase-I and Phase-II. The trend is increasing with years. For each start of season (year), monitoring the score function can still provide a little bit earlier detection than other performance metric. 
-
-To understand the origin of this concept drift, in Figure~\ref{fig:bike_sharing_diag}, we see that the MEWMA of Hotelling $T^2$ (top one) shows gradual deviation exceeding UCL each year with seasonality, a phenomenon indicating gradual concept drift. Before scaling, all of covariates have large absolute deviation from zero (exceeding control limits), while the lines of windspeed (red) and hour of $9$am (cyan) have relatively small deviation. After scaling, the deviations from mean for all covariates are less significant, but the most apparent one (in terms of deviating from mean zero) is the intercept (orange). This explains the fact that the popularity of bike rental is probably the main factor that drives the concept drift: due to the recent rapid expansion of industry of sharing economy, bike rental becomes increasingly popular over the last several years.  
 \begin{figure}[!htbp]
 \centering
-%  \includegraphics[width = 0.49\linewidth, trim=0in 2.6in 0in 0in, clip]{../figures/v14/bike_sharing/reg_norm_scal_train/bike_reg_1e-08_0_0001_0_005_99_0.png}
-%   \includegraphics[width = 0.49\linewidth, trim=0in 2.6in 0in 0in, clip]{../figures/v14/bike_sharing/reg_norm_nnet_scal_train/bike_reg_0_1_0_0001_0_005_99_0.png}
-\includegraphics[width = 0.49\linewidth]{../figures/v14/bike_sharing/reg_norm_scal_train/bike_reg_1e-08_0_0001_0_005_99_0.png}
-\includegraphics[width = 0.49\linewidth]{../figures/v14/bike_sharing/reg_norm_nnet_scal_train/bike_reg_0_1_0_0001_0_005_99_0.png}
-%  \includegraphics[width = 0.49\linewidth]{../figures/v14/bike_sharing/lin_model_pinv_pdf/bike_ewma_2_metric_with_reg_0_1_0_005.png}
-%  \includegraphics[width = 0.49\linewidth]{../figures/v14/bike_sharing/nnet_model_pinv_pdf/bike_ewma_2_metric_with_reg_10_0_005.png}
-    %\includegraphics[width = 0.24\linewidth]{../figures/v14/bike_sharing/lin_model_pinv_pdf/bike_ewma_log_lik_with_reg_0_1_0_005.png}
-     %\includegraphics[width = 0.24\linewidth]{../figures/v14/bike_sharing/nnet_model_pinv_pdf/bike_ewma_log_lik_with_reg_10_0_005.png}    
+\includegraphics[width = 0.7\linewidth]{../figures/v14/bike_sharing/reg_nnet_numer_norm_syr_10_pow_tr_9/train_bike_reg_1e-06_0_0001_0_0005_99_99.png}
+\includegraphics[width = 0.7\linewidth]{../figures/v14/bike_sharing/plot_num_counties.png}
+\includegraphics[width = 0.7\linewidth]{../figures/v14/bike_sharing/plot_num_bikes.png}
   \caption{
 Control charts monitoring MEWMA of Hotelling $T^2$ of the score function and EWMA of the absolute residual are compared using bike sharing data set with responses dividing by yearly moving average. The left two plots are from linear regression, and the right from MLP with one hidden layer of $50$ nodes. The tilted numbers along the x-axis, as the indices of year, are the time of bike sharing data collected.
-%MEWMA of Hotelling $T^2$ control charts are used to monitor the concept drift of credit risk data set. The above two plots are from logistic regression, and the below from neural network with one hidden layer of $50$ nodes. The left and the right vertical axis is for control chart and cumulative prediction accuracy. The tilted numbers along the x-axis, as the indices of month, are the time at openings of credit card accounts. For example, $601$ stands for Jan.06. So the index $712$ is for the Dec.07, right after which a $15$-month significant drop began (S\&P 500 from $1478.49$ on Dec.28,07 to $735.09$ on Feb.28,08).
 }
-\label{fig:bike_sharing_preproc}
+\label{fig:bike_sharing_interp}
 \end{figure}
 
-\begin{figure}[!htbp]
-\centering
-\includegraphics[width = 0.48\linewidth]{../figures/v14/bike_sharing/reg_norm_scal_train/PII_neg_single_bike_mlines_with_regu_1e-08_0_0001_0_005_99_0.png}
-\includegraphics[width = 0.48\linewidth]{../figures/v14/bike_sharing/reg_norm_scal_train/PII_neg_single_bike_fisher_mlines_with_regu_1e-08_0_0001_0_005_99_0.png}
-%  \includegraphics[width = 0.48\linewidth]{../figures/v14/bike_sharing/lin_model_pinv_pdf/PII_pos_single_bike_mlines_with_regu_0_1_0_005.png}
-%  \includegraphics[width = 0.48\linewidth]{../figures/v14/bike_sharing/lin_model_pinv_pdf/PII_pos_single_bike_mlines_fisher_with_regu_0_1_0_005.png}
-  \caption{
-  MEWMA and EWMA control charts for linear regression of bike sharing data set with responses dividing by yearly moving average (lines are in different colors in electronic version). Comparison are made between before (left) and after (right) being scaled by the inverse of the estimated Fisher Information Matrix, $\mathbf {I} ( {\bm{\theta}} ^{(0)})$. For legibility, here only show EWMA (or MEWMA) control charts for the temperature (blue), windspeed (red), humidity (green), label of $9$am of days (cyan), intercept (orange), and Hotelling $T^2$ (black). The lines of monitored statistics in control charts have the same style and color with lines of their control limits correspondingly.
-%MEWMA and EWMA control charts for linear regression of bike sharing data set. Comparison are made between before (above) and after (below) being scaled by the inverse of the estimated Fisher Information Matrix, $\mathbf {I} ( {\bm{\theta}} ^{(0)})$. 
-}
-\label{fig:bike_sharing_preproc_diag}
-\end{figure}
 
-From the concept drift detection and diagnosis, we can see that the increasing popularity of the concept of bike sharing is mainly responsible for the degradation of predictability of our model, without much changes of effect from other covariates. Simply speaking, the overall increase of average number of bike rentals breaks our prediction. To resolve this issue, it is natural to divide our response by yearly moving average to cancel the mean drift. The Figure~\ref{fig:bike_sharing_preproc} and Figure~\ref{fig:bike_sharing_preproc_diag} show results after applying this pre-processing on the responses of bike sharing data. Clearly, there is no longer obvious concept drifts as in Figure~\ref{fig:bike_sharing} and Figure~\ref{fig:bike_sharing_diag}. We further comparing the training and testing $R^2$ with and without this pre-processing in Table~\ref{table:fit_pred_preproc}. More specifically, we trained our model using data sets with and without pre-processing responses. Then, we apply the model onto the rest of data with time-stamp after the last time of the training data. We calculate $R^2$ based on the original responses to ensure a fair comparison. In this way, we are testing the quality improvement of both fitting and prediction due to this pre-processing. As shown in the table, both fitting and especially prediction are improved. This suggests that the method of detecting and diagnosing concept drifts developed in this paper should be a standard component of data exploration and model performance monitoring, to help improve the interpretability and performance of our model.
+To interpret the concept drift, we look deeper into the diagnosis plots, the data set, and how those data are processed from initial logging of bike rental. As shown in the top plot of Figure~\ref{fig:bike_sharing_interp}, we plot the MEWMA for Hotelling $T^2$ of score and EWMA of absolute residual of training data from the model trained using normalized responses. To make the non-stationarity clearer, we use smaller EWMA parameter $\lambda=0.0005$. There are three major peaks in the metrics, happening in periods $2012-2013$, $2016-2017$, and $2018-2020$. In the middle plot, we show the number of jurisdictions in the Capital Bikeshare program over time, and in the bottom plot, the number of bikes available in the program. We see that those three peaks correspond to three periods when the program of Capital Bikeshare expanded to new jurisdictions and increased the number of bikes dramatically. Such fast expansion in a short period of time may result in non-stationarity in data set temporarily, probably because of factors of media exposures, psychology effect, and time to adapt for it.
 
-\begin{table}[!htbp]
-\centering
-\begin{tabular}{|c|c|c|} \hline
- & Training $R^2$ & Testing $R^2$ \\ \hline
- Original Response & $64.2\%$ & $9.6\%$ \\ \hline 
- Normalized Response & $\bm{67.3}\%$ & $\bm{69.2}\%$ \\ \hline
-% After log(1+x) transformation, the four numbers are: 70.7%, 3.7%, 69.7%, 71.6%.
-\end{tabular}
-\caption{Training and testing $R^2$ with or without normalizing responses by yearly moving average.}
-\label{table:fit_pred_preproc}
-\end{table}
+
+
+% Here, we combine the concept drift monitoring and diagnosing parts to discover and understand the potential concept drift in the data set. Then, an improved modeling process is proposed to verify the insight gained through our framework.
+
+% To discover the concept drift, in Figure~\ref{fig:bike_sharing}, we see the MEWMA of Hotelling $T^2$ of the score function and EWMA of the absolute residual. Clearly, there are some seasonality in both Phase-I and Phase-II. The trend is increasing with years. For each start of season (year), monitoring the score function can still provide a little bit earlier detection than other performance metric. 
+
+% To understand the origin of this concept drift, in Figure~\ref{fig:bike_sharing_diag}, we see that the MEWMA of Hotelling $T^2$ (top one) shows gradual deviation exceeding UCL each year with seasonality, a phenomenon indicating gradual concept drift. Before scaling, all of covariates have large absolute deviation from zero (exceeding control limits), while the lines of windspeed (red) and hour of $9$am (cyan) have relatively small deviation. After scaling, the deviations from mean for all covariates are less significant, but the most apparent one (in terms of deviating from mean zero) is the intercept (orange). This explains the fact that the popularity of bike rental is probably the main factor that drives the concept drift: due to the recent rapid expansion of industry of sharing economy, bike rental becomes increasingly popular over the last several years.  
+% \begin{figure}[!htbp]
+% \centering
+% %  \includegraphics[width = 0.49\linewidth, trim=0in 2.6in 0in 0in, clip]{../figures/v14/bike_sharing/reg_norm_scal_train/bike_reg_1e-08_0_0001_0_005_99_0.png}
+% %   \includegraphics[width = 0.49\linewidth, trim=0in 2.6in 0in 0in, clip]{../figures/v14/bike_sharing/reg_norm_nnet_scal_train/bike_reg_0_1_0_0001_0_005_99_0.png}
+% \includegraphics[width = 0.49\linewidth]{../figures/v14/bike_sharing/reg_norm_scal_train/bike_reg_1e-08_0_0001_0_005_99_0.png}
+% \includegraphics[width = 0.49\linewidth]{../figures/v14/bike_sharing/reg_norm_nnet_scal_train/bike_reg_0_1_0_0001_0_005_99_0.png}
+% %  \includegraphics[width = 0.49\linewidth]{../figures/v14/bike_sharing/lin_model_pinv_pdf/bike_ewma_2_metric_with_reg_0_1_0_005.png}
+% %  \includegraphics[width = 0.49\linewidth]{../figures/v14/bike_sharing/nnet_model_pinv_pdf/bike_ewma_2_metric_with_reg_10_0_005.png}
+%     %\includegraphics[width = 0.24\linewidth]{../figures/v14/bike_sharing/lin_model_pinv_pdf/bike_ewma_log_lik_with_reg_0_1_0_005.png}
+%      %\includegraphics[width = 0.24\linewidth]{../figures/v14/bike_sharing/nnet_model_pinv_pdf/bike_ewma_log_lik_with_reg_10_0_005.png}    
+%   \caption{
+% Control charts monitoring MEWMA of Hotelling $T^2$ of the score function and EWMA of the absolute residual are compared using bike sharing data set with responses dividing by yearly moving average. The left two plots are from linear regression, and the right from MLP with one hidden layer of $50$ nodes. The tilted numbers along the x-axis, as the indices of year, are the time of bike sharing data collected.
+% %MEWMA of Hotelling $T^2$ control charts are used to monitor the concept drift of credit risk data set. The above two plots are from logistic regression, and the below from neural network with one hidden layer of $50$ nodes. The left and the right vertical axis is for control chart and cumulative prediction accuracy. The tilted numbers along the x-axis, as the indices of month, are the time at openings of credit card accounts. For example, $601$ stands for Jan.06. So the index $712$ is for the Dec.07, right after which a $15$-month significant drop began (S\&P 500 from $1478.49$ on Dec.28,07 to $735.09$ on Feb.28,08).
+% }
+% \label{fig:bike_sharing_preproc}
+% \end{figure}
+
+% \begin{figure}[!htbp]
+% \centering
+% \includegraphics[width = 0.48\linewidth]{../figures/v14/bike_sharing/reg_norm_scal_train/PII_neg_single_bike_mlines_with_regu_1e-08_0_0001_0_005_99_0.png}
+% \includegraphics[width = 0.48\linewidth]{../figures/v14/bike_sharing/reg_norm_scal_train/PII_neg_single_bike_fisher_mlines_with_regu_1e-08_0_0001_0_005_99_0.png}
+% %  \includegraphics[width = 0.48\linewidth]{../figures/v14/bike_sharing/lin_model_pinv_pdf/PII_pos_single_bike_mlines_with_regu_0_1_0_005.png}
+% %  \includegraphics[width = 0.48\linewidth]{../figures/v14/bike_sharing/lin_model_pinv_pdf/PII_pos_single_bike_mlines_fisher_with_regu_0_1_0_005.png}
+%   \caption{
+%   MEWMA and EWMA control charts for linear regression of bike sharing data set with responses dividing by yearly moving average (lines are in different colors in electronic version). Comparison are made between before (left) and after (right) being scaled by the inverse of the estimated Fisher Information Matrix, $\mathbf {I} ( {\bm{\theta}} ^{(0)})$. For legibility, here only show EWMA (or MEWMA) control charts for the temperature (blue), windspeed (red), humidity (green), label of $9$am of days (cyan), intercept (orange), and Hotelling $T^2$ (black). The lines of monitored statistics in control charts have the same style and color with lines of their control limits correspondingly.
+% %MEWMA and EWMA control charts for linear regression of bike sharing data set. Comparison are made between before (above) and after (below) being scaled by the inverse of the estimated Fisher Information Matrix, $\mathbf {I} ( {\bm{\theta}} ^{(0)})$. 
+% }
+% \label{fig:bike_sharing_preproc_diag}
+% \end{figure}
+
+% From the concept drift detection and diagnosis, we can see that the increasing popularity of the concept of bike sharing is mainly responsible for the degradation of predictability of our model, without much changes of effect from other covariates. Simply speaking, the overall increase of average number of bike rentals breaks our prediction. To resolve this issue, it is natural to divide our response by yearly moving average to cancel the mean drift. The Figure~\ref{fig:bike_sharing_preproc} and Figure~\ref{fig:bike_sharing_preproc_diag} show results after applying this pre-processing on the responses of bike sharing data. Clearly, there is no longer obvious concept drifts as in Figure~\ref{fig:bike_sharing} and Figure~\ref{fig:bike_sharing_diag}. We further comparing the training and testing $R^2$ with and without this pre-processing in Table~\ref{table:fit_pred_preproc}. More specifically, we trained our model using data sets with and without pre-processing responses. Then, we apply the model onto the rest of data with time-stamp after the last time of the training data. We calculate $R^2$ based on the original responses to ensure a fair comparison. In this way, we are testing the quality improvement of both fitting and prediction due to this pre-processing. As shown in the table, both fitting and especially prediction are improved. This suggests that the method of detecting and diagnosing concept drifts developed in this paper should be a standard component of data exploration and model performance monitoring, to help improve the interpretability and performance of our model.
+
+% \begin{table}[!htbp]
+% \centering
+% \begin{tabular}{|c|c|c|} \hline
+%  & Training $R^2$ & Testing $R^2$ \\ \hline
+%  Original Response & $64.2\%$ & $9.6\%$ \\ \hline 
+%  Normalized Response & $\bm{67.3}\%$ & $\bm{69.2}\%$ \\ \hline
+% % After log(1+x) transformation, the four numbers are: 70.7%, 3.7%, 69.7%, 71.6%.
+% \end{tabular}
+% \caption{Training and testing $R^2$ with or without normalizing responses by yearly moving average.}
+% \label{table:fit_pred_preproc}
+% \end{table}
 
 \section{Conclusion}
 Predictive models are often trained on historical data sets, but due to potential change of conditional distribution of $P (Y|\bm {X})$ (a.k.a concept drift) the performance of those models may degrade. Here, we propose to monitor the score function of models using EWMA or MEWMA control charts. The score-based method has several advantages, comparing against the error-based methods. First, concept drifts can result in no change in error, but it must change the mean of score function for parametric models. Failing to detect those concept drifts would miss potential opportunities to improve model performance. Second, score-based methods are shown to have smaller $MRL_1$ (out-of-control median run-length), given the same $MRL_0$ (in-control median run-length), comparing with other metrics. Third, score-based method provides a comprehensive framework to detect and diagnose concept drift and can be generalized to any parametric models. 
