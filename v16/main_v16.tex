@@ -1014,22 +1014,59 @@ Figure~\ref{fig:credit_default_diag} shows the capability of diagnosing of our m
 
 \subsection{Bike Sharing data set}
 \label{ss:bs_ds}
+% \begin{figure}[!htbp]
+% \centering
+% % \includegraphics[width = 0.49\linewidth, trim=0in 2.6in 0in 0in, clip]{../figures/v14/bike_sharing/reg_scal_train/bike_reg_1e-08_0_0001_0_005_99_0.png}
+% % \includegraphics[width = 0.49\linewidth, trim=0in 2.6in 0in 0in, clip]{../figures/v14/bike_sharing/reg_nnet_scal_train/bike_reg_0_1_0_0001_0_005_99_0.png}
+% \includegraphics[width = 0.49\linewidth]{../figures/v14/bike_sharing/reg_scal_train/bike_reg_1e-08_0_0001_0_005_99_0.png}
+% \includegraphics[width = 0.49\linewidth]{../figures/v14/bike_sharing/reg_nnet_scal_train/bike_reg_0_1_0_0001_0_005_99_0.png}
+% %  \includegraphics[width = 0.49\linewidth]{../figures/v14/bike_sharing/lin_model_old_pinv_pdf/bike_ewma_2_metric_with_reg_0_1_0_005.png}
+% %  \includegraphics[width = 0.49\linewidth]{../figures/v14/bike_sharing/nnet_model_old_pinv_pdf/bike_ewma_2_metric_with_reg_0_1_0_005.png}
+%     %\includegraphics[width = 0.24\linewidth]{../figures/v14/bike_sharing/lin_model_old_pinv_pdf/bike_ewma_log_lik_with_reg_0_1_0_005.png}
+%     %\includegraphics[width = 0.49\linewidth]{../figures/v14/bike_sharing/nnet_model_old_pinv_pdf/bike_ewma_resi_with_reg_0_1_0_005.png}
+%      %\includegraphics[width = 0.24\linewidth]{../figures/v14/bike_sharing/nnet_model_old_pinv_pdf/bike_ewma_log_lik_with_reg_0_1_0_005.png}    
+%   \caption{
+% Control charts monitoring MEWMA of Hotelling $T^2$ of the score function and EWMA of the absolute residual are compared using the bike sharing data set. The left plots are from linear regression, and the right from MLP with one hidden layer of $50$ nodes. The tilted numbers along the x-axis, as the indices of year, are the time of bike sharing data collected.
+% %MEWMA of Hotelling $T^2$ control charts are used to monitor the concept drift of credit risk data set. The above two plots are from logistic regression, and the below from neural network with one hidden layer of $50$ nodes. The left and the right vertical axis is for control chart and cumulative prediction accuracy. The tilted numbers along the x-axis, as the indices of month, are the time at openings of credit card accounts. For example, $601$ stands for Jan.06. So the index $712$ is for the Dec.07, right after which a $15$-month significant drop began (S\&P 500 from $1478.49$ on Dec.28,07 to $735.09$ on Feb.28,08).
+% }
+% \label{fig:bike_sharing}
+% \end{figure}
+
 \begin{figure}[!htbp]
 \centering
-% \includegraphics[width = 0.49\linewidth, trim=0in 2.6in 0in 0in, clip]{../figures/v14/bike_sharing/reg_scal_train/bike_reg_1e-08_0_0001_0_005_99_0.png}
-% \includegraphics[width = 0.49\linewidth, trim=0in 2.6in 0in 0in, clip]{../figures/v14/bike_sharing/reg_nnet_scal_train/bike_reg_0_1_0_0001_0_005_99_0.png}
-\includegraphics[width = 0.49\linewidth]{../figures/v14/bike_sharing/reg_scal_train/bike_reg_1e-08_0_0001_0_005_99_0.png}
-\includegraphics[width = 0.49\linewidth]{../figures/v14/bike_sharing/reg_nnet_scal_train/bike_reg_0_1_0_0001_0_005_99_0.png}
-%  \includegraphics[width = 0.49\linewidth]{../figures/v14/bike_sharing/lin_model_old_pinv_pdf/bike_ewma_2_metric_with_reg_0_1_0_005.png}
-%  \includegraphics[width = 0.49\linewidth]{../figures/v14/bike_sharing/nnet_model_old_pinv_pdf/bike_ewma_2_metric_with_reg_0_1_0_005.png}
-    %\includegraphics[width = 0.24\linewidth]{../figures/v14/bike_sharing/lin_model_old_pinv_pdf/bike_ewma_log_lik_with_reg_0_1_0_005.png}
-    %\includegraphics[width = 0.49\linewidth]{../figures/v14/bike_sharing/nnet_model_old_pinv_pdf/bike_ewma_resi_with_reg_0_1_0_005.png}
-     %\includegraphics[width = 0.24\linewidth]{../figures/v14/bike_sharing/nnet_model_old_pinv_pdf/bike_ewma_log_lik_with_reg_0_1_0_005.png}    
-  \caption{
-Control charts monitoring MEWMA of Hotelling $T^2$ of the score function and EWMA of the absolute residual are compared using the bike sharing data set. The left plots are from linear regression, and the right from MLP with one hidden layer of $50$ nodes. The tilted numbers along the x-axis, as the indices of year, are the time of bike sharing data collected.
-%MEWMA of Hotelling $T^2$ control charts are used to monitor the concept drift of credit risk data set. The above two plots are from logistic regression, and the below from neural network with one hidden layer of $50$ nodes. The left and the right vertical axis is for control chart and cumulative prediction accuracy. The tilted numbers along the x-axis, as the indices of month, are the time at openings of credit card accounts. For example, $601$ stands for Jan.06. So the index $712$ is for the Dec.07, right after which a $15$-month significant drop began (S\&P 500 from $1478.49$ on Dec.28,07 to $735.09$ on Feb.28,08).
+\begin{subfigure}[t]{0.48\linewidth}
+     \centering
+     \begin{subfigure}[t]{\linewidth}
+     \centering
+         \includegraphics[width=\textwidth, trim=.0in .0in .0in .0in, clip]{../figures/v14/bike_sharing/reg_lin_cat_syr_12_tr_5/train_bike_reg_1e-08_0_0001_0_01_99_99.png}
+         \caption{Training phase starting from year $2012$.}
+     \end{subfigure}
+     \begin{subfigure}[t]{\linewidth}
+     \centering
+         \includegraphics[width=\textwidth, trim=.0in .0in .0in .0in, clip]{../figures/v14/bike_sharing/reg_lin_cat_syr_12_tr_5/bike_reg_1e-08_0_0001_0_01_99_99.png}
+         \caption{Phase-I and Phase-II up to year $2020$.}
+     \end{subfigure}
+     \label{fig:bs_tr_2012}
+\end{subfigure}
+\begin{subfigure}[t]{0.48\linewidth}
+     \centering
+     \begin{subfigure}[t]{\linewidth}
+     \centering
+        \includegraphics[width=\textwidth, trim=.0in .0in .0in .0in, clip]{../figures/v14/bike_sharing/reg_lin_cat_syr_13_tr_5/train_bike_reg_1e-08_0_0001_0_01_99_99.png}
+        \caption{Training phase starting from year $2013$.}
+     \end{subfigure}
+     \begin{subfigure}[t]{\linewidth}
+     \centering
+        \includegraphics[width=\textwidth, trim=.0in .0in .0in .0in, clip]{../figures/v14/bike_sharing/reg_lin_cat_syr_13_tr_5/bike_reg_1e-08_0_0001_0_01_99_99.png}
+        \caption{Phase-I and Phase-II up to year $2020$.}
+     \end{subfigure}
+     \label{fig:bs_tr_2013}
+\end{subfigure}
+\caption{
+Control charts monitoring MEWMA of Hotelling $T^2$ of the score function and EWMA of the absolute residual are compared using the bike sharing data set. The left column is from model trained with data starting from year $2012$, while the right from year $2013$. The upper row is from training phase, and the lower from Phase-I and Phase-II. The training data starting from $2012$ show stronger non-stationarity than that starting from $2013$, likely because in year $2012-2013$($2012$ Aug.) the Captial Bikeshare program expanded to Alexandria City and the population affected by this expansion nearly doubles. This strong movement of expansion is likely results in the change in how people participate in bike sharing everyday. The model trained on less non-stationarity has Phase-II testing $r^2\approx0.79$ which is larger than the other $r^2\approx0.68$.
+% %MEWMA of Hotelling $T^2$ control charts are used to monitor the concept drift of credit risk data set. The above two plots are from logistic regression, and the below from neural network with one hidden layer of $50$ nodes. The left and the right vertical axis is for control chart and cumulative prediction accuracy. The tilted numbers along the x-axis, as the indices of month, are the time at openings of credit card accounts. For example, $601$ stands for Jan.06. So the index $712$ is for the Dec.07, right after which a $15$-month significant drop began (S\&P 500 from $1478.49$ on Dec.28,07 to $735.09$ on Feb.28,08).
 }
-\label{fig:bike_sharing}
+  \label{fig:bike_sharing}
 \end{figure}
 
 The bike sharing data set\footnote{https://www.capitalbikeshare.com/system-data} comes from hourly-aggregated log of the Captial Bikeshare system in $7$ jurisdictions nearby Washington Metropolitan Area from year $2010$ to $2020$, integrated with hourly weather data\footnote{http://www.freemeteo.com}. The total sample size $n=82093$, corresponding $82093$ hours of bike rental and weather data. Each row corresponds to the number of rentals of bikes ($y$) and features related to environment and time ($\bm {x}$), following the same definition and preprocessing procedures from a UCI data set\footnote{https://archive.ics.uci.edu/
@@ -1039,20 +1076,60 @@ $0=Sun,1=Mon,\cdots,6=Sat$), workingday($x_6$, binary: $1=neither~weekend~nor~ho
 To capture the predictive relationship as good as possible, we take extra care in modeling the problem. We standardized all numerical covariates and responses to have range close to $[0,1]$. In linear regression, since the model cannot capture the interactions between covariates, we add several interaction terms (interactions between month and hour, weather and month, weather and hour and so on) into the model and obtain $5$-fold cross-validation $r^2\approx 0.87$, which is consistent between \texttt{R} package \texttt{glmnet} and \texttt{python} package \texttt{sklearn}. In MLP model, since it inherently captures interaction, we only use those $11$ covariates and treated all categorical ones as numerical, because it would apply some smoothness constrains on the relationship between responses and those covariates, make the neural network simplier, and generalize better. The $5$-fold cross-validation $r^2\approx 0.95$ is consistent between \texttt{R} package \texttt{nnet} and \texttt{python} package \texttt{tensorflow}.
 
 
-Within the past decade, many bike-sharing businesses were under continuous and fast-paced expansion~(\cite{shaheen2012public}). This kind of gradual drift in the context can be a good example for testing the capability of detecting ``gradual concept drift" of our method. We apply both retrospective and prospective analysis to detect and understand the origin of concept drift, and thus, in turn develop a better model with those insights. Here, the models we tried are linear regression and MLP, with two hidden layers of $10$ and $5$ nodes, respectively.
+Within the past decade, many bike-sharing businesses were under continuous and fast-paced expansion~(\cite{shaheen2012public}). This kind of gradual drift in the context can be a good example for testing the capability of detecting and diagnosing ``gradual concept drift" of our method. We apply both retrospective and prospective analysis to detect and understand the origin of concept drift, and in turn develop a better model with those insights. Here, the models we used are linear regression and MLP, with two hidden layers of $10$ and $5$ nodes, respectively.
+
+From Figure~\ref{fig:bike_sharing}, the upper left plot shows that the training data from year $2012$ has strong non-stationarity, from both the Hotelling $T^2$ of score function and absolute residual, in year $2012-2013$ and $2015-2016$. The high metrics near the beginning and end of training phase shows a U-shape, in contrast to a case of stationary training phase where metrics randomly fluctuate around a constant value. This is because the data gradually drifting during the time of training data and minimizing the loss function of training data would resulting high error at both ends of data. Since the data in year $2012-2013$ introduce too much non-stationarity, after deleting them and training a model using data after year $2013$, we should expect the plot of metrics should be more stationary, which is shown in the upper right plot. This better model should further gives better testing performance. Indeed, we can see that the Hotelling $T^2$ and absolute residual are lower with model trained using data after $2013$. More quantitatively, we found the testing $r^2$ (Phase-II) for models trained with data from $2012$ and $2013$ are $\approx0.68$ and $\approx0.79$. Even though both models show the concept drift in the Phase-II, the model trained on data set with less non-stationarity would has higher predicting power. This result is also observed in neural network model, but omitted here for space limitation. 
+
+% \begin{figure}[!htbp]
+% \centering
+% \includegraphics[width = 0.48\linewidth]{../figures/v14/bike_sharing/reg_scal_train/PII_pos_single_bike_mlines_with_regu_1e-08_0_0001_0_005_99_0.png}
+% \includegraphics[width = 0.48\linewidth]{../figures/v14/bike_sharing/reg_scal_train/PII_pos_single_bike_fisher_mlines_with_regu_1e-08_0_0001_0_005_99_0.png}
+% %  \includegraphics[width = 0.48\linewidth]{../figures/v14/bike_sharing/lin_model_old_pinv_pdf/PII_pos_single_bike_mlines_with_regu_0_1_0_005.png}
+% %  \includegraphics[width = 0.48\linewidth]{../figures/v14/bike_sharing/lin_model_old_pinv_pdf/PII_pos_single_bike_mlines_fisher_with_regu_0_1_0_005.png}
+%   \caption{
+%   MEWMA and EWMA control charts for linear regression of bike sharing data set (lines are in different colors in electronic version). Comparison are made between before (left) and after (right) being scaled by the inverse of the estimated Fisher Information Matrix, $\mathbf {I} ( {\bm{\theta}} ^{(0)})$. For legibility, here only show EWMA (or MEWMA) control charts for the temperature (blue), windspeed (red), humidity (green), label of $9$am of days (cyan), intercept (orange), and Hotelling $T^2$ (black). The lines of monitored statistics in control charts have the same style and color with lines of their control limits correspondingly.
+% %MEWMA and EWMA control charts for linear regression of bike sharing data set. Comparison are made between before (above) and after (below) being scaled by the inverse of the estimated Fisher Information Matrix, $\mathbf {I} ( {\bm{\theta}} ^{(0)})$. 
+% }
+% \label{fig:bike_sharing_diag}
+% \end{figure}
 
 \begin{figure}[!htbp]
 \centering
-\includegraphics[width = 0.48\linewidth]{../figures/v14/bike_sharing/reg_scal_train/PII_pos_single_bike_mlines_with_regu_1e-08_0_0001_0_005_99_0.png}
-\includegraphics[width = 0.48\linewidth]{../figures/v14/bike_sharing/reg_scal_train/PII_pos_single_bike_fisher_mlines_with_regu_1e-08_0_0001_0_005_99_0.png}
-%  \includegraphics[width = 0.48\linewidth]{../figures/v14/bike_sharing/lin_model_old_pinv_pdf/PII_pos_single_bike_mlines_with_regu_0_1_0_005.png}
-%  \includegraphics[width = 0.48\linewidth]{../figures/v14/bike_sharing/lin_model_old_pinv_pdf/PII_pos_single_bike_mlines_fisher_with_regu_0_1_0_005.png}
+\begin{subfigure}[t]{0.4\linewidth}
+     \centering
+     \begin{subfigure}[t]{\linewidth}
+     \centering
+         \includegraphics[width=\textwidth, trim=.0in .0in .0in .0in, clip]{../figures/v14/bike_sharing/reg_lin_cat_syr_12_tr_5/neg_single_bike_fisher_mlines_with_regu_1e-08_0_0001_0_01_99_99.png}
+     \end{subfigure}
+     \begin{subfigure}[t]{\linewidth}
+     \centering
+         \includegraphics[width=\textwidth, trim=12.5in 0.5in 3.0in 1.0in, clip]{../figures/v14/bike_sharing/reg_lin_cat_syr_12_tr_5/neg_single_bike_fisher_mlines_with_regu_1e-08_0_0001_0_01_99_99_72.png}
+     \end{subfigure}
+     \caption{Diagnosis plots for model trained using raw bike rental counts.}
+     \label{fig:bs_raw_cnt}
+\end{subfigure}
+\begin{subfigure}[t]{0.4\linewidth}
+     \centering
+     \begin{subfigure}[t]{\linewidth}
+     \centering
+        \includegraphics[width=\textwidth, trim=.0in .0in .0in .0in, clip]{../figures/v14/bike_sharing/reg_lin_cat_norm_syr_12_pow_tr_5/neg_single_bike_fisher_mlines_with_regu_1e-08_0_0001_0_01_99_99.png}
+     \end{subfigure}
+     \begin{subfigure}[t]{\linewidth}
+     \centering
+        \includegraphics[width=\textwidth, trim=12.5in 0.5in 3.0in 1.0in, clip]{../figures/v14/bike_sharing/reg_lin_cat_norm_syr_12_pow_tr_5/neg_single_bike_fisher_mlines_with_regu_1e-08_0_0001_0_01_99_99_72.png}
+     \end{subfigure}
+     \caption{Diagnosis plots for model trained using normalized bike rental counts, by trailing yearly mean.}
+     \label{fig:bs_norm_cnt}
+\end{subfigure}
   \caption{
   MEWMA and EWMA control charts for linear regression of bike sharing data set (lines are in different colors in electronic version). Comparison are made between before (left) and after (right) being scaled by the inverse of the estimated Fisher Information Matrix, $\mathbf {I} ( {\bm{\theta}} ^{(0)})$. For legibility, here only show EWMA (or MEWMA) control charts for the temperature (blue), windspeed (red), humidity (green), label of $9$am of days (cyan), intercept (orange), and Hotelling $T^2$ (black). The lines of monitored statistics in control charts have the same style and color with lines of their control limits correspondingly.
 %MEWMA and EWMA control charts for linear regression of bike sharing data set. Comparison are made between before (above) and after (below) being scaled by the inverse of the estimated Fisher Information Matrix, $\mathbf {I} ( {\bm{\theta}} ^{(0)})$. 
 }
 \label{fig:bike_sharing_diag}
 \end{figure}
+
+Clearly, the retrospective analysis above provides deeper understanding in the data, which likely gives us a better model. Both Hotelling $T^2$ and absolute residuals can achieve this purpose. However, in order to understand the origin of concept drifts, we need to look into the components of score function. As shown in Figure~\ref{fig:bike_sharing_diag}, the left column are plots of EWMA of component of score function after transformation with Fisher information matrix as in Section~\ref{s:decou_cd}. We see that all components have similar pattern of drifts, from which we infer that the concept drift probably results from overall increase of the popularity of bike sharing. We select several plots into the upper sub-figure of the left column in Figure~\ref{fig:bike_sharing_diag} and put more EWMA of components together in the lower sub-figure to see this pattern clearer. With this understanding in mind, we consider normalizing the raw bike rental counting, $y$, with trailing moving average of the count within one year, $y_{MA}$. More specifically, we generate normalized response, denoted as $\tilde{y}=y/y_{MA}^\beta$, where $\beta=0.78$ is a tuning parameter and found by maximizing testing $r^2$.  
+
 
 Here, we combine the concept drift monitoring and diagnosing parts to discover and understand the potential concept drift in the data set. Then, an improved modeling process is proposed to verify the insight gained through our framework.
 
