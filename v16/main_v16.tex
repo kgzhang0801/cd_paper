@@ -1102,7 +1102,7 @@ From Figure~\ref{fig:bike_sharing}, the upper left plot shows that the training 
 \centering
 \includegraphics[width=0.7\textwidth, trim=0.0in 4.6in .0in .0in, clip]{../figures/v14/bike_sharing/reg_lin_cat_syr_10_tr_10/train_bike_reg_1e-08_0_0001_0_01_99_99.png}
   \caption{
-The MEWMA control charts of the score function of bike sharing data set with normalized response shows some non-stationarity in training phase. The three major peaks are marked in the upper plot. In the middle plot, the number of counties in the program of Capital Bikeshare over time is drawn, and the name of those counties are marked. In the lower plot, the three periods where the number of bikes increases fast due to expansion of the program are also marked, corresponding to the three major peaks in the upper plot.
+The MEWMA control charts of the score function of bike sharing data from retrospective analysis. The entire data set is used to train a model and the Hotelling $T^2$ of the score vectors are calculated and visualized. The plot shows non-stationarity of the data set.
 }
 \label{fig:bike_sharing_retro}
 \end{figure}
@@ -1110,45 +1110,44 @@ The MEWMA control charts of the score function of bike sharing data set with nor
 \begin{figure}[!htbp]
 \centering
 % \captionsetup[subfigure]{justification=centering}
-\begin{subfigure}[c]{0.25\linewidth}
+\begin{subfigure}[c]{0.266\linewidth}
      \centering
      \begin{subfigure}[t]{\linewidth}
      \centering
          \includegraphics[width=0.8\textwidth, trim=.0in .4in .5in 1.2in, clip]{../figures/v14/bike_sharing/reg_lin_cat_syr_10_tr_exp/PII_pos_single_retro_bike_fisher_mlines_with_regu_1e-08_0_0001_0_01_99_99.png}
      \end{subfigure}
-     \hspace{2.0cm}
+     % \hspace{3.0cm}
      \caption{Retrospective analysis on the entire data set by training on middle part of data set.}
-     \label{fig:bike_sharing_retro_mid}
+     \label{fig:bs_retro_mid}
      \end{subfigure}
-\begin{subfigure}[c]{0.355\linewidth}
+\begin{subfigure}[c]{0.357\linewidth}
      \centering
      \begin{subfigure}[t]{\linewidth}
      \centering
-         \includegraphics[width=0.8\textwidth, trim=.0in .0in .0in 1.3in, clip]{../figures/v14/bike_sharing/reg_lin_cat_syr_10_tr_3/neg_single_bike_fisher_mlines_with_regu_1e-08_0_0001_0_01_99_99.png}
+         \includegraphics[width=0.8\textwidth, trim=.0in .0in .0in 1.25in, clip]{../figures/v14/bike_sharing/reg_lin_cat_syr_10_tr_3/neg_single_bike_fisher_mlines_with_regu_1e-08_0_0001_0_01_99_99.png}
          \includegraphics[width=.8\textwidth, trim=12.5in 0.5in 3.0in 1.0in, clip]{../figures/v14/bike_sharing/reg_lin_cat_syr_10_tr_3/neg_single_bike_fisher_mlines_with_regu_1e-08_0_0001_0_01_99_99_72.png}
      \end{subfigure}
      \caption{Diagnosis plots for a model trained using raw bike rental counts.}
      \label{fig:bs_raw_cnt}
 \end{subfigure}
-\begin{subfigure}[c]{0.355\linewidth}
+\begin{subfigure}[c]{0.357\linewidth}
      \centering
      \begin{subfigure}[t]{\linewidth}
      \centering
-        \includegraphics[width=0.8\textwidth, trim=.0in .0in .0in 1.3in, clip]{../figures/v14/bike_sharing/reg_lin_cat_norm_syr_10_pow_tr_3/neg_single_bike_fisher_mlines_with_regu_1e-08_0_0001_0_01_99_99.png}
+        \includegraphics[width=0.8\textwidth, trim=.0in .0in .0in 1.25in, clip]{../figures/v14/bike_sharing/reg_lin_cat_norm_syr_10_pow_tr_3/neg_single_bike_fisher_mlines_with_regu_1e-08_0_0001_0_01_99_99.png}
         \includegraphics[width=.8\textwidth, trim=12.5in 0.5in 3.0in 1.0in, clip]{../figures/v14/bike_sharing/reg_lin_cat_norm_syr_10_pow_tr_3/neg_single_bike_fisher_mlines_with_regu_1e-08_0_0001_0_01_99_99_72.png}
      \end{subfigure}
      \caption{Diagnosis plots for a model trained using normalized bike rental counts, by trailing yearly mean.}
      \label{fig:bs_norm_cnt}
 \end{subfigure}
   \caption{
-  MEWMA and EWMA control charts for linear regression of bike sharing data set (lines are in different colors in electronic version) for detecting and diagnosing concept drifts. The left column is from a model trained on the raw bike rental count, while the right column the normalized bike rental count. The upper row shows some representative lines of components, while the lower row includes more lines to overview the pattern of concept drifts. The results from raw bike rental count show strong concept drifts, while the concept drift is largely reduced in results from normalized bike rental count, because the change of hidden context is learned by the model. The Phase-II testing $r^2$ for the left and right column are $\approx0.26$ and $\approx0.85$, respectively.
+  (a) Retrospective analysis using a model trained upon data from around $2014$ to $2017$. These plots show a very strong non-stationarity, and are more clear than Figure~\ref{fig:bike_sharing_retro}. The EWMA is much more stable. MEWMA and EWMA control charts for linear regression of bike sharing data set (lines are in different colors in electronic version) for detecting and diagnosing concept drifts. The left column is from a model trained on the raw bike rental count, while the right column the normalized bike rental count. The upper row shows some representative lines of components, while the lower row includes more lines to overview the pattern of concept drifts. The results from raw bike rental count show strong concept drifts, while the concept drift is largely reduced in results from normalized bike rental count, because the change of hidden context is learned by the model. The Phase-II testing $r^2$ for the left and right column are $\approx0.26$ and $\approx0.85$, respectively.
 %MEWMA and EWMA control charts for linear regression of bike sharing data set. Comparison are made between before (above) and after (below) being transformed by the inverse of the estimated Fisher Information Matrix, $\mathbf {I} ( {\bm{\theta}} ^{(0)})$. 
 }
 \label{fig:bike_sharing_diag}
 \end{figure}
 
-Clearly, the retrospective analysis above provides deeper understanding in the data set, which likely helps us build a better model. Both Hotelling $T^2$ and absolute residuals can achieve this purpose. To further illustrate the retrospective analysis, this time we use the entire data set.
-
+Clearly, the retrospective analysis above provides deeper understanding in the data set, which likely helps us build a better model. Both Hotelling $T^2$ and absolute residuals can achieve this purpose. To further illustrate the retrospective analysis and mimic real usage in applications, this time we use the entire data set. As in Figure~\ref{fig:bike_sharing_retro}, the MEWMA control chart for the score function shows strong non-stationarity as the data in the beginning and end of the period has high monitoring statistics, presenting a ``U-shape". This is because the data set has a gradual concept drift over the entire period, and the trained model converges to a solution best fitting data from the middle period of time. To make the pattern of non-stationarity more sensitive for interpretation, we can choose the training data set based on preliminary retrospective analysis in Figure~\ref{fig:bike_sharing_retro}. This is because when we train our model on the entire data set, there is no single model that can fit all the data very well and the solution may not be very meaningful. Instead, if we can confine our data set within a period where data are approximately stable or with slow concept drift, the model would also more meaningful and the pattern concept drift would also be more obvious. As shown in the top plot of Figure~\ref{fig:bs_retro_mid}, we train a model using data from the beginning of year $2014$ to the end of year $2016$, during which data are more or less stationary (this periods is chosen at discretion of user). The ``U-shape" we observed in Figure~\ref{fig:bike_sharing_retro} also shows up and is clearer. The cross-validation $r^2$ of the plot in Figure~\ref{fig:bike_sharing_retro} is $0.7928$ and the cross-validation $r^2$ for training data and $r^2$ for the entire data set in Figure~\ref{fig:bs_retro_mid} are $0.8776$ and $0.7590$, meaning the model trained on more stationary data can fit data better and amplify the concept drift in the overall data set. The EWMA control chart of components of transformed score functions present some interesting findings, providing more interpretation. As shown in the second row of Figure~\ref{fig:bs_retro_mid} for predictor yr, the deviation are strong in the beginning and the end, but with different signs. The model captures the slope in the middle period but slopes before and after that are larger and smaller, confirmed in the bike count over time. The control charts of components of score function show the directions of change of coefficients at the nearby time that can result in better fitting of the model to the data. As shown in the third and the fourth rows of Figure~\ref{fig:bs_retro_mid}, the effect of month May and September also show similar trend as that of year, but because month is treated as factor, during the time outside those months, control chart is close to zero.  
 
 However, in order to understand the origin of concept drifts, we need to look into the components of score function. As shown in Figure~\ref{fig:bike_sharing_diag}, the left column has plots of EWMA of components of score function after transformation with Fisher information matrix as described in Section~\ref{s:decou_cd}. We see that all components have similar pattern of drifts, from which we infer that the concept drift probably results from overall increase of the popularity of bike sharing. We select several plots into the upper sub-figure of the left column in Figure~\ref{fig:bike_sharing_diag} and put more EWMA of components together in the lower sub-figure to give a bird's-eye view on this pattern. With this understanding in mind, we consider normalizing the raw bike rental count, $y$, with trailing moving average of the count within one year, $y_{MA}$. More specifically, we generate normalized response, denoted as $\tilde{y}=y/y_{MA}^\beta$, where $\beta=0.78$ is a tuning parameter and found by maximizing testing $r^2$. The model trained on this normalized response has diagnosis plots as in the right column in Figure~\ref{fig:bike_sharing_diag}. By comparing the results on the left and right columns, we see that the concept drift is largely reduced because the change of hidden context is learned in the model in the right column, justifying the normalization on response. We obtained the Phase-II testing $r^2$ as $\approx0.26$ and $\approx0.85$ without and with this normalization, respectively.
 
