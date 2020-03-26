@@ -176,7 +176,7 @@ In summary, for GLM-type response models with linear or nonlinear $\psi(\cdot)$ 
   \end{subfigure}
   \begin{subfigure}[t]{0.4\linewidth}
          \centering
-	 \includegraphics[width=\textwidth, trim=.2in .2in .7in .45in, clip]{../figures/v14/demons_fig/2D_logi_cd.png}
+	 \includegraphics[width=\textwidth, trim=.2in .2in .7in .45in, clip]{../figures/v14/demons_fig/2D_logi_cd_updated.png}
          \captionsetup{width=.9\linewidth}
          \caption{The drifted data generating process after updating the optimal decision boundary.}
          \label{fig:logi_err_rate_unch_d}
@@ -291,52 +291,6 @@ where $\bar {\bm{s}}$ and $\hat {\bm {\Sigma}}$ are the sample mean vector and c
 
 % After obtaining the initial data set, we can use MEWMA to minimize concept drift in training data, as much as possible through retrospective analysis. With a well-trained and validated predictive model, we execute two phases for concept drift detection. In Phase-I, we {monitor Hotelling $T^2$ of EWMA of the score function for a certain period of time and ensure that those newly incoming data are in-control and} then calculate and set {upper and lower} control limits {(UCL and LCL)} based on a targeted false alarm rate. Here, the in-control data presents random fluctuation in the Phase-I without obvious trend as shown in Figure~\ref{fig:Monitoring}, because sample score vectors would fluctuate around $\bm {0}$ when environment is in stationary and model training becomes stable (as discussed in Section~\ref{ss:sgd_score}). This step ensures that no concept drift happens in Phase-I and the obtained control limits are trustworthy. The false alarm rate is usually chosen small (i.e. $0.1\%$), so that in monitoring the likelihood of encountering false alarms is small. In Phase-II, we continue to monitor sample score vectors of incoming data, while using control limits calculated from Phase-I. If new {monitoring statistics} significantly falls outside of control limits for a long sequence or there are some obvious deviation pattern from the normal ($0$ in this case), the alarm of concept drift is set off.
 
-The process of monitoring the score function using MEWMA control chart is shown in the Figure~\ref{fig:proc_mon_score}. For other scalar metrics or components of the score function, we use EWMA control chart because the statistics calculated by the equation~(\ref{eqn:ewma}) becomes scalar. The main difference is that in MEWMA control chart the monitored statistics is a summary statistics of vectors and is positive, but in EWMA control chart the statistics can fluctuate up and down. Other monitoring steps are similar. More specifically, in the Step 1, we collect a batch of responses and covariates in order, $\{\bm {x}_i, y_i\} _{i=1} ^{N}$, where $N$ is the sample size. The retrospective analysis using MEWMA and score clustering is conducted to rule out concept drift as much as possible, by resizing the data set. Then, the data set without concept drift is divided into two parts: $ \mathcal{D}_1 \vcentcolon= \{\bm {x}_i, y_i\} _{i=1} ^{N_1}$ and $\mathcal{D}_2 \vcentcolon= \{\bm {x}_i, y_i\} _{i=N_1+1} ^{N}$. The first data set, $\mathcal{D}_1$, is used to train a parametric model and the second one, $\mathcal{D}_2$, is used in Phase-I for monitoring statistics and calculating control limits ($UCL$ and $LCL$). The Step 1 can iterate recursively by reducing the size of the data set, $N$, to ensure that the control chart in Phase-I detects no significant out-of-control data and control limits are obtained. In the Step 2, given control limits from Phase-I, in Phase-II, the control chart is applied to sample score vectors or other metrics of more data points ($i > N$) to signal the starting position of a concept drift, if it ever happens. The Phase-II analysis can be used in data exploration when all the data are available and the existence and starting position of concept drift is interested in; or in prediction when data points come one-by-one and the aim is to monitor concept drifts. 
-
-Notice that the EWMA is obtained first, followed by Hotelling $T^2$ calculation. The advantage of this is that the EWMA would reduce the random noise in raw score vectors, so that in Phase-II of detection using Hotelling $T^2$, small drifts would be easier to be detected due to higher signal-to-noise ratio. The usage of empirical control limits of the MEWMA control chart based on the Phase-I data is because of large size of data sets. Intuitively, when $\lambda$ approaches to $0$, the effective sample size (or window length) grows to infinity. Given enough data sample, which can easily be satisfied in ``Big Data" setting, the larger effective sample size the closer $\bm {z}_t$ distributes as normal distribution. In Appendix, the Central Limit Theorem, (CLT) for the EWMA of the score is given. Thus, many methods developed for MEWMA based on normal distribution can also apply to the concept drift problem.
-
-\begin{figure}[!htbp]
-\centering
-\begin{subfigure}[t]{0.49\linewidth}
-     \centering
-     \includegraphics[width=\textwidth, trim=.2in .2in .7in .45in, clip]{../figures/v14/demons_fig/2D_err_logi_trunc_norm.png}
-     \captionsetup{width=.9\linewidth}
-     \caption{The error rate function, equation~(\ref{eqn:logi_err_rate}), before and after concept drift by monitoring error. The drifted data generating process decreases the unconditional error rate by those blue shaded area but adds the red shaded area as new error. Because the two areas are equal, the expected error rate remains the same. If we only monitor the error rate or any metrics derived from it, the concept drift would be missed.}
-     \label{fig:logi_err_rate_penal}
-\end{subfigure}
-\begin{subfigure}[t]{0.49\linewidth}
-     \centering
-    \includegraphics[width = \textwidth, trim=.2in .2in .7in .45in, clip]{../figures/v14/demons_fig/2D_score_logi_modi_trunc_norm.png}
-     \captionsetup{width=.9\linewidth}
-     \caption{The deviation function, equation~(\ref{eqn:logi_dev_rate}), before and after concept drift by monitoring Hotelling $T^2$ of EWMA of the score function. The drifted data generating process has the increased area (red) larger than the decreased area (blue) resulting in net positive change in the expected deviation function of the score function, which indicates that it is more sensitive for monitoring concept drift than error-based methods.}
-     \label{fig:logi_score_rate_penal}
-\end{subfigure}
-  \caption{The comparison of penalty functions by monitoring classification error and Hotelling $T^2$ of EWMA of the score function.}
-  \label{fig:logi_med_penal}
-\end{figure}
-
-Here, we revisit the illustrative example of simple logistic regression introduced in Section~\ref{ss:score_func} to complete the discussion on how we use MEWMA to resolve the limitation error-based methods have. According to the equation~(\ref{eqn:logi_mod_score}), the Hotelling $T^2$ can be written as:
-\begin{align}
-T_t^2 = (y-p^{(0)})^2 \bm{X}^T\hat {\bm { \Sigma}} ^{(0)-1}\bm{X}
-\label{eqn:logi_hotellingt2}
-\end{align}
-Similarly to the equation~(\ref{eqn:logi_err_rate}), we can take expectation to the quantity above to evaluate the change of monitoring statistics before and after concept drift, which we refer to as deviation function $dev(\cdot)$.
-\begin{align}
-\begin{aligned}
-dev(x;\bm{\theta}^{(j)})\vcentcolon=&E_{\bm{\theta}^{(j)}}[T^2|\bm{X}=[1,x]^T] \\
-=& (p^{(j)}-2p^{(j)}p^{(0)}+p^{(0)2}) \bm{X}^T \bm { \Sigma}^{(0)-1}\bm{X} \\
-dev(\bm{\theta}^{(j)})\vcentcolon=&E[dev(X;\bm{\theta}^{(j)})]
-\end{aligned}
-\label{eqn:logi_dev_rate}
-\end{align}
-Notice that here we substitute $\bm{\Sigma}^{(0)}=E[p^{(0)}(1-p^{(0)})\bm{XX}^T]$ for the estimated covariance $\hat{\bm{\Sigma}}^{(0)}$ in the equation~(\ref{eqn:hotellingt2}) to simplify the illustration. After concept drift, assuming that the covariance matrix does not change much before and after concept drift ($\bm{\Sigma}^{(1)}\approx\bm{\Sigma}^{(0)}$), the deviation function can be decomposed as $dev(\bm{\theta}^{(1)})=E[Tr(p^{(1)}(1-p^{(1)})\bm{XX}^T\bm{\Sigma}^{(0)-1})]+E[(p^{(1)}-p^{(0)})^2\bm{X}^T\bm{\Sigma}^{(0)-1}\bm{X}]=E[Tr(\bm{\Sigma}^{(1)}\bm{\Sigma}^{(0)-1})]+E[(p^{(1)}-p^{(0)})^2\bm{X}^T\bm{\Sigma}^{(0)-1}\bm{X}]\approx dev(\bm{\theta}^{(0)})+E[(p^{(1)}-p^{(0)})^2\bm{X}^T\bm{\Sigma}^{(0)-1}\bm{X}]$, where $Tr(\cdot)$ is the trace of a matrix. This can be visualized in Figure~\ref{fig:logi_med_penal}. The shaded areas under curves represent the monitoring statistics. As shown in Figure~\ref{fig:logi_err_rate_penal} of the error rate of error-based method, it does not change before and after concept drift; while in Figure~\ref{fig:logi_score_rate_penal} of the expected deviation of the score-based method, it increases after concept drift, which would be detected using our MEWMA monitoring method. After detection, the model can be updated to improve the performance. In Section~\ref{s:demon_cd}, a numerical example would be presented to further support analysis here.
-
-% Why we want it to be normally distributed?
-After chosen a EWMA parameter $\lambda$, a better method should have shorter delay in detecting concept drift. Intuitively, the score function is the first order gradient of the negative log-likelihood so that monitoring the score function is more sensitive than directly monitoring the negative log-likelihood. That is because in training a complex model, a learning rate of small number will be multiplied on the gradient to update parameters so that a score with large deviation from zero mean can still slowly progress in updating parameters and thus the error rate or residual. To quantitatively evaluate the delay of any specific monitoring statistics, we conduct Monte Carlo simulation to calculate median run length when data are in-control ($MRL_0$) and out-of-control ($MRL_1$). The median run length is defined as ``the median number of points that must be monitored before a point indicates an out-of-control condition"~(\cite{montgomery2007introduction}). A good statistics should have a long $MRL_0$ to minimize false positive rate and short $MRL_1$ to reduce the time delay for detection. In literature, average run length (ARL) is also common. However, it is less robust to the heavy-tailed distribution of run length than $MRL$. Details about simulation setups can be found in Appendix. 
-
-% \subsection{Implementation of Monitoring the Score Function and Other Metrics}
-% \label{ss:imp_score_method}
-
 \begin{figure}[!htbp]
 \centering
  \begin{subfigure}[t]{0.49\linewidth}
@@ -360,6 +314,52 @@ After chosen a EWMA parameter $\lambda$, a better method should have shorter del
   \caption{{The framework of monitoring/detecting concept drift based on the score function. (a) Conducting retrospective analysis using MEWMA and/or score function clustering to ensure there is no concept drift in the data set used to train and set control limits. The size of data set can be recursively reduced if significant concept drift exists. (b) Monitoring concept drifts using the model and control limits obtained by processing training and Phase-I data sets, which will be demonstrated in Section~\ref{s:demon_cd} and~\ref{s:real_data}. In this subplot, three examples of possible results are given: gradual and abrupt concept drift and in-control case. (c) Visualization of diagnosing concept drift: The MEWMA for score vectors and the EWMA for individual predictors are visualized to show the origin of concept drift, which will be illustrated in Section~\ref{s:demon_cd} and~\ref{s:real_data}.}}
   \label{fig:proc_mon_score}
 \end{figure}
+
+The process of monitoring the score function using MEWMA control chart is shown in the Figure~\ref{fig:proc_mon_score}. For other scalar metrics or components of the score function, we use EWMA control chart because the statistics calculated by the equation~(\ref{eqn:ewma}) becomes scalar. The main difference is that in MEWMA control chart the monitored statistics is a summary statistics of vectors and is positive, but in EWMA control chart the statistics can fluctuate up and down. Other monitoring steps are similar. More specifically, in the Step 1, we collect a batch of responses and covariates in order, $\{\bm {x}_i, y_i\} _{i=1} ^{n}$, where $n$ is the sample size. The retrospective analysis using MEWMA and score clustering is conducted to rule out concept drift as much as possible, by resizing the data set. Then, the data set without concept drift is divided into two parts: $ \mathcal{D}_1 \vcentcolon= \{\bm {x}_i, y_i\} _{i=1} ^{n_1}$ and $\mathcal{D}_2 \vcentcolon= \{\bm {x}_i, y_i\} _{i=n_1+1} ^{n}$. The first data set, $\mathcal{D}_1$, is used to train a parametric model and the second one, $\mathcal{D}_2$, is used in Phase-I for monitoring statistics and calculating control limits ($UCL$ and $LCL$). The Step 1 can iterate recursively by reducing the size of the data set, $N$, to ensure that the control chart in Phase-I detects no significant out-of-control data and control limits are obtained. In the Step 2, given control limits from Phase-I, in Phase-II, the control chart is applied to sample score vectors or other metrics of more data points ($i > n$) to signal the starting position of a concept drift, if it ever happens. The Phase-II analysis can be used in data exploration when all the data are available and the existence and starting position of concept drift is interested in; or in prediction when data points come one-by-one and the aim is to monitor concept drifts. 
+
+Notice that the EWMA is obtained first, followed by Hotelling $T^2$ calculation. The advantage of this is that the EWMA would reduce the random noise in raw score vectors, so that in Phase-II of detection using Hotelling $T^2$, small drifts would be easier to be detected due to higher signal-to-noise ratio. The usage of empirical control limits of the MEWMA control chart based on the Phase-I data is because of large size of data sets. Intuitively, when $\lambda$ approaches to $0$, the effective sample size (or window length) grows to infinity. Given enough data sample, which can easily be satisfied in ``Big Data" setting, the larger effective sample size the closer $\bm {z}_t$ distributes as normal distribution. In Appendix, the Central Limit Theorem, (CLT) for the EWMA of the score is given. Thus, many methods developed for MEWMA based on normal distribution can also apply to the concept drift problem.
+
+\begin{figure}[!htbp]
+\centering
+\begin{subfigure}[t]{0.49\linewidth}
+     \centering
+     \includegraphics[width=\textwidth, trim=.2in .2in .7in .45in, clip]{../figures/v14/demons_fig/2D_err_logi_trunc_norm.png}
+     \captionsetup{width=.9\linewidth}
+     \caption{The error rate function, equation~(\ref{eqn:logi_err_rate}), before and after concept drift by monitoring error. The drifted data generating process decreases the unconditional error rate by those blue shaded area but adds the red shaded area as new error. Because the two areas are equal, the expected error rate remains the same. If we only monitor the error rate or any metrics derived from it, the concept drift would be missed.}
+     \label{fig:logi_err_rate_penal}
+\end{subfigure}
+\begin{subfigure}[t]{0.49\linewidth}
+     \centering
+    \includegraphics[width = \textwidth, trim=.2in .2in .7in .45in, clip]{../figures/v14/demons_fig/2D_score_logi_modi_trunc_norm_0_7.png}
+     \captionsetup{width=.9\linewidth}
+     \caption{The deviation function, equation~(\ref{eqn:logi_dev_rate}), before and after concept drift by monitoring Hotelling $T^2$ of EWMA of the score function. The drifted data generating process has the increased area (red) larger than the decreased area (blue) resulting in net positive change in the expected deviation function of the score function, which indicates that it is more sensitive for monitoring concept drift than error-based methods.}
+     \label{fig:logi_score_rate_penal}
+\end{subfigure}
+  \caption{The comparison of penalty functions by monitoring classification error and Hotelling $T^2$ of EWMA of the score function.}
+  \label{fig:logi_med_penal}
+\end{figure}
+
+Here, we revisit the illustrative example of simple logistic regression introduced in Section~\ref{ss:score_func} to complete the discussion on how we use MEWMA to resolve the limitation error-based methods have. According to the equation~(\ref{eqn:logi_mod_score}), the Hotelling $T^2$ can be written as:
+\begin{align}
+T_t^2 = (y-p^{(0)})^2 \bm{X}^T\hat {\bm { \Sigma}} ^{(0)-1}\bm{X}
+\label{eqn:logi_hotellingt2}
+\end{align}
+Similarly to the equation~(\ref{eqn:logi_err_rate}), we can take expectation to the quantity above to evaluate the change of monitoring statistics before and after concept drift, which we refer to as deviation function $dev(\cdot)$.
+\begin{align}
+\begin{aligned}
+dev(x;\bm{\theta}^{(j)})\vcentcolon=&E_{\bm{\theta}^{(j)}}[T^2|\bm{X}=[1,x]^T] \\
+=& (p^{(j)}-2p^{(j)}p^{(0)}+p^{(0)2}) \bm{X}^T \bm { \Sigma}^{(0)-1}\bm{X} \\
+dev(\bm{\theta}^{(j)})\vcentcolon=&E[dev(X;\bm{\theta}^{(j)})]
+\end{aligned}
+\label{eqn:logi_dev_rate}
+\end{align}
+Notice that here we substitute $\bm{\Sigma}^{(0)}=E[p^{(0)}(1-p^{(0)})\bm{XX}^T]$ for the estimated covariance $\hat{\bm{\Sigma}}^{(0)}$ in the equation~(\ref{eqn:hotellingt2}) to simplify the illustration. After concept drift, assuming that the covariance matrix does not change much before and after concept drift ($\bm{\Sigma}^{(1)}\approx\bm{\Sigma}^{(0)}$), the deviation function can be decomposed as $dev(\bm{\theta}^{(1)})=E[Tr(p^{(1)}(1-p^{(1)})\bm{XX}^T\bm{\Sigma}^{(0)-1})]+E[(p^{(1)}-p^{(0)})^2\bm{X}^T\bm{\Sigma}^{(0)-1}\bm{X}]=E[Tr(\bm{\Sigma}^{(1)}\bm{\Sigma}^{(0)-1})]+E[(p^{(1)}-p^{(0)})^2\bm{X}^T\bm{\Sigma}^{(0)-1}\bm{X}]\approx dev(\bm{\theta}^{(0)})+E[(p^{(1)}-p^{(0)})^2\bm{X}^T\bm{\Sigma}^{(0)-1}\bm{X}]\gtrapprox dev(\bm{\theta}^{(0)})$, where $Tr(\cdot)$ is the trace of a matrix. This can be visualized in Figure~\ref{fig:logi_med_penal}. The shaded areas under curves represent the monitoring statistics. As shown in Figure~\ref{fig:logi_err_rate_penal} of the error rate of error-based method, it does not change before and after concept drift; while in Figure~\ref{fig:logi_score_rate_penal} of the expected deviation of the score-based method, it increases after concept drift, which would be detected using our MEWMA monitoring method. After detection, the model can be updated to improve the performance as in Figure~\ref{fig:logi_err_rate_unch_d}. In Section~\ref{s:demon_cd}, a numerical example would be presented to further support analysis here.
+
+% Why we want it to be normally distributed?
+After chosen a EWMA parameter $\lambda$, a better method should have shorter delay in detecting concept drift. Intuitively, the score function is the first order gradient of the negative log-likelihood so that monitoring the score function is more sensitive than directly monitoring the negative log-likelihood. That is because in training a complex model, a learning rate of small number will be multiplied on the gradient to update parameters so that a score with large deviation from zero mean can still slowly progress in updating parameters and thus the error rate or residual. To quantitatively evaluate the delay of any specific monitoring statistics, we conduct Monte Carlo simulation to calculate median run length when data are in-control ($MRL_0$) and out-of-control ($MRL_1$). The median run length is defined as ``the median number of points that must be monitored before a point indicates an out-of-control condition"~(\cite{montgomery2007introduction}). A good statistics should have a long $MRL_0$ to minimize false positive rate and short $MRL_1$ to reduce the time delay for detection. In literature, average run length (ARL) is also common. However, it is less robust to the heavy-tailed distribution of run length than $MRL$. Details about simulation setups can be found in Appendix. 
+
+% \subsection{Implementation of Monitoring the Score Function and Other Metrics}
+% \label{ss:imp_score_method}
 
 \subsection{Monitoring Sample Score Vectors with the High-Dimension Vector of Parameters}
 \label{ss:high_dim_score}
