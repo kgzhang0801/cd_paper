@@ -63,11 +63,72 @@ Supervised learning models are widely adopted in many applications to automate b
 \section{Introduction}
 Supervised learning is widely used in many applications, in which models are trained to predict a response variable $Y$, given an observed set of covariates $\bm{X} \in \mathbb{R}^p$. The modeling goal is usually to make test prediction accuracy metrics (i.e. $R^2$, classification accuracy, F1-score, etc.) as high as possible. The supervised learning model can also act as an intermediate module in other machine learning tasks, such as dimension reduction in unsupervised learning or Q-Learning in reinforcement learning. Training the supervised learning model can be viewed as an optimization problem. From a probabilistic perspective, a training sample of observations, $\{\bm {x}_i, y_i\}_{i=1}^n$, is assumed to be drawn from some joint distribution, $P (\bm {X}, Y)$, such that the conditional distribution, $P(Y|\bm{X};\bm{\theta})$, is stationary, no matter when those samples are collected~(\cite{hulten2001mining}). Here, {$\bm {x}_i \in \mathbb{R}^{p}$ and $y_i \in \mathbb{R}$ are the covariates and response variable in the $i$th observation respectively}\footnote{The case with scalar response can easily be extended to vector response variable $\bm {y}_i$.}, and we have parametrized the conditional distribution via the vector $\bm{\theta}$. However, the stationarity assumption is often violated in real applications, a phenomenon as known as concept drift~(\cite{moreno2012unifying,vzliobaite2016overview}). For example, models used to predict customers' probabilities of defaulting by credit-scoring agencies are usually fitted to training data collected over a three to five years period, so that changing financial environments may result in an outdated predictive relationship by the time the trained model is used to score new customers~(\cite{crook1992degradation,vzliobaite2016overview}). 
 
+% $\frac{x-1}{x+2}
+% =  \frac{(x+2)-3}{x+2} = \frac{x+2}{x+2}+\frac{-3}{x+2}\\
+% =1+\frac{-3}{3+(x-1)}\\
+% =1-\frac{1}{1+\frac{x-1}{3}}\\
+% =1-\frac{3/2}{x/2+1}\\
+% =1-3/2*\frac{1}{1+x/2}\\=1-3/2\sum_{n=0}^{\infty}(-x/2)^n\\
+% =1-3/2*((-x/2)^0+(-x/2)^1+(-x/2)^2+\cdots)\\
+% =1-3/2*(1+(-x/2)^1+(-x/2)^2+\cdots)\\
+% =1-3/2-3/2*((-x/2)^1+(-x/2)^2+\cdots)\\
+% =1-3/2-3/2\sum_{n=1}^{\infty}(-x/2)^n\\=-\frac{1}{2}-\sum_{n=0}^{\infty}\frac{(-1)^n3x^n}{2^{n+1}}$
+
+% $1-\frac{3/2}{1-f(x)}$
+
+% $\frac{1}{1-(x-a)}=1+(x-a)+(x-a)^2+\cdots+(x-a)^n+\cdots$
+
+% $\sum_{n=0}^{\infty}c_n(x-a)^n$
+
+% $c_0=-1/2,c_n=-\frac{3*(-1)^n}{2^{n+1}}, n=1,2,\cdots$
+
+% $c_0=0,c_n=-\frac{(-1)^n}{3^{n}}, n=1,2,\cdots$
+
+% $\frac{1}{(1+x)^3} \\= \frac{d}{dx}(\frac{-1/2}{(1+x)^2}) \\= (-1/2)\frac{d}{dx}[\sum_{n=0}^{\infty}(-1)^n(n+1)x^n]\\=(-1/2)\sum_{n=1}^{\infty}(-1)^n(n+1)nx^{n-1}\\=(-1/2)\sum_{n=0}^{\infty}(-1)^{n+1}(n+2)(n+1)x^{n}\\=1/2\sum_{n=0}^{\infty}(-1)^{n}(n+2)(n+1)x^{n}$
+
+% \begin{align*}
+% &\ln(5-x)-\ln5 \\
+% =&\ln(5-z)|_{z=0}^{z=x}\\
+% =& \int_{0}^x\frac{1}{z-5}dz\\
+% =&\int_{0}^x\frac{-1/5}{1-z/5}dz\\
+% =&(-1/5)\int_{0}^x \sum_{n=1}^{\infty}(z/5)^ndz\\
+% (Theorem~2)=&(-1/5)\sum_{n=0}^{\infty}\int_{0}^x(z/5)^ndz~\\
+% =&(-1/5)\sum_{n=0}^{\infty}\frac{x^{n+1}}{(n+1)5^n}\\
+% =&-\sum_{n=0}^{\infty}\frac{x^{n+1}}{(n+1)5^{n+1}}\\
+% =&-\sum_{n=1}^{\infty}\frac{x^n}{n5^n}   
+% \end{align*}
+
+% $\ln(5-x)-\ln5 \\
+% =\ln(5-z)|_{z=0}^{z=x}\\
+% = \int_{0}^x\frac{1}{z-5}dz\\
+% =\int_{0}^x\frac{-1/5}{1-z/5}dz\\
+% =(-1/5)\int_{0}^x \sum_{n=1}^{\infty}(z/5)^ndz\\
+% (Theorem~2)=(-1/5)\sum_{n=0}^{\infty}\int_{0}^x(z/5)^ndz~\\
+% =(-1/5)\sum_{n=0}^{\infty}\frac{x^{n+1}}{(n+1)5^n}\\
+% =-\sum_{n=0}^{\infty}\frac{x^{n+1}}{(n+1)5^{n+1}}\\
+% =-\sum_{n=1}^{\infty}\frac{x^n}{n5^n}$
+
+% \begin{align*}
+% &\int\frac{t}{1-t^8}dt \\
+% =&C+\int_0^t \frac{u}{1-u^8}du\\
+% =&C+\int_0^t u\sum_{n=0}^{\infty}u^{8n}du\\
+% =&C+\int_0^t \sum_{n=0}^{\infty} u^{8n+1}du\\
+% (Theorem~2)~=&C+\sum_{n=0}^{\infty} \int_0^t u^{8n+1}du\\
+% =&C+\sum_{n=0}^{\infty}\frac{t^{8n+2}}{8n+2}   
+% \end{align*}
+
+% $\int\frac{t}{1-t^8}dt \\
+% =C+\int_0^t \frac{u}{1-u^8}du\\
+% =C+\int_0^t u\sum_{n=0}^{\infty}u^{8n}du\\
+% =C+\int_0^t \sum_{n=0}^{\infty} u^{8n+1}du\\
+% =C+\sum_{n=0}^{\infty} \int_0^t u^{8n+1}du~(Theorem~2)\\
+% =C+\sum_{n=0}^{\infty}\frac{t^{8n+2}}{8n+2}$
+
 Concept drift poses many challenges in constructing trustworthy supervised learning models. Concept drift during training (historical) and testing (future) data both can degrade performance of supervised learning models: during training, concept drift results in there being no single predictive model, since the model is changing over time; while concept drift during testing degrades the accuracy of the predictive model, relative to what it could be with an updated model for $P(Y|\bm{X};\bm{\theta})$. In order to obtain and maintain the highest possible predictive performance of supervised learning models, \textit{retrospective} concept drift analysis of the training data and \textit{prospective} concept drift monitoring of the test data are important and should be a standard component of the predictive modeling process.
 
 Concept drift is fairly common in practice and often originates from changes of some hidden effects in generating the response outcomes of interests~(\cite{tsymbal2008dynamic,vzliobaite2012beating,widmer1996learning,kukar2003drifting,donoho2004early,carmona2010gnusmail,fong2015change,vzliobaite2016overview}). For example, in the problem of antibiotic resistance in nosocomial infections, supervised learning models are trained and validated using a data set, with response labels indicating whether the level of sensitivity of a pathogen to an antibiotic is sensitive, resistant, or intermediate, and the covariates being patients' demographical data and conditions of hospitalization~(\cite{pechenizkiy2005knowledge}). After properly training and validating such a model, it can with high accuracy determine whether or not a pathogen is sensitive to an antibiotic or not. However, according to medical experts~(\cite{kukar2003drifting}), hidden effects due to failures and/or replacements of some medical equipment, changes in personnel, and seasonal bacterial outbreaks could result in unexpected changes over time in resistance of new pathogen strains to antibiotics. In other words, there is likely a significant level of concept drift in nosocomial infections. Consequently, bacteria that are predicted to be sensitive to a particular antibiotic may now be resistant, and the errors of the predictive model becomes unacceptable. 
 
-The problem of concept drift is gaining increasing attention, because increasingly data are organized in the form of data streams, and it is often unrealistic to expect that data distributions remain stable for a long period of time. Most state-of-the-art concept drift detection and adaptation methods, like ensemble methods~(\cite{wang2003mining}), neural networks~(\cite{calandra2012learning}), and other non-parametric methods~(\cite{frias2015online,dos2016fast}), are based on monitoring the classification error or some metrics derived from it~(\cite{ross2012exponentially,gonccalves2014comparative,barros2018large}). The main purpose of this paper is to introduce a new and comprehensive concept drift framework that is based on monitoring the Fisher scores of the individual observations over time, as opposed to metrics derived from their classification errors. The Fisher score, which we will refer to as simply the score, of an observation $(\bm{X}, Y)$ is defined as the gradient of the log-likelihood, $\log(P(Y|\bm{X};\bm{\theta}))$, with respect to the parameters, $\bm{\theta}$. As shown in the following sections, comparisons between the score-based and error-based methods from both theoretical and empirical perspectives provide strong justification for a score-based method. The score-based framework that we develop and demonstrate is intended to detect, monitor, and diagnose concept drift with the following major advantages and attractive properties:
+The problem of concept drift is gaining increasing attention, because increasingly data are organized in the form of data streams, and it is often unrealistic to expect that data distributions remain stable for a long period of time. Most state-of-the-art concept drift detection and adaptation methods, like ensemble methods~(\cite{wang2003mining}), neural networks~(\cite{calandra2012learning}), and other non-parametric methods~(\cite{bifet2007learning,frias2015online}), are based on monitoring the classification error or some metrics derived from it~(\cite{ross2012exponentially,gonccalves2014comparative,barros2018large}). The main purpose of this paper is to introduce a new and comprehensive concept drift framework that is based on monitoring the Fisher scores of the individual observations over time, as opposed to metrics derived from their classification errors. The Fisher score, which we will refer to as simply the score, of an observation $(\bm{X}, Y)$ is defined as the gradient of the log-likelihood, $\log(P(Y|\bm{X};\bm{\theta}))$, with respect to the parameters, $\bm{\theta}$. As shown in the following sections, comparisons between the score-based and error-based methods from both theoretical and empirical perspectives provide strong justification for a score-based method. The score-based framework that we develop and demonstrate is intended to detect, monitor, and diagnose concept drift with the following major advantages and attractive properties:
 
 \begin{itemize}
 \item
