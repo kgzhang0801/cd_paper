@@ -162,14 +162,14 @@ In summary, for GLM-type response models with linear or nonlinear $\psi(\cdot)$ 
          \centering
          \includegraphics[width=\textwidth, trim=.2in .2in .7in .45in, clip]{../figures/v14/demons_fig/2D_logi_orig.png}
          \captionsetup{width=.95\linewidth}
-         \caption{The original data generating process and a model with the optimal decision boundary.}
+         \caption{The original model $P(Y|\bm{X};\bm{\theta}^{(0)})$ with the decision boundary that minimizes expected error rate in Equation~(\ref{eqn:logi_err_rate}).}
          \label{fig:logi_err_rate_unch_a}
   \end{subfigure}
   \begin{subfigure}[t]{0.4\linewidth}
          \centering
          \includegraphics[width=\textwidth, trim=.2in .2in .7in .45in, clip]{../figures/v14/demons_fig/2D_logi_cd.png}
          \captionsetup{width=.95\linewidth}
-         \caption{The drifted data generating process without updating the optimal decision boundary.}
+         \caption{The drifted model $P(Y|\bm{X};\bm{\theta}^{(1)})$ but with unchanged error rate from (a).}
          \label{fig:logi_err_rate_unch_b}
   \end{subfigure}
 %  \begin{subfigure}[t]{0.4\linewidth}
@@ -183,10 +183,10 @@ In summary, for GLM-type response models with linear or nonlinear $\psi(\cdot)$ 
          \centering
 	 \includegraphics[width=\textwidth, trim=.2in .2in .7in .45in, clip]{../figures/v14/demons_fig/2D_logi_cd_updated.png}
          \captionsetup{width=.95\linewidth}
-         \caption{The drifted data generating process after updating the optimal decision boundary.}
+         \caption{The drifted model $P(Y|\bm{X};\bm{\theta}^{(1)})$ after detecting concept drift and updating the decision boundary to reduce error rate.}
          \label{fig:logi_err_rate_unch_d}
   \end{subfigure}
-  \caption{The demonstration of simple logistic regression that concept drift would result in no change in the error rate.}
+  \caption{The demonstration of simple logistic regression that concept drift would result in no change in the error rate. The shaded regions are related to the error in Equation~(\ref{eqn:logi_err_rate}).}
   \label{fig:logi_err_rate_unch}
 \end{figure}
 
@@ -321,7 +321,7 @@ where $\bar {\bm{s}}$ and $\hat {\bm {\Sigma}}$ are the sample mean vector and c
 \begin{figure}[!htbp]
 \centering
 \includegraphics[width = 1\linewidth, trim=.35in .69in .35in .69in, clip]{../figures/v14/flow_chart/Retrospective_1.png}
-\caption{The framework of monitoring/detecting concept drift based on the score function. Conducting retrospective analysis using MEWMA and/or score function clustering to ensure there is no significant concept drift in the data set used to train and set control limits. The size of data set can be recursively reduced if significant concept drift exists.}
+\caption{The framework of monitoring/detecting concept drift based on the score function. Conducting retrospective analysis using MEWMA and/or score function clustering to ensure there is no significant concept drift in the data set used to train and set control limits. The detailed procedure is following. The data set $\{\bm{x}_i, y_i\}_{i=1}^m$ was collected in time order. The entire data set is used to train a model and inspected retrospectively for significant concept drift. The two methods, MEWMA and score clustering can be used for this inspection. If no significant concept drift is spotted as shown in the above case, we can move to the next step. Otherwise, as shown in the below case, we can go back to the beginning and the size of data set can be recursively reduced by removing unstable data points if significant concept drift exists.}
   \label{fig:proc_mon_score_retro}
 \end{figure}
 
