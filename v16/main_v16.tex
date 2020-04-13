@@ -382,21 +382,21 @@ where $\bar {\bm{s}}$ and $\hat {\bm {\Sigma}}$ are the sample mean vector and c
 \begin{figure}[!htbp]
 \centering
 \includegraphics[width = 1\linewidth, trim=.35in .69in .35in .69in, clip]{../figures/v14/flow_chart/Retrospective_1.png}
-\caption{The framework of monitoring/detecting concept drift based on the score function. Conducting retrospective analysis using MEWMA and/or score function clustering to ensure there is no significant concept drift in the data set used to train and set control limits. The detailed procedure is following. The data set $\{\bm{x}_i, y_i\}_{i=1}^m$ was collected in time order. The entire data set is used to train a model and inspected retrospectively for significant concept drift. The two methods, MEWMA and score clustering can be used for this inspection. If no significant concept drift is spotted as shown in the above case, we can move to the next step. Otherwise, as shown in the below case, we can go back to the beginning and the size of data set can be recursively reduced by removing unstable data points if significant concept drift exists.}
+\caption{The framework of monitoring/detecting concept drift based on the score function. Conducting retrospective analysis using MEWMA to ensure there is no significant concept drift in the data set used for training and setting control limits. The detailed procedure is following. The data set $\{\bm{x}_i, y_i\}_{i=1}^m$ was collected in time order. The entire data set is used to train a model and inspected retrospectively for significant concept drift. If no significant concept drift is spotted as shown in the upper case, we can move to the next step. Otherwise, as shown in the lower case, we can go back to the beginning and the size of data set can be recursively reduced by removing unstable data points if significant concept drift exists.}
   \label{fig:proc_mon_score_retro}
 \end{figure}
 
 \begin{figure}
 \centering
 \includegraphics[width = 1\linewidth, trim=.35in .49in .35in .49in, clip]{../figures/v14/flow_chart/Monitoring_1.png}
-\caption{The framework of monitoring/detecting concept drift based on the score function. Monitoring concept drifts using the model and control limits obtained by processing training and Phase-I data sets, which will be demonstrated in Section~\ref{s:demon_cd} and~\ref{s:real_data}. In this subplot, three examples of possible results are given: gradual and abrupt concept drift and in-control cases.}
+\caption{The framework of monitoring/detecting concept drift based on the score function. Monitoring concept drifts using the model and control limits obtained by processing training, Phase-I, and Phase-II data sets, which will be demonstrated in Section~\ref{s:demon_cd} and~\ref{s:real_data}. The detailed procedure is following. Stationary data set obtained by the previous step is splitted into training and Phase-I data sets which are used to train model and calculate control limits respectively. Then, such control limits are used to monitor incoming data. In this subplot, three examples of possible results are given: gradual and abrupt concept drift and in-control cases.}
 \label{fig:proc_mon_score_monitoring}
 \end{figure}
 
 \begin{figure}
 \centering
-\includegraphics[width = 1\linewidth, trim=.35in .44in .35in .44in, clip]{../figures/v14/flow_chart/Diagnose_1.png}
-\caption{The framework of monitoring/detecting concept drift based on the score function. Visualization of diagnosing concept drift: The MEWMA for score vectors and the EWMA for individual predictors are visualized to show the origin of concept drift, which will be illustrated in Sections ~\ref{s:decou_cd},~\ref{s:demon_cd}, and~\ref{s:real_data}.}
+\includegraphics[width = 1\linewidth, trim=.35in .20in .35in .20in, clip]{../figures/v14/flow_chart/Diagnose_1.png}
+\caption{The framework of monitoring/detecting concept drift based on the score function. The MEWMA for score vectors and the EWMA for individual predictors are visualized to show the origin of concept drift, which will be illustrated in Sections~\ref{s:decou_cd},~\ref{s:demon_cd}, and~\ref{s:real_data}. The detailed procedure is following. The scores obtained are transformed by the Fisher information matrix in Equation~(\ref{eqn:cd_decomp_fisher_approx}) and then visualized in EWMA (univariate) control charts to find which components contribute to the concept drift. Here, we put illustrative plots for abrupt and gradual concept drifts, for which some components have concept drift but some do not.}
 \label{fig:proc_mon_score_diagnosis}
 \end{figure}
 
