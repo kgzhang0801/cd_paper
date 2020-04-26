@@ -523,7 +523,8 @@ Figure~\ref{fig:credit_default_diag} shows several representative univariate com
 
 The decoupled component EWMA chart for $\theta_1$ (right column, second from top) also shows clear upwards drift in $\theta_1$, which means that $x_1$ (credit risk score from an earlier model) should be given more weight in predicting credit risk as time evolves. The decoupled component EWMA chart for $\theta_2$ (right column, third from top) is less clear, because it wanders up ($\sim 2007$-Aug) then down ($\sim 2008$-Jan), then up again ($\sim 2008$-April). Rather than a change in the mean, which indicates a change in $P(Y|\bm{X};\bm{\theta})$, it could indicate a change in variance that results from a change in $P(\bm{X})$. Notice also that the corresponding plot in the left column is quite different than the decoupled version in the right column. Again, this is because the covariates are correlated, in which case the original score components conflate the drift in the parameters.  
 
-\begin{figure}[!htbp]
+% \begin{figure}[!htbp]
+\begin{figure}[H]
 \centering
  \includegraphics[width = 0.48\linewidth]{../figures/v14/credit_default/logi_scal_train_PI/pos_single_credit_mlines_with_regu_1e-08_0_0001_0_001_99_0.png}
   \includegraphics[width = 0.48\linewidth]{../figures/v14/credit_default/logi_scal_train_PI/pos_single_credit_fisher_mlines_with_regu_1e-08_0_0001_0_001_99_0.png}
@@ -535,6 +536,78 @@ The decoupled component EWMA chart for $\theta_1$ (right column, second from top
 
 \subsection{Bike Sharing data set}
 \label{ss:bs_ds}
+
+===========================================================
+New figures for bike sharing data set
+\begin{enumerate}
+    \item  Step A:
+    
+\begin{figure}[H]
+\centering
+    \begin{subfigure}[t]{0.49\linewidth}
+     \centering
+         \includegraphics[width=.8\textwidth, trim=.0in .0in .0in .0in, clip]{../figures/v14/bike_sharing/reg_lin_A/PII_neg_single_retro_bike_fisher_mlines_with_regu_1e-08_0_0001_0_01_99_99.png}
+     \captionsetup{width=.95\linewidth}
+     \caption{Retrospective Diagnosis plots for a model trained using raw bike rental counts.}
+     \label{fig:bs_raw_cnt}
+\end{subfigure}
+\caption{
+}
+\label{fig:bike_sharing_diag}
+\end{figure}
+
+\item Step B-1:
+
+\begin{figure}[H]
+\centering
+    \begin{subfigure}[t]{0.49\linewidth}
+     \centering
+         \includegraphics[width=.8\textwidth, trim=.0in .0in .0in .0in, clip]{../figures/v14/bike_sharing/reg_lin_B_1/PII_neg_single_retro_bike_fisher_mlines_with_regu_1e-08_0_0001_0_01_99_99.png}
+     \captionsetup{width=.95\linewidth}
+     \caption{Retrospective Diagnosis plots for a model trained using raw bike rental counts. The training data is from $2012$-Jun to $2015$-Jun, and the control limit is set based on training data, but applied on data from the beginning to end of $2017$.}
+     \label{fig:bs_raw_cnt}
+\end{subfigure}
+\caption{
+}
+\label{fig:bike_sharing_diag}
+\end{figure}
+
+\item Step B-2:
+
+\begin{figure}[H]
+\centering
+    \begin{subfigure}[t]{0.49\linewidth}
+     \centering
+         \includegraphics[width=.8\textwidth, trim=.0in .0in .0in .0in, clip]{../figures/v14/bike_sharing/reg_lin_B_2/PII_neg_single_retro_bike_fisher_mlines_with_regu_1e-08_0_0001_0_01_99_99.png}
+     \captionsetup{width=.95\linewidth}
+     \caption{Retrospective Diagnosis plots for a model trained using raw bike rental counts. The training data is from the beginning to end of $2017$, and the control limit is set based on data from $2012$-Jun to $2015$-Jun, but applied on the training data.}
+     \label{fig:bs_raw_cnt}
+\end{subfigure}
+\caption{
+}
+\label{fig:bike_sharing_diag}
+\end{figure}
+
+\item Step C:
+
+\begin{figure}[H]
+\centering
+    \begin{subfigure}[t]{0.49\linewidth}
+     \centering
+         \includegraphics[width=.8\textwidth, trim=.0in .0in .0in .0in, clip]{../figures/v14/bike_sharing/reg_lin_C/PII_pos_single_retro_bike_fisher_mlines_with_regu_1e-08_0_0001_0_01_99_99.png}
+     \captionsetup{width=.95\linewidth}
+     \caption{Retrospective Diagnosis plots for a model trained using normalized bike rental counts (using yearly mean). The training data is from the beginning to end of $2017$, and the control limit is set based on the training data.}
+     \label{fig:bs_raw_cnt}
+\end{subfigure}
+\caption{
+}
+\label{fig:bike_sharing_diag}
+\end{figure}
+
+\end{enumerate}
+
+
+===========================================================
 
 The bike sharing data set\footnote{https://www.capitalbikeshare.com/system-data} comes from hourly-aggregated loggings of the Captial Bikeshare system in $7$ jurisdictions of the Washington metropolitan area from $2010$--$2020$, integrated with hourly weather data\footnote{https://www.freemeteo.com} over the same time period. The total sample size is $n=82093$, and each row corresponds to one hour, with the ($y$) being the number of bike rentals that hour, and the covariates ($\bm {x}$) being time- and environmental-related associated with that hour. We use the same definitions and preprocessing procedures described for the UCI data set\footnote{https://archive.ics.uci.edu/
 ml/datasets/Bike+Sharing+Dataset}~(\cite{fanaee2014event}). The $d=11$ covariates are year ($x_1$, numerical with $11$ integer values from 2010 to 2020), month ($x_2$, categorical with $12$ categories: $1=Jan, 2=Feb, \cdots, 12=Dec$), hour ($x_3$, categorical with $24$ categories: $\{0,1,\cdots,23\}$), holiday ($x_4$, binary: $0=non-holiday,1=holiday$), weekday ($x_5$, categorical with $7$ categories: 
