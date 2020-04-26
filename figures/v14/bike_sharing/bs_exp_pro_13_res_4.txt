@@ -1,0 +1,386 @@
+2020-04-25 23:46:17.083638: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer.so.6'; dlerror: libnvinfer.so.6: cannot open shared object file: No such file or directory
+2020-04-25 23:46:17.083885: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer_plugin.so.6'; dlerror: libnvinfer_plugin.so.6: cannot open shared object file: No such file or directory
+2020-04-25 23:46:17.083909: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:30] Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.
+/home/kzy816/.local/lib/python3.7/site-packages/statsmodels/tools/_testing.py:19: FutureWarning: pandas.util.testing is deprecated. Use the functions in the public API at pandas.testing instead.
+  import pandas.util.testing as tm
+The start date is 2010-09-20 00:00:00.
+I0425 23:46:24.200856 47610183294656 utils.py:129] Note: NumExpr detected 28 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.
+I0425 23:46:24.201059 47610183294656 utils.py:141] NumExpr defaulting to 8 threads.
+The training end date is 20140919.
+The PI end date is 20150919.
+The Entire end date is 2020-01-31 00:00:00.
+I0425 23:46:25.405346 47610183294656 utils.py:191] The size of data for building model: (15024, 626)(training: (10016, 626); validation(5008, 626)); Phase-I: (8760, 626); Phase-II: (38304, 626).
+
+The mean and std of X_train is: [3.075080e-02 2.013415e+03 5.091853e-02 4.762380e-02 ... 2.201640e-01 5.343194e-02 6.150920e-02 1.484748e-02], [0.172642 0.492745 0.219831 0.212969 ... 0.325777 0.204487 0.108251 0.065008].
+I0425 23:46:26.016967 47610183294656 concept_drift_bike_sharing_keras_reg.py:153] The columns names of covariates: ['holiday1', 'yr', 'factor(mnth)10', 'factor(mnth)11', 'factor(mnth)12', 'factor(mnth)2', 'factor(mnth)3', 'factor(mnth)4', 'factor(mnth)5', 'factor(mnth)6', 'factor(mnth)7', 'factor(mnth)8', 'factor(mnth)9', 'factor(weekday)1', 'factor(weekday)2', 'factor(weekday)3', 'factor(weekday)4', 'factor(weekday)5', 'factor(weekday)6', 'factor(hr)1', 'factor(hr)10', 'factor(hr)11', 'factor(hr)12', 'factor(hr)13', 'factor(hr)14', 'factor(hr)15', 'factor(hr)16', 'factor(hr)17', 'factor(hr)18', 'factor(hr)19', 'factor(hr)2', 'factor(hr)20', 'factor(hr)21', 'factor(hr)22', 'factor(hr)23', 'factor(hr)3', 'factor(hr)4', 'factor(hr)5', 'factor(hr)6', 'factor(hr)7', 'factor(hr)8', 'factor(hr)9', 'factor(holiday)1', 'factor(weathersit_cat)2', 'factor(weathersit_cat)3', 'temp', 'hum', 'windspeed', 'factor(weekday)1:factor(hr)1', 'factor(weekday)2:factor(hr)1', 'factor(weekday)3:factor(hr)1', 'factor(weekday)4:factor(hr)1', 'factor(weekday)5:factor(hr)1', 'factor(weekday)6:factor(hr)1', 'factor(weekday)1:factor(hr)10', 'factor(weekday)2:factor(hr)10', 'factor(weekday)3:factor(hr)10', 'factor(weekday)4:factor(hr)10', 'factor(weekday)5:factor(hr)10', 'factor(weekday)6:factor(hr)10', 'factor(weekday)1:factor(hr)11', 'factor(weekday)2:factor(hr)11', 'factor(weekday)3:factor(hr)11', 'factor(weekday)4:factor(hr)11', 'factor(weekday)5:factor(hr)11', 'factor(weekday)6:factor(hr)11', 'factor(weekday)1:factor(hr)12', 'factor(weekday)2:factor(hr)12', 'factor(weekday)3:factor(hr)12', 'factor(weekday)4:factor(hr)12', 'factor(weekday)5:factor(hr)12', 'factor(weekday)6:factor(hr)12', 'factor(weekday)1:factor(hr)13', 'factor(weekday)2:factor(hr)13', 'factor(weekday)3:factor(hr)13', 'factor(weekday)4:factor(hr)13', 'factor(weekday)5:factor(hr)13', 'factor(weekday)6:factor(hr)13', 'factor(weekday)1:factor(hr)14', 'factor(weekday)2:factor(hr)14', 'factor(weekday)3:factor(hr)14', 'factor(weekday)4:factor(hr)14', 'factor(weekday)5:factor(hr)14', 'factor(weekday)6:factor(hr)14', 'factor(weekday)1:factor(hr)15', 'factor(weekday)2:factor(hr)15', 'factor(weekday)3:factor(hr)15', 'factor(weekday)4:factor(hr)15', 'factor(weekday)5:factor(hr)15', 'factor(weekday)6:factor(hr)15', 'factor(weekday)1:factor(hr)16', 'factor(weekday)2:factor(hr)16', 'factor(weekday)3:factor(hr)16', 'factor(weekday)4:factor(hr)16', 'factor(weekday)5:factor(hr)16', 'factor(weekday)6:factor(hr)16', 'factor(weekday)1:factor(hr)17', 'factor(weekday)2:factor(hr)17', 'factor(weekday)3:factor(hr)17', 'factor(weekday)4:factor(hr)17', 'factor(weekday)5:factor(hr)17', 'factor(weekday)6:factor(hr)17', 'factor(weekday)1:factor(hr)18', 'factor(weekday)2:factor(hr)18', 'factor(weekday)3:factor(hr)18', 'factor(weekday)4:factor(hr)18', 'factor(weekday)5:factor(hr)18', 'factor(weekday)6:factor(hr)18', 'factor(weekday)1:factor(hr)19', 'factor(weekday)2:factor(hr)19', 'factor(weekday)3:factor(hr)19', 'factor(weekday)4:factor(hr)19', 'factor(weekday)5:factor(hr)19', 'factor(weekday)6:factor(hr)19', 'factor(weekday)1:factor(hr)2', 'factor(weekday)2:factor(hr)2', 'factor(weekday)3:factor(hr)2', 'factor(weekday)4:factor(hr)2', 'factor(weekday)5:factor(hr)2', 'factor(weekday)6:factor(hr)2', 'factor(weekday)1:factor(hr)20', 'factor(weekday)2:factor(hr)20', 'factor(weekday)3:factor(hr)20', 'factor(weekday)4:factor(hr)20', 'factor(weekday)5:factor(hr)20', 'factor(weekday)6:factor(hr)20', 'factor(weekday)1:factor(hr)21', 'factor(weekday)2:factor(hr)21', 'factor(weekday)3:factor(hr)21', 'factor(weekday)4:factor(hr)21', 'factor(weekday)5:factor(hr)21', 'factor(weekday)6:factor(hr)21', 'factor(weekday)1:factor(hr)22', 'factor(weekday)2:factor(hr)22', 'factor(weekday)3:factor(hr)22', 'factor(weekday)4:factor(hr)22', 'factor(weekday)5:factor(hr)22', 'factor(weekday)6:factor(hr)22', 'factor(weekday)1:factor(hr)23', 'factor(weekday)2:factor(hr)23', 'factor(weekday)3:factor(hr)23', 'factor(weekday)4:factor(hr)23', 'factor(weekday)5:factor(hr)23', 'factor(weekday)6:factor(hr)23', 'factor(weekday)1:factor(hr)3', 'factor(weekday)2:factor(hr)3', 'factor(weekday)3:factor(hr)3', 'factor(weekday)4:factor(hr)3', 'factor(weekday)5:factor(hr)3', 'factor(weekday)6:factor(hr)3', 'factor(weekday)1:factor(hr)4', 'factor(weekday)2:factor(hr)4', 'factor(weekday)3:factor(hr)4', 'factor(weekday)4:factor(hr)4', 'factor(weekday)5:factor(hr)4', 'factor(weekday)6:factor(hr)4', 'factor(weekday)1:factor(hr)5', 'factor(weekday)2:factor(hr)5', 'factor(weekday)3:factor(hr)5', 'factor(weekday)4:factor(hr)5', 'factor(weekday)5:factor(hr)5', 'factor(weekday)6:factor(hr)5', 'factor(weekday)1:factor(hr)6', 'factor(weekday)2:factor(hr)6', 'factor(weekday)3:factor(hr)6', 'factor(weekday)4:factor(hr)6', 'factor(weekday)5:factor(hr)6', 'factor(weekday)6:factor(hr)6', 'factor(weekday)1:factor(hr)7', 'factor(weekday)2:factor(hr)7', 'factor(weekday)3:factor(hr)7', 'factor(weekday)4:factor(hr)7', 'factor(weekday)5:factor(hr)7', 'factor(weekday)6:factor(hr)7', 'factor(weekday)1:factor(hr)8', 'factor(weekday)2:factor(hr)8', 'factor(weekday)3:factor(hr)8', 'factor(weekday)4:factor(hr)8', 'factor(weekday)5:factor(hr)8', 'factor(weekday)6:factor(hr)8', 'factor(weekday)1:factor(hr)9', 'factor(weekday)2:factor(hr)9', 'factor(weekday)3:factor(hr)9', 'factor(weekday)4:factor(hr)9', 'factor(weekday)5:factor(hr)9', 'factor(weekday)6:factor(hr)9', 'factor(mnth)10:factor(hr)1', 'factor(mnth)11:factor(hr)1', 'factor(mnth)12:factor(hr)1', 'factor(mnth)2:factor(hr)1', 'factor(mnth)3:factor(hr)1', 'factor(mnth)4:factor(hr)1', 'factor(mnth)5:factor(hr)1', 'factor(mnth)6:factor(hr)1', 'factor(mnth)7:factor(hr)1', 'factor(mnth)8:factor(hr)1', 'factor(mnth)9:factor(hr)1', 'factor(mnth)10:factor(hr)10', 'factor(mnth)11:factor(hr)10', 'factor(mnth)12:factor(hr)10', 'factor(mnth)2:factor(hr)10', 'factor(mnth)3:factor(hr)10', 'factor(mnth)4:factor(hr)10', 'factor(mnth)5:factor(hr)10', 'factor(mnth)6:factor(hr)10', 'factor(mnth)7:factor(hr)10', 'factor(mnth)8:factor(hr)10', 'factor(mnth)9:factor(hr)10', 'factor(mnth)10:factor(hr)11', 'factor(mnth)11:factor(hr)11', 'factor(mnth)12:factor(hr)11', 'factor(mnth)2:factor(hr)11', 'factor(mnth)3:factor(hr)11', 'factor(mnth)4:factor(hr)11', 'factor(mnth)5:factor(hr)11', 'factor(mnth)6:factor(hr)11', 'factor(mnth)7:factor(hr)11', 'factor(mnth)8:factor(hr)11', 'factor(mnth)9:factor(hr)11', 'factor(mnth)10:factor(hr)12', 'factor(mnth)11:factor(hr)12', 'factor(mnth)12:factor(hr)12', 'factor(mnth)2:factor(hr)12', 'factor(mnth)3:factor(hr)12', 'factor(mnth)4:factor(hr)12', 'factor(mnth)5:factor(hr)12', 'factor(mnth)6:factor(hr)12', 'factor(mnth)7:factor(hr)12', 'factor(mnth)8:factor(hr)12', 'factor(mnth)9:factor(hr)12', 'factor(mnth)10:factor(hr)13', 'factor(mnth)11:factor(hr)13', 'factor(mnth)12:factor(hr)13', 'factor(mnth)2:factor(hr)13', 'factor(mnth)3:factor(hr)13', 'factor(mnth)4:factor(hr)13', 'factor(mnth)5:factor(hr)13', 'factor(mnth)6:factor(hr)13', 'factor(mnth)7:factor(hr)13', 'factor(mnth)8:factor(hr)13', 'factor(mnth)9:factor(hr)13', 'factor(mnth)10:factor(hr)14', 'factor(mnth)11:factor(hr)14', 'factor(mnth)12:factor(hr)14', 'factor(mnth)2:factor(hr)14', 'factor(mnth)3:factor(hr)14', 'factor(mnth)4:factor(hr)14', 'factor(mnth)5:factor(hr)14', 'factor(mnth)6:factor(hr)14', 'factor(mnth)7:factor(hr)14', 'factor(mnth)8:factor(hr)14', 'factor(mnth)9:factor(hr)14', 'factor(mnth)10:factor(hr)15', 'factor(mnth)11:factor(hr)15', 'factor(mnth)12:factor(hr)15', 'factor(mnth)2:factor(hr)15', 'factor(mnth)3:factor(hr)15', 'factor(mnth)4:factor(hr)15', 'factor(mnth)5:factor(hr)15', 'factor(mnth)6:factor(hr)15', 'factor(mnth)7:factor(hr)15', 'factor(mnth)8:factor(hr)15', 'factor(mnth)9:factor(hr)15', 'factor(mnth)10:factor(hr)16', 'factor(mnth)11:factor(hr)16', 'factor(mnth)12:factor(hr)16', 'factor(mnth)2:factor(hr)16', 'factor(mnth)3:factor(hr)16', 'factor(mnth)4:factor(hr)16', 'factor(mnth)5:factor(hr)16', 'factor(mnth)6:factor(hr)16', 'factor(mnth)7:factor(hr)16', 'factor(mnth)8:factor(hr)16', 'factor(mnth)9:factor(hr)16', 'factor(mnth)10:factor(hr)17', 'factor(mnth)11:factor(hr)17', 'factor(mnth)12:factor(hr)17', 'factor(mnth)2:factor(hr)17', 'factor(mnth)3:factor(hr)17', 'factor(mnth)4:factor(hr)17', 'factor(mnth)5:factor(hr)17', 'factor(mnth)6:factor(hr)17', 'factor(mnth)7:factor(hr)17', 'factor(mnth)8:factor(hr)17', 'factor(mnth)9:factor(hr)17', 'factor(mnth)10:factor(hr)18', 'factor(mnth)11:factor(hr)18', 'factor(mnth)12:factor(hr)18', 'factor(mnth)2:factor(hr)18', 'factor(mnth)3:factor(hr)18', 'factor(mnth)4:factor(hr)18', 'factor(mnth)5:factor(hr)18', 'factor(mnth)6:factor(hr)18', 'factor(mnth)7:factor(hr)18', 'factor(mnth)8:factor(hr)18', 'factor(mnth)9:factor(hr)18', 'factor(mnth)10:factor(hr)19', 'factor(mnth)11:factor(hr)19', 'factor(mnth)12:factor(hr)19', 'factor(mnth)2:factor(hr)19', 'factor(mnth)3:factor(hr)19', 'factor(mnth)4:factor(hr)19', 'factor(mnth)5:factor(hr)19', 'factor(mnth)6:factor(hr)19', 'factor(mnth)7:factor(hr)19', 'factor(mnth)8:factor(hr)19', 'factor(mnth)9:factor(hr)19', 'factor(mnth)10:factor(hr)2', 'factor(mnth)11:factor(hr)2', 'factor(mnth)12:factor(hr)2', 'factor(mnth)2:factor(hr)2', 'factor(mnth)3:factor(hr)2', 'factor(mnth)4:factor(hr)2', 'factor(mnth)5:factor(hr)2', 'factor(mnth)6:factor(hr)2', 'factor(mnth)7:factor(hr)2', 'factor(mnth)8:factor(hr)2', 'factor(mnth)9:factor(hr)2', 'factor(mnth)10:factor(hr)20', 'factor(mnth)11:factor(hr)20', 'factor(mnth)12:factor(hr)20', 'factor(mnth)2:factor(hr)20', 'factor(mnth)3:factor(hr)20', 'factor(mnth)4:factor(hr)20', 'factor(mnth)5:factor(hr)20', 'factor(mnth)6:factor(hr)20', 'factor(mnth)7:factor(hr)20', 'factor(mnth)8:factor(hr)20', 'factor(mnth)9:factor(hr)20', 'factor(mnth)10:factor(hr)21', 'factor(mnth)11:factor(hr)21', 'factor(mnth)12:factor(hr)21', 'factor(mnth)2:factor(hr)21', 'factor(mnth)3:factor(hr)21', 'factor(mnth)4:factor(hr)21', 'factor(mnth)5:factor(hr)21', 'factor(mnth)6:factor(hr)21', 'factor(mnth)7:factor(hr)21', 'factor(mnth)8:factor(hr)21', 'factor(mnth)9:factor(hr)21', 'factor(mnth)10:factor(hr)22', 'factor(mnth)11:factor(hr)22', 'factor(mnth)12:factor(hr)22', 'factor(mnth)2:factor(hr)22', 'factor(mnth)3:factor(hr)22', 'factor(mnth)4:factor(hr)22', 'factor(mnth)5:factor(hr)22', 'factor(mnth)6:factor(hr)22', 'factor(mnth)7:factor(hr)22', 'factor(mnth)8:factor(hr)22', 'factor(mnth)9:factor(hr)22', 'factor(mnth)10:factor(hr)23', 'factor(mnth)11:factor(hr)23', 'factor(mnth)12:factor(hr)23', 'factor(mnth)2:factor(hr)23', 'factor(mnth)3:factor(hr)23', 'factor(mnth)4:factor(hr)23', 'factor(mnth)5:factor(hr)23', 'factor(mnth)6:factor(hr)23', 'factor(mnth)7:factor(hr)23', 'factor(mnth)8:factor(hr)23', 'factor(mnth)9:factor(hr)23', 'factor(mnth)10:factor(hr)3', 'factor(mnth)11:factor(hr)3', 'factor(mnth)12:factor(hr)3', 'factor(mnth)2:factor(hr)3', 'factor(mnth)3:factor(hr)3', 'factor(mnth)4:factor(hr)3', 'factor(mnth)5:factor(hr)3', 'factor(mnth)6:factor(hr)3', 'factor(mnth)7:factor(hr)3', 'factor(mnth)8:factor(hr)3', 'factor(mnth)9:factor(hr)3', 'factor(mnth)10:factor(hr)4', 'factor(mnth)11:factor(hr)4', 'factor(mnth)12:factor(hr)4', 'factor(mnth)2:factor(hr)4', 'factor(mnth)3:factor(hr)4', 'factor(mnth)4:factor(hr)4', 'factor(mnth)5:factor(hr)4', 'factor(mnth)6:factor(hr)4', 'factor(mnth)7:factor(hr)4', 'factor(mnth)8:factor(hr)4', 'factor(mnth)9:factor(hr)4', 'factor(mnth)10:factor(hr)5', 'factor(mnth)11:factor(hr)5', 'factor(mnth)12:factor(hr)5', 'factor(mnth)2:factor(hr)5', 'factor(mnth)3:factor(hr)5', 'factor(mnth)4:factor(hr)5', 'factor(mnth)5:factor(hr)5', 'factor(mnth)6:factor(hr)5', 'factor(mnth)7:factor(hr)5', 'factor(mnth)8:factor(hr)5', 'factor(mnth)9:factor(hr)5', 'factor(mnth)10:factor(hr)6', 'factor(mnth)11:factor(hr)6', 'factor(mnth)12:factor(hr)6', 'factor(mnth)2:factor(hr)6', 'factor(mnth)3:factor(hr)6', 'factor(mnth)4:factor(hr)6', 'factor(mnth)5:factor(hr)6', 'factor(mnth)6:factor(hr)6', 'factor(mnth)7:factor(hr)6', 'factor(mnth)8:factor(hr)6', 'factor(mnth)9:factor(hr)6', 'factor(mnth)10:factor(hr)7', 'factor(mnth)11:factor(hr)7', 'factor(mnth)12:factor(hr)7', 'factor(mnth)2:factor(hr)7', 'factor(mnth)3:factor(hr)7', 'factor(mnth)4:factor(hr)7', 'factor(mnth)5:factor(hr)7', 'factor(mnth)6:factor(hr)7', 'factor(mnth)7:factor(hr)7', 'factor(mnth)8:factor(hr)7', 'factor(mnth)9:factor(hr)7', 'factor(mnth)10:factor(hr)8', 'factor(mnth)11:factor(hr)8', 'factor(mnth)12:factor(hr)8', 'factor(mnth)2:factor(hr)8', 'factor(mnth)3:factor(hr)8', 'factor(mnth)4:factor(hr)8', 'factor(mnth)5:factor(hr)8', 'factor(mnth)6:factor(hr)8', 'factor(mnth)7:factor(hr)8', 'factor(mnth)8:factor(hr)8', 'factor(mnth)9:factor(hr)8', 'factor(mnth)10:factor(hr)9', 'factor(mnth)11:factor(hr)9', 'factor(mnth)12:factor(hr)9', 'factor(mnth)2:factor(hr)9', 'factor(mnth)3:factor(hr)9', 'factor(mnth)4:factor(hr)9', 'factor(mnth)5:factor(hr)9', 'factor(mnth)6:factor(hr)9', 'factor(mnth)7:factor(hr)9', 'factor(mnth)8:factor(hr)9', 'factor(mnth)9:factor(hr)9', 'factor(mnth)10:factor(weekday)1', 'factor(mnth)11:factor(weekday)1', 'factor(mnth)12:factor(weekday)1', 'factor(mnth)2:factor(weekday)1', 'factor(mnth)3:factor(weekday)1', 'factor(mnth)4:factor(weekday)1', 'factor(mnth)5:factor(weekday)1', 'factor(mnth)6:factor(weekday)1', 'factor(mnth)7:factor(weekday)1', 'factor(mnth)8:factor(weekday)1', 'factor(mnth)9:factor(weekday)1', 'factor(mnth)10:factor(weekday)2', 'factor(mnth)11:factor(weekday)2', 'factor(mnth)12:factor(weekday)2', 'factor(mnth)2:factor(weekday)2', 'factor(mnth)3:factor(weekday)2', 'factor(mnth)4:factor(weekday)2', 'factor(mnth)5:factor(weekday)2', 'factor(mnth)6:factor(weekday)2', 'factor(mnth)7:factor(weekday)2', 'factor(mnth)8:factor(weekday)2', 'factor(mnth)9:factor(weekday)2', 'factor(mnth)10:factor(weekday)3', 'factor(mnth)11:factor(weekday)3', 'factor(mnth)12:factor(weekday)3', 'factor(mnth)2:factor(weekday)3', 'factor(mnth)3:factor(weekday)3', 'factor(mnth)4:factor(weekday)3', 'factor(mnth)5:factor(weekday)3', 'factor(mnth)6:factor(weekday)3', 'factor(mnth)7:factor(weekday)3', 'factor(mnth)8:factor(weekday)3', 'factor(mnth)9:factor(weekday)3', 'factor(mnth)10:factor(weekday)4', 'factor(mnth)11:factor(weekday)4', 'factor(mnth)12:factor(weekday)4', 'factor(mnth)2:factor(weekday)4', 'factor(mnth)3:factor(weekday)4', 'factor(mnth)4:factor(weekday)4', 'factor(mnth)5:factor(weekday)4', 'factor(mnth)6:factor(weekday)4', 'factor(mnth)7:factor(weekday)4', 'factor(mnth)8:factor(weekday)4', 'factor(mnth)9:factor(weekday)4', 'factor(mnth)10:factor(weekday)5', 'factor(mnth)11:factor(weekday)5', 'factor(mnth)12:factor(weekday)5', 'factor(mnth)2:factor(weekday)5', 'factor(mnth)3:factor(weekday)5', 'factor(mnth)4:factor(weekday)5', 'factor(mnth)5:factor(weekday)5', 'factor(mnth)6:factor(weekday)5', 'factor(mnth)7:factor(weekday)5', 'factor(mnth)8:factor(weekday)5', 'factor(mnth)9:factor(weekday)5', 'factor(mnth)10:factor(weekday)6', 'factor(mnth)11:factor(weekday)6', 'factor(mnth)12:factor(weekday)6', 'factor(mnth)2:factor(weekday)6', 'factor(mnth)3:factor(weekday)6', 'factor(mnth)4:factor(weekday)6', 'factor(mnth)5:factor(weekday)6', 'factor(mnth)6:factor(weekday)6', 'factor(mnth)7:factor(weekday)6', 'factor(mnth)8:factor(weekday)6', 'factor(mnth)9:factor(weekday)6', 'factor(hr)1:factor(holiday)1', 'factor(hr)10:factor(holiday)1', 'factor(hr)11:factor(holiday)1', 'factor(hr)12:factor(holiday)1', 'factor(hr)13:factor(holiday)1', 'factor(hr)14:factor(holiday)1', 'factor(hr)15:factor(holiday)1', 'factor(hr)16:factor(holiday)1', 'factor(hr)17:factor(holiday)1', 'factor(hr)18:factor(holiday)1', 'factor(hr)19:factor(holiday)1', 'factor(hr)2:factor(holiday)1', 'factor(hr)20:factor(holiday)1', 'factor(hr)21:factor(holiday)1', 'factor(hr)22:factor(holiday)1', 'factor(hr)23:factor(holiday)1', 'factor(hr)3:factor(holiday)1', 'factor(hr)4:factor(holiday)1', 'factor(hr)5:factor(holiday)1', 'factor(hr)6:factor(holiday)1', 'factor(hr)7:factor(holiday)1', 'factor(hr)8:factor(holiday)1', 'factor(hr)9:factor(holiday)1', 'factor(mnth)10:factor(weathersit_cat)2', 'factor(mnth)11:factor(weathersit_cat)2', 'factor(mnth)12:factor(weathersit_cat)2', 'factor(mnth)2:factor(weathersit_cat)2', 'factor(mnth)3:factor(weathersit_cat)2', 'factor(mnth)4:factor(weathersit_cat)2', 'factor(mnth)5:factor(weathersit_cat)2', 'factor(mnth)6:factor(weathersit_cat)2', 'factor(mnth)7:factor(weathersit_cat)2', 'factor(mnth)8:factor(weathersit_cat)2', 'factor(mnth)9:factor(weathersit_cat)2', 'factor(mnth)10:factor(weathersit_cat)3', 'factor(mnth)11:factor(weathersit_cat)3', 'factor(mnth)12:factor(weathersit_cat)3', 'factor(mnth)2:factor(weathersit_cat)3', 'factor(mnth)3:factor(weathersit_cat)3', 'factor(mnth)4:factor(weathersit_cat)3', 'factor(mnth)5:factor(weathersit_cat)3', 'factor(mnth)6:factor(weathersit_cat)3', 'factor(mnth)7:factor(weathersit_cat)3', 'factor(mnth)8:factor(weathersit_cat)3', 'factor(mnth)9:factor(weathersit_cat)3', 'factor(weekday)1:factor(weathersit_cat)2', 'factor(weekday)2:factor(weathersit_cat)2', 'factor(weekday)3:factor(weathersit_cat)2', 'factor(weekday)4:factor(weathersit_cat)2', 'factor(weekday)5:factor(weathersit_cat)2', 'factor(weekday)6:factor(weathersit_cat)2', 'factor(weekday)1:factor(weathersit_cat)3', 'factor(weekday)2:factor(weathersit_cat)3', 'factor(weekday)3:factor(weathersit_cat)3', 'factor(weekday)4:factor(weathersit_cat)3', 'factor(weekday)5:factor(weathersit_cat)3', 'factor(weekday)6:factor(weathersit_cat)3', 'factor(hr)1:factor(weathersit_cat)2', 'factor(hr)10:factor(weathersit_cat)2', 'factor(hr)11:factor(weathersit_cat)2', 'factor(hr)12:factor(weathersit_cat)2', 'factor(hr)13:factor(weathersit_cat)2', 'factor(hr)14:factor(weathersit_cat)2', 'factor(hr)15:factor(weathersit_cat)2', 'factor(hr)16:factor(weathersit_cat)2', 'factor(hr)17:factor(weathersit_cat)2', 'factor(hr)18:factor(weathersit_cat)2', 'factor(hr)19:factor(weathersit_cat)2', 'factor(hr)2:factor(weathersit_cat)2', 'factor(hr)20:factor(weathersit_cat)2', 'factor(hr)21:factor(weathersit_cat)2', 'factor(hr)22:factor(weathersit_cat)2', 'factor(hr)23:factor(weathersit_cat)2', 'factor(hr)3:factor(weathersit_cat)2', 'factor(hr)4:factor(weathersit_cat)2', 'factor(hr)5:factor(weathersit_cat)2', 'factor(hr)6:factor(weathersit_cat)2', 'factor(hr)7:factor(weathersit_cat)2', 'factor(hr)8:factor(weathersit_cat)2', 'factor(hr)9:factor(weathersit_cat)2', 'factor(hr)1:factor(weathersit_cat)3', 'factor(hr)10:factor(weathersit_cat)3', 'factor(hr)11:factor(weathersit_cat)3', 'factor(hr)12:factor(weathersit_cat)3', 'factor(hr)13:factor(weathersit_cat)3', 'factor(hr)14:factor(weathersit_cat)3', 'factor(hr)15:factor(weathersit_cat)3', 'factor(hr)16:factor(weathersit_cat)3', 'factor(hr)17:factor(weathersit_cat)3', 'factor(hr)18:factor(weathersit_cat)3', 'factor(hr)19:factor(weathersit_cat)3', 'factor(hr)2:factor(weathersit_cat)3', 'factor(hr)20:factor(weathersit_cat)3', 'factor(hr)21:factor(weathersit_cat)3', 'factor(hr)22:factor(weathersit_cat)3', 'factor(hr)23:factor(weathersit_cat)3', 'factor(hr)3:factor(weathersit_cat)3', 'factor(hr)4:factor(weathersit_cat)3', 'factor(hr)5:factor(weathersit_cat)3', 'factor(hr)6:factor(weathersit_cat)3', 'factor(hr)7:factor(weathersit_cat)3', 'factor(hr)8:factor(weathersit_cat)3', 'factor(hr)9:factor(weathersit_cat)3', 'factor(weathersit_cat)2:temp', 'factor(weathersit_cat)3:temp', 'factor(weathersit_cat)2:hum', 'factor(weathersit_cat)3:hum', 'factor(weathersit_cat)2:windspeed', 'factor(weathersit_cat)3:windspeed'].
+I0425 23:46:26.019011 47610183294656 concept_drift_bike_sharing_keras_reg.py:154] The size of covariates: 614.
+Input shape
+(15024, 614) (15024,) (8760, 614) (8760,) (38304, 614) (38304,)
+(array([], dtype=int64), array([], dtype=int64)) (array([], dtype=int64),)
+I0425 23:46:28.139988 47610183294656 regressors.py:902] The Ridge cv coef: [ 0.001819  0.013759 -0.000493  0.002474 ... -0.011698 -0.01342  -0.004126 -0.003895];
+The intercept: 0.20701101844153233;
+The penalization param: 10.0.
+
+I0425 23:46:28.184501 47610183294656 regressors.py:904] The score for training Ridge cv: 0.9208908067537782
+
+I0425 23:46:28.266684 47610183294656 regressors.py:963] The parameter of ridge regression model (2020_04_25_23_46_26_019141) is
+ [[ 0.00182   0.013759 -0.000489  0.002476 ... -0.013439 -0.004126 -0.003896  0.207011]]
+I0425 23:46:28.280131 47610183294656 regressors.py:976] The parameter of reloaded ridge regression model (2020_04_25_23_46_26_019141) is
+ [[ 0.00182   0.013759 -0.000489  0.002476 ... -0.013439 -0.004126 -0.003896  0.207011]]
+I0425 23:46:28.623667 47610183294656 regressors.py:1001] Condition # for Fisher Info Mat (before adding fisher nugget): 1.0988348997515107e+17
+I0425 23:46:28.677681 47610183294656 regressors.py:1007] Condition # for Fisher Info Mat (after adding penalization nugget): 1460300050.6884067
+I0425 23:46:28.858135 47610183294656 utils.py:293] The largest eigen-value is [0.047984].
+
+I0425 23:46:28.858321 47610183294656 utils.py:295] The identity matrix need to add: a nugget 0.0001 and the factor to ensure condition number is 4.79841952488761e-06.
+I0425 23:46:29.110649 47610183294656 regressors.py:1001] Condition # for Fisher Info Mat (before adding fisher nugget): 1.3744875534161918e+16
+I0425 23:46:29.161965 47610183294656 regressors.py:1007] Condition # for Fisher Info Mat (after adding penalization nugget): 1763332969.0413458
+I0425 23:46:29.259575 47610183294656 utils.py:293] The largest eigen-value is [0.112918].
+
+I0425 23:46:29.259760 47610183294656 utils.py:295] The identity matrix need to add: a nugget 0.0001 and the factor to ensure condition number is 1.1291806515356276e-05.
+I0425 23:46:29.283630 47610183294656 regressors.py:1050] The score for testing PI Ridge cv: 0.8847234205222466
+
+I0425 23:46:29.660647 47610183294656 regressors.py:1072] The score for testing PII Ridge cv: 0.7559837389844978
+
+0.9208909012578408
+0.8847234205222466
+0.7559837389844978
+I0425 23:46:30.549328 47610183294656 concept_drift_bike_sharing_keras_reg.py:444] The R-squared score for training, PI, and PII in original unit are: 0.9209, 0.8847, 0.7560.
+
+The offset is 0; the condition number is 0.0001.
+Plot training metrics for different metrics together.
+
+Calculate ewma score with shape (15024, 615) takes 0.11337494850158691s.
+Calculate Hotelling T2 of score with shape (15024, 615) takes 9.646948099136353s.
+Calculate ewma score with shape (15024, 1) takes 0.060088396072387695s.
+Calculate ewma score with shape (15024, 1) takes 0.059917449951171875s.
+(15024,) (0,) (15024,) (0,) (15024,) (0,)
+From HotellingT2CC_Other_Score2----------
+
+Plot PIPII three metrics together.
+
+Calculate ewma score with shape (8760, 615) takes 0.0774986743927002s.
+Calculate Hotelling T2 of score with shape (8760, 615) takes 5.580637216567993s.
+Calculate ewma score with shape (38304, 615) takes 0.29837608337402344s.
+Calculate Hotelling T2 of score with shape (38304, 615) takes 2.2959864139556885s.
+Calculate ewma score with shape (8760, 1) takes 0.035868167877197266s.
+Calculate ewma score with shape (38304, 1) takes 0.1531078815460205s.
+Calculate ewma score with shape (8760, 1) takes 0.03478884696960449s.
+Calculate ewma score with shape (38304, 1) takes 0.15248870849609375s.
+(8760,) (38304,) (8760,) (38304,) (8760,) (38304,)
+From HotellingT2CC_Other_Score2----------
+
+Plot Hotelling T2 without scaling.
+
+Calculate ewma score with shape (8760, 615) takes 0.07837533950805664s.
+Calculate Hotelling T2 of score with shape (8760, 615) takes 5.5923144817352295s.
+Calculate ewma score with shape (38304, 615) takes 0.30113959312438965s.
+Calculate Hotelling T2 of score with shape (38304, 615) takes 2.305330753326416s.
+Calculate ewma score with shape (8760, 1) takes 0.02991795539855957s.
+Calculate Hotelling T2 of score with shape (8760, 1) takes 0.09474778175354004s.
+Calculate ewma score with shape (38304, 1) takes 0.12802386283874512s.
+Calculate Hotelling T2 of score with shape (38304, 1) takes 0.38133764266967773s.
+Calculate ewma score with shape (8760, 1) takes 0.029210805892944336s.
+Calculate Hotelling T2 of score with shape (8760, 1) takes 0.09787940979003906s.
+Calculate ewma score with shape (38304, 1) takes 0.12752556800842285s.
+Calculate Hotelling T2 of score with shape (38304, 1) takes 0.385617733001709s.
+Calculate ewma score with shape (8760, 1) takes 0.02988600730895996s.
+Calculate Hotelling T2 of score with shape (8760, 1) takes 0.0955653190612793s.
+Calculate ewma score with shape (38304, 1) takes 0.1292111873626709s.
+Calculate Hotelling T2 of score with shape (38304, 1) takes 0.3803896903991699s.
+Calculate ewma score with shape (8760, 1) takes 0.028926372528076172s.
+Calculate Hotelling T2 of score with shape (8760, 1) takes 0.09658026695251465s.
+Calculate ewma score with shape (38304, 1) takes 0.12912917137145996s.
+Calculate Hotelling T2 of score with shape (38304, 1) takes 0.3866288661956787s.
+Calculate ewma score with shape (8760, 1) takes 0.02931976318359375s.
+Calculate Hotelling T2 of score with shape (8760, 1) takes 0.09671592712402344s.
+Calculate ewma score with shape (38304, 1) takes 0.12723755836486816s.
+Calculate Hotelling T2 of score with shape (38304, 1) takes 0.3874831199645996s.
+Calculate ewma score with shape (8760, 1) takes 0.029645442962646484s.
+Calculate Hotelling T2 of score with shape (8760, 1) takes 0.09668254852294922s.
+Calculate ewma score with shape (38304, 1) takes 0.12787294387817383s.
+Calculate Hotelling T2 of score with shape (38304, 1) takes 0.38498973846435547s.
+Calculate ewma score with shape (8760, 1) takes 0.029552698135375977s.
+Calculate Hotelling T2 of score with shape (8760, 1) takes 0.09677934646606445s.
+Calculate ewma score with shape (38304, 1) takes 0.12723517417907715s.
+Calculate Hotelling T2 of score with shape (38304, 1) takes 0.38049888610839844s.
+Calculate ewma score with shape (8760, 1) takes 0.036017656326293945s.
+Calculate Hotelling T2 of score with shape (8760, 1) takes 0.11662411689758301s.
+Calculate ewma score with shape (38304, 1) takes 0.15198659896850586s.
+Calculate Hotelling T2 of score with shape (38304, 1) takes 0.3907637596130371s.
+Calculate ewma score with shape (8760, 1) takes 0.03594970703125s.
+Calculate Hotelling T2 of score with shape (8760, 1) takes 0.11573314666748047s.
+Calculate ewma score with shape (38304, 1) takes 0.14857792854309082s.
+Calculate Hotelling T2 of score with shape (38304, 1) takes 0.38738393783569336s.
+Calculate ewma score with shape (8760, 1) takes 0.029411792755126953s.
+Calculate Hotelling T2 of score with shape (8760, 1) takes 0.09683728218078613s.
+Calculate ewma score with shape (38304, 1) takes 0.12657403945922852s.
+Calculate Hotelling T2 of score with shape (38304, 1) takes 0.39104461669921875s.
+Calculate ewma score with shape (8760, 1) takes 0.036104679107666016s.
+Calculate Hotelling T2 of score with shape (8760, 1) takes 0.11591911315917969s.
+Calculate ewma score with shape (38304, 1) takes 0.15305185317993164s.
+Calculate Hotelling T2 of score with shape (38304, 1) takes 0.39006519317626953s.
+Calculate ewma score with shape (8760, 1) takes 0.035874366760253906s.
+Calculate Hotelling T2 of score with shape (8760, 1) takes 0.11609506607055664s.
+Calculate ewma score with shape (38304, 1) takes 0.1512608528137207s.
+Calculate Hotelling T2 of score with shape (38304, 1) takes 0.39314818382263184s.
+Plot Hotelling T2 with scaling.
+
+Calculate ewma score with shape (8760, 615) takes 0.05663466453552246s.
+Calculate Hotelling T2 of score with shape (8760, 615) takes 5.530409812927246s.
+Calculate ewma score with shape (38304, 615) takes 0.24606752395629883s.
+Calculate Hotelling T2 of score with shape (38304, 615) takes 2.2428548336029053s.
+Calculate ewma score with shape (8760, 1) takes 0.02955007553100586s.
+Calculate Hotelling T2 of score with shape (8760, 1) takes 0.09750914573669434s.
+Calculate ewma score with shape (38304, 1) takes 0.12686419486999512s.
+Calculate Hotelling T2 of score with shape (38304, 1) takes 0.38954687118530273s.
+Calculate ewma score with shape (8760, 1) takes 0.028652667999267578s.
+Calculate Hotelling T2 of score with shape (8760, 1) takes 0.09464335441589355s.
+Calculate ewma score with shape (38304, 1) takes 0.12646269798278809s.
+Calculate Hotelling T2 of score with shape (38304, 1) takes 0.3725106716156006s.
+Calculate ewma score with shape (8760, 1) takes 0.029561281204223633s.
+Calculate Hotelling T2 of score with shape (8760, 1) takes 0.09670281410217285s.
+Calculate ewma score with shape (38304, 1) takes 0.1314387321472168s.
+Calculate Hotelling T2 of score with shape (38304, 1) takes 0.38611435890197754s.
+Calculate ewma score with shape (8760, 1) takes 0.0293734073638916s.
+Calculate Hotelling T2 of score with shape (8760, 1) takes 0.0955817699432373s.
+Calculate ewma score with shape (38304, 1) takes 0.12890911102294922s.
+Calculate Hotelling T2 of score with shape (38304, 1) takes 0.38471531867980957s.
+Calculate ewma score with shape (8760, 1) takes 0.02908611297607422s.
+Calculate Hotelling T2 of score with shape (8760, 1) takes 0.09678125381469727s.
+Calculate ewma score with shape (38304, 1) takes 0.12814044952392578s.
+Calculate Hotelling T2 of score with shape (38304, 1) takes 0.38666200637817383s.
+Calculate ewma score with shape (8760, 1) takes 0.02883315086364746s.
+Calculate Hotelling T2 of score with shape (8760, 1) takes 0.09633684158325195s.
+Calculate ewma score with shape (38304, 1) takes 0.12702322006225586s.
+Calculate Hotelling T2 of score with shape (38304, 1) takes 0.3852870464324951s.
+Calculate ewma score with shape (8760, 1) takes 0.028765439987182617s.
+Calculate Hotelling T2 of score with shape (8760, 1) takes 0.09710240364074707s.
+Calculate ewma score with shape (38304, 1) takes 0.12678861618041992s.
+Calculate Hotelling T2 of score with shape (38304, 1) takes 0.389249324798584s.
+Calculate ewma score with shape (8760, 1) takes 0.03489208221435547s.
+Calculate Hotelling T2 of score with shape (8760, 1) takes 0.11792707443237305s.
+Calculate ewma score with shape (38304, 1) takes 0.1588737964630127s.
+Calculate Hotelling T2 of score with shape (38304, 1) takes 0.43424534797668457s.
+Calculate ewma score with shape (8760, 1) takes 0.03535723686218262s.
+Calculate Hotelling T2 of score with shape (8760, 1) takes 0.1155707836151123s.
+Calculate ewma score with shape (38304, 1) takes 0.1543107032775879s.
+Calculate Hotelling T2 of score with shape (38304, 1) takes 0.44045138359069824s.
+Calculate ewma score with shape (8760, 1) takes 0.02938556671142578s.
+Calculate Hotelling T2 of score with shape (8760, 1) takes 0.0959310531616211s.
+Calculate ewma score with shape (38304, 1) takes 0.12791705131530762s.
+Calculate Hotelling T2 of score with shape (38304, 1) takes 0.3868420124053955s.
+Calculate ewma score with shape (8760, 1) takes 0.029380321502685547s.
+Calculate Hotelling T2 of score with shape (8760, 1) takes 0.09615826606750488s.
+Calculate ewma score with shape (38304, 1) takes 0.12972235679626465s.
+Calculate Hotelling T2 of score with shape (38304, 1) takes 0.39386940002441406s.
+Calculate ewma score with shape (8760, 1) takes 0.0297086238861084s.
+Calculate Hotelling T2 of score with shape (8760, 1) takes 0.09807825088500977s.
+Calculate ewma score with shape (38304, 1) takes 0.12895607948303223s.
+Calculate Hotelling T2 of score with shape (38304, 1) takes 0.3873128890991211s.
+Plot individual EWMA plots.
+
+Calculate ewma score with shape (8760, 615) takes 0.0793757438659668s.
+Calculate Hotelling T2 of score with shape (8760, 615) takes 5.586877107620239s.
+Calculate ewma score with shape (38304, 615) takes 0.3070039749145508s.
+Calculate Hotelling T2 of score with shape (38304, 615) takes 2.35360050201416s.
+/projects/p30309/CD/CD_github/control_chart/hotelling.py:3752: UserWarning: This figure includes Axes that are not compatible with tight_layout, so results might be incorrect.
+  plt.tight_layout()
+Plot individual EWMA plots after scaling.
+
+Calculate ewma score with shape (8760, 615) takes 0.05548214912414551s.
+Calculate Hotelling T2 of score with shape (8760, 615) takes 5.576104402542114s.
+Calculate ewma score with shape (38304, 615) takes 0.24491453170776367s.
+Calculate Hotelling T2 of score with shape (38304, 615) takes 2.4063549041748047s.
+2020-04-25 23:48:02.526006: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer.so.6'; dlerror: libnvinfer.so.6: cannot open shared object file: No such file or directory
+2020-04-25 23:48:02.526197: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer_plugin.so.6'; dlerror: libnvinfer_plugin.so.6: cannot open shared object file: No such file or directory
+2020-04-25 23:48:02.526232: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:30] Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.
+/home/kzy816/.local/lib/python3.7/site-packages/statsmodels/tools/_testing.py:19: FutureWarning: pandas.util.testing is deprecated. Use the functions in the public API at pandas.testing instead.
+  import pandas.util.testing as tm
+The start date is 2010-09-20 00:00:00.
+I0425 23:48:12.170397 47243600834240 utils.py:129] Note: NumExpr detected 28 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.
+I0425 23:48:12.170587 47243600834240 utils.py:141] NumExpr defaulting to 8 threads.
+The training end date is 20140919.
+The PI end date is 20150919.
+The Entire end date is 2020-01-31 00:00:00.
+I0425 23:48:13.365258 47243600834240 utils.py:191] The size of data for building model: (15024, 629)(training: (10016, 629); validation(5008, 629)); Phase-I: (8760, 629); Phase-II: (38304, 629).
+
+The mean and std of X_train is: [3.075080e-02 2.013415e+03 5.091853e-02 4.762380e-02 ... 2.201640e-01 5.343194e-02 6.150920e-02 1.484748e-02], [0.172642 0.492745 0.219831 0.212969 ... 0.325777 0.204487 0.108251 0.065008].
+I0425 23:48:14.067370 47243600834240 concept_drift_bike_sharing_keras_reg.py:153] The columns names of covariates: ['holiday1', 'yr', 'factor(mnth)10', 'factor(mnth)11', 'factor(mnth)12', 'factor(mnth)2', 'factor(mnth)3', 'factor(mnth)4', 'factor(mnth)5', 'factor(mnth)6', 'factor(mnth)7', 'factor(mnth)8', 'factor(mnth)9', 'factor(weekday)1', 'factor(weekday)2', 'factor(weekday)3', 'factor(weekday)4', 'factor(weekday)5', 'factor(weekday)6', 'factor(hr)1', 'factor(hr)10', 'factor(hr)11', 'factor(hr)12', 'factor(hr)13', 'factor(hr)14', 'factor(hr)15', 'factor(hr)16', 'factor(hr)17', 'factor(hr)18', 'factor(hr)19', 'factor(hr)2', 'factor(hr)20', 'factor(hr)21', 'factor(hr)22', 'factor(hr)23', 'factor(hr)3', 'factor(hr)4', 'factor(hr)5', 'factor(hr)6', 'factor(hr)7', 'factor(hr)8', 'factor(hr)9', 'factor(holiday)1', 'factor(weathersit_cat)2', 'factor(weathersit_cat)3', 'temp', 'hum', 'windspeed', 'factor(weekday)1:factor(hr)1', 'factor(weekday)2:factor(hr)1', 'factor(weekday)3:factor(hr)1', 'factor(weekday)4:factor(hr)1', 'factor(weekday)5:factor(hr)1', 'factor(weekday)6:factor(hr)1', 'factor(weekday)1:factor(hr)10', 'factor(weekday)2:factor(hr)10', 'factor(weekday)3:factor(hr)10', 'factor(weekday)4:factor(hr)10', 'factor(weekday)5:factor(hr)10', 'factor(weekday)6:factor(hr)10', 'factor(weekday)1:factor(hr)11', 'factor(weekday)2:factor(hr)11', 'factor(weekday)3:factor(hr)11', 'factor(weekday)4:factor(hr)11', 'factor(weekday)5:factor(hr)11', 'factor(weekday)6:factor(hr)11', 'factor(weekday)1:factor(hr)12', 'factor(weekday)2:factor(hr)12', 'factor(weekday)3:factor(hr)12', 'factor(weekday)4:factor(hr)12', 'factor(weekday)5:factor(hr)12', 'factor(weekday)6:factor(hr)12', 'factor(weekday)1:factor(hr)13', 'factor(weekday)2:factor(hr)13', 'factor(weekday)3:factor(hr)13', 'factor(weekday)4:factor(hr)13', 'factor(weekday)5:factor(hr)13', 'factor(weekday)6:factor(hr)13', 'factor(weekday)1:factor(hr)14', 'factor(weekday)2:factor(hr)14', 'factor(weekday)3:factor(hr)14', 'factor(weekday)4:factor(hr)14', 'factor(weekday)5:factor(hr)14', 'factor(weekday)6:factor(hr)14', 'factor(weekday)1:factor(hr)15', 'factor(weekday)2:factor(hr)15', 'factor(weekday)3:factor(hr)15', 'factor(weekday)4:factor(hr)15', 'factor(weekday)5:factor(hr)15', 'factor(weekday)6:factor(hr)15', 'factor(weekday)1:factor(hr)16', 'factor(weekday)2:factor(hr)16', 'factor(weekday)3:factor(hr)16', 'factor(weekday)4:factor(hr)16', 'factor(weekday)5:factor(hr)16', 'factor(weekday)6:factor(hr)16', 'factor(weekday)1:factor(hr)17', 'factor(weekday)2:factor(hr)17', 'factor(weekday)3:factor(hr)17', 'factor(weekday)4:factor(hr)17', 'factor(weekday)5:factor(hr)17', 'factor(weekday)6:factor(hr)17', 'factor(weekday)1:factor(hr)18', 'factor(weekday)2:factor(hr)18', 'factor(weekday)3:factor(hr)18', 'factor(weekday)4:factor(hr)18', 'factor(weekday)5:factor(hr)18', 'factor(weekday)6:factor(hr)18', 'factor(weekday)1:factor(hr)19', 'factor(weekday)2:factor(hr)19', 'factor(weekday)3:factor(hr)19', 'factor(weekday)4:factor(hr)19', 'factor(weekday)5:factor(hr)19', 'factor(weekday)6:factor(hr)19', 'factor(weekday)1:factor(hr)2', 'factor(weekday)2:factor(hr)2', 'factor(weekday)3:factor(hr)2', 'factor(weekday)4:factor(hr)2', 'factor(weekday)5:factor(hr)2', 'factor(weekday)6:factor(hr)2', 'factor(weekday)1:factor(hr)20', 'factor(weekday)2:factor(hr)20', 'factor(weekday)3:factor(hr)20', 'factor(weekday)4:factor(hr)20', 'factor(weekday)5:factor(hr)20', 'factor(weekday)6:factor(hr)20', 'factor(weekday)1:factor(hr)21', 'factor(weekday)2:factor(hr)21', 'factor(weekday)3:factor(hr)21', 'factor(weekday)4:factor(hr)21', 'factor(weekday)5:factor(hr)21', 'factor(weekday)6:factor(hr)21', 'factor(weekday)1:factor(hr)22', 'factor(weekday)2:factor(hr)22', 'factor(weekday)3:factor(hr)22', 'factor(weekday)4:factor(hr)22', 'factor(weekday)5:factor(hr)22', 'factor(weekday)6:factor(hr)22', 'factor(weekday)1:factor(hr)23', 'factor(weekday)2:factor(hr)23', 'factor(weekday)3:factor(hr)23', 'factor(weekday)4:factor(hr)23', 'factor(weekday)5:factor(hr)23', 'factor(weekday)6:factor(hr)23', 'factor(weekday)1:factor(hr)3', 'factor(weekday)2:factor(hr)3', 'factor(weekday)3:factor(hr)3', 'factor(weekday)4:factor(hr)3', 'factor(weekday)5:factor(hr)3', 'factor(weekday)6:factor(hr)3', 'factor(weekday)1:factor(hr)4', 'factor(weekday)2:factor(hr)4', 'factor(weekday)3:factor(hr)4', 'factor(weekday)4:factor(hr)4', 'factor(weekday)5:factor(hr)4', 'factor(weekday)6:factor(hr)4', 'factor(weekday)1:factor(hr)5', 'factor(weekday)2:factor(hr)5', 'factor(weekday)3:factor(hr)5', 'factor(weekday)4:factor(hr)5', 'factor(weekday)5:factor(hr)5', 'factor(weekday)6:factor(hr)5', 'factor(weekday)1:factor(hr)6', 'factor(weekday)2:factor(hr)6', 'factor(weekday)3:factor(hr)6', 'factor(weekday)4:factor(hr)6', 'factor(weekday)5:factor(hr)6', 'factor(weekday)6:factor(hr)6', 'factor(weekday)1:factor(hr)7', 'factor(weekday)2:factor(hr)7', 'factor(weekday)3:factor(hr)7', 'factor(weekday)4:factor(hr)7', 'factor(weekday)5:factor(hr)7', 'factor(weekday)6:factor(hr)7', 'factor(weekday)1:factor(hr)8', 'factor(weekday)2:factor(hr)8', 'factor(weekday)3:factor(hr)8', 'factor(weekday)4:factor(hr)8', 'factor(weekday)5:factor(hr)8', 'factor(weekday)6:factor(hr)8', 'factor(weekday)1:factor(hr)9', 'factor(weekday)2:factor(hr)9', 'factor(weekday)3:factor(hr)9', 'factor(weekday)4:factor(hr)9', 'factor(weekday)5:factor(hr)9', 'factor(weekday)6:factor(hr)9', 'factor(mnth)10:factor(hr)1', 'factor(mnth)11:factor(hr)1', 'factor(mnth)12:factor(hr)1', 'factor(mnth)2:factor(hr)1', 'factor(mnth)3:factor(hr)1', 'factor(mnth)4:factor(hr)1', 'factor(mnth)5:factor(hr)1', 'factor(mnth)6:factor(hr)1', 'factor(mnth)7:factor(hr)1', 'factor(mnth)8:factor(hr)1', 'factor(mnth)9:factor(hr)1', 'factor(mnth)10:factor(hr)10', 'factor(mnth)11:factor(hr)10', 'factor(mnth)12:factor(hr)10', 'factor(mnth)2:factor(hr)10', 'factor(mnth)3:factor(hr)10', 'factor(mnth)4:factor(hr)10', 'factor(mnth)5:factor(hr)10', 'factor(mnth)6:factor(hr)10', 'factor(mnth)7:factor(hr)10', 'factor(mnth)8:factor(hr)10', 'factor(mnth)9:factor(hr)10', 'factor(mnth)10:factor(hr)11', 'factor(mnth)11:factor(hr)11', 'factor(mnth)12:factor(hr)11', 'factor(mnth)2:factor(hr)11', 'factor(mnth)3:factor(hr)11', 'factor(mnth)4:factor(hr)11', 'factor(mnth)5:factor(hr)11', 'factor(mnth)6:factor(hr)11', 'factor(mnth)7:factor(hr)11', 'factor(mnth)8:factor(hr)11', 'factor(mnth)9:factor(hr)11', 'factor(mnth)10:factor(hr)12', 'factor(mnth)11:factor(hr)12', 'factor(mnth)12:factor(hr)12', 'factor(mnth)2:factor(hr)12', 'factor(mnth)3:factor(hr)12', 'factor(mnth)4:factor(hr)12', 'factor(mnth)5:factor(hr)12', 'factor(mnth)6:factor(hr)12', 'factor(mnth)7:factor(hr)12', 'factor(mnth)8:factor(hr)12', 'factor(mnth)9:factor(hr)12', 'factor(mnth)10:factor(hr)13', 'factor(mnth)11:factor(hr)13', 'factor(mnth)12:factor(hr)13', 'factor(mnth)2:factor(hr)13', 'factor(mnth)3:factor(hr)13', 'factor(mnth)4:factor(hr)13', 'factor(mnth)5:factor(hr)13', 'factor(mnth)6:factor(hr)13', 'factor(mnth)7:factor(hr)13', 'factor(mnth)8:factor(hr)13', 'factor(mnth)9:factor(hr)13', 'factor(mnth)10:factor(hr)14', 'factor(mnth)11:factor(hr)14', 'factor(mnth)12:factor(hr)14', 'factor(mnth)2:factor(hr)14', 'factor(mnth)3:factor(hr)14', 'factor(mnth)4:factor(hr)14', 'factor(mnth)5:factor(hr)14', 'factor(mnth)6:factor(hr)14', 'factor(mnth)7:factor(hr)14', 'factor(mnth)8:factor(hr)14', 'factor(mnth)9:factor(hr)14', 'factor(mnth)10:factor(hr)15', 'factor(mnth)11:factor(hr)15', 'factor(mnth)12:factor(hr)15', 'factor(mnth)2:factor(hr)15', 'factor(mnth)3:factor(hr)15', 'factor(mnth)4:factor(hr)15', 'factor(mnth)5:factor(hr)15', 'factor(mnth)6:factor(hr)15', 'factor(mnth)7:factor(hr)15', 'factor(mnth)8:factor(hr)15', 'factor(mnth)9:factor(hr)15', 'factor(mnth)10:factor(hr)16', 'factor(mnth)11:factor(hr)16', 'factor(mnth)12:factor(hr)16', 'factor(mnth)2:factor(hr)16', 'factor(mnth)3:factor(hr)16', 'factor(mnth)4:factor(hr)16', 'factor(mnth)5:factor(hr)16', 'factor(mnth)6:factor(hr)16', 'factor(mnth)7:factor(hr)16', 'factor(mnth)8:factor(hr)16', 'factor(mnth)9:factor(hr)16', 'factor(mnth)10:factor(hr)17', 'factor(mnth)11:factor(hr)17', 'factor(mnth)12:factor(hr)17', 'factor(mnth)2:factor(hr)17', 'factor(mnth)3:factor(hr)17', 'factor(mnth)4:factor(hr)17', 'factor(mnth)5:factor(hr)17', 'factor(mnth)6:factor(hr)17', 'factor(mnth)7:factor(hr)17', 'factor(mnth)8:factor(hr)17', 'factor(mnth)9:factor(hr)17', 'factor(mnth)10:factor(hr)18', 'factor(mnth)11:factor(hr)18', 'factor(mnth)12:factor(hr)18', 'factor(mnth)2:factor(hr)18', 'factor(mnth)3:factor(hr)18', 'factor(mnth)4:factor(hr)18', 'factor(mnth)5:factor(hr)18', 'factor(mnth)6:factor(hr)18', 'factor(mnth)7:factor(hr)18', 'factor(mnth)8:factor(hr)18', 'factor(mnth)9:factor(hr)18', 'factor(mnth)10:factor(hr)19', 'factor(mnth)11:factor(hr)19', 'factor(mnth)12:factor(hr)19', 'factor(mnth)2:factor(hr)19', 'factor(mnth)3:factor(hr)19', 'factor(mnth)4:factor(hr)19', 'factor(mnth)5:factor(hr)19', 'factor(mnth)6:factor(hr)19', 'factor(mnth)7:factor(hr)19', 'factor(mnth)8:factor(hr)19', 'factor(mnth)9:factor(hr)19', 'factor(mnth)10:factor(hr)2', 'factor(mnth)11:factor(hr)2', 'factor(mnth)12:factor(hr)2', 'factor(mnth)2:factor(hr)2', 'factor(mnth)3:factor(hr)2', 'factor(mnth)4:factor(hr)2', 'factor(mnth)5:factor(hr)2', 'factor(mnth)6:factor(hr)2', 'factor(mnth)7:factor(hr)2', 'factor(mnth)8:factor(hr)2', 'factor(mnth)9:factor(hr)2', 'factor(mnth)10:factor(hr)20', 'factor(mnth)11:factor(hr)20', 'factor(mnth)12:factor(hr)20', 'factor(mnth)2:factor(hr)20', 'factor(mnth)3:factor(hr)20', 'factor(mnth)4:factor(hr)20', 'factor(mnth)5:factor(hr)20', 'factor(mnth)6:factor(hr)20', 'factor(mnth)7:factor(hr)20', 'factor(mnth)8:factor(hr)20', 'factor(mnth)9:factor(hr)20', 'factor(mnth)10:factor(hr)21', 'factor(mnth)11:factor(hr)21', 'factor(mnth)12:factor(hr)21', 'factor(mnth)2:factor(hr)21', 'factor(mnth)3:factor(hr)21', 'factor(mnth)4:factor(hr)21', 'factor(mnth)5:factor(hr)21', 'factor(mnth)6:factor(hr)21', 'factor(mnth)7:factor(hr)21', 'factor(mnth)8:factor(hr)21', 'factor(mnth)9:factor(hr)21', 'factor(mnth)10:factor(hr)22', 'factor(mnth)11:factor(hr)22', 'factor(mnth)12:factor(hr)22', 'factor(mnth)2:factor(hr)22', 'factor(mnth)3:factor(hr)22', 'factor(mnth)4:factor(hr)22', 'factor(mnth)5:factor(hr)22', 'factor(mnth)6:factor(hr)22', 'factor(mnth)7:factor(hr)22', 'factor(mnth)8:factor(hr)22', 'factor(mnth)9:factor(hr)22', 'factor(mnth)10:factor(hr)23', 'factor(mnth)11:factor(hr)23', 'factor(mnth)12:factor(hr)23', 'factor(mnth)2:factor(hr)23', 'factor(mnth)3:factor(hr)23', 'factor(mnth)4:factor(hr)23', 'factor(mnth)5:factor(hr)23', 'factor(mnth)6:factor(hr)23', 'factor(mnth)7:factor(hr)23', 'factor(mnth)8:factor(hr)23', 'factor(mnth)9:factor(hr)23', 'factor(mnth)10:factor(hr)3', 'factor(mnth)11:factor(hr)3', 'factor(mnth)12:factor(hr)3', 'factor(mnth)2:factor(hr)3', 'factor(mnth)3:factor(hr)3', 'factor(mnth)4:factor(hr)3', 'factor(mnth)5:factor(hr)3', 'factor(mnth)6:factor(hr)3', 'factor(mnth)7:factor(hr)3', 'factor(mnth)8:factor(hr)3', 'factor(mnth)9:factor(hr)3', 'factor(mnth)10:factor(hr)4', 'factor(mnth)11:factor(hr)4', 'factor(mnth)12:factor(hr)4', 'factor(mnth)2:factor(hr)4', 'factor(mnth)3:factor(hr)4', 'factor(mnth)4:factor(hr)4', 'factor(mnth)5:factor(hr)4', 'factor(mnth)6:factor(hr)4', 'factor(mnth)7:factor(hr)4', 'factor(mnth)8:factor(hr)4', 'factor(mnth)9:factor(hr)4', 'factor(mnth)10:factor(hr)5', 'factor(mnth)11:factor(hr)5', 'factor(mnth)12:factor(hr)5', 'factor(mnth)2:factor(hr)5', 'factor(mnth)3:factor(hr)5', 'factor(mnth)4:factor(hr)5', 'factor(mnth)5:factor(hr)5', 'factor(mnth)6:factor(hr)5', 'factor(mnth)7:factor(hr)5', 'factor(mnth)8:factor(hr)5', 'factor(mnth)9:factor(hr)5', 'factor(mnth)10:factor(hr)6', 'factor(mnth)11:factor(hr)6', 'factor(mnth)12:factor(hr)6', 'factor(mnth)2:factor(hr)6', 'factor(mnth)3:factor(hr)6', 'factor(mnth)4:factor(hr)6', 'factor(mnth)5:factor(hr)6', 'factor(mnth)6:factor(hr)6', 'factor(mnth)7:factor(hr)6', 'factor(mnth)8:factor(hr)6', 'factor(mnth)9:factor(hr)6', 'factor(mnth)10:factor(hr)7', 'factor(mnth)11:factor(hr)7', 'factor(mnth)12:factor(hr)7', 'factor(mnth)2:factor(hr)7', 'factor(mnth)3:factor(hr)7', 'factor(mnth)4:factor(hr)7', 'factor(mnth)5:factor(hr)7', 'factor(mnth)6:factor(hr)7', 'factor(mnth)7:factor(hr)7', 'factor(mnth)8:factor(hr)7', 'factor(mnth)9:factor(hr)7', 'factor(mnth)10:factor(hr)8', 'factor(mnth)11:factor(hr)8', 'factor(mnth)12:factor(hr)8', 'factor(mnth)2:factor(hr)8', 'factor(mnth)3:factor(hr)8', 'factor(mnth)4:factor(hr)8', 'factor(mnth)5:factor(hr)8', 'factor(mnth)6:factor(hr)8', 'factor(mnth)7:factor(hr)8', 'factor(mnth)8:factor(hr)8', 'factor(mnth)9:factor(hr)8', 'factor(mnth)10:factor(hr)9', 'factor(mnth)11:factor(hr)9', 'factor(mnth)12:factor(hr)9', 'factor(mnth)2:factor(hr)9', 'factor(mnth)3:factor(hr)9', 'factor(mnth)4:factor(hr)9', 'factor(mnth)5:factor(hr)9', 'factor(mnth)6:factor(hr)9', 'factor(mnth)7:factor(hr)9', 'factor(mnth)8:factor(hr)9', 'factor(mnth)9:factor(hr)9', 'factor(mnth)10:factor(weekday)1', 'factor(mnth)11:factor(weekday)1', 'factor(mnth)12:factor(weekday)1', 'factor(mnth)2:factor(weekday)1', 'factor(mnth)3:factor(weekday)1', 'factor(mnth)4:factor(weekday)1', 'factor(mnth)5:factor(weekday)1', 'factor(mnth)6:factor(weekday)1', 'factor(mnth)7:factor(weekday)1', 'factor(mnth)8:factor(weekday)1', 'factor(mnth)9:factor(weekday)1', 'factor(mnth)10:factor(weekday)2', 'factor(mnth)11:factor(weekday)2', 'factor(mnth)12:factor(weekday)2', 'factor(mnth)2:factor(weekday)2', 'factor(mnth)3:factor(weekday)2', 'factor(mnth)4:factor(weekday)2', 'factor(mnth)5:factor(weekday)2', 'factor(mnth)6:factor(weekday)2', 'factor(mnth)7:factor(weekday)2', 'factor(mnth)8:factor(weekday)2', 'factor(mnth)9:factor(weekday)2', 'factor(mnth)10:factor(weekday)3', 'factor(mnth)11:factor(weekday)3', 'factor(mnth)12:factor(weekday)3', 'factor(mnth)2:factor(weekday)3', 'factor(mnth)3:factor(weekday)3', 'factor(mnth)4:factor(weekday)3', 'factor(mnth)5:factor(weekday)3', 'factor(mnth)6:factor(weekday)3', 'factor(mnth)7:factor(weekday)3', 'factor(mnth)8:factor(weekday)3', 'factor(mnth)9:factor(weekday)3', 'factor(mnth)10:factor(weekday)4', 'factor(mnth)11:factor(weekday)4', 'factor(mnth)12:factor(weekday)4', 'factor(mnth)2:factor(weekday)4', 'factor(mnth)3:factor(weekday)4', 'factor(mnth)4:factor(weekday)4', 'factor(mnth)5:factor(weekday)4', 'factor(mnth)6:factor(weekday)4', 'factor(mnth)7:factor(weekday)4', 'factor(mnth)8:factor(weekday)4', 'factor(mnth)9:factor(weekday)4', 'factor(mnth)10:factor(weekday)5', 'factor(mnth)11:factor(weekday)5', 'factor(mnth)12:factor(weekday)5', 'factor(mnth)2:factor(weekday)5', 'factor(mnth)3:factor(weekday)5', 'factor(mnth)4:factor(weekday)5', 'factor(mnth)5:factor(weekday)5', 'factor(mnth)6:factor(weekday)5', 'factor(mnth)7:factor(weekday)5', 'factor(mnth)8:factor(weekday)5', 'factor(mnth)9:factor(weekday)5', 'factor(mnth)10:factor(weekday)6', 'factor(mnth)11:factor(weekday)6', 'factor(mnth)12:factor(weekday)6', 'factor(mnth)2:factor(weekday)6', 'factor(mnth)3:factor(weekday)6', 'factor(mnth)4:factor(weekday)6', 'factor(mnth)5:factor(weekday)6', 'factor(mnth)6:factor(weekday)6', 'factor(mnth)7:factor(weekday)6', 'factor(mnth)8:factor(weekday)6', 'factor(mnth)9:factor(weekday)6', 'factor(hr)1:factor(holiday)1', 'factor(hr)10:factor(holiday)1', 'factor(hr)11:factor(holiday)1', 'factor(hr)12:factor(holiday)1', 'factor(hr)13:factor(holiday)1', 'factor(hr)14:factor(holiday)1', 'factor(hr)15:factor(holiday)1', 'factor(hr)16:factor(holiday)1', 'factor(hr)17:factor(holiday)1', 'factor(hr)18:factor(holiday)1', 'factor(hr)19:factor(holiday)1', 'factor(hr)2:factor(holiday)1', 'factor(hr)20:factor(holiday)1', 'factor(hr)21:factor(holiday)1', 'factor(hr)22:factor(holiday)1', 'factor(hr)23:factor(holiday)1', 'factor(hr)3:factor(holiday)1', 'factor(hr)4:factor(holiday)1', 'factor(hr)5:factor(holiday)1', 'factor(hr)6:factor(holiday)1', 'factor(hr)7:factor(holiday)1', 'factor(hr)8:factor(holiday)1', 'factor(hr)9:factor(holiday)1', 'factor(mnth)10:factor(weathersit_cat)2', 'factor(mnth)11:factor(weathersit_cat)2', 'factor(mnth)12:factor(weathersit_cat)2', 'factor(mnth)2:factor(weathersit_cat)2', 'factor(mnth)3:factor(weathersit_cat)2', 'factor(mnth)4:factor(weathersit_cat)2', 'factor(mnth)5:factor(weathersit_cat)2', 'factor(mnth)6:factor(weathersit_cat)2', 'factor(mnth)7:factor(weathersit_cat)2', 'factor(mnth)8:factor(weathersit_cat)2', 'factor(mnth)9:factor(weathersit_cat)2', 'factor(mnth)10:factor(weathersit_cat)3', 'factor(mnth)11:factor(weathersit_cat)3', 'factor(mnth)12:factor(weathersit_cat)3', 'factor(mnth)2:factor(weathersit_cat)3', 'factor(mnth)3:factor(weathersit_cat)3', 'factor(mnth)4:factor(weathersit_cat)3', 'factor(mnth)5:factor(weathersit_cat)3', 'factor(mnth)6:factor(weathersit_cat)3', 'factor(mnth)7:factor(weathersit_cat)3', 'factor(mnth)8:factor(weathersit_cat)3', 'factor(mnth)9:factor(weathersit_cat)3', 'factor(weekday)1:factor(weathersit_cat)2', 'factor(weekday)2:factor(weathersit_cat)2', 'factor(weekday)3:factor(weathersit_cat)2', 'factor(weekday)4:factor(weathersit_cat)2', 'factor(weekday)5:factor(weathersit_cat)2', 'factor(weekday)6:factor(weathersit_cat)2', 'factor(weekday)1:factor(weathersit_cat)3', 'factor(weekday)2:factor(weathersit_cat)3', 'factor(weekday)3:factor(weathersit_cat)3', 'factor(weekday)4:factor(weathersit_cat)3', 'factor(weekday)5:factor(weathersit_cat)3', 'factor(weekday)6:factor(weathersit_cat)3', 'factor(hr)1:factor(weathersit_cat)2', 'factor(hr)10:factor(weathersit_cat)2', 'factor(hr)11:factor(weathersit_cat)2', 'factor(hr)12:factor(weathersit_cat)2', 'factor(hr)13:factor(weathersit_cat)2', 'factor(hr)14:factor(weathersit_cat)2', 'factor(hr)15:factor(weathersit_cat)2', 'factor(hr)16:factor(weathersit_cat)2', 'factor(hr)17:factor(weathersit_cat)2', 'factor(hr)18:factor(weathersit_cat)2', 'factor(hr)19:factor(weathersit_cat)2', 'factor(hr)2:factor(weathersit_cat)2', 'factor(hr)20:factor(weathersit_cat)2', 'factor(hr)21:factor(weathersit_cat)2', 'factor(hr)22:factor(weathersit_cat)2', 'factor(hr)23:factor(weathersit_cat)2', 'factor(hr)3:factor(weathersit_cat)2', 'factor(hr)4:factor(weathersit_cat)2', 'factor(hr)5:factor(weathersit_cat)2', 'factor(hr)6:factor(weathersit_cat)2', 'factor(hr)7:factor(weathersit_cat)2', 'factor(hr)8:factor(weathersit_cat)2', 'factor(hr)9:factor(weathersit_cat)2', 'factor(hr)1:factor(weathersit_cat)3', 'factor(hr)10:factor(weathersit_cat)3', 'factor(hr)11:factor(weathersit_cat)3', 'factor(hr)12:factor(weathersit_cat)3', 'factor(hr)13:factor(weathersit_cat)3', 'factor(hr)14:factor(weathersit_cat)3', 'factor(hr)15:factor(weathersit_cat)3', 'factor(hr)16:factor(weathersit_cat)3', 'factor(hr)17:factor(weathersit_cat)3', 'factor(hr)18:factor(weathersit_cat)3', 'factor(hr)19:factor(weathersit_cat)3', 'factor(hr)2:factor(weathersit_cat)3', 'factor(hr)20:factor(weathersit_cat)3', 'factor(hr)21:factor(weathersit_cat)3', 'factor(hr)22:factor(weathersit_cat)3', 'factor(hr)23:factor(weathersit_cat)3', 'factor(hr)3:factor(weathersit_cat)3', 'factor(hr)4:factor(weathersit_cat)3', 'factor(hr)5:factor(weathersit_cat)3', 'factor(hr)6:factor(weathersit_cat)3', 'factor(hr)7:factor(weathersit_cat)3', 'factor(hr)8:factor(weathersit_cat)3', 'factor(hr)9:factor(weathersit_cat)3', 'factor(weathersit_cat)2:temp', 'factor(weathersit_cat)3:temp', 'factor(weathersit_cat)2:hum', 'factor(weathersit_cat)3:hum', 'factor(weathersit_cat)2:windspeed', 'factor(weathersit_cat)3:windspeed'].
+I0425 23:48:14.068180 47243600834240 concept_drift_bike_sharing_keras_reg.py:154] The size of covariates: 614.
+Input shape
+(15024, 614) (15024,) (8760, 614) (8760,) (38304, 614) (38304,)
+(array([], dtype=int64), array([], dtype=int64)) (array([], dtype=int64),)
+I0425 23:48:16.243046 47243600834240 regressors.py:902] The Ridge cv coef: [ 0.002227 -0.002575 -0.006506 -0.002853 ... -0.018373 -0.023128 -0.004211 -0.004006];
+The intercept: 0.2295080805000632;
+The penalization param: 1.0.
+
+I0425 23:48:16.286854 47243600834240 regressors.py:904] The score for training Ridge cv: 0.9256059561966588
+
+I0425 23:48:16.370155 47243600834240 regressors.py:963] The parameter of ridge regression model (2020_04_25_23_48_14_068283) is
+ [[ 0.002221 -0.002575 -0.0065   -0.00285  ... -0.023162 -0.004212 -0.004008  0.229508]]
+I0425 23:48:16.371489 47243600834240 regressors.py:976] The parameter of reloaded ridge regression model (2020_04_25_23_48_14_068283) is
+ [[ 0.002221 -0.002575 -0.0065   -0.00285  ... -0.023162 -0.004212 -0.004008  0.229508]]
+I0425 23:48:16.668703 47243600834240 regressors.py:1001] Condition # for Fisher Info Mat (before adding fisher nugget): 1.0988348997515107e+17
+I0425 23:48:16.721634 47243600834240 regressors.py:1007] Condition # for Fisher Info Mat (after adding penalization nugget): 1460300050.6884067
+I0425 23:48:16.901690 47243600834240 utils.py:293] The largest eigen-value is [0.05769].
+
+I0425 23:48:16.901879 47243600834240 utils.py:295] The identity matrix need to add: a nugget 0.0001 and the factor to ensure condition number is 5.769043346320699e-06.
+I0425 23:48:17.113857 47243600834240 regressors.py:1001] Condition # for Fisher Info Mat (before adding fisher nugget): 1.3744875534161918e+16
+I0425 23:48:17.167550 47243600834240 regressors.py:1007] Condition # for Fisher Info Mat (after adding penalization nugget): 1763332969.0413458
+I0425 23:48:17.278686 47243600834240 utils.py:293] The largest eigen-value is [0.099619].
+
+I0425 23:48:17.278867 47243600834240 utils.py:295] The identity matrix need to add: a nugget 0.0001 and the factor to ensure condition number is 9.961857441619537e-06.
+I0425 23:48:17.308985 47243600834240 regressors.py:1050] The score for testing PI Ridge cv: 0.9067803748881629
+
+I0425 23:48:17.680688 47243600834240 regressors.py:1072] The score for testing PII Ridge cv: 0.8695645154442887
+
+0.9256059820352914
+0.906780374888163
+0.8695645154442887
+I0425 23:48:18.579970 47243600834240 concept_drift_bike_sharing_keras_reg.py:444] The R-squared score for training, PI, and PII in original unit are: 0.9256, 0.9068, 0.8696.
+
+The offset is 0; the condition number is 0.0001.
+Plot training metrics for different metrics together.
+
+Calculate ewma score with shape (15024, 615) takes 0.11513757705688477s.
+Calculate Hotelling T2 of score with shape (15024, 615) takes 9.678571939468384s.
+Calculate ewma score with shape (15024, 1) takes 0.05971550941467285s.
+Calculate ewma score with shape (15024, 1) takes 0.06145334243774414s.
+(15024,) (0,) (15024,) (0,) (15024,) (0,)
+From HotellingT2CC_Other_Score2----------
+
+Plot PIPII three metrics together.
+
+Calculate ewma score with shape (8760, 615) takes 0.06850171089172363s.
+Calculate Hotelling T2 of score with shape (8760, 615) takes 5.553885459899902s.
+Calculate ewma score with shape (38304, 615) takes 0.3053905963897705s.
+Calculate Hotelling T2 of score with shape (38304, 615) takes 2.3060903549194336s.
+Calculate ewma score with shape (8760, 1) takes 0.03675413131713867s.
+Calculate ewma score with shape (38304, 1) takes 0.15596795082092285s.
+Calculate ewma score with shape (8760, 1) takes 0.035909175872802734s.
+Calculate ewma score with shape (38304, 1) takes 0.15468716621398926s.
+(8760,) (38304,) (8760,) (38304,) (8760,) (38304,)
+From HotellingT2CC_Other_Score2----------
+
+Plot Hotelling T2 without scaling.
+
+Calculate ewma score with shape (8760, 615) takes 0.06935882568359375s.
+Calculate Hotelling T2 of score with shape (8760, 615) takes 5.585751295089722s.
+Calculate ewma score with shape (38304, 615) takes 0.3098437786102295s.
+Calculate Hotelling T2 of score with shape (38304, 615) takes 2.4261722564697266s.
+Calculate ewma score with shape (8760, 1) takes 0.030698537826538086s.
+Calculate Hotelling T2 of score with shape (8760, 1) takes 0.09789109230041504s.
+Calculate ewma score with shape (38304, 1) takes 0.13032889366149902s.
+Calculate Hotelling T2 of score with shape (38304, 1) takes 0.38741493225097656s.
+Calculate ewma score with shape (8760, 1) takes 0.02988743782043457s.
+Calculate Hotelling T2 of score with shape (8760, 1) takes 0.10025477409362793s.
+Calculate ewma score with shape (38304, 1) takes 0.13105010986328125s.
+Calculate Hotelling T2 of score with shape (38304, 1) takes 0.4037199020385742s.
+Calculate ewma score with shape (8760, 1) takes 0.02990436553955078s.
+Calculate Hotelling T2 of score with shape (8760, 1) takes 0.09964776039123535s.
+Calculate ewma score with shape (38304, 1) takes 0.1295757293701172s.
+Calculate Hotelling T2 of score with shape (38304, 1) takes 0.38803887367248535s.
+Calculate ewma score with shape (8760, 1) takes 0.030366182327270508s.
+Calculate Hotelling T2 of score with shape (8760, 1) takes 0.09887170791625977s.
+Calculate ewma score with shape (38304, 1) takes 0.1329975128173828s.
+Calculate Hotelling T2 of score with shape (38304, 1) takes 0.39464807510375977s.
+Calculate ewma score with shape (8760, 1) takes 0.029590606689453125s.
+Calculate Hotelling T2 of score with shape (8760, 1) takes 0.09850239753723145s.
+Calculate ewma score with shape (38304, 1) takes 0.13233160972595215s.
+Calculate Hotelling T2 of score with shape (38304, 1) takes 0.3923301696777344s.
+Calculate ewma score with shape (8760, 1) takes 0.030400753021240234s.
+Calculate Hotelling T2 of score with shape (8760, 1) takes 0.10067439079284668s.
+Calculate ewma score with shape (38304, 1) takes 0.13120698928833008s.
+Calculate Hotelling T2 of score with shape (38304, 1) takes 0.3943674564361572s.
+Calculate ewma score with shape (8760, 1) takes 0.030233383178710938s.
+Calculate Hotelling T2 of score with shape (8760, 1) takes 0.09968256950378418s.
+Calculate ewma score with shape (38304, 1) takes 0.13250041007995605s.
+Calculate Hotelling T2 of score with shape (38304, 1) takes 0.3954644203186035s.
+Calculate ewma score with shape (8760, 1) takes 0.029960155487060547s.
+Calculate Hotelling T2 of score with shape (8760, 1) takes 0.09960103034973145s.
+Calculate ewma score with shape (38304, 1) takes 0.13167691230773926s.
+Calculate Hotelling T2 of score with shape (38304, 1) takes 0.39040493965148926s.
+Calculate ewma score with shape (8760, 1) takes 0.030567407608032227s.
+Calculate Hotelling T2 of score with shape (8760, 1) takes 0.099395751953125s.
+Calculate ewma score with shape (38304, 1) takes 0.1324307918548584s.
+Calculate Hotelling T2 of score with shape (38304, 1) takes 0.3895435333251953s.
+Calculate ewma score with shape (8760, 1) takes 0.03076028823852539s.
+Calculate Hotelling T2 of score with shape (8760, 1) takes 0.09858989715576172s.
+Calculate ewma score with shape (38304, 1) takes 0.13282513618469238s.
+Calculate Hotelling T2 of score with shape (38304, 1) takes 0.3895437717437744s.
+Calculate ewma score with shape (8760, 1) takes 0.030679941177368164s.
+Calculate Hotelling T2 of score with shape (8760, 1) takes 0.10006117820739746s.
+Calculate ewma score with shape (38304, 1) takes 0.13166522979736328s.
+Calculate Hotelling T2 of score with shape (38304, 1) takes 0.3931863307952881s.
+Calculate ewma score with shape (8760, 1) takes 0.031061887741088867s.
+Calculate Hotelling T2 of score with shape (8760, 1) takes 0.10305666923522949s.
+Calculate ewma score with shape (38304, 1) takes 0.13390064239501953s.
+Calculate Hotelling T2 of score with shape (38304, 1) takes 0.3970940113067627s.
+Plot Hotelling T2 with scaling.
+
+Calculate ewma score with shape (8760, 615) takes 0.05707097053527832s.
+Calculate Hotelling T2 of score with shape (8760, 615) takes 5.5881898403167725s.
+Calculate ewma score with shape (38304, 615) takes 0.24663782119750977s.
+Calculate Hotelling T2 of score with shape (38304, 615) takes 2.273326873779297s.
+Calculate ewma score with shape (8760, 1) takes 0.030694246292114258s.
+Calculate Hotelling T2 of score with shape (8760, 1) takes 0.1001286506652832s.
+Calculate ewma score with shape (38304, 1) takes 0.1341104507446289s.
+Calculate Hotelling T2 of score with shape (38304, 1) takes 0.39626455307006836s.
+Calculate ewma score with shape (8760, 1) takes 0.03054642677307129s.
+Calculate Hotelling T2 of score with shape (8760, 1) takes 0.10081362724304199s.
+Calculate ewma score with shape (38304, 1) takes 0.13217997550964355s.
+Calculate Hotelling T2 of score with shape (38304, 1) takes 0.39418792724609375s.
+Calculate ewma score with shape (8760, 1) takes 0.030518293380737305s.
+Calculate Hotelling T2 of score with shape (8760, 1) takes 0.09979867935180664s.
+Calculate ewma score with shape (38304, 1) takes 0.13184690475463867s.
+Calculate Hotelling T2 of score with shape (38304, 1) takes 0.38912320137023926s.
+Calculate ewma score with shape (8760, 1) takes 0.030295372009277344s.
+Calculate Hotelling T2 of score with shape (8760, 1) takes 0.09805583953857422s.
+Calculate ewma score with shape (38304, 1) takes 0.13054180145263672s.
+Calculate Hotelling T2 of score with shape (38304, 1) takes 0.38699960708618164s.
+Calculate ewma score with shape (8760, 1) takes 0.030504703521728516s.
+Calculate Hotelling T2 of score with shape (8760, 1) takes 0.09864592552185059s.
+Calculate ewma score with shape (38304, 1) takes 0.13381552696228027s.
+Calculate Hotelling T2 of score with shape (38304, 1) takes 0.38866496086120605s.
+Calculate ewma score with shape (8760, 1) takes 0.030516386032104492s.
+Calculate Hotelling T2 of score with shape (8760, 1) takes 0.09889411926269531s.
+Calculate ewma score with shape (38304, 1) takes 0.1334514617919922s.
+Calculate Hotelling T2 of score with shape (38304, 1) takes 0.3906900882720947s.
+Calculate ewma score with shape (8760, 1) takes 0.03072381019592285s.
+Calculate Hotelling T2 of score with shape (8760, 1) takes 0.09950518608093262s.
+Calculate ewma score with shape (38304, 1) takes 0.13278698921203613s.
+Calculate Hotelling T2 of score with shape (38304, 1) takes 0.39336371421813965s.
+Calculate ewma score with shape (8760, 1) takes 0.03029632568359375s.
+Calculate Hotelling T2 of score with shape (8760, 1) takes 0.0996861457824707s.
+Calculate ewma score with shape (38304, 1) takes 0.1316688060760498s.
+Calculate Hotelling T2 of score with shape (38304, 1) takes 0.38445258140563965s.
+Calculate ewma score with shape (8760, 1) takes 0.030144929885864258s.
+Calculate Hotelling T2 of score with shape (8760, 1) takes 0.0983283519744873s.
+Calculate ewma score with shape (38304, 1) takes 0.1322338581085205s.
+Calculate Hotelling T2 of score with shape (38304, 1) takes 0.39396142959594727s.
+Calculate ewma score with shape (8760, 1) takes 0.03033280372619629s.
+Calculate Hotelling T2 of score with shape (8760, 1) takes 0.09975528717041016s.
+Calculate ewma score with shape (38304, 1) takes 0.13413667678833008s.
+Calculate Hotelling T2 of score with shape (38304, 1) takes 0.398024320602417s.
+Calculate ewma score with shape (8760, 1) takes 0.030498504638671875s.
+Calculate Hotelling T2 of score with shape (8760, 1) takes 0.09873437881469727s.
+Calculate ewma score with shape (38304, 1) takes 0.13279104232788086s.
+Calculate Hotelling T2 of score with shape (38304, 1) takes 0.3928039073944092s.
+Calculate ewma score with shape (8760, 1) takes 0.030864238739013672s.
+Calculate Hotelling T2 of score with shape (8760, 1) takes 0.09878015518188477s.
+Calculate ewma score with shape (38304, 1) takes 0.1327676773071289s.
+Calculate Hotelling T2 of score with shape (38304, 1) takes 0.39215731620788574s.
+Plot individual EWMA plots.
+
+Calculate ewma score with shape (8760, 615) takes 0.06859135627746582s.
+Calculate Hotelling T2 of score with shape (8760, 615) takes 5.576010227203369s.
+Calculate ewma score with shape (38304, 615) takes 0.3114047050476074s.
+Calculate Hotelling T2 of score with shape (38304, 615) takes 2.3035264015197754s.
+/projects/p30309/CD/CD_github/control_chart/hotelling.py:3752: UserWarning: This figure includes Axes that are not compatible with tight_layout, so results might be incorrect.
+  plt.tight_layout()
+Plot individual EWMA plots after scaling.
+
+Calculate ewma score with shape (8760, 615) takes 0.058017730712890625s.
+Calculate Hotelling T2 of score with shape (8760, 615) takes 5.620278835296631s.
+Calculate ewma score with shape (38304, 615) takes 0.24843192100524902s.
+Calculate Hotelling T2 of score with shape (38304, 615) takes 2.4452013969421387s.
