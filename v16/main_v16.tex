@@ -420,7 +420,7 @@ z_{j,t} = \lambda s_{j,t} + (1 - \lambda) z_{j,t-1}.
 \end{align}
 In this case, $z_{j,t}$ is plotted directly on the univariate EWMA chart with both a LCL and UCL. The chart signals a change in the mean of the $j$th component at observation $t$ if $z_{j,t}$ falls either below the LCL or above the UCL. If $\lambda$ is small, $z_{j,t}$ is approximately normal by the central limit theorem, and one can set  $\{LCL_j,UCL_j\} = \bar{z}_j \pm z_{\alpha/2}SD[z_j]$, where $\bar{z}_j$ and $SD[z_j]$ denote the sample average and standard deviation of $\{z_{j,t}\}_{t=n_1+1}^n$ over the same Phase-I data depicted in Figure \ref{fig:proc_mon_score_monitoring}, $z_{\alpha/2}$ is the upper $\alpha/2$ quantile of the standard normal distribution, and $\alpha$ is the desired false alarm rate. Alternatively, if the Phase-I sample size $n-n_1$ is sufficiently large, one can choose $LCL_j$ and $UCL_j$ directly as the lower and upper $\alpha/2$ quantiles of the empirical distribution of $\{z_{j,t}\}_{t=n_1+1}^n$. 
 
-If the goal is to diagnose and isolate which parameter(s) have changed, then it is preferable to replace the score components in the univariate EWMA by the components of a transformed version of the score vector discussed below, to effectively decouple the changes in the individual parameters. To illustrate this coupling, consider a linear Gaussian regression model $Y = \bm{X}^T\bm{\theta} + \epsilon$ with $\epsilon$ following a zero-mean Gaussian distribution with variance $\sigma^2$, the score function for which is $\bm{s}(\bm { \theta}^{ (0)}; (\bm {X}, Y)) = \frac{(Y - \bm{X}^T\bm{\theta}^{ (0)})\bm{X}}{\sigma^2}$. With no concept drift (i.e., $\bm { \theta} = \bm { \theta}^{ (0)}$), the mean of the score function is $E_{\bm{ \theta}^{ (0)}}[\bm{s}(\bm { \theta}^{ (0)}; (\bm {X}, Y))] = E_{\bm{ \theta}^{ (0)}}[E_{\bm{ \theta}^{ (0)}}[(Y - \bm {X}^T\bm { \theta}^{ (0)} ) \bm {X}|\bm {X}]] =  E_{\bm{ \theta}^{ (0)}}[\bm{0}] = \bm{0}$. After concept drift, suppose the parameters change to $\bm { \theta} ^{ (1)}$, and denote this change by $ \Delta \bm { \theta} = \bm { \theta} ^{ (1)} - \bm { \theta}^ { (0)}$. The mean of the score function after the concept drift is $E_{\bm{ \theta}^{ (1)}}[\bm{s}(\bm { \theta}^{ (0)}; (\bm {X}, Y))] = E_{\bm{ \theta}^{ (1)}}[E_{\bm{ \theta}^{ (1)}}[(Y - \bm {X}^T\bm { \theta}^{ (1)} + \bm {X}^T\Delta \bm { \theta}) \bm {X} |\bm {X}]] = E_{\bm{ \theta}^{ (1)}}[E_{\bm{ \theta}^{ (1)}}[\bm {X}\bm {X}^T\Delta \bm { \theta}) |\bm {X}]] = E [\bm {X}\bm {X}^T] \Delta \bm { \theta}$. Thus, we can decouple the changes in the parameters by premultiplying the score vector mean by the inverse of $E [\bm {X}\bm {X}^T]$, i.e., via the transformation $ \Delta \bm { \theta} = \big[E [\bm {X}\bm {X}^T]\big]^{-1} E_{\bm{ \theta}^{ (1)}}[\bm{s}(\bm { \theta}^{ (0)}; (\bm {X}, Y))]$. 
+If the goal is to diagnose and isolate which parameter(s) have changed, then it is preferable to replace the score components in the univariate EWMA by the components of a transformed version of the score vector discussed below, to effectively decouple the changes in the individual parameters. To illustrate this coupling, consider a linear Gaussian regression model $Y = \bm{X}^T\bm{\theta} + \epsilon$ with $\epsilon$ following a zero-mean Gaussian distribution with variance $\sigma^2$, the score function for which is $\bm{s}(\bm { \theta}^{ (0)}; (\bm {X}, Y)) = \frac{(Y - \bm{X}^T\bm{\theta}^{ (0)})\bm{X}}{\sigma^2}$. With no concept drift (i.e., $\bm { \theta} = \bm { \theta}^{ (0)}$), the mean of the score function is $E_{\bm{ \theta}^{ (0)}}[\bm{s}(\bm { \theta}^{ (0)}; (\bm {X}, Y))] = E_{\bm{ \theta}^{ (0)}}[E_{\bm{ \theta}^{ (0)}}[ \frac{(Y - \bm{X}^T\bm{\theta}^{ (0)})\bm{X}}{\sigma^2}|\bm {X}]] =  E_{\bm{ \theta}^{ (0)}}[\bm{0}] = \bm{0}$. After concept drift, suppose the parameters change to $\bm { \theta} ^{ (1)}$, and denote this change by $ \Delta \bm { \theta} = \bm { \theta} ^{ (1)} - \bm { \theta}^ { (0)}$. The mean of the score function after the concept drift is $E_{\bm{ \theta}^{ (1)}}[\bm{s}(\bm { \theta}^{ (0)}; (\bm {X}, Y))] = E_{\bm{ \theta}^{ (1)}}[E_{\bm{ \theta}^{ (1)}}[\frac{(Y - \bm {X}^T\bm { \theta}^{ (1)} + \bm {X}^T\Delta \bm { \theta}) \bm {X}}{\sigma^2} |\bm {X}]] = E_{\bm{ \theta}^{ (1)}}[E_{\bm{ \theta}^{ (1)}}[\frac{\bm {X}\bm {X}^T\Delta \bm { \theta})}{\sigma^2} |\bm {X}]] = \frac{E [\bm {X}\bm {X}^T] \Delta \bm { \theta}}{\sigma^2}$. Thus, we can decouple the changes in the parameters by premultiplying the score vector mean by the inverse of $\frac{E [\bm {X}\bm {X}^T]}{\sigma^2}$, i.e., via the transformation $ \Delta \bm { \theta} = \sigma^2 \big[E [\bm {X}\bm {X}^T]\big]^{-1} E_{\bm{ \theta}^{ (1)}}[\bm{s}(\bm { \theta}^{ (0)}; (\bm {X}, Y))]$. 
 
 For the more general $P(Y|\bm{X};\bm{\theta})$, we can decouple the parameter changes via a similar transformation. For the general case, the score function mean prior to the concept drift is $\bm{0}$, and the mean after the drift is
 
@@ -469,7 +469,7 @@ z_{j,t} = \lambda \tilde{s}_{j,t} + (1 - \lambda) z_{j,t-1},
 \end{align}
 where $\tilde{s}_{j,t}$ is the $j$th component of the decoupled score vector $\tilde{\bm{s}}_t := \mathbf {I}^{-1}(\bm { \theta}^{ (0)})\bm{s}_t$. The LCL and UCL for (\ref{eqn:uniewma-decoupled}) are determined analogously to those for (\ref{eqn:uniewma}), based on the empirical distribution of $\{z_{j,t}\}_{t=n_1+1}^n$.  
 
-In addition to providing diagnostic information on which parameter(s) have changed, and how they have changed, the decoupled univariate EWMAs (\ref{eqn:uniewma-decoupled}) have the following, additional benefit over just using the MEWMA. As discussed earlier, under fairly general conditions, the mean of $\bm{s}(\bm { \theta}^{ (0)}; (\bm {X}, Y))$ changes if and only if $P(Y|\bm{X};\bm{\theta})$ changes. Thus, a change in $P(\bm{X})$ alone with no change in $P(Y|\bm{X};\bm{\theta})$ will not cause the mean of $\bm{s}(\bm { \theta}^{ (0)}; (\bm {X}, Y))$, or the mean of $\bm{z}_t$ in (\ref{eqn:ewma}), to change. However, a change in $P(\bm{X})$ alone can cause the mean of the Hotelling $T^2$ statistic in (\ref{eqn:hotellingt2}) to increase (by changing the covariance of $\bm{s}(\bm { \theta}^{ (0)}; (\bm {X}, Y))$), thus potentially leading to more frequent false alarms if the goal is to signal only when $P(Y|\bm{X};\bm{\theta})$ changes. This is easy to see for the case of the linear Gaussian regression model $Y = \bm{X}^T\bm{\theta} + \epsilon$ with score function $\bm{s}(\bm { \theta}^{ (0)}; (\bm {X}, Y)) = (Y - \bm{X}^T\bm{\theta}^{ (0)})\bm{X}$. If $P(Y|\bm{X};\bm{\theta})$ does not change (i.e., $\bm{\theta}$ remains unchanged at $\bm{\theta}^{ (0)}$), then we still have that $\bm{s}(\bm { \theta}^{ (0)}; (\bm {X}, Y)) = \epsilon \bm{X}$ is zero mean regardless of whether $P(\bm{X})$ changes, but the covariance of $\epsilon \bm{X}$ can can obviously change.   
+In addition to providing diagnostic information on which parameter(s) have changed, and how they have changed, the decoupled univariate EWMAs (\ref{eqn:uniewma-decoupled}) have the following, additional benefit over just using the MEWMA. As discussed earlier, under fairly general conditions, the mean of $\bm{s}(\bm { \theta}^{ (0)}; (\bm {X}, Y))$ changes if and only if $P(Y|\bm{X};\bm{\theta})$ changes. Thus, a change in $P(\bm{X})$ alone with no change in $P(Y|\bm{X};\bm{\theta})$ will not cause the mean of $\bm{s}(\bm { \theta}^{ (0)}; (\bm {X}, Y))$, or the mean of $\bm{z}_t$ in (\ref{eqn:ewma}), to change. However, a change in $P(\bm{X})$ alone can cause the mean of the Hotelling $T^2$ statistic in (\ref{eqn:hotellingt2}) to increase (by changing the covariance of $\bm{s}(\bm { \theta}^{ (0)}; (\bm {X}, Y))$), thus potentially leading to more frequent false alarms if the goal is to signal only when $P(Y|\bm{X};\bm{\theta})$ changes. This is easy to see for the case of the linear Gaussian regression model $Y = \bm{X}^T\bm{\theta} + \epsilon$ with score function $\bm{s}(\bm { \theta}^{ (0)}; (\bm {X}, Y)) = \frac{(Y - \bm{X}^T\bm{\theta}^{ (0)})\bm{X}}{\sigma^2}$. If $P(Y|\bm{X};\bm{\theta})$ does not change (i.e., $\bm{\theta}$ remains unchanged at $\bm{\theta}^{ (0)}$), then we still have that $\bm{s}(\bm { \theta}^{ (0)}; (\bm {X}, Y)) = \frac{\epsilon \bm{X}}{\sigma^2}$ is zero mean regardless of whether $P(\bm{X})$ changes, but the covariance of $\epsilon \bm{X}$ can obviously change.   
 
 The univariate EWMAs are more robust to false alarms that are caused by a change in $P(\bm{X})$ and a resulting covariance change in $\bm{s}(\bm { \theta}^{ (0)}; (\bm {X}, Y))$, because they chart the individual $z_{j,t}$ components directly and not some quadratic form like the $T^2$ statistic, and the mean of $z_{j,t}$ changes if and only if $P(Y|\bm{X};\bm{\theta})$ changes. A variance change in $z_{j,t}$ typically would not increase the false alarm rate as much as if its mean changes. Moreover, by visual inspection of the univariate EWMA charts, it is easier to determine if an alarm was due to a mean change or to a variance change in $z_{j,t}$ than with the aggregated $T^2$ statistic in the MEWMA chart.  Because a single aggregated monitoring statistic has other advantages, in practice we recommend using both the MEWMA and the decoupled univariate EWMAs, which we illustrate with the examples in the subsequent sections. 
 
@@ -648,6 +648,92 @@ New figures for bike sharing data set
 \label{fig:bike_sharing_diag}
 \end{figure}
 
+\begin{figure}[H]
+\centering
+    \begin{subfigure}[t]{0.32\linewidth}
+     \centering
+         \includegraphics[width=1.0\textwidth, trim=.0in .0in .0in .0in, clip]{../figures/v14/bike_sharing/reg_lin_D/PII_neg_single_bike_fisher_mlines_with_regu_1e-08_0_0001_0_01_99_99.png}
+     \captionsetup{width=.95\linewidth}
+     \caption{Prospective Diagnosis plots for a model trained using normalized bike rental counts (using yearly mean). The training data is from $2010$-Sep to $2016$-Dec; Phase-I data is from the whole year of $2017$; Phase-II data is after $2018$-Jan.}
+     \label{fig:bs_raw_cnt}
+\end{subfigure}
+\begin{subfigure}[t]{0.32\linewidth}
+     \centering
+         \includegraphics[width=1.0\textwidth, trim=.0in .0in .0in .0in, clip]{../figures/v14/bike_sharing/reg_lin_D_1/PII_neg_single_bike_fisher_mlines_with_regu_1e-08_0_0001_0_01_99_99.png}
+     \captionsetup{width=.95\linewidth}
+     \caption{Prospective Diagnosis plots for a model trained using normalized bike rental counts (using yearly mean). The training data is from $2012$-Jan to $2016$-Dec; Phase-I data is from the whole year of $2017$; Phase-II data is after $2018$-Jan.}
+     \label{fig:bs_raw_cnt_1}
+\end{subfigure}
+\begin{subfigure}[t]{0.32\linewidth}
+     \centering
+         \includegraphics[width=1.0\textwidth, trim=.0in .0in .0in .0in, clip]{../figures/v14/bike_sharing/reg_lin_D_2/PII_neg_single_bike_fisher_mlines_with_regu_1e-08_0_0001_0_01_99_99.png}
+     \captionsetup{width=.95\linewidth}
+     \caption{Prospective Diagnosis plots for a model trained using normalized bike rental counts (using yearly mean). The training data is from $2013$-Jan to $2016$-Dec; Phase-I data is from the whole year of $2017$; Phase-II data is after $2018$-Jan.}
+     \label{fig:bs_raw_cnt_2}
+\end{subfigure}
+\caption{
+}
+\label{fig:bike_sharing_diag}
+\end{figure}
+
+Following are using covariance matrix for Fisher information matrix.
+
+\begin{figure}[H]
+\centering
+    \begin{subfigure}[t]{0.32\linewidth}
+     \centering
+         \includegraphics[width=1.0\textwidth, trim=.0in .0in .0in .0in, clip]{../figures/v14/bike_sharing/reg_lin_cov_D/neg_single_bike_fisher_mlines_with_regu_1e-08_0_0001_0_01_99_99.png}
+     \captionsetup{width=.95\linewidth}
+     \caption{Prospective Diagnosis plots for a model trained using normalized bike rental counts (using yearly mean). The training data is from $2010$-Sep to $2016$-Dec; Phase-I data is from the whole year of $2017$; Phase-II data is after $2018$-Jan.}
+     \label{fig:bs_raw_cnt}
+\end{subfigure}
+\begin{subfigure}[t]{0.32\linewidth}
+     \centering
+         \includegraphics[width=1.0\textwidth, trim=.0in .0in .0in .0in, clip]{../figures/v14/bike_sharing/reg_lin_cov_D_1/neg_single_bike_fisher_mlines_with_regu_1e-08_0_0001_0_01_99_99.png}
+     \captionsetup{width=.95\linewidth}
+     \caption{Prospective Diagnosis plots for a model trained using normalized bike rental counts (using yearly mean). The training data is from $2012$-Jan to $2016$-Dec; Phase-I data is from the whole year of $2017$; Phase-II data is after $2018$-Jan.}
+     \label{fig:bs_raw_cnt_1}
+\end{subfigure}
+\begin{subfigure}[t]{0.32\linewidth}
+     \centering
+         \includegraphics[width=1.0\textwidth, trim=.0in .0in .0in .0in, clip]{../figures/v14/bike_sharing/reg_lin_cov_D_2/neg_single_bike_fisher_mlines_with_regu_1e-08_0_0001_0_01_99_99.png}
+     \captionsetup{width=.95\linewidth}
+     \caption{Prospective Diagnosis plots for a model trained using normalized bike rental counts (using yearly mean). The training data is from $2013$-Jan to $2016$-Dec; Phase-I data is from the whole year of $2017$; Phase-II data is after $2018$-Jan.}
+     \label{fig:bs_raw_cnt_2}
+\end{subfigure}
+\caption{
+}
+\label{fig:bike_sharing_diag}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+    \begin{subfigure}[t]{0.32\linewidth}
+     \centering
+         \includegraphics[width=1.0\textwidth, trim=.0in .0in .0in .0in, clip]{../figures/v14/bike_sharing/reg_lin_cov_D/PII_neg_single_bike_fisher_mlines_with_regu_1e-08_0_0001_0_01_99_99.png}
+     \captionsetup{width=.95\linewidth}
+     \caption{Prospective Diagnosis plots for a model trained using normalized bike rental counts (using yearly mean). The training data is from $2010$-Sep to $2016$-Dec; Phase-I data is from the whole year of $2017$; Phase-II data is after $2018$-Jan.}
+     \label{fig:bs_raw_cnt}
+\end{subfigure}
+\begin{subfigure}[t]{0.32\linewidth}
+     \centering
+         \includegraphics[width=1.0\textwidth, trim=.0in .0in .0in .0in, clip]{../figures/v14/bike_sharing/reg_lin_cov_D_1/PII_neg_single_bike_fisher_mlines_with_regu_1e-08_0_0001_0_01_99_99.png}
+     \captionsetup{width=.95\linewidth}
+     \caption{Prospective Diagnosis plots for a model trained using normalized bike rental counts (using yearly mean). The training data is from $2012$-Jan to $2016$-Dec; Phase-I data is from the whole year of $2017$; Phase-II data is after $2018$-Jan.}
+     \label{fig:bs_raw_cnt_1}
+\end{subfigure}
+\begin{subfigure}[t]{0.32\linewidth}
+     \centering
+         \includegraphics[width=1.0\textwidth, trim=.0in .0in .0in .0in, clip]{../figures/v14/bike_sharing/reg_lin_cov_D_2/PII_neg_single_bike_fisher_mlines_with_regu_1e-08_0_0001_0_01_99_99.png}
+     \captionsetup{width=.95\linewidth}
+     \caption{Prospective Diagnosis plots for a model trained using normalized bike rental counts (using yearly mean). The training data is from $2013$-Jan to $2016$-Dec; Phase-I data is from the whole year of $2017$; Phase-II data is after $2018$-Jan.}
+     \label{fig:bs_raw_cnt_2}
+\end{subfigure}
+\caption{
+}
+\label{fig:bike_sharing_diag}
+\end{figure}
+
 \item Step E:
 
 \begin{figure}[H]
@@ -669,6 +755,35 @@ New figures for bike sharing data set
 \begin{subfigure}[t]{0.32\linewidth}
      \centering
          \includegraphics[width=1.0\textwidth, trim=.0in .0in .0in .0in, clip]{../figures/v14/bike_sharing/reg_lin_E_2/neg_single_bike_fisher_mlines_with_regu_1e-08_0_0001_0_01_99_99.png}
+     \captionsetup{width=.95\linewidth}
+     \caption{Prospective Diagnosis plots for a model trained using raw bike rental counts (using yearly mean). The training data is from from $2013$-Jan to $2016$-Dec; Phase-I data is from the whole year of $2017$; Phase-II data is after $2018$-Jan.}
+     \label{fig:bs_raw_cnt_2}
+\end{subfigure}
+\caption{
+}
+\label{fig:bike_sharing_diag}
+\end{figure}
+
+
+\begin{figure}[H]
+\centering
+    \begin{subfigure}[t]{0.32\linewidth}
+     \centering
+         \includegraphics[width=1.0\textwidth, trim=.0in .0in .0in .0in, clip]{../figures/v14/bike_sharing/reg_lin_E/PII_neg_single_bike_fisher_mlines_with_regu_1e-08_0_0001_0_01_99_99.png}
+     \captionsetup{width=.95\linewidth}
+     \caption{Prospective Diagnosis plots for a model trained using raw bike rental counts (using yearly mean). The training data is from from $2010$-Sep to $2016$-Dec; Phase-I data is from the whole year of $2017$; Phase-II data is after $2018$-Jan.}
+     \label{fig:bs_raw_cnt}
+\end{subfigure}
+\begin{subfigure}[t]{0.32\linewidth}
+     \centering
+         \includegraphics[width=1.0\textwidth, trim=.0in .0in .0in .0in, clip]{../figures/v14/bike_sharing/reg_lin_E_1/PII_neg_single_bike_fisher_mlines_with_regu_1e-08_0_0001_0_01_99_99.png}
+     \captionsetup{width=.95\linewidth}
+     \caption{Prospective Diagnosis plots for a model trained using raw bike rental counts (using yearly mean). The training data is from from $2012$-Jan to $2016$-Dec; Phase-I data is from the whole year of $2017$; Phase-II data is after $2018$-Jan.}
+     \label{fig:bs_raw_cnt_1}
+\end{subfigure}
+\begin{subfigure}[t]{0.32\linewidth}
+     \centering
+         \includegraphics[width=1.0\textwidth, trim=.0in .0in .0in .0in, clip]{../figures/v14/bike_sharing/reg_lin_E_2/PII_neg_single_bike_fisher_mlines_with_regu_1e-08_0_0001_0_01_99_99.png}
      \captionsetup{width=.95\linewidth}
      \caption{Prospective Diagnosis plots for a model trained using raw bike rental counts (using yearly mean). The training data is from from $2013$-Jan to $2016$-Dec; Phase-I data is from the whole year of $2017$; Phase-II data is after $2018$-Jan.}
      \label{fig:bs_raw_cnt_2}
