@@ -343,7 +343,7 @@ where $\bar {\bm{s}}$ and $\hat {\bm {\Sigma}}$ are the sample mean vector and c
 
 The score-based concept drift monitoring framework is broken into three steps and depicted in Figures~\ref{fig:proc_mon_score_retro},~\ref{fig:proc_mon_score_monitoring}, and~\ref{fig:proc_mon_score_diagnosis} for Steps $1$, $2$, and $3$, respectively. The three steps will be illustrated in more detail in the later examples. In Step 1, we collect a batch of data in time order, $\{\bm {x}_i, y_i\} _{i=1} ^{m}$, where $m$ denotes the sample size of this batch. Then, after fitting a preliminary supervised learning model to these data, a retrospective analysis is conducted by applying the MEWMA to these same data. If the MEWMA indicates these data are stable and no significant concept drift is detected (as in the top plot in Figure~\ref{fig:proc_mon_score_retro}), we proceed to Step $2$. On the other hand, if the MEWMA detects significant concept drift in these data, then one can discard a portion of the data prior to the concept drift (e.g., the first third of the data in the bottom plot in Figure~\ref{fig:proc_mon_score_retro}) in attempt to ensure that the remaining data are stable. This retrospective analysis would then be repeated (perhaps multiple times) on the remaining data to verify whether it was stable vs. experienced concept drift. When the remaining data is deemed stable, then we proceed to Step $2$, which is depicted in Figure~\ref{fig:proc_mon_score_monitoring}.
 
-Let $n\leq m$ denote the stable data from Step $1$ and denote these data by $\mathcal{D} \vcentcolon=\{\bm {x}_i, y_i\} _{i=1} ^{n}$. The purpose of Step $2$ is to establish the UCL and then to prospectively monitor new data  into two parts: $ \mathcal{D}_1 \vcentcolon= \{\bm {x}_i, y_i\} _{i=1} ^{n_1}$ and $\mathcal{D}_2 \vcentcolon= \{\bm {x}_i, y_i\} _{i=n_1+1} ^{n}$. The first data set, $\mathcal{D}_1$, is used to train a parametric model and the second one, $\mathcal{D}_2$, is used in Phase-I for monitoring statistics and calculating the control limit ($UCL$). Given the control limit from Phase-I, in Phase-II, the control chart is applied to sample score vectors or other metrics of testing data points $\tilde{\mathcal{D}}\vcentcolon=\{\tilde{\bm{x}}_i,\tilde{y}_i\}_{i = 1}^{\tilde{n}}$ to signal the starting position of a concept drift, if it should happen. The Phase-II analysis can be used in data exploration when all the data are available and the existence and starting position of concept drift is interested in; or in prediction when data points come one-by-one and the aim is to monitor concept drifts. Finally, in Step 3, we can diagnose the origin of concept drifts if detected as shown in Figure~\ref{fig:proc_mon_score_diagnosis}, which will be explained mathematically in Section~\ref{s:decou_cd}. In this step, the scores are transformed by Fisher information matrix to decouple different components of score vectors. Then, (univariate) EWMA control charts are used to find out which covariates contribute to the concept drift.
+Let $n\leq m$ denote the stable data from Step $1$ and denote these data by $\mathcal{D} \vcentcolon=\{\bm {x}_i, y_i\} _{i=1} ^{n}$. The purpose of Step $2$ is to establish the UCL and then to prospectively monitor new data  into two parts: $ \mathcal{D}_1 \vcentcolon= \{\bm {x}_i, y_i\} _{i=1} ^{n_1}$ and $\mathcal{D}_2 \vcentcolon= \{\bm {x}_i, y_i\} _{i=n_1+1} ^{n}$. The first data set, $\mathcal{D}_1$, is used to retrain the parametric supervised learning model of interest and the second one, $\mathcal{D}_2$, is used in Phase-I for monitoring statistics and calculating the control limit ($UCL$). Given the control limit from Phase-I, in Phase-II, the control chart is applied to sample score vectors or other metrics of testing data points $\tilde{\mathcal{D}}\vcentcolon=\{\tilde{\bm{x}}_i,\tilde{y}_i\}_{i = 1}^{\tilde{n}}$ to signal the starting position of a concept drift, if it should happen. The Phase-II analysis can be used in data exploration when all the data are available and the existence and starting position of concept drift is interested in; or in prediction when data points come one-by-one and the aim is to monitor concept drifts. Finally, in Step 3, we can diagnose the origin of concept drifts if detected as shown in Figure~\ref{fig:proc_mon_score_diagnosis}, which will be explained mathematically in Section~\ref{s:decou_cd}. In this step, the scores are transformed by Fisher information matrix to decouple different components of score vectors. Then, (univariate) EWMA control charts are used to find out which covariates contribute to the concept drift.
  
 Notice that for other scalar metrics or transformed components of the score function (see Section~\ref{s:decou_cd}), we use univariate EWMA~(\cite{roberts1959control}) control chart because the statistics calculated by Equation~(\ref{eqn:ewma}) becomes scalar. The main difference is that in MEWMA control charts the monitored statistics is a summary statistics of vectors and is positive, but in EWMA control charts the statistics can fluctuate to both sides of zero, so that instead of only calculating $UCL$ we also need a lower control limit($LCL$) to detect concept drift. Other monitoring steps are similar.
 
@@ -553,16 +553,7 @@ New figures for bike sharing data set
      \caption{Retrospective Diagnosis plots for a model trained using raw bike rental counts. The training data is from $2010$-Sep to $2017$-Dec.}
      \label{fig:bs_raw_cnt}
 \end{subfigure}
-\caption{
-}
-\label{fig:bike_sharing_diag}
-\end{figure}
-
-\item Step B-1:
-
-\begin{figure}[H]
-\centering
-    \begin{subfigure}[t]{0.4\linewidth}
+\begin{subfigure}[t]{0.4\linewidth}
      \centering
          \includegraphics[width=1.0\textwidth, trim=.0in .0in .0in .0in, clip]{../figures/v14/bike_sharing/reg_lin_B_1/PII_neg_single_retro_bike_fisher_mlines_with_regu_1e-08_0_0001_0_01_99_99.png}
      \captionsetup{width=.95\linewidth}
@@ -574,427 +565,30 @@ New figures for bike sharing data set
 \label{fig:bike_sharing_diag}
 \end{figure}
 
-\item Step B-2:
-
-\begin{figure}[H]
-\centering
-    \begin{subfigure}[t]{0.4\linewidth}
-     \centering
-         \includegraphics[width=1.0\textwidth, trim=.0in .0in .0in .0in, clip]{../figures/v14/bike_sharing/reg_lin_B_2/PII_neg_single_retro_bike_fisher_mlines_with_regu_1e-08_0_0001_0_01_99_99.png}
-     \captionsetup{width=.95\linewidth}
-     \caption{Retrospective Diagnosis plots for a model trained using raw bike rental counts. The training data is from $2010$-Sep to $2017$-Dec, and the control limit is set based on data from $2012$-Jun to $2015$-Jun, but applied on the training data.}
-     \label{fig:bs_raw_cnt}
-\end{subfigure}
-\caption{
-}
-\label{fig:bike_sharing_diag}
-\end{figure}
-
 \item Step C:
 
 \begin{figure}[H]
 \centering
-    \begin{subfigure}[t]{0.32\linewidth}
+    \begin{subfigure}[t]{0.304\linewidth}
      \centering
          \includegraphics[width=1.0\textwidth, trim=.0in .0in .0in .0in, clip]{../figures/v14/bike_sharing/reg_lin_C/PII_pos_single_retro_bike_fisher_mlines_with_regu_1e-08_0_0001_0_01_99_99.png}
      \captionsetup{width=.95\linewidth}
      \caption{Retrospective Diagnosis plots for a model trained using normalized bike rental counts (using yearly mean). The training data is from $2010$-Sep to $2017$-Dec, and the control limit is set based on the training data.}
      \label{fig:bs_raw_cnt}
 \end{subfigure}
-\begin{subfigure}[t]{0.32\linewidth}
-     \centering
-         \includegraphics[width=1.0\textwidth, trim=.0in .0in .0in .0in, clip]{../figures/v14/bike_sharing/reg_lin_C_1/PII_pos_single_retro_bike_fisher_mlines_with_regu_1e-08_0_0001_0_01_99_99.png}
-     \captionsetup{width=.95\linewidth}
-     \caption{Retrospective Diagnosis plots for a model trained using normalized bike rental counts (using yearly mean). The training data is from $2012$-Jan to $2017$-Dec, and the control limit is set based on the training data.}
-     \label{fig:bs_raw_cnt_1}
-\end{subfigure}
-\begin{subfigure}[t]{0.32\linewidth}
+\begin{subfigure}[t]{0.304\linewidth}
      \centering
          \includegraphics[width=1.0\textwidth, trim=.0in .0in .0in .0in, clip]{../figures/v14/bike_sharing/reg_lin_C_2/PII_pos_single_retro_bike_fisher_mlines_with_regu_1e-08_0_0001_0_01_99_99.png}
      \captionsetup{width=.95\linewidth}
      \caption{Retrospective Diagnosis plots for a model trained using normalized bike rental counts (using yearly mean). The training data is from $2013$-Jan to $2017$-Dec, and the control limit is set based on the training data.}
      \label{fig:bs_raw_cnt_2}
 \end{subfigure}
-\caption{
-}
-\label{fig:bike_sharing_diag}
-\end{figure}
-
-Following are using covariance matrix for Fisher information matrix.
-
-\begin{figure}[H]
-\centering
-    \begin{subfigure}[t]{0.32\linewidth}
-     \centering
-         \includegraphics[width=1.0\textwidth, trim=.0in .0in .0in .0in, clip]{../figures/v14/bike_sharing/reg_lin_cov_C/PII_pos_single_retro_bike_fisher_mlines_with_regu_1e-08_0_0001_0_01_99_99.png}
-     \captionsetup{width=.95\linewidth}
-     \caption{Retrospective Diagnosis plots for a model trained using normalized bike rental counts (using yearly mean). The training data is from $2010$-Sep to $2017$-Dec, and the control limit is set based on the training data.}
-     \label{fig:bs_raw_cnt}
-\end{subfigure}
-\begin{subfigure}[t]{0.32\linewidth}
-     \centering
-         \includegraphics[width=1.0\textwidth, trim=.0in .0in .0in .0in, clip]{../figures/v14/bike_sharing/reg_lin_cov_C_1/PII_pos_single_retro_bike_fisher_mlines_with_regu_1e-08_0_0001_0_01_99_99.png}
-     \captionsetup{width=.95\linewidth}
-     \caption{Retrospective Diagnosis plots for a model trained using normalized bike rental counts (using yearly mean). The training data is from $2012$-Jan to $2017$-Dec, and the control limit is set based on the training data.}
-     \label{fig:bs_raw_cnt_1}
-\end{subfigure}
-\begin{subfigure}[t]{0.32\linewidth}
-     \centering
-         \includegraphics[width=1.0\textwidth, trim=.0in .0in .0in .0in, clip]{../figures/v14/bike_sharing/reg_lin_cov_C_2/PII_pos_single_retro_bike_fisher_mlines_with_regu_1e-08_0_0001_0_01_99_99.png}
-     \captionsetup{width=.95\linewidth}
-     \caption{Retrospective Diagnosis plots for a model trained using normalized bike rental counts (using yearly mean). The training data is from $2013$-Jan to $2017$-Dec, and the control limit is set based on the training data.}
-     \label{fig:bs_raw_cnt_2}
-\end{subfigure}
-\caption{
-}
-\label{fig:bike_sharing_diag}
-\end{figure}
-
-\item Step D:
-
-\begin{figure}[H]
-\centering
-    \begin{subfigure}[t]{0.32\linewidth}
-     \centering
-         \includegraphics[width=1.0\textwidth, trim=.0in .0in .0in .0in, clip]{../figures/v14/bike_sharing/reg_lin_D/neg_single_bike_fisher_mlines_with_regu_1e-08_0_0001_0_01_99_99.png}
-     \captionsetup{width=.95\linewidth}
-     \caption{Prospective Diagnosis plots for a model trained using normalized bike rental counts (using yearly mean). The training data is from $2010$-Sep to $2016$-Dec; Phase-I data is from the whole year of $2017$; Phase-II data is after $2018$-Jan.}
-     \label{fig:bs_raw_cnt}
-\end{subfigure}
-\begin{subfigure}[t]{0.32\linewidth}
-     \centering
-         \includegraphics[width=1.0\textwidth, trim=.0in .0in .0in .0in, clip]{../figures/v14/bike_sharing/reg_lin_D_1/neg_single_bike_fisher_mlines_with_regu_1e-08_0_0001_0_01_99_99.png}
-     \captionsetup{width=.95\linewidth}
-     \caption{Prospective Diagnosis plots for a model trained using normalized bike rental counts (using yearly mean). The training data is from $2012$-Jan to $2016$-Dec; Phase-I data is from the whole year of $2017$; Phase-II data is after $2018$-Jan.}
-     \label{fig:bs_raw_cnt_1}
-\end{subfigure}
-\begin{subfigure}[t]{0.32\linewidth}
-     \centering
-         \includegraphics[width=1.0\textwidth, trim=.0in .0in .0in .0in, clip]{../figures/v14/bike_sharing/reg_lin_D_2/neg_single_bike_fisher_mlines_with_regu_1e-08_0_0001_0_01_99_99.png}
-     \captionsetup{width=.95\linewidth}
-     \caption{Prospective Diagnosis plots for a model trained using normalized bike rental counts (using yearly mean). The training data is from $2013$-Jan to $2016$-Dec; Phase-I data is from the whole year of $2017$; Phase-II data is after $2018$-Jan.}
-     \label{fig:bs_raw_cnt_2}
-\end{subfigure}
-\caption{
-}
-\label{fig:bike_sharing_diag}
-\end{figure}
-
-\begin{figure}[H]
-\centering
-    \begin{subfigure}[t]{0.32\linewidth}
-     \centering
-         \includegraphics[width=1.0\textwidth, trim=.0in .0in .0in .0in, clip]{../figures/v14/bike_sharing/reg_lin_D/PII_neg_single_bike_fisher_mlines_with_regu_1e-08_0_0001_0_01_99_99.png}
-     \captionsetup{width=.95\linewidth}
-     \caption{Prospective Diagnosis plots for a model trained using normalized bike rental counts (using yearly mean). The training data is from $2010$-Sep to $2016$-Dec; Phase-I data is from the whole year of $2017$; Phase-II data is after $2018$-Jan.}
-     \label{fig:bs_raw_cnt}
-\end{subfigure}
-\begin{subfigure}[t]{0.32\linewidth}
-     \centering
-         \includegraphics[width=1.0\textwidth, trim=.0in .0in .0in .0in, clip]{../figures/v14/bike_sharing/reg_lin_D_1/PII_neg_single_bike_fisher_mlines_with_regu_1e-08_0_0001_0_01_99_99.png}
-     \captionsetup{width=.95\linewidth}
-     \caption{Prospective Diagnosis plots for a model trained using normalized bike rental counts (using yearly mean). The training data is from $2012$-Jan to $2016$-Dec; Phase-I data is from the whole year of $2017$; Phase-II data is after $2018$-Jan.}
-     \label{fig:bs_raw_cnt_1}
-\end{subfigure}
-\begin{subfigure}[t]{0.32\linewidth}
-     \centering
-         \includegraphics[width=1.0\textwidth, trim=.0in .0in .0in .0in, clip]{../figures/v14/bike_sharing/reg_lin_D_2/PII_neg_single_bike_fisher_mlines_with_regu_1e-08_0_0001_0_01_99_99.png}
-     \captionsetup{width=.95\linewidth}
-     \caption{Prospective Diagnosis plots for a model trained using normalized bike rental counts (using yearly mean). The training data is from $2013$-Jan to $2016$-Dec; Phase-I data is from the whole year of $2017$; Phase-II data is after $2018$-Jan.}
-     \label{fig:bs_raw_cnt_2}
-\end{subfigure}
-\caption{
-}
-\label{fig:bike_sharing_diag}
-\end{figure}
-
-Following are using Phase-I data to estimate control limits.
-
-\begin{figure}[H]
-\centering
-    \begin{subfigure}[t]{0.32\linewidth}
-     \centering
-         \includegraphics[width=1.0\textwidth, trim=.0in .0in .0in .0in, clip]{../figures/v14/bike_sharing/reg_lin_PI_D/neg_single_bike_fisher_mlines_with_regu_1e-08_0_0001_0_01_99_99.png}
-     \captionsetup{width=.95\linewidth}
-     \caption{Prospective Diagnosis plots for a model trained using normalized bike rental counts (using yearly mean). The training data is from $2010$-Sep to $2016$-Dec; Phase-I data is from the whole year of $2017$; Phase-II data is after $2018$-Jan.}
-     \label{fig:bs_raw_cnt}
-\end{subfigure}
-\begin{subfigure}[t]{0.32\linewidth}
-     \centering
-         \includegraphics[width=1.0\textwidth, trim=.0in .0in .0in .0in, clip]{../figures/v14/bike_sharing/reg_lin_PI_D_1/neg_single_bike_fisher_mlines_with_regu_1e-08_0_0001_0_01_99_99.png}
-     \captionsetup{width=.95\linewidth}
-     \caption{Prospective Diagnosis plots for a model trained using normalized bike rental counts (using yearly mean). The training data is from $2012$-Jan to $2016$-Dec; Phase-I data is from the whole year of $2017$; Phase-II data is after $2018$-Jan.}
-     \label{fig:bs_raw_cnt_1}
-\end{subfigure}
-\begin{subfigure}[t]{0.32\linewidth}
+\begin{subfigure}[t]{0.374\linewidth}
      \centering
          \includegraphics[width=1.0\textwidth, trim=.0in .0in .0in .0in, clip]{../figures/v14/bike_sharing/reg_lin_PI_D_2/neg_single_bike_fisher_mlines_with_regu_1e-08_0_0001_0_01_99_99.png}
      \captionsetup{width=.95\linewidth}
-     \caption{Prospective Diagnosis plots for a model trained using normalized bike rental counts (using yearly mean). The training data is from $2013$-Jan to $2016$-Dec; Phase-I data is from the whole year of $2017$; Phase-II data is after $2018$-Jan.}
-     \label{fig:bs_raw_cnt_2}
-\end{subfigure}
-\caption{
-}
-\label{fig:bike_sharing_diag}
-\end{figure}
-
-\begin{figure}[H]
-\centering
-    \begin{subfigure}[t]{0.32\linewidth}
-     \centering
-         \includegraphics[width=1.0\textwidth, trim=.0in .0in .0in .0in, clip]{../figures/v14/bike_sharing/reg_lin_PI_D/PII_neg_single_bike_fisher_mlines_with_regu_1e-08_0_0001_0_01_99_99.png}
-     \captionsetup{width=.95\linewidth}
-     \caption{Prospective Diagnosis plots for a model trained using normalized bike rental counts (using yearly mean). The training data is from $2010$-Sep to $2016$-Dec; Phase-I data is from the whole year of $2017$; Phase-II data is after $2018$-Jan.}
-     \label{fig:bs_raw_cnt}
-\end{subfigure}
-\begin{subfigure}[t]{0.32\linewidth}
-     \centering
-         \includegraphics[width=1.0\textwidth, trim=.0in .0in .0in .0in, clip]{../figures/v14/bike_sharing/reg_lin_PI_D_1/PII_neg_single_bike_fisher_mlines_with_regu_1e-08_0_0001_0_01_99_99.png}
-     \captionsetup{width=.95\linewidth}
-     \caption{Prospective Diagnosis plots for a model trained using normalized bike rental counts (using yearly mean). The training data is from $2012$-Jan to $2016$-Dec; Phase-I data is from the whole year of $2017$; Phase-II data is after $2018$-Jan.}
-     \label{fig:bs_raw_cnt_1}
-\end{subfigure}
-\begin{subfigure}[t]{0.32\linewidth}
-     \centering
-         \includegraphics[width=1.0\textwidth, trim=.0in .0in .0in .0in, clip]{../figures/v14/bike_sharing/reg_lin_PI_D_2/PII_neg_single_bike_fisher_mlines_with_regu_1e-08_0_0001_0_01_99_99.png}
-     \captionsetup{width=.95\linewidth}
-     \caption{Prospective Diagnosis plots for a model trained using normalized bike rental counts (using yearly mean). The training data is from $2013$-Jan to $2016$-Dec; Phase-I data is from the whole year of $2017$; Phase-II data is after $2018$-Jan.}
-     \label{fig:bs_raw_cnt_2}
-\end{subfigure}
-\caption{
-}
-\label{fig:bike_sharing_diag}
-\end{figure}
-
-Following are using covariance matrix for Fisher information matrix.
-
-\begin{figure}[H]
-\centering
-    \begin{subfigure}[t]{0.32\linewidth}
-     \centering
-         \includegraphics[width=1.0\textwidth, trim=.0in .0in .0in .0in, clip]{../figures/v14/bike_sharing/reg_lin_cov_D/neg_single_bike_fisher_mlines_with_regu_1e-08_0_0001_0_01_99_99.png}
-     \captionsetup{width=.95\linewidth}
-     \caption{Prospective Diagnosis plots for a model trained using normalized bike rental counts (using yearly mean). The training data is from $2010$-Sep to $2016$-Dec; Phase-I data is from the whole year of $2017$; Phase-II data is after $2018$-Jan.}
-     \label{fig:bs_raw_cnt}
-\end{subfigure}
-\begin{subfigure}[t]{0.32\linewidth}
-     \centering
-         \includegraphics[width=1.0\textwidth, trim=.0in .0in .0in .0in, clip]{../figures/v14/bike_sharing/reg_lin_cov_D_1/neg_single_bike_fisher_mlines_with_regu_1e-08_0_0001_0_01_99_99.png}
-     \captionsetup{width=.95\linewidth}
-     \caption{Prospective Diagnosis plots for a model trained using normalized bike rental counts (using yearly mean). The training data is from $2012$-Jan to $2016$-Dec; Phase-I data is from the whole year of $2017$; Phase-II data is after $2018$-Jan.}
-     \label{fig:bs_raw_cnt_1}
-\end{subfigure}
-\begin{subfigure}[t]{0.32\linewidth}
-     \centering
-         \includegraphics[width=1.0\textwidth, trim=.0in .0in .0in .0in, clip]{../figures/v14/bike_sharing/reg_lin_cov_D_2/neg_single_bike_fisher_mlines_with_regu_1e-08_0_0001_0_01_99_99.png}
-     \captionsetup{width=.95\linewidth}
-     \caption{Prospective Diagnosis plots for a model trained using normalized bike rental counts (using yearly mean). The training data is from $2013$-Jan to $2016$-Dec; Phase-I data is from the whole year of $2017$; Phase-II data is after $2018$-Jan.}
-     \label{fig:bs_raw_cnt_2}
-\end{subfigure}
-\caption{
-}
-\label{fig:bike_sharing_diag}
-\end{figure}
-
-\begin{figure}[H]
-\centering
-    \begin{subfigure}[t]{0.32\linewidth}
-     \centering
-         \includegraphics[width=1.0\textwidth, trim=.0in .0in .0in .0in, clip]{../figures/v14/bike_sharing/reg_lin_cov_D/PII_neg_single_bike_fisher_mlines_with_regu_1e-08_0_0001_0_01_99_99.png}
-     \captionsetup{width=.95\linewidth}
-     \caption{Prospective Diagnosis plots for a model trained using normalized bike rental counts (using yearly mean). The training data is from $2010$-Sep to $2016$-Dec; Phase-I data is from the whole year of $2017$; Phase-II data is after $2018$-Jan.}
-     \label{fig:bs_raw_cnt}
-\end{subfigure}
-\begin{subfigure}[t]{0.32\linewidth}
-     \centering
-         \includegraphics[width=1.0\textwidth, trim=.0in .0in .0in .0in, clip]{../figures/v14/bike_sharing/reg_lin_cov_D_1/PII_neg_single_bike_fisher_mlines_with_regu_1e-08_0_0001_0_01_99_99.png}
-     \captionsetup{width=.95\linewidth}
-     \caption{Prospective Diagnosis plots for a model trained using normalized bike rental counts (using yearly mean). The training data is from $2012$-Jan to $2016$-Dec; Phase-I data is from the whole year of $2017$; Phase-II data is after $2018$-Jan.}
-     \label{fig:bs_raw_cnt_1}
-\end{subfigure}
-\begin{subfigure}[t]{0.32\linewidth}
-     \centering
-         \includegraphics[width=1.0\textwidth, trim=.0in .0in .0in .0in, clip]{../figures/v14/bike_sharing/reg_lin_cov_D_2/PII_neg_single_bike_fisher_mlines_with_regu_1e-08_0_0001_0_01_99_99.png}
-     \captionsetup{width=.95\linewidth}
-     \caption{Prospective Diagnosis plots for a model trained using normalized bike rental counts (using yearly mean). The training data is from $2013$-Jan to $2016$-Dec; Phase-I data is from the whole year of $2017$; Phase-II data is after $2018$-Jan.}
-     \label{fig:bs_raw_cnt_2}
-\end{subfigure}
-\caption{
-}
-\label{fig:bike_sharing_diag}
-\end{figure}
-
-\item Step E:
-
-\begin{figure}[H]
-\centering
-    \begin{subfigure}[t]{0.32\linewidth}
-     \centering
-         \includegraphics[width=1.0\textwidth, trim=.0in .0in .0in .0in, clip]{../figures/v14/bike_sharing/reg_lin_E/neg_single_bike_fisher_mlines_with_regu_1e-08_0_0001_0_01_99_99.png}
-     \captionsetup{width=.95\linewidth}
-     \caption{Prospective Diagnosis plots for a model trained using raw bike rental counts (using yearly mean). The training data is from from $2010$-Sep to $2016$-Dec; Phase-I data is from the whole year of $2017$; Phase-II data is after $2018$-Jan.}
-     \label{fig:bs_raw_cnt}
-\end{subfigure}
-\begin{subfigure}[t]{0.32\linewidth}
-     \centering
-         \includegraphics[width=1.0\textwidth, trim=.0in .0in .0in .0in, clip]{../figures/v14/bike_sharing/reg_lin_E_1/neg_single_bike_fisher_mlines_with_regu_1e-08_0_0001_0_01_99_99.png}
-     \captionsetup{width=.95\linewidth}
-     \caption{Prospective Diagnosis plots for a model trained using raw bike rental counts (using yearly mean). The training data is from from $2012$-Jan to $2016$-Dec; Phase-I data is from the whole year of $2017$; Phase-II data is after $2018$-Jan.}
-     \label{fig:bs_raw_cnt_1}
-\end{subfigure}
-\begin{subfigure}[t]{0.32\linewidth}
-     \centering
-         \includegraphics[width=1.0\textwidth, trim=.0in .0in .0in .0in, clip]{../figures/v14/bike_sharing/reg_lin_E_2/neg_single_bike_fisher_mlines_with_regu_1e-08_0_0001_0_01_99_99.png}
-     \captionsetup{width=.95\linewidth}
-     \caption{Prospective Diagnosis plots for a model trained using raw bike rental counts (using yearly mean). The training data is from from $2013$-Jan to $2016$-Dec; Phase-I data is from the whole year of $2017$; Phase-II data is after $2018$-Jan.}
-     \label{fig:bs_raw_cnt_2}
-\end{subfigure}
-\caption{
-}
-\label{fig:bike_sharing_diag}
-\end{figure}
-
-
-\begin{figure}[H]
-\centering
-    \begin{subfigure}[t]{0.32\linewidth}
-     \centering
-         \includegraphics[width=1.0\textwidth, trim=.0in .0in .0in .0in, clip]{../figures/v14/bike_sharing/reg_lin_E/PII_neg_single_bike_fisher_mlines_with_regu_1e-08_0_0001_0_01_99_99.png}
-     \captionsetup{width=.95\linewidth}
-     \caption{Prospective Diagnosis plots for a model trained using raw bike rental counts (using yearly mean). The training data is from from $2010$-Sep to $2016$-Dec; Phase-I data is from the whole year of $2017$; Phase-II data is after $2018$-Jan.}
-     \label{fig:bs_raw_cnt}
-\end{subfigure}
-\begin{subfigure}[t]{0.32\linewidth}
-     \centering
-         \includegraphics[width=1.0\textwidth, trim=.0in .0in .0in .0in, clip]{../figures/v14/bike_sharing/reg_lin_E_1/PII_neg_single_bike_fisher_mlines_with_regu_1e-08_0_0001_0_01_99_99.png}
-     \captionsetup{width=.95\linewidth}
-     \caption{Prospective Diagnosis plots for a model trained using raw bike rental counts (using yearly mean). The training data is from from $2012$-Jan to $2016$-Dec; Phase-I data is from the whole year of $2017$; Phase-II data is after $2018$-Jan.}
-     \label{fig:bs_raw_cnt_1}
-\end{subfigure}
-\begin{subfigure}[t]{0.32\linewidth}
-     \centering
-         \includegraphics[width=1.0\textwidth, trim=.0in .0in .0in .0in, clip]{../figures/v14/bike_sharing/reg_lin_E_2/PII_neg_single_bike_fisher_mlines_with_regu_1e-08_0_0001_0_01_99_99.png}
-     \captionsetup{width=.95\linewidth}
-     \caption{Prospective Diagnosis plots for a model trained using raw bike rental counts (using yearly mean). The training data is from from $2013$-Jan to $2016$-Dec; Phase-I data is from the whole year of $2017$; Phase-II data is after $2018$-Jan.}
-     \label{fig:bs_raw_cnt_2}
-\end{subfigure}
-\caption{
-}
-\label{fig:bike_sharing_diag}
-\end{figure}
-
-Following are using Phase-I data to estimate control limits.
-
-\begin{figure}[H]
-\centering
-    \begin{subfigure}[t]{0.32\linewidth}
-     \centering
-         \includegraphics[width=1.0\textwidth, trim=.0in .0in .0in .0in, clip]{../figures/v14/bike_sharing/reg_lin_PI_E/neg_single_bike_fisher_mlines_with_regu_1e-08_0_0001_0_01_99_99.png}
-     \captionsetup{width=.95\linewidth}
-     \caption{Prospective Diagnosis plots for a model trained using raw bike rental counts (using yearly mean). The training data is from from $2010$-Sep to $2016$-Dec; Phase-I data is from the whole year of $2017$; Phase-II data is after $2018$-Jan.}
-     \label{fig:bs_raw_cnt}
-\end{subfigure}
-\begin{subfigure}[t]{0.32\linewidth}
-     \centering
-         \includegraphics[width=1.0\textwidth, trim=.0in .0in .0in .0in, clip]{../figures/v14/bike_sharing/reg_lin_PI_E_1/neg_single_bike_fisher_mlines_with_regu_1e-08_0_0001_0_01_99_99.png}
-     \captionsetup{width=.95\linewidth}
-     \caption{Prospective Diagnosis plots for a model trained using raw bike rental counts (using yearly mean). The training data is from from $2012$-Jan to $2016$-Dec; Phase-I data is from the whole year of $2017$; Phase-II data is after $2018$-Jan.}
-     \label{fig:bs_raw_cnt_1}
-\end{subfigure}
-\begin{subfigure}[t]{0.32\linewidth}
-     \centering
-         \includegraphics[width=1.0\textwidth, trim=.0in .0in .0in .0in, clip]{../figures/v14/bike_sharing/reg_lin_PI_E_2/neg_single_bike_fisher_mlines_with_regu_1e-08_0_0001_0_01_99_99.png}
-     \captionsetup{width=.95\linewidth}
-     \caption{Prospective Diagnosis plots for a model trained using raw bike rental counts (using yearly mean). The training data is from from $2013$-Jan to $2016$-Dec; Phase-I data is from the whole year of $2017$; Phase-II data is after $2018$-Jan.}
-     \label{fig:bs_raw_cnt_2}
-\end{subfigure}
-\caption{
-}
-\label{fig:bike_sharing_diag}
-\end{figure}
-
-
-\begin{figure}[H]
-\centering
-    \begin{subfigure}[t]{0.32\linewidth}
-     \centering
-         \includegraphics[width=1.0\textwidth, trim=.0in .0in .0in .0in, clip]{../figures/v14/bike_sharing/reg_lin_PI_E/PII_neg_single_bike_fisher_mlines_with_regu_1e-08_0_0001_0_01_99_99.png}
-     \captionsetup{width=.95\linewidth}
-     \caption{Prospective Diagnosis plots for a model trained using raw bike rental counts (using yearly mean). The training data is from from $2010$-Sep to $2016$-Dec; Phase-I data is from the whole year of $2017$; Phase-II data is after $2018$-Jan.}
-     \label{fig:bs_raw_cnt}
-\end{subfigure}
-\begin{subfigure}[t]{0.32\linewidth}
-     \centering
-         \includegraphics[width=1.0\textwidth, trim=.0in .0in .0in .0in, clip]{../figures/v14/bike_sharing/reg_lin_PI_E_1/PII_neg_single_bike_fisher_mlines_with_regu_1e-08_0_0001_0_01_99_99.png}
-     \captionsetup{width=.95\linewidth}
-     \caption{Prospective Diagnosis plots for a model trained using raw bike rental counts (using yearly mean). The training data is from from $2012$-Jan to $2016$-Dec; Phase-I data is from the whole year of $2017$; Phase-II data is after $2018$-Jan.}
-     \label{fig:bs_raw_cnt_1}
-\end{subfigure}
-\begin{subfigure}[t]{0.32\linewidth}
-     \centering
-         \includegraphics[width=1.0\textwidth, trim=.0in .0in .0in .0in, clip]{../figures/v14/bike_sharing/reg_lin_PI_E_2/PII_neg_single_bike_fisher_mlines_with_regu_1e-08_0_0001_0_01_99_99.png}
-     \captionsetup{width=.95\linewidth}
-     \caption{Prospective Diagnosis plots for a model trained using raw bike rental counts (using yearly mean). The training data is from from $2013$-Jan to $2016$-Dec; Phase-I data is from the whole year of $2017$; Phase-II data is after $2018$-Jan.}
-     \label{fig:bs_raw_cnt_2}
-\end{subfigure}
-\caption{
-}
-\label{fig:bike_sharing_diag}
-\end{figure}
-
-Following are using covariance matrix for Fisher information matrix.
-
-\begin{figure}[H]
-\centering
-    \begin{subfigure}[t]{0.32\linewidth}
-     \centering
-         \includegraphics[width=1.0\textwidth, trim=.0in .0in .0in .0in, clip]{../figures/v14/bike_sharing/reg_lin_cov_E/neg_single_bike_fisher_mlines_with_regu_1e-08_0_0001_0_01_99_99.png}
-     \captionsetup{width=.95\linewidth}
-     \caption{Prospective Diagnosis plots for a model trained using raw bike rental counts (using yearly mean). The training data is from from $2010$-Sep to $2016$-Dec; Phase-I data is from the whole year of $2017$; Phase-II data is after $2018$-Jan.}
-     \label{fig:bs_raw_cnt}
-\end{subfigure}
-\begin{subfigure}[t]{0.32\linewidth}
-     \centering
-         \includegraphics[width=1.0\textwidth, trim=.0in .0in .0in .0in, clip]{../figures/v14/bike_sharing/reg_lin_cov_E_1/neg_single_bike_fisher_mlines_with_regu_1e-08_0_0001_0_01_99_99.png}
-     \captionsetup{width=.95\linewidth}
-     \caption{Prospective Diagnosis plots for a model trained using raw bike rental counts (using yearly mean). The training data is from from $2012$-Jan to $2016$-Dec; Phase-I data is from the whole year of $2017$; Phase-II data is after $2018$-Jan.}
-     \label{fig:bs_raw_cnt_1}
-\end{subfigure}
-\begin{subfigure}[t]{0.32\linewidth}
-     \centering
-         \includegraphics[width=1.0\textwidth, trim=.0in .0in .0in .0in, clip]{../figures/v14/bike_sharing/reg_lin_cov_E_2/neg_single_bike_fisher_mlines_with_regu_1e-08_0_0001_0_01_99_99.png}
-     \captionsetup{width=.95\linewidth}
-     \caption{Prospective Diagnosis plots for a model trained using raw bike rental counts (using yearly mean). The training data is from from $2013$-Jan to $2016$-Dec; Phase-I data is from the whole year of $2017$; Phase-II data is after $2018$-Jan.}
-     \label{fig:bs_raw_cnt_2}
-\end{subfigure}
-\caption{
-}
-\label{fig:bike_sharing_diag}
-\end{figure}
-
-
-\begin{figure}[H]
-\centering
-    \begin{subfigure}[t]{0.32\linewidth}
-     \centering
-         \includegraphics[width=1.0\textwidth, trim=.0in .0in .0in .0in, clip]{../figures/v14/bike_sharing/reg_lin_cov_E/PII_neg_single_bike_fisher_mlines_with_regu_1e-08_0_0001_0_01_99_99.png}
-     \captionsetup{width=.95\linewidth}
-     \caption{Prospective Diagnosis plots for a model trained using raw bike rental counts (using yearly mean). The training data is from from $2010$-Sep to $2016$-Dec; Phase-I data is from the whole year of $2017$; Phase-II data is after $2018$-Jan.}
-     \label{fig:bs_raw_cnt}
-\end{subfigure}
-\begin{subfigure}[t]{0.32\linewidth}
-     \centering
-         \includegraphics[width=1.0\textwidth, trim=.0in .0in .0in .0in, clip]{../figures/v14/bike_sharing/reg_lin_cov_E_1/PII_neg_single_bike_fisher_mlines_with_regu_1e-08_0_0001_0_01_99_99.png}
-     \captionsetup{width=.95\linewidth}
-     \caption{Prospective Diagnosis plots for a model trained using raw bike rental counts (using yearly mean). The training data is from from $2012$-Jan to $2016$-Dec; Phase-I data is from the whole year of $2017$; Phase-II data is after $2018$-Jan.}
-     \label{fig:bs_raw_cnt_1}
-\end{subfigure}
-\begin{subfigure}[t]{0.32\linewidth}
-     \centering
-         \includegraphics[width=1.0\textwidth, trim=.0in .0in .0in .0in, clip]{../figures/v14/bike_sharing/reg_lin_cov_E_2/PII_neg_single_bike_fisher_mlines_with_regu_1e-08_0_0001_0_01_99_99.png}
-     \captionsetup{width=.95\linewidth}
-     \caption{Prospective Diagnosis plots for a model trained using raw bike rental counts (using yearly mean). The training data is from from $2013$-Jan to $2016$-Dec; Phase-I data is from the whole year of $2017$; Phase-II data is after $2018$-Jan.}
-     \label{fig:bs_raw_cnt_2}
+     \caption{Prospective Diagnosis plots for a model trained using normalized bike rental counts (using yearly mean). The training data is from $2013$-Jan to $2016$-Dec; Phase-I data is from the whole year of $2017$; Phase-II data is after $2018$-Jan. In estimating the control limits in this figure, the $\bar{\bm{s}}$ in Equation~(\ref{eqn:hotellingt2}) is estimated from data of the Phase-I, while the $\hat{\bm{\Sigma}}$ is estimated from training data.}
+     \label{fig:bs_norm_cnt_2}
 \end{subfigure}
 \caption{
 }
