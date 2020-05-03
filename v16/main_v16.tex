@@ -144,7 +144,7 @@ P(Y|\bm{X};\bm { \theta}, \phi) =& \exp\{\frac{Y \psi(\bm{X};\bm { \theta})-b( \
 \end{aligned}
 \label{eqn:score_glm}
 \end{align}
-for functions $b(\cdot)$, $ \psi(\cdot)$, and $a(\cdot)$ and dispersion parameter $\psi$. The conditional mean is $E[Y|\bm{X}]=b'(\psi(\bm{X};\bm{\theta}))$, where the derivative is with respect to $\psi$, and the canonical link function $g(\cdot)$ is defined such that $g(E[Y|\bm{X}])=\psi(\bm{X};\bm{\theta})$($=\bm{X}^T\bm{\theta}$ for the traditional GLM). Using a Taylor expansion, the expected score function with a small parameter change $ \Delta \bm { \theta}= \bm { \theta}^{(1)}-\bm { \theta}^{(0)}$ is
+for functions $b(\cdot)$, $ \psi(\cdot)$, and $a(\cdot)$ and dispersion parameter $\phi$. The conditional mean is $E[Y|\bm{X}]=b'(\psi(\bm{X};\bm{\theta}))$, where the derivative is with respect to $\psi$, and the canonical link function $g(\cdot)$ is defined such that $g(E[Y|\bm{X}])=\psi(\bm{X};\bm{\theta})$($=\bm{X}^T\bm{\theta}$ for the traditional GLM). Using a Taylor expansion, the expected score function with a small parameter change $ \Delta \bm { \theta}= \bm { \theta}^{(1)}-\bm { \theta}^{(0)}$ is
 \begin{align}
 \begin{aligned}
 E _{\bm { \theta} ^{(1)}}[\bm {s}(\bm { \theta} ^{(0)};(\bm {X}, Y))|\bm{X}] \approx& \frac{1}{a ( \phi)}b''( \psi(\bm{X}; \bm { \theta} ^{(0)}))\nabla _{ \bm { \theta}} \psi (\bm{X}; \bm { \theta} ^{ (0)}) \nabla _{\bm { \theta}}^T \psi (\bm{X}; \bm { \theta} ^{ (0)}) \Delta \bm { \theta} \\
@@ -152,9 +152,9 @@ E _{\bm { \theta} ^{(1)}}[\bm {s}(\bm { \theta} ^{(0)};(\bm {X}, Y))|\bm{X}] \ap
 \end{aligned}
 \label{eqn:exp_score_glm}
 \end{align}
-It is known that $Var[Y|\bm{X}] = a ( \phi)b''(\psi (\bm{X}; \bm { \theta} ^{ (0)}))$ so that $b''(\psi (\bm{X}; \bm { \theta} ^{ (0)}))>0$ always holds, if $Y$ is not a deterministic function of $\bm{X}$. If we further take the expectation of Equation~(\ref{eqn:exp_score_glm}) with respect to the distribution of $\bm{X}$, then the resulting matrix that premultiplies $\Delta\bm{\theta}$ is always positive definite if the distribution of $\bm{X}$ is not degenerate. Notice that this conclusion does not require $ \psi (\bm{X}; \bm { \theta})$ to be a linear function of $\bm { \theta}$, if certain identifiability conditions on $\bm{\theta}$ are satisfied and the Hessian matrix of the $\psi(\bm{X};\bm{\theta})$ with respect to the parameter vector has eigenvalues with small absolute values (e.g. the Hessian matrix of linear $\psi(\bm{X};\bm{\theta})$ has eigenvalues all as zero). For example, $ \psi (\bm{X}; \bm { \theta})$ can be a neural network, in which case $\bm { \theta}$ is the vector of weights and biases for the neural net. In later studies with simulated and real data sets in Section~\ref{s:real_data}, we show that our score-based method is also effective for neural networks.
+It is known that $Var[Y|\bm{X}] = a ( \phi)b''(\psi (\bm{X}; \bm { \theta} ))$ so that $b''(\psi (\bm{X}; \bm { \theta} ))>0$ always holds, if $Y$ is not a deterministic function of $\bm{X}$. If we further take the expectation of Equation~(\ref{eqn:exp_score_glm}) with respect to the distribution of $\bm{X}$, then the resulting matrix that premultiplies $\Delta\bm{\theta}$ is always positive definite if the distribution of $\bm{X}$ is not degenerate. Notice that this conclusion does not require $ \psi (\bm{X}; \bm { \theta})$ to be a linear function of $\bm { \theta}$, if certain identifiability conditions on $\bm{\theta}$ are satisfied and the Hessian matrix of the $\psi(\bm{X};\bm{\theta})$ with respect to the parameter vector has eigenvalues with small absolute values (e.g. the Hessian matrix of linear $\psi(\bm{X};\bm{\theta})$ has eigenvalues all as zero). For example, $ \psi (\bm{X}; \bm { \theta})$ can be a neural network, in which case $\bm { \theta}$ is the vector of weights and bias parameters for the neural net. In later studies with simulated and real data sets in Section~\ref{s:real_data}, we show that our score-based method is also effective for neural networks.
 
-In summary, for GLM-type response models with linear or nonlinear $\psi(\cdot)$ that satisfies certain identifiability conditions on $\bm{\theta}$, \textit{the mean of the score function changes if and only if $P(Y|\bm{X};\bm{\theta})$ changes}. This is an important property that provides the theoretical basis for our score-based concept drift monitoring and diagnosis. Note that error-based methods do not enjoy this property, i.e., $P(Y|\bm{X};\bm{\theta})$ can change in ways that do not change the error rate.
+In summary, for GLM-type response models with linear or nonlinear $\psi(\cdot)$ that satisfy certain identifiability conditions on $\bm{\theta}$, \textit{the mean of the score function changes if and only if $P(Y|\bm{X};\bm{\theta})$ changes}. This is an important property that provides the theoretical basis for our score-based concept drift monitoring and diagnosis. Note that error-based methods do not enjoy this property, i.e., $P(Y|\bm{X};\bm{\theta})$ can change in ways that do not change the error rate.
 
 \begin{figure}[!htbp]
 \centering
@@ -162,14 +162,14 @@ In summary, for GLM-type response models with linear or nonlinear $\psi(\cdot)$ 
          \centering
          \includegraphics[width=\textwidth, trim=.2in .2in .7in .45in, clip]{../figures/v14/demons_fig/2D_logi_orig.png}
          \captionsetup{width=.95\linewidth}
-         \caption{The original model $P(Y|\bm{X};\bm{\theta}^{(0)})$ with the decision boundary that minimizes expected error rate in Equation~(\ref{eqn:logi_err_rate}).}
+         \caption{The original model $P(Y|{X};\bm{\theta}^{(0)})$ with the decision boundary that minimizes expected error rate in Equation~(\ref{eqn:logi_err_rate}).}
          \label{fig:logi_err_rate_unch_a}
   \end{subfigure}
   \begin{subfigure}[t]{0.4\linewidth}
          \centering
          \includegraphics[width=\textwidth, trim=.2in .2in .7in .45in, clip]{../figures/v14/demons_fig/2D_logi_cd.png}
          \captionsetup{width=.95\linewidth}
-         \caption{The drifted model $P(Y|\bm{X};\bm{\theta}^{(1)})$ but with unchanged error rate from the left figure (a).}
+         \caption{The drifted model $P(Y|{X};\bm{\theta}^{(1)})$ but with unchanged error rate from the left figure (a).}
          \label{fig:logi_err_rate_unch_b}
   \end{subfigure}
 %  \begin{subfigure}[t]{0.4\linewidth}
@@ -183,7 +183,7 @@ In summary, for GLM-type response models with linear or nonlinear $\psi(\cdot)$ 
          \centering
 	 \includegraphics[width=\textwidth, trim=.2in .2in .7in .45in, clip]{../figures/v14/demons_fig/2D_logi_cd_updated.png}
          \captionsetup{width=.95\linewidth}
-         \caption{The drifted model $P(Y|\bm{X};\bm{\theta}^{(1)})$ after detecting concept drift and updating the decision boundary to reduce error rate.}
+         \caption{The drifted model $P(Y|{X};\bm{\theta}^{(1)})$ after detecting concept drift and updating the decision boundary to reduce error rate.}
          \label{fig:logi_err_rate_unch_d}
   \end{subfigure}
   \caption{The demonstration of simple logistic regression that concept drift would result in no change in the error rate. The shaded regions are related to the error in Equation~(\ref{eqn:logi_err_rate}).}
@@ -193,16 +193,16 @@ In summary, for GLM-type response models with linear or nonlinear $\psi(\cdot)$ 
 To further illustrate the above with a more concrete example, consider the following binary simple logistic regression example in which concept drift occurs but with no change in the error rate. The formulas defining the model and the corresponding score function in this case are
 \begin{align}
 \begin{aligned}
-&P(Y=1|\bm{X};\bm{\theta}) = \frac{\exp\{\bm {X}^{T} \bm {\theta}\}}{1+\exp\{\bm {X}^{T} \bm {\theta}\}} \\
-&\bm {s}(\bm { \theta} ; (\bm {X}, Y)) = (Y-P(Y=1|\bm{X};\bm{\theta}))\bm {X}
+&P(Y=1|{X};\bm{\theta}) = \frac{\exp\{\bm {X}^{T} \bm {\theta}\}}{1+\exp\{\bm {X}^{T} \bm {\theta}\}} \\
+&\bm {s}(\bm { \theta} ; ( {X}, Y)) = (Y-P(Y=1|{X};\bm{\theta}))\bm {X}
 \end{aligned}
 \label{eqn:logi_mod_score}
 \end{align}
 where $\bm{X} = [1, X]^T$ and $\bm{\theta}=[\theta_0, \theta_1]^T$. It is straightforward to verify that the (conditional) expectation of the score function is $\bm {0}$, when $\bm{\theta}$ does not change.
 
-Further suppose the $\bm{X}$ follows a standard normal distribution with density function denoted by $q(x)$ and the conditional distribution $P(Y|\bm{X};\bm{\theta})$ has concept drift with $\bm{\theta}$ changing from $\bm{\theta}^{(0)}$ to $\bm{\theta}^{(1)}$. Define 
+Further suppose the $X$ follows a standard normal distribution with density function denoted by $q(x)$ and the conditional distribution $P(Y|X;\bm{\theta})$ has concept drift with $\bm{\theta}$ changing from $\bm{\theta}^{(0)}$ to $\bm{\theta}^{(1)}$. Define 
 \begin{align}
-p^{(j)}(X)=P(Y=1|\bm{X}=[1,X]^T;\bm{\theta}^{(j)}),~j\in\{0,1\},
+p^{(j)}(X)=P(Y=1|X;\bm{\theta}^{(j)}),~j\in\{0,1\},
 \label{eqn:simp_nota_p}
 \end{align}
 where $j=\{0,1\}$ indicates whether the parameters are before or after the change. Figures~\ref{fig:logi_err_rate_unch_a} and~\ref{fig:logi_err_rate_unch_b} plot $p^{(0)}(x)$ and $p^{(1)}(x)$, respectively. Suppose we use the classification rule $\hat{y}(x)=1$ if $p^{(0)}(x)\geq 0.5$ (i.e., if $x\geq 0 $) and $\hat{y}(x)=0$ otherwise. Then the conditional and unconditional error rates are
@@ -216,15 +216,15 @@ where $j=\{0,1\}$ indicates whether the parameters are before or after the chang
 % \end{align}
 \begin{align}
 \begin{aligned}
-&P(Y\neq\hat{y}(X)|\bm{X}=[1,X]^T;\bm{\theta}^{(j)})
+&P(Y\neq\hat{y}(X)|X;\bm{\theta}^{(j)})
 = p^{(j)}(X)(1-\hat{y}(X)) + (1-p^{(j)}(X))\hat{y}(X) \\
-&P(Y\neq\hat{y}(X);\bm{\theta}^{(j)}) = E[P(Y\neq\hat{y}(X)|\bm{X}=[1,X]^T;\bm{\theta}^{(j)})] \\ &= \int_{-b}^{b}P(Y\neq\hat{y}(x)|\bm{X}=[1,x]^T;\bm{\theta}^{(j)})q(x)dx
+&P(Y\neq\hat{y}(X);\bm{\theta}^{(j)}) = E[P(Y\neq\hat{y}(X)|X;\bm{\theta}^{(j)})] \\ &= \int_{-b}^{b}P(Y\neq\hat{y}(x)|X;\bm{\theta}^{(j)})q(x)dx
 \end{aligned}
 \label{eqn:logi_err_rate}
 \end{align}
-Note that this classifier $\hat{y}(x)$ minimizes the unconditional error rate. When $\bm{\theta} = \bm{\theta}^{(0)}$ so the true predictive relationship $P(Y=1|\bm{X})$ is as in Figure~\ref{fig:logi_err_rate_unch_a}, the error rate is $22.2\%$. Now suppose we use the same classifier based on $\bm{\theta}^{(0)}$, but $\bm{\theta}$ changes to $\bm{\theta}^{(1)}$ so the true predictive relationship $P(Y=1|\bm{X})$ is as in Figure~\ref{fig:logi_err_rate_unch_b}. Even though $\bm{\theta}$ has changed, the error rate remains unchanged at $22.2\%$. Clearly, any concept drift detection method based on the error rate will fail to detect the change in $\bm{\theta}$. It is important to note that although the error rate does not change when $\bm{\theta}$ changes from $\bm{\theta}^{(0)}$ to $\bm{\theta}^{(1)}$, the change in $\bm{\theta}$ constitutes an opportunity to improve the classification accuracy if we were to detect the change and update the classification rule based on the new model, i.e., use the new classifier $\hat{y}(x)=1$ if $x \geq 0.59$, which corresponds to $\hat{y}(x)=1$ if $p^{(1)}(x)\geq 0.5$ (see Figure~\ref{fig:logi_err_rate_unch_d}).
+Note that this classifier $\hat{y}(x)$ minimizes the unconditional error rate. As a numerical example, suppose $\bm{\theta} = \bm{\theta}^{(0)}=[0, 2]^T$ so that the true predictive relationship $P(Y=1|{X})$ is as in Figure~\ref{fig:logi_err_rate_unch_a}, the error rate is $22.2\%$. Now suppose we use the same classifier based on $\bm{\theta}^{(0)}$, but $\bm{\theta}$ changes to $\bm{\theta}^{(1)}=[0.59, 4]^T$ so the true predictive relationship $P(Y=1|{X})$ is as in Figure~\ref{fig:logi_err_rate_unch_b}. Even though $\bm{\theta}$ has changed, the error rate remains unchanged at $22.2\%$. Clearly, any concept drift detection method based on the error rate will fail to detect the change in $\bm{\theta}$. It is important to note that although the error rate does not change when $\bm{\theta}$ changes from $\bm{\theta}^{(0)}$ to $\bm{\theta}^{(1)}$, the change in $\bm{\theta}$ constitutes an opportunity to improve the classification accuracy if we were to detect the change and update the classification rule based on the new model, i.e., use the new classifier $\hat{y}(x)=1$ if $x \geq 0.59$, which corresponds to $\hat{y}(x)=1$ if $p^{(1)}(x)\geq 0.5$ (see Figure~\ref{fig:logi_err_rate_unch_d}).
 
-In contrast to any error rate monitoring approach, as we have shown earlier, the mean of the score function always changes when $P(Y|\bm{X};\bm{\theta})$ changes, under fairly general conditions. In Section~???, a numerical example would be presented to further support the analysis here.
+In contrast to any error rate monitoring approach, as we have shown earlier, the mean of the score function always changes when $P(Y|\bm{X};\bm{\theta})$ changes, under fairly general conditions. In Section~\ref{ss:cd_no_err_change}, we present a numerical example to further support the analysis here.
 
 % Furthermore, as we will show in Section~\ref{ss:MEWMA}, the mean of our score-based MEWMA monitoring statistic also changes, when $P(Y|\bm{X};\bm{\theta})$ changes.
 
@@ -248,7 +248,7 @@ In contrast to any error rate monitoring approach, as we have shown earlier, the
 
 \subsection{Interpretations with Empirical Data and Incorrect Models}
 \label{ss:sgd_score}
-The zero-mean property $E_{\bm{\theta}^{(0)}}[\log{P(Y|\bm{X}; \bm{\theta}^{(0)})}] = \textbf{0}$ of the score function and the uniqueness of the parameters $\bm{\theta}$ that maximize the expected log-likelihood $E_{\bm{\theta}^{(0)}}[\log P(Y|\bm{X}; \bm{\theta})]$ are guaranteed to hold only when the model is correct; that is, when the supervised learning model $P(Y|\bm{X};\bm{\theta})$ is of the same structure as the true predictive relationship $P(Y|\bm{X})$. Recalling the adage that ``All models are wrong, but some are useful"~(\cite{box1976science})), one might wonder to what extent the results in the previous section are applicable when the structure of the model $P(Y|\bm{X};\bm{\theta})$ differs from the true $P(Y|\bm{X})$. A related question is what should we take to be the empirical counterparts to $E_{\bm{\theta}^{(0)}}[\bm{s}(\bm{\theta}^{(0)};(\bm{X},Y) )]$, when $\bm{\theta}^{(0)}$ is replaced by its estimate from a sample of training data, and the expectation is replaced by a sample average over a set of new data or over the same training data. We address both of these issues in this section and also relate the empirical counterpart to SGD for computational reasons. 
+The zero-mean property $E_{\bm{\theta}^{(0)}}[\log{P(Y|\bm{X}; \bm{\theta}^{(0)})}] = \textbf{0}$ of the score function and the uniqueness of the parameters $\bm{\theta}$ that maximize the expected log-likelihood $E_{\bm{\theta}^{(0)}}[\log P(Y|\bm{X}; \bm{\theta})]$ are guaranteed to hold only when the model is correct; that is, when the supervised learning model $P(Y|\bm{X};\bm{\theta})$ is of the same structure as the true predictive relationship $P(Y|\bm{X})$. Recalling the adage that ``All models are wrong, but some are useful"~(\cite{box1976science})), one might wonder to what extent the results in the previous section are applicable when the structure of the model $P(Y|\bm{X};\bm{\theta})$ differs from the true $P(Y|\bm{X})$. A related question is what should we take to be the empirical counterparts to $E_{\bm{\theta}}[\bm{s}(\bm{\theta}^{(0)};(\bm{X},Y) )]$, when $\bm{\theta}^{(0)}$ is replaced by its estimate from a sample of training data, and the expectation is replaced by a sample average over a set of new data or over the same training data. We address both of these issues in this section and also relate the empirical counterpart to SGD for computational reasons. 
 
 Regardless of whether the model structure is correct, in analogy with Equation~(\ref{eqn:score_exp_zero}), we always have
 \begin{align}
@@ -258,40 +258,40 @@ Regardless of whether the model structure is correct, in analogy with Equation~(
 \end{aligned}
 \label{eqn:score_exp_zero_emp}
 \end{align}   
-the operator $\hat{E}_{(0)}$ denotes a sample average over the training data $\{(\bm{x}_i, y_i)\}_{i=1}^n$, and $\hat{\bm{\theta}}^{(0)}$ is maximum-likelihood estimator (MLE) of $\bm{\theta}^{(0)}$ for the training data. That is, when we fit a model using MLE, we have $\nabla_{\bm{\theta}}\hat{E}_{(0)}[\log{P(Y|\bm{X}; {\bm{\theta}})}]|_{\bm{\theta}=\hat{\bm{\theta}}^{(0)}} \vcentcolon=\nabla_{\bm{\theta}}\frac{1}{n}\sum_{i=1}^n \log{P(y_i|\bm{x}_i;{\bm{\theta}})|_{\bm{\theta}=\hat{\bm{\theta}}^{(0)}}}\\=\frac{1}{n}\sum_{i=1}^n\bm{s}(\hat{\bm{\theta}}^{(0)};(\bm{x}_i, y_i)) = \hat{E}_{(0)}[\bm{s}(\hat{\bm{\theta}}^{(0)};(\bm{X}, Y))]$ as the gradient of the training log-likelihood identically zero, even if the model is not the correct structure. Thus, (\ref{eqn:score_exp_zero_emp}) is the empirical counterpart of (\ref{eqn:score_exp_zero}) with the estimated $\hat{\bm{\theta}}^{(0)}$ taking the place of the true $\bm{\theta}^{(0)}$. 
+the operator $\hat{E}_{(0)}$ denotes a sample average over the training data $\{(\bm{x}_i, y_i)\}_{i=1}^n$, and $\hat{\bm{\theta}}^{(0)}$ is maximum-likelihood estimator (MLE) of $\bm{\theta}^{(0)}$ for the training data. That is, when we fit a model using MLE, the gradient of the training log-likelihood is identically zero, i.e., $\nabla_{\bm{\theta}}\hat{E}_{(0)}[\log{P(Y|\bm{X}; {\bm{\theta}})}]|_{\bm{\theta}=\hat{\bm{\theta}}^{(0)}} \vcentcolon=\nabla_{\bm{\theta}}\frac{1}{n}\sum_{i=1}^n \log{P(y_i|\bm{x}_i;{\bm{\theta}})|_{\bm{\theta}=\hat{\bm{\theta}}^{(0)}}}=\frac{1}{n}\sum_{i=1}^n\bm{s}(\hat{\bm{\theta}}^{(0)};(\bm{x}_i, y_i)) = \hat{E}_{(0)}[\bm{s}(\hat{\bm{\theta}}^{(0)};(\bm{X}, Y))]=\bm{0}$, even if the model is not the correct structure. Thus, (\ref{eqn:score_exp_zero_emp}) is the empirical counterpart of (\ref{eqn:score_exp_zero}) with the estimated $\hat{\bm{\theta}}^{(0)}$ taking the place of the true $\bm{\theta}^{(0)}$. 
 
-Now suppose the true predictive relationship $\tilde{P}(\tilde{Y}|\tilde{\bm{X}})$ changes from $P(Y|\bm{X})$ over some new set of data $\{(\tilde{\bm{x}}_i, \tilde{y}_i)\}_{i=1}^{\tilde{n}}$. In this case, if the operator $\hat{E}_{(1)}$ denotes a sample average over the new data, a different set of parameters $\hat{\bm{\theta}}^{(1)} \neq \hat{\bm{\theta}}^{(0)}$ for the same supervised learning model $P(Y|\bm{X};\bm{\theta})$ will now provide a better fit to the new data than did $\hat{\bm{\theta}}^{(0)}$, where 
+Now suppose the true predictive relationship $\tilde{P}(\tilde{Y}|\tilde{\bm{X}})$ changes from $P(Y|\bm{X})$ over some new set of data $\{(\tilde{\bm{x}}_i, \tilde{y}_i)\}_{i=1}^{\tilde{n}}$. In this case, if the operator $\hat{E}_{(1)}$ denotes a sample average over the new data, a different set of parameters $\hat{\bm{\theta}}^{(1)} \neq \hat{\bm{\theta}}^{(0)}$ for the same supervised learning model structure $P(Y|\bm{X};\bm{\theta})$ will now provide a better fit to the new data than did $\hat{\bm{\theta}}^{(0)}$, where 
 \begin{align}
 \begin{aligned}
 \hat{\bm{\theta}}^{(1)} \vcentcolon= \argmax_{\bm{\theta}}\hat{E}_{(1)}[\log{P(\tilde{Y}|\tilde{\bm{X}}; \bm{\theta})}] \vcentcolon= \argmax_{\bm{\theta}}\frac{1}{\tilde{n}}\sum_{i=1}^{\tilde{n}} \log{P(\tilde{y}_i|\tilde{\bm{x}}_i;\bm{\theta})}
 \end{aligned}
 \label{eqn:score_exp_nonzero_emp}
 \end{align}   
-Thus, the gradient $\nabla_{\bm{\theta}}\hat{E}_{(1)}[\log{P(\tilde{Y} | \tilde{\bm{X}}; {\bm{\theta}})}]|_{\bm{\theta}=\hat{\bm{\theta}}^{(0)}} \vcentcolon= \nabla_{\bm{\theta}}\frac{1}{\tilde{n}}\sum_{i=1}^{\tilde{n}} \log{P(\tilde{y}_i | \tilde{\bm{x}}_i; {\bm{\theta}})}|_{\bm{\theta}=\hat{\bm{\theta}}^{(0)}} = \\ \frac{1}{\tilde{n}} \sum_{i=1}^{\tilde{n}} \bm{s}(\hat{\bm{\theta}}^{(0)};(\tilde{\bm{x}}_i, \tilde{y}_i)) = \hat{E}_{(1)}[\bm{s}(\hat{\bm{\theta}}^{(0)};(\tilde{\bm{X}}, \tilde{Y}))]$ of the log-likelihood for the new data (but evaluated at the original estimate $\hat{\bm{\theta}}^{(0)}$) will generally differ from zero. The more $\tilde{P}(\tilde{Y}|\tilde{\bm{X}})$ changes from $P(Y|\bm{X})$, the more we expect $\hat{\bm{\theta}}^{(1)}$ to differ from $\hat{\bm{\theta}}^{(0)}$, and the more we expect the new average score vector $\hat{E}_{(1)}[\bm{s}(\hat{\bm{\theta}}^{(0)};(\tilde{\bm{X}}, \tilde{Y}))]$ to differ from $\bm{0}$. This provides the justification for our score-based concept drift monitoring approach, which tracks the mean of the score vector $\bm{s}(\hat{\bm{\theta}}^{(0)};(\bm{X}_i, Y_i)) = \nabla_{\bm{\theta}}\log P(Y_i|\bm{X}_i; \bm{\theta})|_{\bm{\theta}=\hat{\bm{\theta}}^{(0)}}$ to detect and analyze changes in it. 
+Thus, the gradient $\nabla_{\bm{\theta}}\hat{E}_{(1)}[\log{P(\tilde{Y} | \tilde{\bm{X}}; {\bm{\theta}})}]|_{\bm{\theta}=\hat{\bm{\theta}}^{(0)}} \vcentcolon= \nabla_{\bm{\theta}}\frac{1}{\tilde{n}}\sum_{i=1}^{\tilde{n}} \log{P(\tilde{y}_i | \tilde{\bm{x}}_i; {\bm{\theta}})}|_{\bm{\theta}=\hat{\bm{\theta}}^{(0)}} = \\ \frac{1}{\tilde{n}} \sum_{i=1}^{\tilde{n}} \bm{s}(\hat{\bm{\theta}}^{(0)};(\tilde{\bm{x}}_i, \tilde{y}_i)) = \hat{E}_{(1)}[\bm{s}(\hat{\bm{\theta}}^{(0)};(\tilde{\bm{X}}, \tilde{Y}))]$ of the log-likelihood for the new data (but with the gradient evaluated at the original estimate $\hat{\bm{\theta}}^{(0)}$) will generally differ from zero. The more $\tilde{P}(\tilde{Y}|\tilde{\bm{X}})$ changes from $P(Y|\bm{X})$, the more we expect $\hat{\bm{\theta}}^{(1)}$ to differ from $\hat{\bm{\theta}}^{(0)}$, and the more we expect the new average score vector $\hat{E}_{(1)}[\bm{s}(\hat{\bm{\theta}}^{(0)};(\tilde{\bm{X}}, \tilde{Y}))]$ to differ from $\bm{0}$. This provides the justification for our score-based concept drift monitoring approach, which tracks the mean of the score vector $\bm{s}(\hat{\bm{\theta}}^{(0)};(\bm{X}_i, Y_i)) = \nabla_{\bm{\theta}}\log P(Y_i|\bm{X}_i; \bm{\theta})|_{\bm{\theta}=\hat{\bm{\theta}}^{(0)}}$ to detect and analyze changes in it. 
 
-If the supervised learning model $P(Y|\bm{X};\bm{\theta})$ is of the same structure as the true predictive relationship $P(Y|\bm{X})$, both $P(Y|\bm{X})$ and $P(\bm{X})$ are constant across the training data $\{(\bm{x}_i, y_i)\}_{i=1}^n$, and $n \to \infty$, then under some regularity conditions the MLE $\hat{\bm { \theta}} ^{ (0)}$ is consistent, and  $\hat{E}_{(0)} [\bm{s}(\hat{\bm { \theta}} ^{ (0)};(\bm {X}, Y))] \to E_{\bm { \theta} ^{ (0)}}[\bm{s}(\hat{\bm { \theta}} ^{ (0)};(\bm {X}, Y))] \to E_{\bm { \theta} ^{ (0)}}[\bm{s}(\bm { \theta} ^{ (0)};(\bm {X}, Y))] = \bm {0}$. In this case, there is no distinction between the theoretical version of the score-based monitoring arguments and their empirical version discussed above. With large $n$, SGD is often used to fit models to the training data, which involves approximating the gradient of the log-likelihood function using individual training observations or mini-batches of training observations at each iteration of the optimization algorithm. The SGD estimator of $\bm { \theta} ^{ (0)}$ converges to the batch MLE under certain conditions involving step size and other considerations (see, e.g., Theorem 4.7 of \cite{bottou2018optimization}). In this case, under the same asymptotic conditions stated above, the SGD estimator $\hat {\bm { \theta}}_{SGD}$ is also consistent and $\hat{E}_{(0)} [\bm{s}(\hat{\bm { \theta}}_{SGD};(\bm {X}, Y))] \to \bm{0}$ as $n \to \infty$. 
+If the supervised learning model $P(Y|\bm{X};\bm{\theta})$ is of the same structure as the true predictive relationship $P(Y|\bm{X})$, if both $P(Y|\bm{X})$ and $P(\bm{X})$ are constant across the training data $\{(\bm{x}_i, y_i)\}_{i=1}^n$, and if $n \to \infty$, then under some regularity conditions the MLE $\hat{\bm { \theta}} ^{ (0)}$ is consistent and  $\hat{E}_{(0)} [\bm{s}(\hat{\bm { \theta}} ^{ (0)};(\bm {X}, Y))] \to E_{\bm { \theta} ^{ (0)}}[\bm{s}(\hat{\bm { \theta}} ^{ (0)};(\bm {X}, Y))] \to E_{\bm { \theta} ^{ (0)}}[\bm{s}(\bm { \theta} ^{ (0)};(\bm {X}, Y))] = \bm {0}$. In this case, there is no distinction between the theoretical version of the score-based monitoring arguments and their empirical version discussed above. With large $n$, SGD is often used to fit models to the training data, which involves approximating the gradient of the log-likelihood function using individual training observations or mini-batches of training observations at each iteration of the optimization algorithm. The SGD estimator of $\bm { \theta} ^{ (0)}$ converges to the batch MLE under certain conditions involving step size and other considerations (see, e.g., Theorem 4.7 of \cite{bottou2018optimization}). In this case, under the same asymptotic conditions stated above, the SGD estimator $\hat {\bm { \theta}}_{SGD}$ is also consistent and $\hat{E}_{(0)} [\bm{s}(\hat{\bm { \theta}}_{SGD};(\bm {X}, Y))] \to \bm{0}$ as $n \to \infty$. 
 
-We argue that the score-based method does not add much extra cost to the current framework of training and using models. For retrospective analysis, the sample score vectors are a byproduct of the SGD, since the mini-batch gradients are of the form ($\\ \nabla _{\bm { \theta}} \sum _{i=1} ^{m} \ln P(y_i|\bm {x}_i;\bm{\theta}) = \sum _{i=1} ^{m} \bm{s}(\bm { \theta};(\bm {x}_i, y_i))$, where $m$ is the batch size). For prospective analysis, prediction of new data usually partially calculates the score vectors. For example, prediction for neural networks requires forward-propagation, and another backward-propagation in memory would generate the score function. Thus, we do not need much extra computation to apply the score-based method.
+The score-based method does not add much extra cost to the current framework of training and using models. For retrospective analysis, the sample score vectors are a byproduct of the SGD, since the mini-batch gradients are of the form ($\nabla _{\bm { \theta}} \sum _{i=1} ^{m} \ln P(y_i|\bm {x}_i;\bm{\theta}) = \sum _{i=1} ^{m} \bm{s}(\bm { \theta};(\bm {x}_i, y_i))$, where $m$ is the batch size). For prospective analysis, prediction of new data usually partially calculates the score vectors. For example, prediction for neural networks requires forward-propagation, and another backward-propagation in memory would generate the score function. Thus, we do not need much extra computation to apply the score-based method.
 
-With finite training data size $n$ and finite new sample sizes $\tilde{n}$ for monitoring (or even $\tilde{n}=1$), noise in $\bm{s}(\bm { \theta};(\bm {x}_i, y_i))$ and its sample averages must be considered. In particular, we need to distinguish by how much $\bm{s}(\hat{\bm { \theta}}^{(0)};(\bm {x}_i, y_i))$ should differ from $\bm{0}$ before we conclude that $P(Y|\bm{X})$ has changed. The MEWMA monitoring strategy in the next section is designed to distinguish noise from legitimate changes in $P(Y|\bm{X})$. Moreover, for models fitted with regularization, the gradient of the log-likelihood itself is not zero over the training data, because the regularization penalty is included in the optimization objective function. Regardless, the score-based monitoring method can still be applied with the minor modification to the score vectors discussed in Section~\ref{ss:high_dim_score}.
+With finite training data size $n$ and finite new sample sizes $\tilde{n}$ for monitoring (or even $\tilde{n}=1$), noise in $\bm{s}(\bm { \theta};(\bm {x}_i, y_i))$ and its sample averages must be considered. In particular, we need to distinguish by how much $\bm{s}(\hat{\bm { \theta}}^{(0)};(\bm {x}_i, y_i))$ (or its sample average over some moving time window) should differ from $\bm{0}$ before we conclude that $P(Y|\bm{X})$ has changed. The MEWMA monitoring strategy in the next section is designed to distinguish noise from legitimate changes in $P(Y|\bm{X})$. Moreover, for models fitted with regularization, the gradient of the log-likelihood itself is not zero over the training data, because the regularization penalty is included in the optimization objective function. Regardless, the score-based monitoring method can still be applied with the minor modification to the score vectors discussed in Section~\ref{ss:high_dim_score}.
 
 \subsection{An MEWMA Approach for Monitoring the Score Function}
 \label{ss:MEWMA}
-As discussed in the previous sections, monitoring for concept drift reduces to monitoring for changes over time in the mean of the score function. Among other challenges, this requires distinguishing between noise in the individual score functions vs. an actual mean change. Monitoring for changes in the mean of random vectors (e.g., a set of multivariate quality-related measures) while distinguishing from noise is an old and well-researched problem in the SPC literature. The MEWMA has emerged as one of the most effective techniques for this, and in this section we develop it for monitoring the score function mean.
+As discussed in the previous sections, monitoring for concept drift reduces to monitoring for changes over time in the mean of the score function. Among other challenges, this requires distinguishing between noise in the score functions for individual observations vs. an actual mean change. Monitoring for changes in the mean of random vectors (e.g., a set of multivariate quality-related measures) while distinguishing from noise is an old and well-researched problem in the SPC literature. The MEWMA has emerged as one of the most effective techniques for this, and in this section we develop it for monitoring the score function mean vector.
 
 The MEWMA at time $t$, denoted by $\bm{z}_t$, is defined recursively (for $t=1,2,\cdots$) via:
 \begin{align}
 \bm {z}_t = \lambda \bm {s}_t + (1 - \lambda) \bm {z} _{t-1},
 \label{eqn:ewma}
 \end{align}
-where $\bm {s}_t$ is the to-be-monitored random vector at time $t$, which in our case is the score vector $\bm {s}_t \vcentcolon= \bm{s}(\hat{\bm { \theta}}^{(0)};(\bm {x}_t, y_t))$; $ \lambda$ is a weighting parameter; and $\bm{z}_0$ can be initialized as the sample mean of $\bm {s}_t$ over some small initial batch of training data. An equivalent expression for the recursive relationship~(\ref{eqn:ewma}) is $\bm {z}_t = \lambda\sum _{\tau=1}^t (1-\lambda) ^{t-\tau} \bm{s} _{\tau} + (1-\lambda)^t \bm{z}_0$, which gives exponentially decaying weights to the past $\bm{s}_t$ observations. It follows that smaller $\lambda$ in the MEWMA formula corresponds to more slowly decaying weights and thus longer effective windows over which the exponentially-weighted averages are computed. The effective window length is sometimes viewed as $\sum _{j=0}^\infty (1-\lambda)^j = \frac{1}{\lambda}$. The choice of $\lambda$ should depend on the application of interest, with the following trade-off. Smaller $\lambda$ translates to a larger effective window length, which gives a lower-variance estimate of the mean of $\bm{s}_t$ by smoothing out more noise (which generally results in better detection of small changes), but it also makes the MEWMA more sluggish (which results in longer delays in detecting large changes). If there is no need to detect changes in $P(Y|\bm{X})$ in fewer than some number (say $D$) of observations, then there is no need to have the effective window length $\frac{1}{\lambda}$ smaller than $D$, in which case one should  select $\lambda \leq \frac{1}{D}$.
+where $\bm {s}_t$ is the to-be-monitored random vector at time $t$, which in our case is the score vector $\bm {s}_t \vcentcolon= \bm{s}(\hat{\bm { \theta}}^{(0)};(\bm {x}_t, y_t))$; $ \lambda$ is a weighting parameter; and $\bm{z}_0$ can be initialized as the sample mean of $\bm {s}_t$ over some small initial batch of observations. An equivalent expression for the recursive relationship~(\ref{eqn:ewma}) is $\bm {z}_t = \lambda\sum _{\tau=1}^t (1-\lambda) ^{t-\tau} \bm{s} _{\tau} + (1-\lambda)^t \bm{z}_0$, which gives exponentially decaying weights to the past $\bm{s}_t$ observations. Smaller $\lambda$ in the MEWMA formula corresponds to more slowly decaying weights and thus longer effective windows over which the exponentially-weighted averages are computed. The effective window length is sometimes viewed as $\sum _{j=0}^\infty (1-\lambda)^j = \frac{1}{\lambda}$. The choice of $\lambda$ should depend on the application of interest, with the following trade-off. Smaller $\lambda$ translates to a larger effective window length, which gives a lower-variance estimate of the mean of $\bm{s}_t$ by smoothing out more noise (which generally results in better detection of small changes), but it also makes the MEWMA more sluggish (which results in longer delays in detecting large changes). If there is no need to detect changes in $P(Y|\bm{X})$ in fewer than some number (say $D$) of observations, then there is no need to have the effective window length $\frac{1}{\lambda}$ smaller than $D$, in which case one should  select $\lambda \leq \frac{1}{D}$.
 
 Since $\bm{s}_t$ and $\bm{z}_t$ are vectors, and we desire to detect changes in the mean of $\bm{s}_t$ in any direction, our MEWMA approach monitors the Hotelling $T^2$ statistic 
 \begin{align}
 T_t^2 = (\bm {z}_t-\bar { \bm {s}})^T \hat {\bm { \Sigma}} ^{-1}(\bm {z}_t-\bar { \bm {s}})
 \label{eqn:hotellingt2}
 \end{align}
-where $\bar {\bm{s}}$ and $\hat {\bm {\Sigma}}$ are the sample mean vector and covariance matrix of $\bm {s}_t$, respectively, estimated from some set of training data. If $T_t^2$ at some $t$ exceeds a specified upper control limit (UCL), this is taken to be an indication that $P(Y|\bm{X})$ in the time-vicinity of observation $t$ has changed from what it was when $\hat{\theta}^{(0)}$ was estimated.
+where $\bar {\bm{s}}$ and $\hat {\bm {\Sigma}}$ are the sample mean vector and covariance matrix of $\bm {s}_t$, respectively, estimated from some set of training data. If $T_t^2$ at some $t$ exceeds a specified upper control limit ($UCL$) determined as described later, this is taken to be an indication that $P(Y|\bm{X})$ in the time-vicinity of observation $t$ has changed from what it was when $\hat{\theta}^{(0)}$ was estimated.
 
 % After obtaining the initial data set, we can use MEWMA to minimize concept drift in training data, as much as possible through retrospective analysis. With a well-trained and validated predictive model, we execute two phases for concept drift detection. In Phase-I, we {monitor Hotelling $T^2$ of EWMA of the score function for a certain period of time and ensure that those newly incoming data are in-control and} then calculate and set {upper and lower} control limits {(UCL and LCL)} based on a targeted false alarm rate. Here, the in-control data presents random fluctuation in the Phase-I without obvious trend as shown in Figure~\ref{fig:Monitoring}, because sample score vectors would fluctuate around $\bm {0}$ when environment is in stationary and model training becomes stable (as discussed in Section~\ref{ss:sgd_score}). This step ensures that no concept drift happens in Phase-I and the obtained control limits are trustworthy. The false alarm rate is usually chosen small (i.e. $0.1\%$), so that in monitoring the likelihood of encountering false alarms is small. In Phase-II, we continue to monitor sample score vectors of incoming data, while using control limits calculated from Phase-I. If new {monitoring statistics} significantly falls outside of control limits for a long sequence or there are some obvious deviation pattern from the normal ($0$ in this case), the alarm of concept drift is set off.
 
@@ -323,29 +323,36 @@ where $\bar {\bm{s}}$ and $\hat {\bm {\Sigma}}$ are the sample mean vector and c
 \begin{figure}[!htbp]
 \centering
 \includegraphics[width = 1\linewidth, trim=.35in .69in .35in .69in, clip]{../figures/v14/flow_chart/Retrospective_1.png}
-\caption{The framework of monitoring/detecting concept drift based on the score function. Conducting retrospective analysis using MEWMA ensures that there is no significant concept drift in the data set used for training and setting control limits. The detailed procedure is following. The data set $\{\bm{x}_i, y_i\}_{i=1}^m$ was collected in time order. The entire data set is used to train a model and inspected retrospectively for significant concept drift. If no significant concept drift is spotted as shown in the upper case, we can move to the next step. Otherwise, as shown in the lower case, we can go back to the beginning and the size of data set can be recursively reduced by removing unstable data points.}
+\caption{Step $1$ of the score-based concept drift framework. A retrospective analysis to determine whether the training data to which the model is fit are stable (as in the top example) or concept drift occurred over the training data (as in the bottom plot).}
   \label{fig:proc_mon_score_retro}
 \end{figure}
 
 \begin{figure}
 \centering
 \includegraphics[width = 1\linewidth, trim=.35in .49in .35in .49in, clip]{../figures/v14/flow_chart/Monitoring_1.png}
-\caption{The framework of monitoring/detecting concept drift based on the score function. Monitoring concept drifts using the model and control limits obtained by processing training, Phase-I, and Phase-II data sets, which will be demonstrated in Section~\ref{s:real_data}. The detailed procedure is following. Stationary data set obtained by the previous step is splitted into training and Phase-I data sets which are used to train model and calculate control limits respectively. Then, such control limits are used to monitor incoming data. In this subplot, three examples of possible results are given: gradual and abrupt concept drift and in-control cases.}
+\caption{Step $2$ of the score-based concept drift framework. A retrospective analysis first splits the stationary data from Step $1$ into a training set (to which the model is fit) and a Phase-I set (which is used to establish the control limit for Phase-II). Then a prospective Phase-II analysis is used to monitor new data for concept drift as each new $(\bm{X}, Y)$ observation is collected.}
 \label{fig:proc_mon_score_monitoring}
 \end{figure}
 
 \begin{figure}
 \centering
 \includegraphics[width = 1\linewidth, trim=.35in .20in .35in .20in, clip]{../figures/v14/flow_chart/Diagnose_1.png}
-\caption{The framework of monitoring/detecting concept drift based on the score function. The MEWMA for score vectors and the EWMA for individual covariates are visualized to show the origin of concept drift, which will be illustrated in Sections~\ref{s:decou_cd} and~\ref{s:real_data}. The detailed procedure is following. The scores obtained are transformed by the Fisher information matrix in Equation~(\ref{eqn:cd_decomp_fisher_approx}) and then visualized in (univariate) EWMA control charts to find out which components contribute to the concept drift. Here, we put illustrative plots for abrupt (left) and gradual (right) concept drifts, for which some covariates have concept drift but some do not.}
+\caption{Step $3$ of the score-based concept drift approach. A diagnostic analysis to help identify the nature of the concept drift once it is detected in either the retrospective Step $1$ stage or the Phase-II monitoring stage in Step $2$. The left and right plots depict two different types of concept drift -- an abrupt change(left plots) and a gradual change (right plots).}
 \label{fig:proc_mon_score_diagnosis}
 \end{figure}
 
-The procedure of monitoring the score function using MEWMA control chart is shown in Figures~\ref{fig:proc_mon_score_retro},~\ref{fig:proc_mon_score_monitoring}, and~\ref{fig:proc_mon_score_diagnosis}. More specifically, in Step 1, we collect a batch of responses and covariates in time order, $\{\bm {x}_i, y_i\} _{i=1} ^{m}$, where $m$ is the sample size of this batch. Then, the retrospective analysis using MEWMA is conducted to rule out concept drift as much as possible, by deleting a part of the data set that is not stationary as shown in Figure~\ref{fig:proc_mon_score_retro}. For example, the upper plot in Figure~\ref{fig:proc_mon_score_retro} shows a stationary data set, while the lower plot shows a data set with clear concept drift. By deleting the part of data before the concept drift, the lower cases can be turned to the upper one. Step 1 can iterate recursively by reducing the size of the data set, $m$, to ensure that in Step 2 the control chart in Phase-I detects no significant out-of-control data and trustworthy control limits are obtained. After that, in Step 2 as shown in Figure~\ref{fig:proc_mon_score_monitoring}, the data set without concept drift, $\mathcal{D} \vcentcolon=\{\bm {x}_i, y_i\} _{i=1} ^{n}$ ($n\leq m$), is divided into two parts: $ \mathcal{D}_1 \vcentcolon= \{\bm {x}_i, y_i\} _{i=1} ^{n_1}$ and $\mathcal{D}_2 \vcentcolon= \{\bm {x}_i, y_i\} _{i=n_1+1} ^{n}$. The first data set, $\mathcal{D}_1$, is used to train a parametric model and the second one, $\mathcal{D}_2$, is used in Phase-I for monitoring statistics and calculating the control limit ($UCL$). Given the control limit from Phase-I, in Phase-II, the control chart is applied to sample score vectors or other metrics of testing data points $\tilde{\mathcal{D}}\vcentcolon=\{\tilde{\bm{x}}_i,\tilde{y}_i\}_{i = 1}^{\tilde{n}}$ to signal the starting position of a concept drift, if it should happen. The Phase-II analysis can be used in data exploration when all the data are available and the existence and starting position of concept drift is interested in; or in prediction when data points come one-by-one and the aim is to monitor concept drifts. Finally, in Step 3, we can diagnose the origin of concept drifts if detected as shown in Figure~\ref{fig:proc_mon_score_diagnosis}, which will be explained mathematically in Section~\ref{s:decou_cd}. In this step, the scores are transformed by Fisher information matrix to decouple different components of score vectors. Then, (univariate) EWMA control charts are used to find out which covariates contribute to the concept drift.
- 
-Notice that for other scalar metrics or transformed components of the score function (see Section~\ref{s:decou_cd}), we use univariate EWMA~(\cite{roberts1959control}) control chart because the statistics calculated by Equation~(\ref{eqn:ewma}) becomes scalar. The main difference is that in MEWMA control charts the monitored statistics is a summary statistics of vectors and is positive, but in EWMA control charts the statistics can fluctuate to both sides of zero, so that instead of only calculating $UCL$ we also need a lower control limit($LCL$) to detect concept drift. Other monitoring steps are similar.
+The score-based concept drift monitoring framework is broken into three steps and depicted in Figures~\ref{fig:proc_mon_score_retro},~\ref{fig:proc_mon_score_monitoring}, and~\ref{fig:proc_mon_score_diagnosis} for Steps $1$, $2$, and $3$, respectively. The three steps will be illustrated in more detail in the later examples. In Step 1, we collect a batch of data in time order, $\{\bm {x}_i, y_i\} _{i=1} ^{m}$, where $m$ denotes the sample size of this batch. Then, after fitting a preliminary supervised learning model to these data, a retrospective analysis is conducted by applying the MEWMA to these same data. If the MEWMA indicates these data are stable and no significant concept drift is detected (as in the top plot in Figure~\ref{fig:proc_mon_score_retro}), we proceed to Step $2$. On the other hand, if the MEWMA detects significant concept drift in these data, then one can discard a portion of the data prior to the concept drift (e.g., the first third of the data in the bottom plot in Figure~\ref{fig:proc_mon_score_retro}) in attempt to ensure that the remaining data are stable. This retrospective analysis would then be repeated (perhaps multiple times) on the remaining data to verify whether it was stable vs. experienced concept drift. When the remaining data is deemed stable, then we proceed to Step $2$, which is depicted in Figure~\ref{fig:proc_mon_score_monitoring}.
 
-In this procedure, the EWMA is obtained first, followed by Hotelling $T^2$ calculation. The advantage of this is that the EWMA would reduce the random noise in raw score vectors, so that in Phase-II of detection using Hotelling $T^2$, small drifts would be easier to be detected due to higher signal-to-noise ratio. Because we are interested in applications with a large size of data sets, the usage of empirical control limits of the MEWMA control chart based on the Phase-I data is reasonable.
+Let $n\leq m$ denote the stable data from Step $1$ and denote these data by $\mathcal{D} \vcentcolon=\{\bm {x}_i, y_i\} _{i=1} ^{n}$. The purpose of Step $2$ is to establish the $UCL$  and then to prospectively monitor new data for concept drift, as the new data are collected. To establish the $UCL$ , we devide $\mathcal{D}$ into two parts: $ \mathcal{D}_1 \vcentcolon= \{\bm {x}_i, y_i\} _{i=1} ^{n_1}$ and $\mathcal{D}_2 \vcentcolon= \{\bm {x}_i, y_i\} _{i=n_1+1} ^{n}$. The first data set, $\mathcal{D}_1$, is used to retrain the parametric supervised learning model of interest and the second one, $\mathcal{D}_2$, is used to establish the $UCL$  in what is commonly referred to as a Phase-I analysis in SPC. In the Phase-I analysis, the score vectors for the $\mathcal{D}_2$ data are computed, based on the model fitted to the $\mathcal{D}_1$ data. The MEWMA statistics $\{\bm{z}_t\}_{t=n_1+1}^n$ and $T^2$ statistics $\{T_t^2\}_{t=n_1+1}^n$ are then computed for the $\mathcal{D}_2$ data. The user specifies a desired false alarm probability $\alpha$ (e.g. $\alpha=0.0001$, $\alpha=0.001$, etc.), and the $UCL$  is set as the $1-\alpha$ sample quantile of $\{T_t^2\}_{t=n_1+1}^n$. After computing the $UCL$  in Phase-I, in Phase-II, the MEWMA with this $UCL$  applies prospectively to the sample score vectors for a new set of ``on-line" data $\tilde{\mathcal{D}}\vcentcolon=\{\tilde{\bm{x}}_i,\tilde{y}_i\}_{i = 1}^{\tilde{n}}$ (i.e. new data to which the fitted supervised learning model is to be applied, e.g., new credit card applicants who are being scored for credit risk by the fitted model). The purpose of the Phase-II analysis is to detect as quickly as possible if concept drift occurs in the new data, so that the model can be updated accordingly. 
+
+The purpose of Step $3$, depicted in Figure~\ref{fig:diagnosis}, is to conduct a diagnostic analysis to help determine the nature of the concept drift, if any drift is detected in Phase-II. This involves plotting the $T_t^2$ statistic v.s. $t$ over the data set of interest, which is depicted in the top plots in Figure~\ref{fig:diagnosis}. Note that the $T^2$ statistic of MEWMA chart aggregates changes in any of the components of the score vector into a single scalar statistic. To provide richer diagnostic information and help understand which parameters have changed, analogous univariate EWMA control charts for (transformed) individual components of the score vector should also be constructed, which is depicted in the bottom plots in Figure~\ref{fig:diagnosis}. We describe these univariate control charts in Section~\ref{s:decou_cd}.
+
+The Step $3$ diagnostic procedure can also be used in a purely retrospective analysis following Step $1$, if it is desired to understand the nature of the nonstationarity in $P(Y|\bm{X};\bm{\theta})$ over any set of training data to which a supervised learning model is fitted.
+can be used in data exploration when all the data are available and the existence and starting position of concept drift is interested in; or in prediction when data points come one-by-one and the aim is to monitor concept drifts. Finally, in Step 3, we can diagnose the origin of concept drifts if detected as shown in Figure~\ref{fig:proc_mon_score_diagnosis}, which will be explained mathematically in Section~\ref{s:decou_cd}. In this step, the scores are transformed by Fisher information matrix to decouple different components of score vectors. Then, (univariate) EWMA control charts are used to find out which covariates contribute to the concept drift.
+ 
+Notice that for other scalar metrics (e.g., error rates) to which we compare our approach, for the transformed components of the score function that we mention above and describe in Section~\ref{s:decou_cd}, we use univariate EWMA~(\cite{roberts1959control}) control charts because EWMA in Equation~(\ref{eqn:ewma}) becomes a scalar. The main difference is that the MEWMA $T^2$ monitoring statistic aggregates the any changes in the mean vector into a single scalar statistic, and only larger values of $T^2$ indicate a change in the mean from $\bar{\bm{s}}$. Thus only an $UCL$  is needed in the MEWMA. In contrast, the univariate version of the EWMA in Equation~(\ref{eqn:ewma}) to detect changes in the mean of a scalar random variable are two-sided in nature and have a lower control limit ($LCL$) as well as a $UCL$ . Changes in the mean are indicated by the univariate EWMA statistic falling either below the $LCL$ or above the $UCL$.
+
+% In this procedure, the EWMA is obtained first, followed by Hotelling $T^2$ calculation. The advantage of this is that the EWMA would reduce the random noise in raw score vectors, so that in Phase-II of detection using Hotelling $T^2$, small drifts would be easier to be detected due to higher signal-to-noise ratio. Because we are interested in applications with a large size of data sets, the usage of empirical control limits of the MEWMA control chart based on the Phase-I data is reasonable.
 
 % \begin{figure}[!htbp]
 % \centering
@@ -398,17 +405,15 @@ In this procedure, the EWMA is obtained first, followed by Hotelling $T^2$ calcu
 
 \subsection{Handling High-Dimensional and Regularized Models}
 \label{ss:high_dim_score}
-One of the advancement of machine learning is that models become increasingly complex. Some state-of-the-art models can have millions of parameters, like convolutional neural network. With such high-dimension of parameters, the sample covariance matrix in Equation~(\ref{eqn:hotellingt2}), $\hat {\bm { \Sigma}}$, is very likely to be close to singular. For example, when the sample size of our training data (denoted as $n_1$ as in Section~\ref{ss:MEWMA}) is smaller than the dimension of parameters, $dim(\bm { \theta})$, the sample covariance would be singular. 
+Many machine learning models are becoming increasingly complex, and some state-of-the-art models can have millions of parameters, e.g., convolutional neural network. With such high-dimension of parameters, the sample covariance matrix $\hat{\bm{\Sigma}}$ in Equation~(\ref{eqn:hotellingt2}), which must be inverted is very likely to be singular or close to it. For example, when the sample size of our training data (denoted as $n_1$ as in Section~\ref{ss:MEWMA}) is smaller than the number of parameters, $dim(\bm { \theta})$, the sample covariance is always singular. 
 
-To solve this problem, we can add a nugget parameter on all diagonal entries of $\hat {\bm { \Sigma}}$ or use pseudo-inverse of the sample covariance. For the method of adding a nugget parameter $ \delta$, we substitute $\tilde {\bm { \Sigma}} = \hat {\bm { \Sigma}}+ \delta \bm {I}$ for $\hat {\bm { \Sigma}}$ as the approximated covariance matrix, in Equation~(\ref{eqn:hotellingt2}). To understand the effect of this nugget parameter, denote the eigen-decomposition of the sample covariance matrix as $\hat {\bm { \Sigma}} = \bm {Q}\bm { \Lambda} \bm {Q}^T$ and obtain the eigen-values as $ diag(\bm{\Lambda}) = [ \lambda_1, \lambda_2,\cdots, \lambda_n]$ in a non-increasing order. Then, we can write the approximated sample covariance matrix as $\tilde {\bm { \Sigma}} = \bm {Q}\tilde{\bm { \Lambda}} \bm {Q}^T$, where $\tilde{\bm { \Lambda}} = \bm { \Lambda} + \delta \bm {I}$. This would suppress unimportant directions of variation in Equation~(\ref{eqn:hotellingt2}). The EWMA of the new statistics with this modified covariance matrix would not have the issue of ill-conditioning. 
+The preceding solution would be model specific in that the chosen subset of parameters would depend on the structure of the model. A more general solution is to modify the covariance matrix to circumvent the problem of inverting a singular or poorly-conditioned matrix. One way to accomplish this is to add a nugget parameter (borrowing terminology from Gaussian process modeling) to all diagonal entries of $\hat {\bm { \Sigma}}$. Specifically, for some $\delta>0$, we substitute $\tilde {\bm { \Sigma}} \vcentcolon = \hat {\bm { \Sigma}}+ \delta \bm {I}$ for $\hat {\bm { \Sigma}}$ in Equation~(\ref{eqn:hotellingt2}). To understand the effect of this nugget parameter, denote the eigen-decomposition of the sample covariance matrix as $\hat {\bm { \Sigma}} = \bm {Q}\bm { \Lambda} \bm {Q}^T$, where $\bm{Q}$ is an orthogonal matrix of eigenvectors and $\bm{\Lambda}$ is a diagonal matrix of eigenvalues $ diag(\bm{\Lambda}) = [ \lambda_1, \lambda_2,\cdots, \lambda_n]$, and the eigenvalues are arranged in non-increasing order. Then, we can write the approximated sample covariance matrix as $\tilde {\bm { \Sigma}} = \bm {Q}\tilde{\bm { \Lambda}} \bm {Q}^T$, where $\tilde{\bm { \Lambda}} \vcentcolon= \bm { \Lambda} + \delta \bm {I}$. Using $\tilde{\bm{\Sigma}}$ in place of $\hat{\bm{\Sigma}}$ in Equation~(\ref{eqn:hotellingt2}) suppresses unimportant directions of variation. The resulting MEWMA with this modified covariance matrix would not have the issue of ill-conditioning. 
 
-Setting a condition number achieves a similar purpose. By setting a maximum condition number, $ \gamma$, we set all $ \lambda_i$ equal to $0$, if $ \gamma \lambda_i \leq \lambda_1$. Denote the maximum of the index of $ \lambda_i$ which is not set to $0$ as $k$ and a new diagonal matrix $\bm { \Lambda} ^{-}$ with diagonal entries as $[1/\lambda_1,1/\lambda_2, \cdots, 1/\lambda_k, 0, \cdots, 0]$. Then, a pseudo-inverse of the sample covariance matrix is defined as $\hat {\bm { \Sigma}} ^{-} = \bm {Q}\bm { \Lambda}^{-}\bm {Q}^T$. This is equivalent to applying PCA onto $\bm {z}_t$, so that the most important variations in $\bm {z}_t$ are kept. 
-
-Comparing with adding a nugget parameter, even though both methods give similar results, setting the maximum condition number is more intuitive in terms of controlling the behavior of inverting the covariance matrix, while adding the nugget allows the concept drift to be detected in those directions, that would be otherwise set to $0$ in hard thresholding by setting the maximum condition number. So we choose to add a nugget parameter.
+Another way to accomplish this is to use a pseudo-inverse of $\hat{\bm{\Sigma}}$ in Equation~(\ref{eqn:hotellingt2}) instead of its actual inverse, after dropping any eigenvalues $\lambda_i$ with $\lambda_1/\lambda_i>\gamma$ for some specified maximum condition number $\gamma$. Define the diagonal matrix $\bm { \Lambda} ^{-}$ with diagonal entries as $[1/\lambda_1,1/\lambda_2, \cdots, 1/\lambda_k, 0, \cdots, 0]$, where $\lambda_k$ is the smallest eigenvalue with $\lambda_1/\lambda_k$ greater than $\gamma$. Then, the pseudo-inverse is defined as $\hat {\bm { \Sigma}} ^{-} = \bm {Q}\bm { \Lambda}^{-}\bm {Q}^T$. This is equivalent to applying principal component analysis to $\bm{s}_t$ and retraining only the principal component directions in which the variation in $\bm{s}_t$ is not negligible. In our approach we used the nugget parameter instead of the pseudo-inverse, so as to enable detection in changes in the mean of the score function in all directions. 
 
 % \subsection{Score function of Regularized Models}
 % \label{ss:score_regu}
-Another related issue is regularization of complex models, which is almost always required to combat overfitting. The regularization term is used to penalize complex models and large parameters, by minimizing the negative log-likelihood plus a norm of parameters, for example, $L_2$ norm of all parameters: $l(\bm{\theta})=-\frac{1}{n}\sum_{i=1}^n \log P(y_i|\bm{x}_i;\bm{\theta})+\frac{c}{2}||\bm{\theta}||_2^2$, where $c>0$ is a regularization parameter. The regularization term would change the score function of the original model: $\nabla_{\bm{\theta}}l(\bm{\theta}) = -\frac{1}{n}\sum_{i=1}^n\bm{s}(\bm{\theta};(\bm{x}_i,y_i))+c\bm{\theta}$. It can be looked as a prior on parameters from Bayesian perspective, which can be ``distributed" among all data: $\nabla_{\bm{\theta}}l(\bm{\theta})=-\frac{1}{n}\sum_{i=1}^n(\bm{s}(\bm{\theta};(\bm{x}_i,y_i))-c\bm{\theta})=-\frac{1}{n}\nabla_{\bm{\theta}}\sum_{i=1}^n\log(P(y_i|\bm{x}_i;\bm{\theta})\exp\{-\frac{c}{2}||\bm{\theta}||_{2}^2\})$. We can treat the likelihood times prior as the new model: $P(Y|\bm{X};\bm{\theta})\exp\{-\frac{c}{2}||\bm{\theta}||_{2}^2\}$. Then, all methods of calculating score vectors and applying EWMA and Hotelling $T^2$ follows. In some popular form of penalization, this would not change the monitoring statistics. For example, adding a $L_2$ regularization term of all parameters would only add a constant vector to all score vectors: $\bm{s}(\bm{\theta};(\bm{x}_i,y_i))-c\bm{\theta}$, which would be canceled after minus the mean of score vectors in Equation~(\ref{eqn:hotellingt2}). Adding regularization would have another good effect. When $dim ( \bm { \theta})$ is too large, $L_2$ penalization would add a diagonal matrix with positive diagonal entries to the sample covariance matrix: $-\nabla_{\bm{\theta}}(\bm{s}(\bm{\theta};(\bm{x}_i,y_i))-c\bm{\theta})=-\nabla_{\bm{\theta}}\bm{s}(\bm{\theta};(\bm{x}_i,y_i))+c\bm{I}=\mathbf{I}(\bm{\theta})+c\bm{I}$, where $\mathbf{I}$ and $\bm{I}$ are Fishier information and identity matrix respectively, automatically resulting in a well-conditioned matrix. 
+Another related issue is regularization of complex models, which is almost always required to combat overfitting. The regularization term is used to penalize complex models and large parameters, by minimizing, for example, the negative log-likelihood plus the $L_2$ norm of all parameters: $l(\bm{\theta})=-\frac{1}{n}\sum_{i=1}^n \log P(y_i|\bm{x}_i;\bm{\theta})+\frac{c}{2n}||\bm{\theta}||_2^2$, where $c>0$ is a regularization parameter. In this case we can redefine the score function by noting that $\nabla_{\bm{\theta}}l(\bm{\theta})=-\frac{1}{n}\sum_{i=1}^n(\bm{s}(\bm{\theta};(\bm{x}_i,y_i))-\frac{c}{n}\bm{\theta})=-\frac{1}{n}\nabla_{\bm{\theta}}\sum_{i=1}^n\log(P(y_i|\bm{x}_i;\bm{\theta})\exp\{-\frac{c}{2n}||\bm{\theta}||_{2}^2\})$. Thus, if we redefine the score function as $\bm{s}(\bm{\theta}; (\bm{x}_i, y_i))-\frac{c}{n}\bm{\theta}$, this can be viewed as replacing the likelihood with its Bayesian counterpart $P(Y|\bm{X};\bm{\theta})\exp\{-\frac{c}{2n}||\bm{\theta}||_{2}^2\}$, which incorporates a prior distribution (in this case, a Gaussian prior for $L_2$ regularization) on the parameters. The MEWMA and Hotelling $T^2$ computations in the concept drift monitoring procedure would then be exactly the same but with the score vector replaced by $\bm{s}(\bm{\theta}; (\bm{x}_i, y_i))-\frac{c}{n}\bm{\theta}$. In some popular form of regularization, this would not change the monitoring statistics. For example, the above $L_2$ regularization only subtracts a constant vector to all score vectors: $\frac{c}{n}\bm{\theta}$, which would cancel after substracting the mean of the score vectors in Equation~(\ref{eqn:hotellingt2}).
 
 \section{Diagnostics and Enhanced Monitoring of Individual Components}
 \label{s:decou_cd}
@@ -418,7 +423,7 @@ The Hotelling $T^2$ statistic aggregates mean shifts in the components of the sc
 z_{j,t} = \lambda s_{j,t} + (1 - \lambda) z_{j,t-1}.
 \label{eqn:uniewma}
 \end{align}
-In this case, $z_{j,t}$ is plotted directly on the univariate EWMA chart with both a LCL and UCL. The chart signals a change in the mean of the $j$th component at observation $t$ if $z_{j,t}$ falls either below the LCL or above the UCL. If $\lambda$ is small, $z_{j,t}$ is approximately normal by the central limit theorem, and one can set  $\{LCL_j,UCL_j\} = \bar{z}_j \pm z_{\alpha/2}SD[z_j]$, where $\bar{z}_j$ and $SD[z_j]$ denote the sample average and standard deviation of $\{z_{j,t}\}_{t=n_1+1}^n$ over the same Phase-I data depicted in Figure \ref{fig:proc_mon_score_monitoring}, $z_{\alpha/2}$ is the upper $\alpha/2$ quantile of the standard normal distribution, and $\alpha$ is the desired false alarm rate. Alternatively, if the Phase-I sample size $n-n_1$ is sufficiently large, one can choose $LCL_j$ and $UCL_j$ directly as the lower and upper $\alpha/2$ quantiles of the empirical distribution of $\{z_{j,t}\}_{t=n_1+1}^n$. 
+In this case, $z_{j,t}$ is plotted directly on the univariate EWMA chart with both a $LCL$ and $UCL$ . The chart signals a change in the mean of the $j$th component at observation $t$ if $z_{j,t}$ falls either below the $LCL$ or above the $UCL$ . If $\lambda$ is small, $z_{j,t}$ is approximately normal by the central limit theorem, and one can set  $\{LCL_j,UCL_j\} = \bar{z}_j \pm z_{\alpha/2}SD[z_j]$, where $\bar{z}_j$ and $SD[z_j]$ denote the sample average and standard deviation of $\{z_{j,t}\}_{t=n_1+1}^n$ over the same Phase-I data depicted in Figure \ref{fig:proc_mon_score_monitoring}, $z_{\alpha/2}$ is the upper $\alpha/2$ quantile of the standard normal distribution, and $\alpha$ is the desired false alarm rate. Alternatively, if the Phase-I sample size $n-n_1$ is sufficiently large, one can choose $LCL_j$ and $UCL_j$ directly as the lower and upper $\alpha/2$ quantiles of the empirical distribution of $\{z_{j,t}\}_{t=n_1+1}^n$. 
 
 If the goal is to diagnose and isolate which parameter(s) have changed, then it is preferable to replace the score components in the univariate EWMA by the components of a transformed version of the score vector discussed below, to effectively decouple the changes in the individual parameters. To illustrate this coupling, consider a linear Gaussian regression model $Y = \bm{X}^T\bm{\theta} + \epsilon$ with $\epsilon$ following a zero-mean Gaussian distribution with variance $\sigma^2$, the score function for which is $\bm{s}(\bm { \theta}^{ (0)}; (\bm {X}, Y)) = \frac{(Y - \bm{X}^T\bm{\theta}^{ (0)})\bm{X}}{\sigma^2}$. With no concept drift (i.e., $\bm { \theta} = \bm { \theta}^{ (0)}$), the mean of the score function is $E_{\bm{ \theta}^{ (0)}}[\bm{s}(\bm { \theta}^{ (0)}; (\bm {X}, Y))] = E_{\bm{ \theta}^{ (0)}}[E_{\bm{ \theta}^{ (0)}}[ \frac{(Y - \bm{X}^T\bm{\theta}^{ (0)})\bm{X}}{\sigma^2}|\bm {X}]] =  E_{\bm{ \theta}^{ (0)}}[\bm{0}] = \bm{0}$. After concept drift, suppose the parameters change to $\bm { \theta} ^{ (1)}$, and denote this change by $ \Delta \bm { \theta} = \bm { \theta} ^{ (1)} - \bm { \theta}^ { (0)}$. The mean of the score function after the concept drift is $E_{\bm{ \theta}^{ (1)}}[\bm{s}(\bm { \theta}^{ (0)}; (\bm {X}, Y))] = E_{\bm{ \theta}^{ (1)}}[E_{\bm{ \theta}^{ (1)}}[\frac{(Y - \bm {X}^T\bm { \theta}^{ (1)} + \bm {X}^T\Delta \bm { \theta}) \bm {X}}{\sigma^2} |\bm {X}]] = E_{\bm{ \theta}^{ (1)}}[E_{\bm{ \theta}^{ (1)}}[\frac{\bm {X}\bm {X}^T\Delta \bm { \theta})}{\sigma^2} |\bm {X}]] = \frac{E [\bm {X}\bm {X}^T] \Delta \bm { \theta}}{\sigma^2}$. Thus, we can decouple the changes in the parameters by premultiplying the score vector mean by the inverse of $\frac{E [\bm {X}\bm {X}^T]}{\sigma^2}$, i.e., via the transformation $ \Delta \bm { \theta} = \sigma^2 \big[E [\bm {X}\bm {X}^T]\big]^{-1} E_{\bm{ \theta}^{ (1)}}[\bm{s}(\bm { \theta}^{ (0)}; (\bm {X}, Y))]$. 
 
@@ -467,7 +472,7 @@ In light of (\ref{eqn:cd_decomp_fisher_approx}), for general $P(Y|\bm{X};\bm{\th
 z_{j,t} = \lambda \tilde{s}_{j,t} + (1 - \lambda) z_{j,t-1},
 \label{eqn:uniewma-decoupled}
 \end{align}
-where $\tilde{s}_{j,t}$ is the $j$th component of the decoupled score vector $\tilde{\bm{s}}_t := \mathbf {I}^{-1}(\bm { \theta}^{ (0)})\bm{s}_t$. The LCL and UCL for (\ref{eqn:uniewma-decoupled}) are determined analogously to those for (\ref{eqn:uniewma}), based on the empirical distribution of $\{z_{j,t}\}_{t=n_1+1}^n$.  
+where $\tilde{s}_{j,t}$ is the $j$th component of the decoupled score vector $\tilde{\bm{s}}_t := \mathbf {I}^{-1}(\bm { \theta}^{ (0)})\bm{s}_t$. The $LCL$ and $UCL$  for (\ref{eqn:uniewma-decoupled}) are determined analogously to those for (\ref{eqn:uniewma}), based on the empirical distribution of $\{z_{j,t}\}_{t=n_1+1}^n$.  
 
 In addition to providing diagnostic information on which parameter(s) have changed, and how they have changed, the decoupled univariate EWMAs (\ref{eqn:uniewma-decoupled}) have the following, additional benefit over just using the MEWMA. As discussed earlier, under fairly general conditions, the mean of $\bm{s}(\bm { \theta}^{ (0)}; (\bm {X}, Y))$ changes if and only if $P(Y|\bm{X};\bm{\theta})$ changes. Thus, a change in $P(\bm{X})$ alone with no change in $P(Y|\bm{X};\bm{\theta})$ will not cause the mean of $\bm{s}(\bm { \theta}^{ (0)}; (\bm {X}, Y))$, or the mean of $\bm{z}_t$ in (\ref{eqn:ewma}), to change. However, a change in $P(\bm{X})$ alone can cause the mean of the Hotelling $T^2$ statistic in (\ref{eqn:hotellingt2}) to increase (by changing the covariance of $\bm{s}(\bm { \theta}^{ (0)}; (\bm {X}, Y))$), thus potentially leading to more frequent false alarms if the goal is to signal only when $P(Y|\bm{X};\bm{\theta})$ changes. This is easy to see for the case of the linear Gaussian regression model $Y = \bm{X}^T\bm{\theta} + \epsilon$ with score function $\bm{s}(\bm { \theta}^{ (0)}; (\bm {X}, Y)) = \frac{(Y - \bm{X}^T\bm{\theta}^{ (0)})\bm{X}}{\sigma^2}$. If $P(Y|\bm{X};\bm{\theta})$ does not change (i.e., $\bm{\theta}$ remains unchanged at $\bm{\theta}^{ (0)}$), then we still have that $\bm{s}(\bm { \theta}^{ (0)}; (\bm {X}, Y)) = \frac{\epsilon \bm{X}}{\sigma^2}$ is zero mean regardless of whether $P(\bm{X})$ changes, but the covariance of $\epsilon \bm{X}$ can obviously change.   
 
@@ -507,7 +512,7 @@ We applied concept drift detection to two supervised learning models:  A logisti
 
 We applied our score-based MEWMA with the goal of detecting concept drift as far in advance of the beginning of the crash ($2007$-Dec) as possible. For comparison, we also applied an EWMA on the binary classification error, which is considered state-of-the-art among existing concept drift detection methods in terms of fast detection~(\cite{barros2018large}). The predicted label, used to calculate the binary classification error, is $1$ if the predicted probability exceeds a specified threshold, and $0$ otherwise). We chose a threshold of $0.2490$ to match the true positive rate and the true negative rate as closely as possible (alternatively, if costs of false positives and false negatives were known in advance, we could have chosen the threshold to minimize the total misclassification costs). For both methods, we selected $\lambda = 0.001$, so that the effective window is $\frac{1}{\lambda} = 1,000$ customers, which corresponds roughly to one week. Figure~\ref{fig:credit_default} shows the results of both concept drift monitoring methods for both models (logistic regression and neural network) over the Phase-I and Phase-II data. 
 
-As seen in Figure~\ref{fig:credit_default}, for the logistic regression model, the score-based MEWMA consistently signals (i.e., the $T^2$ statistic consistently falls above the UCL) beginning around $2007$-Jun, which is a full $6$-months prior to the beginning of the economic crash in $2007$-Dec. In this sense, the score-based method provides advanced warning that something has changed substantially in the predictive relationship between $Y$ and $\bm{X}$, which could have been indicative that serious economic changes were evolving. At the very least, it would have been an indication that the fitted credit risk scoring model was becoming obsolete and that more effective scoring could be achieved by updating the model. In contrast, the EWMA on the error rate does not consistently signal until much later, $2008$-Feb, which is $8$ months after the score-based MEWMA began to consistently signal and $2$ months after the economic crash began. The results for the neural network model, which  are shown in the right panels of Figure~\ref{fig:credit_default}, are very similar. 
+As seen in Figure~\ref{fig:credit_default}, for the logistic regression model, the score-based MEWMA consistently signals (i.e., the $T^2$ statistic consistently falls above the $UCL$ ) beginning around $2007$-Jun, which is a full $6$-months prior to the beginning of the economic crash in $2007$-Dec. In this sense, the score-based method provides advanced warning that something has changed substantially in the predictive relationship between $Y$ and $\bm{X}$, which could have been indicative that serious economic changes were evolving. At the very least, it would have been an indication that the fitted credit risk scoring model was becoming obsolete and that more effective scoring could be achieved by updating the model. In contrast, the EWMA on the error rate does not consistently signal until much later, $2008$-Feb, which is $8$ months after the score-based MEWMA began to consistently signal and $2$ months after the economic crash began. The results for the neural network model, which  are shown in the right panels of Figure~\ref{fig:credit_default}, are very similar. 
 
 \begin{figure}[!htbp]
 \centering
@@ -519,7 +524,7 @@ For the credit risk example, comparison of concept drift monitoring performance 
 \label{fig:credit_default}
 \end{figure}
 
-Figure~\ref{fig:credit_default_diag} shows several representative univariate component EWMAs (for $\theta_1$, $\theta_2$, $\theta_3$, $\theta_8$, and the intercept $\theta_0$) for the logistic regression model over the Phase-I and Phase-II data. The MEWMA is also shown in the top row as a reference. The component EWMAs in the left column are for the original (coupled) score components (\ref{eqn:uniewma}), and those in the right column are for the decoupled score components (\ref{eqn:uniewma-decoupled}). Decoupling the score components reveals different patterns of concept drift than are not seen in the original score components. In particular, the decoupled component EWMA for the intercept parameter (bottom right plot) shows a clear upwards drift over the entire range of data, whereas this drift is not apparent in the corresponding original component EWMA (bottom left plot). The correlation between the constant intercept term and some of the other covariates has evidently conflated the drift in their corresponding parameters in the left column plots. The upwards drift in the decoupled intercept parameter is telling, as the intercept can be viewed as a regression-adjusted indicator of the overall default rate. Since the drift was upwards, this means that the intercept parameter increased over time, which means that the regression-adjusted likelihood of default (i.e., the default for applicants having the same covariate values) increased substantially over time. In fact, the concept drift is even more evident, and evident earlier, in the decoupled component EWMA for $\theta_0$ than in the MEWMA. For example, the decoupled component EWMA for $\theta_0$ falls consistently above the center line ($0$) beginning back in the Phase-I data, around $2006$-Jun. Even though it is not consistently above the UCL at this point, the fact that it is consistently above the centerline is an indication that $\theta_0$ has increased. In SPC control charting in general, users typically look for these types of patterns in the charts to signal changes in the mean of what is being charted (\cite{montgomery2007introduction}). 
+Figure~\ref{fig:credit_default_diag} shows several representative univariate component EWMAs (for $\theta_1$, $\theta_2$, $\theta_3$, $\theta_8$, and the intercept $\theta_0$) for the logistic regression model over the Phase-I and Phase-II data. The MEWMA is also shown in the top row as a reference. The component EWMAs in the left column are for the original (coupled) score components (\ref{eqn:uniewma}), and those in the right column are for the decoupled score components (\ref{eqn:uniewma-decoupled}). Decoupling the score components reveals different patterns of concept drift than are not seen in the original score components. In particular, the decoupled component EWMA for the intercept parameter (bottom right plot) shows a clear upwards drift over the entire range of data, whereas this drift is not apparent in the corresponding original component EWMA (bottom left plot). The correlation between the constant intercept term and some of the other covariates has evidently conflated the drift in their corresponding parameters in the left column plots. The upwards drift in the decoupled intercept parameter is telling, as the intercept can be viewed as a regression-adjusted indicator of the overall default rate. Since the drift was upwards, this means that the intercept parameter increased over time, which means that the regression-adjusted likelihood of default (i.e., the default for applicants having the same covariate values) increased substantially over time. In fact, the concept drift is even more evident, and evident earlier, in the decoupled component EWMA for $\theta_0$ than in the MEWMA. For example, the decoupled component EWMA for $\theta_0$ falls consistently above the center line ($0$) beginning back in the Phase-I data, around $2006$-Jun. Even though it is not consistently above the $UCL$  at this point, the fact that it is consistently above the centerline is an indication that $\theta_0$ has increased. In SPC control charting in general, users typically look for these types of patterns in the charts to signal changes in the mean of what is being charted (\cite{montgomery2007introduction}). 
 
 The decoupled component EWMA chart for $\theta_1$ (right column, second from top) also shows clear upwards drift in $\theta_1$, which means that $x_1$ (credit risk score from an earlier model) should be given more weight in predicting credit risk as time evolves. The decoupled component EWMA chart for $\theta_2$ (right column, third from top) is less clear, because it wanders up ($\sim 2007$-Aug) then down ($\sim 2008$-Jan), then up again ($\sim 2008$-April). Rather than a change in the mean, which indicates a change in $P(Y|\bm{X};\bm{\theta})$, it could indicate a change in variance that results from a change in $P(\bm{X})$. Notice also that the corresponding plot in the left column is quite different than the decoupled version in the right column. Again, this is because the covariates are correlated, in which case the original score components conflate the drift in the parameters.  
 
@@ -551,16 +556,7 @@ New figures for bike sharing data set
      \caption{Retrospective Diagnosis plots for a model trained using raw bike rental counts. The training data is from $2010$-Sep to $2017$-Dec.}
      \label{fig:bs_raw_cnt}
 \end{subfigure}
-\caption{
-}
-\label{fig:bike_sharing_diag}
-\end{figure}
-
-\item Step B-1:
-
-\begin{figure}[H]
-\centering
-    \begin{subfigure}[t]{0.4\linewidth}
+\begin{subfigure}[t]{0.4\linewidth}
      \centering
          \includegraphics[width=1.0\textwidth, trim=.0in .0in .0in .0in, clip]{../figures/v14/bike_sharing/reg_lin_B_1/PII_neg_single_retro_bike_fisher_mlines_with_regu_1e-08_0_0001_0_01_99_99.png}
      \captionsetup{width=.95\linewidth}
@@ -572,347 +568,35 @@ New figures for bike sharing data set
 \label{fig:bike_sharing_diag}
 \end{figure}
 
-\item Step B-2:
-
-\begin{figure}[H]
-\centering
-    \begin{subfigure}[t]{0.4\linewidth}
-     \centering
-         \includegraphics[width=1.0\textwidth, trim=.0in .0in .0in .0in, clip]{../figures/v14/bike_sharing/reg_lin_B_2/PII_neg_single_retro_bike_fisher_mlines_with_regu_1e-08_0_0001_0_01_99_99.png}
-     \captionsetup{width=.95\linewidth}
-     \caption{Retrospective Diagnosis plots for a model trained using raw bike rental counts. The training data is from $2010$-Sep to $2017$-Dec, and the control limit is set based on data from $2012$-Jun to $2015$-Jun, but applied on the training data.}
-     \label{fig:bs_raw_cnt}
-\end{subfigure}
-\caption{
-}
-\label{fig:bike_sharing_diag}
-\end{figure}
-
 \item Step C:
 
 \begin{figure}[H]
 \centering
-    \begin{subfigure}[t]{0.32\linewidth}
+    \begin{subfigure}[t]{0.304\linewidth}
      \centering
          \includegraphics[width=1.0\textwidth, trim=.0in .0in .0in .0in, clip]{../figures/v14/bike_sharing/reg_lin_C/PII_pos_single_retro_bike_fisher_mlines_with_regu_1e-08_0_0001_0_01_99_99.png}
      \captionsetup{width=.95\linewidth}
      \caption{Retrospective Diagnosis plots for a model trained using normalized bike rental counts (using yearly mean). The training data is from $2010$-Sep to $2017$-Dec, and the control limit is set based on the training data.}
      \label{fig:bs_raw_cnt}
 \end{subfigure}
-\begin{subfigure}[t]{0.32\linewidth}
-     \centering
-         \includegraphics[width=1.0\textwidth, trim=.0in .0in .0in .0in, clip]{../figures/v14/bike_sharing/reg_lin_C_1/PII_pos_single_retro_bike_fisher_mlines_with_regu_1e-08_0_0001_0_01_99_99.png}
-     \captionsetup{width=.95\linewidth}
-     \caption{Retrospective Diagnosis plots for a model trained using normalized bike rental counts (using yearly mean). The training data is from $2012$-Jan to $2017$-Dec, and the control limit is set based on the training data.}
-     \label{fig:bs_raw_cnt_1}
-\end{subfigure}
-\begin{subfigure}[t]{0.32\linewidth}
+\begin{subfigure}[t]{0.304\linewidth}
      \centering
          \includegraphics[width=1.0\textwidth, trim=.0in .0in .0in .0in, clip]{../figures/v14/bike_sharing/reg_lin_C_2/PII_pos_single_retro_bike_fisher_mlines_with_regu_1e-08_0_0001_0_01_99_99.png}
      \captionsetup{width=.95\linewidth}
      \caption{Retrospective Diagnosis plots for a model trained using normalized bike rental counts (using yearly mean). The training data is from $2013$-Jan to $2017$-Dec, and the control limit is set based on the training data.}
      \label{fig:bs_raw_cnt_2}
 \end{subfigure}
-\caption{
-}
-\label{fig:bike_sharing_diag}
-\end{figure}
-
-Following are using covariance matrix for Fisher information matrix.
-
-\begin{figure}[H]
-\centering
-    \begin{subfigure}[t]{0.32\linewidth}
+\begin{subfigure}[t]{0.374\linewidth}
      \centering
-         \includegraphics[width=1.0\textwidth, trim=.0in .0in .0in .0in, clip]{../figures/v14/bike_sharing/reg_lin_cov_C/PII_pos_single_retro_bike_fisher_mlines_with_regu_1e-08_0_0001_0_01_99_99.png}
+         \includegraphics[width=1.0\textwidth, trim=.0in .0in .0in .0in, clip]{../figures/v14/bike_sharing/reg_lin_PI_D_2/neg_single_bike_fisher_mlines_with_regu_1e-08_0_0001_0_01_99_99.png}
      \captionsetup{width=.95\linewidth}
-     \caption{Retrospective Diagnosis plots for a model trained using normalized bike rental counts (using yearly mean). The training data is from $2010$-Sep to $2017$-Dec, and the control limit is set based on the training data.}
-     \label{fig:bs_raw_cnt}
-\end{subfigure}
-\begin{subfigure}[t]{0.32\linewidth}
-     \centering
-         \includegraphics[width=1.0\textwidth, trim=.0in .0in .0in .0in, clip]{../figures/v14/bike_sharing/reg_lin_cov_C_1/PII_pos_single_retro_bike_fisher_mlines_with_regu_1e-08_0_0001_0_01_99_99.png}
-     \captionsetup{width=.95\linewidth}
-     \caption{Retrospective Diagnosis plots for a model trained using normalized bike rental counts (using yearly mean). The training data is from $2012$-Jan to $2017$-Dec, and the control limit is set based on the training data.}
-     \label{fig:bs_raw_cnt_1}
-\end{subfigure}
-\begin{subfigure}[t]{0.32\linewidth}
-     \centering
-         \includegraphics[width=1.0\textwidth, trim=.0in .0in .0in .0in, clip]{../figures/v14/bike_sharing/reg_lin_cov_C_2/PII_pos_single_retro_bike_fisher_mlines_with_regu_1e-08_0_0001_0_01_99_99.png}
-     \captionsetup{width=.95\linewidth}
-     \caption{Retrospective Diagnosis plots for a model trained using normalized bike rental counts (using yearly mean). The training data is from $2013$-Jan to $2017$-Dec, and the control limit is set based on the training data.}
-     \label{fig:bs_raw_cnt_2}
+     \caption{Prospective Diagnosis plots for a model trained using normalized bike rental counts (using yearly mean). The training data is from $2013$-Jan to $2016$-Dec; Phase-I data is from the whole year of $2017$; Phase-II data is after $2018$-Jan. In estimating the control limits in this figure, the $\bar{\bm{s}}$ in Equation~(\ref{eqn:hotellingt2}) is estimated from data of the Phase-I, while the $\hat{\bm{\Sigma}}$ is estimated from training data.}
+     \label{fig:bs_norm_cnt_2}
 \end{subfigure}
 \caption{
 }
 \label{fig:bike_sharing_diag}
 \end{figure}
-
-Following are using Phase-I data to estimate control limits.
-
-\begin{figure}[H]
-\centering
-    \begin{subfigure}[t]{0.32\linewidth}
-     \centering
-         \includegraphics[width=1.0\textwidth, trim=.0in .0in .0in .0in, clip]{../figures/v14/bike_sharing/reg_lin_cov_C/PII_pos_single_retro_bike_fisher_mlines_with_regu_1e-08_0_0001_0_01_99_99.png}
-     \captionsetup{width=.95\linewidth}
-     \caption{Retrospective Diagnosis plots for a model trained using normalized bike rental counts (using yearly mean). The training data is from $2010$-Sep to $2017$-Dec, and the control limit is set based on the training data.}
-     \label{fig:bs_raw_cnt}
-\end{subfigure}
-\begin{subfigure}[t]{0.32\linewidth}
-     \centering
-         \includegraphics[width=1.0\textwidth, trim=.0in .0in .0in .0in, clip]{../figures/v14/bike_sharing/reg_lin_cov_C_1/PII_pos_single_retro_bike_fisher_mlines_with_regu_1e-08_0_0001_0_01_99_99.png}
-     \captionsetup{width=.95\linewidth}
-     \caption{Retrospective Diagnosis plots for a model trained using normalized bike rental counts (using yearly mean). The training data is from $2012$-Jan to $2017$-Dec, and the control limit is set based on the training data.}
-     \label{fig:bs_raw_cnt_1}
-\end{subfigure}
-\begin{subfigure}[t]{0.32\linewidth}
-     \centering
-         \includegraphics[width=1.0\textwidth, trim=.0in .0in .0in .0in, clip]{../figures/v14/bike_sharing/reg_lin_cov_C_2/PII_pos_single_retro_bike_fisher_mlines_with_regu_1e-08_0_0001_0_01_99_99.png}
-     \captionsetup{width=.95\linewidth}
-     \caption{Retrospective Diagnosis plots for a model trained using normalized bike rental counts (using yearly mean). The training data is from $2013$-Jan to $2017$-Dec, and the control limit is set based on the training data.}
-     \label{fig:bs_raw_cnt_2}
-\end{subfigure}
-\caption{
-}
-\label{fig:bike_sharing_diag}
-\end{figure}
-
-\item Step D:
-
-\begin{figure}[H]
-\centering
-    \begin{subfigure}[t]{0.32\linewidth}
-     \centering
-         \includegraphics[width=1.0\textwidth, trim=.0in .0in .0in .0in, clip]{../figures/v14/bike_sharing/reg_lin_D/neg_single_bike_fisher_mlines_with_regu_1e-08_0_0001_0_01_99_99.png}
-     \captionsetup{width=.95\linewidth}
-     \caption{Prospective Diagnosis plots for a model trained using normalized bike rental counts (using yearly mean). The training data is from $2010$-Sep to $2016$-Dec; Phase-I data is from the whole year of $2017$; Phase-II data is after $2018$-Jan.}
-     \label{fig:bs_raw_cnt}
-\end{subfigure}
-\begin{subfigure}[t]{0.32\linewidth}
-     \centering
-         \includegraphics[width=1.0\textwidth, trim=.0in .0in .0in .0in, clip]{../figures/v14/bike_sharing/reg_lin_D_1/neg_single_bike_fisher_mlines_with_regu_1e-08_0_0001_0_01_99_99.png}
-     \captionsetup{width=.95\linewidth}
-     \caption{Prospective Diagnosis plots for a model trained using normalized bike rental counts (using yearly mean). The training data is from $2012$-Jan to $2016$-Dec; Phase-I data is from the whole year of $2017$; Phase-II data is after $2018$-Jan.}
-     \label{fig:bs_raw_cnt_1}
-\end{subfigure}
-\begin{subfigure}[t]{0.32\linewidth}
-     \centering
-         \includegraphics[width=1.0\textwidth, trim=.0in .0in .0in .0in, clip]{../figures/v14/bike_sharing/reg_lin_D_2/neg_single_bike_fisher_mlines_with_regu_1e-08_0_0001_0_01_99_99.png}
-     \captionsetup{width=.95\linewidth}
-     \caption{Prospective Diagnosis plots for a model trained using normalized bike rental counts (using yearly mean). The training data is from $2013$-Jan to $2016$-Dec; Phase-I data is from the whole year of $2017$; Phase-II data is after $2018$-Jan.}
-     \label{fig:bs_raw_cnt_2}
-\end{subfigure}
-\caption{
-}
-\label{fig:bike_sharing_diag}
-\end{figure}
-
-\begin{figure}[H]
-\centering
-    \begin{subfigure}[t]{0.32\linewidth}
-     \centering
-         \includegraphics[width=1.0\textwidth, trim=.0in .0in .0in .0in, clip]{../figures/v14/bike_sharing/reg_lin_D/PII_neg_single_bike_fisher_mlines_with_regu_1e-08_0_0001_0_01_99_99.png}
-     \captionsetup{width=.95\linewidth}
-     \caption{Prospective Diagnosis plots for a model trained using normalized bike rental counts (using yearly mean). The training data is from $2010$-Sep to $2016$-Dec; Phase-I data is from the whole year of $2017$; Phase-II data is after $2018$-Jan.}
-     \label{fig:bs_raw_cnt}
-\end{subfigure}
-\begin{subfigure}[t]{0.32\linewidth}
-     \centering
-         \includegraphics[width=1.0\textwidth, trim=.0in .0in .0in .0in, clip]{../figures/v14/bike_sharing/reg_lin_D_1/PII_neg_single_bike_fisher_mlines_with_regu_1e-08_0_0001_0_01_99_99.png}
-     \captionsetup{width=.95\linewidth}
-     \caption{Prospective Diagnosis plots for a model trained using normalized bike rental counts (using yearly mean). The training data is from $2012$-Jan to $2016$-Dec; Phase-I data is from the whole year of $2017$; Phase-II data is after $2018$-Jan.}
-     \label{fig:bs_raw_cnt_1}
-\end{subfigure}
-\begin{subfigure}[t]{0.32\linewidth}
-     \centering
-         \includegraphics[width=1.0\textwidth, trim=.0in .0in .0in .0in, clip]{../figures/v14/bike_sharing/reg_lin_D_2/PII_neg_single_bike_fisher_mlines_with_regu_1e-08_0_0001_0_01_99_99.png}
-     \captionsetup{width=.95\linewidth}
-     \caption{Prospective Diagnosis plots for a model trained using normalized bike rental counts (using yearly mean). The training data is from $2013$-Jan to $2016$-Dec; Phase-I data is from the whole year of $2017$; Phase-II data is after $2018$-Jan.}
-     \label{fig:bs_raw_cnt_2}
-\end{subfigure}
-\caption{
-}
-\label{fig:bike_sharing_diag}
-\end{figure}
-
-Following are using covariance matrix for Fisher information matrix.
-
-\begin{figure}[H]
-\centering
-    \begin{subfigure}[t]{0.32\linewidth}
-     \centering
-         \includegraphics[width=1.0\textwidth, trim=.0in .0in .0in .0in, clip]{../figures/v14/bike_sharing/reg_lin_cov_D/neg_single_bike_fisher_mlines_with_regu_1e-08_0_0001_0_01_99_99.png}
-     \captionsetup{width=.95\linewidth}
-     \caption{Prospective Diagnosis plots for a model trained using normalized bike rental counts (using yearly mean). The training data is from $2010$-Sep to $2016$-Dec; Phase-I data is from the whole year of $2017$; Phase-II data is after $2018$-Jan.}
-     \label{fig:bs_raw_cnt}
-\end{subfigure}
-\begin{subfigure}[t]{0.32\linewidth}
-     \centering
-         \includegraphics[width=1.0\textwidth, trim=.0in .0in .0in .0in, clip]{../figures/v14/bike_sharing/reg_lin_cov_D_1/neg_single_bike_fisher_mlines_with_regu_1e-08_0_0001_0_01_99_99.png}
-     \captionsetup{width=.95\linewidth}
-     \caption{Prospective Diagnosis plots for a model trained using normalized bike rental counts (using yearly mean). The training data is from $2012$-Jan to $2016$-Dec; Phase-I data is from the whole year of $2017$; Phase-II data is after $2018$-Jan.}
-     \label{fig:bs_raw_cnt_1}
-\end{subfigure}
-\begin{subfigure}[t]{0.32\linewidth}
-     \centering
-         \includegraphics[width=1.0\textwidth, trim=.0in .0in .0in .0in, clip]{../figures/v14/bike_sharing/reg_lin_cov_D_2/neg_single_bike_fisher_mlines_with_regu_1e-08_0_0001_0_01_99_99.png}
-     \captionsetup{width=.95\linewidth}
-     \caption{Prospective Diagnosis plots for a model trained using normalized bike rental counts (using yearly mean). The training data is from $2013$-Jan to $2016$-Dec; Phase-I data is from the whole year of $2017$; Phase-II data is after $2018$-Jan.}
-     \label{fig:bs_raw_cnt_2}
-\end{subfigure}
-\caption{
-}
-\label{fig:bike_sharing_diag}
-\end{figure}
-
-\begin{figure}[H]
-\centering
-    \begin{subfigure}[t]{0.32\linewidth}
-     \centering
-         \includegraphics[width=1.0\textwidth, trim=.0in .0in .0in .0in, clip]{../figures/v14/bike_sharing/reg_lin_cov_D/PII_neg_single_bike_fisher_mlines_with_regu_1e-08_0_0001_0_01_99_99.png}
-     \captionsetup{width=.95\linewidth}
-     \caption{Prospective Diagnosis plots for a model trained using normalized bike rental counts (using yearly mean). The training data is from $2010$-Sep to $2016$-Dec; Phase-I data is from the whole year of $2017$; Phase-II data is after $2018$-Jan.}
-     \label{fig:bs_raw_cnt}
-\end{subfigure}
-\begin{subfigure}[t]{0.32\linewidth}
-     \centering
-         \includegraphics[width=1.0\textwidth, trim=.0in .0in .0in .0in, clip]{../figures/v14/bike_sharing/reg_lin_cov_D_1/PII_neg_single_bike_fisher_mlines_with_regu_1e-08_0_0001_0_01_99_99.png}
-     \captionsetup{width=.95\linewidth}
-     \caption{Prospective Diagnosis plots for a model trained using normalized bike rental counts (using yearly mean). The training data is from $2012$-Jan to $2016$-Dec; Phase-I data is from the whole year of $2017$; Phase-II data is after $2018$-Jan.}
-     \label{fig:bs_raw_cnt_1}
-\end{subfigure}
-\begin{subfigure}[t]{0.32\linewidth}
-     \centering
-         \includegraphics[width=1.0\textwidth, trim=.0in .0in .0in .0in, clip]{../figures/v14/bike_sharing/reg_lin_cov_D_2/PII_neg_single_bike_fisher_mlines_with_regu_1e-08_0_0001_0_01_99_99.png}
-     \captionsetup{width=.95\linewidth}
-     \caption{Prospective Diagnosis plots for a model trained using normalized bike rental counts (using yearly mean). The training data is from $2013$-Jan to $2016$-Dec; Phase-I data is from the whole year of $2017$; Phase-II data is after $2018$-Jan.}
-     \label{fig:bs_raw_cnt_2}
-\end{subfigure}
-\caption{
-}
-\label{fig:bike_sharing_diag}
-\end{figure}
-
-\item Step E:
-
-\begin{figure}[H]
-\centering
-    \begin{subfigure}[t]{0.32\linewidth}
-     \centering
-         \includegraphics[width=1.0\textwidth, trim=.0in .0in .0in .0in, clip]{../figures/v14/bike_sharing/reg_lin_E/neg_single_bike_fisher_mlines_with_regu_1e-08_0_0001_0_01_99_99.png}
-     \captionsetup{width=.95\linewidth}
-     \caption{Prospective Diagnosis plots for a model trained using raw bike rental counts (using yearly mean). The training data is from from $2010$-Sep to $2016$-Dec; Phase-I data is from the whole year of $2017$; Phase-II data is after $2018$-Jan.}
-     \label{fig:bs_raw_cnt}
-\end{subfigure}
-\begin{subfigure}[t]{0.32\linewidth}
-     \centering
-         \includegraphics[width=1.0\textwidth, trim=.0in .0in .0in .0in, clip]{../figures/v14/bike_sharing/reg_lin_E_1/neg_single_bike_fisher_mlines_with_regu_1e-08_0_0001_0_01_99_99.png}
-     \captionsetup{width=.95\linewidth}
-     \caption{Prospective Diagnosis plots for a model trained using raw bike rental counts (using yearly mean). The training data is from from $2012$-Jan to $2016$-Dec; Phase-I data is from the whole year of $2017$; Phase-II data is after $2018$-Jan.}
-     \label{fig:bs_raw_cnt_1}
-\end{subfigure}
-\begin{subfigure}[t]{0.32\linewidth}
-     \centering
-         \includegraphics[width=1.0\textwidth, trim=.0in .0in .0in .0in, clip]{../figures/v14/bike_sharing/reg_lin_E_2/neg_single_bike_fisher_mlines_with_regu_1e-08_0_0001_0_01_99_99.png}
-     \captionsetup{width=.95\linewidth}
-     \caption{Prospective Diagnosis plots for a model trained using raw bike rental counts (using yearly mean). The training data is from from $2013$-Jan to $2016$-Dec; Phase-I data is from the whole year of $2017$; Phase-II data is after $2018$-Jan.}
-     \label{fig:bs_raw_cnt_2}
-\end{subfigure}
-\caption{
-}
-\label{fig:bike_sharing_diag}
-\end{figure}
-
-
-\begin{figure}[H]
-\centering
-    \begin{subfigure}[t]{0.32\linewidth}
-     \centering
-         \includegraphics[width=1.0\textwidth, trim=.0in .0in .0in .0in, clip]{../figures/v14/bike_sharing/reg_lin_E/PII_neg_single_bike_fisher_mlines_with_regu_1e-08_0_0001_0_01_99_99.png}
-     \captionsetup{width=.95\linewidth}
-     \caption{Prospective Diagnosis plots for a model trained using raw bike rental counts (using yearly mean). The training data is from from $2010$-Sep to $2016$-Dec; Phase-I data is from the whole year of $2017$; Phase-II data is after $2018$-Jan.}
-     \label{fig:bs_raw_cnt}
-\end{subfigure}
-\begin{subfigure}[t]{0.32\linewidth}
-     \centering
-         \includegraphics[width=1.0\textwidth, trim=.0in .0in .0in .0in, clip]{../figures/v14/bike_sharing/reg_lin_E_1/PII_neg_single_bike_fisher_mlines_with_regu_1e-08_0_0001_0_01_99_99.png}
-     \captionsetup{width=.95\linewidth}
-     \caption{Prospective Diagnosis plots for a model trained using raw bike rental counts (using yearly mean). The training data is from from $2012$-Jan to $2016$-Dec; Phase-I data is from the whole year of $2017$; Phase-II data is after $2018$-Jan.}
-     \label{fig:bs_raw_cnt_1}
-\end{subfigure}
-\begin{subfigure}[t]{0.32\linewidth}
-     \centering
-         \includegraphics[width=1.0\textwidth, trim=.0in .0in .0in .0in, clip]{../figures/v14/bike_sharing/reg_lin_E_2/PII_neg_single_bike_fisher_mlines_with_regu_1e-08_0_0001_0_01_99_99.png}
-     \captionsetup{width=.95\linewidth}
-     \caption{Prospective Diagnosis plots for a model trained using raw bike rental counts (using yearly mean). The training data is from from $2013$-Jan to $2016$-Dec; Phase-I data is from the whole year of $2017$; Phase-II data is after $2018$-Jan.}
-     \label{fig:bs_raw_cnt_2}
-\end{subfigure}
-\caption{
-}
-\label{fig:bike_sharing_diag}
-\end{figure}
-
-
-Following are using covariance matrix for Fisher information matrix.
-
-\begin{figure}[H]
-\centering
-    \begin{subfigure}[t]{0.32\linewidth}
-     \centering
-         \includegraphics[width=1.0\textwidth, trim=.0in .0in .0in .0in, clip]{../figures/v14/bike_sharing/reg_lin_cov_E/neg_single_bike_fisher_mlines_with_regu_1e-08_0_0001_0_01_99_99.png}
-     \captionsetup{width=.95\linewidth}
-     \caption{Prospective Diagnosis plots for a model trained using raw bike rental counts (using yearly mean). The training data is from from $2010$-Sep to $2016$-Dec; Phase-I data is from the whole year of $2017$; Phase-II data is after $2018$-Jan.}
-     \label{fig:bs_raw_cnt}
-\end{subfigure}
-\begin{subfigure}[t]{0.32\linewidth}
-     \centering
-         \includegraphics[width=1.0\textwidth, trim=.0in .0in .0in .0in, clip]{../figures/v14/bike_sharing/reg_lin_cov_E_1/neg_single_bike_fisher_mlines_with_regu_1e-08_0_0001_0_01_99_99.png}
-     \captionsetup{width=.95\linewidth}
-     \caption{Prospective Diagnosis plots for a model trained using raw bike rental counts (using yearly mean). The training data is from from $2012$-Jan to $2016$-Dec; Phase-I data is from the whole year of $2017$; Phase-II data is after $2018$-Jan.}
-     \label{fig:bs_raw_cnt_1}
-\end{subfigure}
-\begin{subfigure}[t]{0.32\linewidth}
-     \centering
-         \includegraphics[width=1.0\textwidth, trim=.0in .0in .0in .0in, clip]{../figures/v14/bike_sharing/reg_lin_cov_E_2/neg_single_bike_fisher_mlines_with_regu_1e-08_0_0001_0_01_99_99.png}
-     \captionsetup{width=.95\linewidth}
-     \caption{Prospective Diagnosis plots for a model trained using raw bike rental counts (using yearly mean). The training data is from from $2013$-Jan to $2016$-Dec; Phase-I data is from the whole year of $2017$; Phase-II data is after $2018$-Jan.}
-     \label{fig:bs_raw_cnt_2}
-\end{subfigure}
-\caption{
-}
-\label{fig:bike_sharing_diag}
-\end{figure}
-
-
-\begin{figure}[H]
-\centering
-    \begin{subfigure}[t]{0.32\linewidth}
-     \centering
-         \includegraphics[width=1.0\textwidth, trim=.0in .0in .0in .0in, clip]{../figures/v14/bike_sharing/reg_lin_cov_E/PII_neg_single_bike_fisher_mlines_with_regu_1e-08_0_0001_0_01_99_99.png}
-     \captionsetup{width=.95\linewidth}
-     \caption{Prospective Diagnosis plots for a model trained using raw bike rental counts (using yearly mean). The training data is from from $2010$-Sep to $2016$-Dec; Phase-I data is from the whole year of $2017$; Phase-II data is after $2018$-Jan.}
-     \label{fig:bs_raw_cnt}
-\end{subfigure}
-\begin{subfigure}[t]{0.32\linewidth}
-     \centering
-         \includegraphics[width=1.0\textwidth, trim=.0in .0in .0in .0in, clip]{../figures/v14/bike_sharing/reg_lin_cov_E_1/PII_neg_single_bike_fisher_mlines_with_regu_1e-08_0_0001_0_01_99_99.png}
-     \captionsetup{width=.95\linewidth}
-     \caption{Prospective Diagnosis plots for a model trained using raw bike rental counts (using yearly mean). The training data is from from $2012$-Jan to $2016$-Dec; Phase-I data is from the whole year of $2017$; Phase-II data is after $2018$-Jan.}
-     \label{fig:bs_raw_cnt_1}
-\end{subfigure}
-\begin{subfigure}[t]{0.32\linewidth}
-     \centering
-         \includegraphics[width=1.0\textwidth, trim=.0in .0in .0in .0in, clip]{../figures/v14/bike_sharing/reg_lin_cov_E_2/PII_neg_single_bike_fisher_mlines_with_regu_1e-08_0_0001_0_01_99_99.png}
-     \captionsetup{width=.95\linewidth}
-     \caption{Prospective Diagnosis plots for a model trained using raw bike rental counts (using yearly mean). The training data is from from $2013$-Jan to $2016$-Dec; Phase-I data is from the whole year of $2017$; Phase-II data is after $2018$-Jan.}
-     \label{fig:bs_raw_cnt_2}
-\end{subfigure}
-\caption{
-}
-\label{fig:bike_sharing_diag}
-\end{figure}
-
 
 \end{enumerate}
 
