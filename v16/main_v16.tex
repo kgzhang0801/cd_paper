@@ -141,7 +141,7 @@ Concept drift is defined as a change in $ P (Y|\bm {X})$, and in our parametric 
 To illustrate the above arguments more concretely, consider the generalized linear model (GLM)~(\cite{nelder1972generalized}), which encompasses many models commonly used in applications. The canonical form of the GLM marginal likelihood and score function is
 \begin{align}
 \begin{aligned}
-P(Y|\bm{X};\bm { \theta}, \phi) =& \exp\{\frac{Y \psi(\bm{X};\bm { \theta})-b( \psi(\bm{X};\bm { \theta}))}{ a ( \phi)} + c(Y; \phi)\} \\
+P(Y|\bm{X};\bm { \theta}, \phi) =& \exp\big\{\frac{Y \psi(\bm{X};\bm { \theta})-b( \psi(\bm{X};\bm { \theta}))}{ a ( \phi)} + c(Y; \phi)\big\} \\
 \bm {s}(\bm { \theta};(\bm {X}, Y)) =& \frac{1}{a( \phi)}(Y - b'( \psi (\bm{X};\bm { \theta} )))\nabla _{ \bm { \theta}} \psi(\bm{X};\bm { \theta} )
 \end{aligned}
 \label{eqn:score_glm}
