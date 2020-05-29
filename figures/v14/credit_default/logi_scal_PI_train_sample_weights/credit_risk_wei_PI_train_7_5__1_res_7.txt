@@ -1,0 +1,892 @@
+2020-05-28 18:10:23.031721: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer.so.6'; dlerror: libnvinfer.so.6: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /opt/mvapich2/intel/ib/lib:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/compiler/lib/intel64_lin:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/ipp/../compiler/lib/intel64:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/ipp/lib/intel64:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/mkl/lib/intel64:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/tbb/lib/intel64/gcc4.4
+2020-05-28 18:10:23.032491: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer_plugin.so.6'; dlerror: libnvinfer_plugin.so.6: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /opt/mvapich2/intel/ib/lib:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/compiler/lib/intel64_lin:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/ipp/../compiler/lib/intel64:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/ipp/lib/intel64:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/mkl/lib/intel64:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/tbb/lib/intel64/gcc4.4
+2020-05-28 18:10:23.032507: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:30] Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.
+I0528 18:10:41.837455 47420695765888 utils.py:128] Shape of X_rest, X_train, y, and T2 are: (196587, 68), (196587, 10), (196587,), (196587,)
+I0528 18:10:41.838020 47420695765888 concept_drift_credit_risk.py:77] Shape of X_rest, X_train, y, and T2 are: (196587, 68), (196587, 10), (196587,), (196587,)
+I0528 18:10:41.838105 47420695765888 concept_drift_credit_risk.py:101] Shape of X_train, y_train, and T2_train are: (57359, 10), (57359,), (57359,)
+I0528 18:10:41.838643 47420695765888 concept_drift_credit_risk.py:116] Ratio of positive samples in three time intervals (train+val, Phase-I, Phase-II): 0.015453260479736714, 0.01059413027916965, 0.027173277661795406.
+I0528 18:10:41.839411 47420695765888 concept_drift_credit_risk.py:123] Ratio of positive samples after applying upsample weights in three time intervals (train+val, Phase-I, Phase-II): 0.10532041850188595, 0.07433699437449773, 0.17320671961164222.
+The response weight for positive samples is: 7.5.
+Before scaling: Sample mean and deviation of training X is [-0.02014  -0.090242 -0.134316 -0.036795 -0.066773 -0.07107   0.043653 -4.427039  0.106597  0.040475], [ 0.931467  0.926067  0.854798  0.921251  0.923028  0.851426  0.977613 13.609355  0.816469  0.977406].
+After scaling: Sample mean and deviation of training X is [-8.854954e-09 -1.291916e-08  5.753770e-09  7.009759e-09 -2.341796e-09 -5.043703e-09  1.325608e-08  1.583756e-09
+  1.946385e-09  2.069098e-09], [1.000005 1.000005 1.000005 1.000005 1.000005 1.000005 1.000005 1.000005 1.000005 1.000005].
+Before scaling: After scaling: Sample mean and deviation of PI X is [ 9.312694e-02  7.174833e-02  2.977074e-04  1.668685e-03 -3.921614e-02 -1.289878e-02 -3.454839e-02 -4.548940e+00
+ -9.967255e-03 -3.798336e-02], [ 0.868925  0.981839  0.952326  0.955986  0.939113  0.887043  1.00338  13.521752  0.988995  1.000628].
+After scaling: After scaling: Sample mean and deviation of PI X is [ 0.121601  0.174924  0.15748   0.041752  0.029854  0.068323 -0.079993 -0.008957 -0.142767 -0.080272], [0.932861 1.06023  1.114101 1.037708 1.017431 1.041838 1.026362 0.993568 1.211313 1.023764].
+Before scaling: Sample mean and deviation of PII X is [-0.170679 -0.089093  0.054356  0.061623  0.016749  0.020722  0.046088 -3.462991 -0.064987  0.03848 ], [ 1.190818  1.122158  1.073388  1.026953  1.048231  1.042725  1.139226 13.600732  1.036585  1.131333].
+After scaling: Sample mean and deviation of PII X is [-0.161616  0.001241  0.220722  0.106831  0.090487  0.107811  0.002491  0.070837 -0.210155 -0.00204 ], [1.278439 1.211752 1.255728 1.114742 1.135649 1.224687 1.165319 0.999371 1.269602 1.157491].
+The mean and std are: [-0.02014  -0.090242 -0.134316 -0.036795 -0.066773 -0.07107   0.043653 -4.427039  0.106597  0.040475], [ 0.931463  0.926063  0.854793  0.921247  0.923024  0.851422  0.977609 13.609289  0.816465  0.977401].
+The l2 cv coef: [[-0.17532  -0.275861 -0.225177  0.371257  0.302249 -0.454492  1.878966 -0.068543 -0.154016 -1.907262]];
+The intercept: [-2.400813];
+The penalization param: [1.].
+The cv score: {1: array([[-0.138452, -0.138439, -0.138312, -0.137202, ..., -0.131374, -0.131374, -0.131374, -0.131374],
+       [-0.138453, -0.138441, -0.138334, -0.137395, ..., -0.132255, -0.132255, -0.132255, -0.132255],
+       [-0.138287, -0.13828 , -0.138216, -0.137662, ..., -0.134037, -0.134037, -0.134037, -0.134037],
+       [-0.138287, -0.138283, -0.138249, -0.137982, ..., -0.137512, -0.137512, -0.137512, -0.137512],
+       ...,
+       [-0.138287, -0.138279, -0.138207, -0.137649, ..., -0.136646, -0.136646, -0.136646, -0.136646],
+       [-0.138455, -0.138449, -0.138389, -0.137923, ..., -0.136643, -0.136642, -0.136643, -0.136641],
+       [-0.138455, -0.138442, -0.138324, -0.137308, ..., -0.131156, -0.131155, -0.131156, -0.131155],
+       [-0.138454, -0.138436, -0.138263, -0.136726, ..., -0.127569, -0.127569, -0.127569, -0.127568]])}.
+
+[[1]
+ [1]
+ [1]
+ [1]
+ ...
+ [1]
+ [1]
+ [1]
+ [1]] 1465 (94802, 1)
+I0528 18:10:48.677000 47420695765888 classifiers.py:1520] The parameter of logistic model (2020_05_28_18_10_41_839487) is
+ [1.], with iterations of [26] and parameters {'C': 1.0, 'class_weight': None, 'dual': False, 'fit_intercept': True, 'intercept_scaling': 1, 'l1_ratio': None, 'max_iter': 50000, 'multi_class': 'auto', 'n_jobs': -1, 'penalty': 'l2', 'random_state': None, 'solver': 'lbfgs', 'tol': 1e-08, 'verbose': 0, 'warm_start': False}
+I0528 18:10:48.700483 47420695765888 classifiers.py:1536] The parameter of reloaded logistic model (2020_05_28_18_10_41_839487) is
+ [[-0.175279 -0.275879 -0.225209  0.371337  0.302308 -0.454634  1.882175 -0.068585 -0.154036 -1.910419 -2.400892]]
+-1.0
+I0528 18:10:48.707121 47420695765888 classifiers.py:2090] The positive samples: 1465; The negative samples: 93337
+I0528 18:10:48.885653 47420695765888 utils.py:129] Note: NumExpr detected 24 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.
+I0528 18:10:48.885792 47420695765888 utils.py:141] NumExpr defaulting to 8 threads.
+I0528 18:10:48.906024 47420695765888 classifiers.py:2100] The accuracy is 0.636226735655263
+I0528 18:10:48.912575 47420695765888 classifiers.py:2104] The accuracy is 0.636226735655263
+I0528 18:10:48.962221 47420695765888 classifiers.py:2108] The precision is 0.16106072214121542
+I0528 18:10:49.013148 47420695765888 classifiers.py:2112] The recall is 0.6354948805460751
+I0528 18:10:49.032585 47420695765888 classifiers.py:2152] The accuracy is 0.14740520503513785
+I0528 18:10:49.038052 47420695765888 classifiers.py:2156] The accuracy is 0.14740520503513785
+I0528 18:10:49.083942 47420695765888 classifiers.py:2160] The precision is 0.10341078812879104
+I0528 18:10:49.130521 47420695765888 classifiers.py:2164] The recall is 0.9924914675767919
+I0528 18:10:49.150316 47420695765888 classifiers.py:2196] The accuracy is 0.9009286431384663
+I0528 18:10:49.155046 47420695765888 classifiers.py:2200] The accuracy is 0.9009286431384663
+I0528 18:10:49.199363 47420695765888 classifiers.py:2204] The precision is 0.4666666666666667
+I0528 18:10:49.243229 47420695765888 classifiers.py:2208] The recall is 0.005460750853242321
+I0528 18:10:49.243499 47420695765888 classifiers.py:1580] 
+The original code gives: [0.10571985487268125];
+My modified code gives: [0.024257985636041764];
+For accuracy gives: [0.6180766556348588].
+I0528 18:10:49.752279 47420695765888 classifiers.py:1600] Condition # for Fisher Info Mat (before adding fisher nugget): 393.9161046215094
+I0528 18:10:49.752676 47420695765888 classifiers.py:1608] Condition # for Fisher Info Mat (after adding fisher nugget): 393.9113077271615
+I0528 18:10:49.783404 47420695765888 utils.py:317] The largest eigen-value is [0.564361].
+
+I0528 18:10:49.783558 47420695765888 utils.py:319] The identity matrix need to add: a nugget 0.0001 and the factor to ensure condition number is 5.643613749197062e-05.
+0.10571985487268125
+I0528 18:10:49.812889 47420695765888 classifiers.py:1568] 
+Current classification threshold is: 0.10571985487268125.
+I0528 18:10:50.004856 47420695765888 classifiers.py:1600] Condition # for Fisher Info Mat (before adding fisher nugget): 405.54465614306906
+I0528 18:10:50.005163 47420695765888 classifiers.py:1608] Condition # for Fisher Info Mat (after adding fisher nugget): 405.5397338646659
+I0528 18:10:50.013823 47420695765888 utils.py:317] The largest eigen-value is [0.51153].
+
+I0528 18:10:50.013976 47420695765888 utils.py:319] The identity matrix need to add: a nugget 0.0001 and the factor to ensure condition number is 5.1153017195118914e-05.
+0.10571985487268125
+I0528 18:10:50.029162 47420695765888 classifiers.py:1568] 
+Current classification threshold is: 0.10571985487268125.
+59875 59875 (59875, 1) (59875,) <class 'numpy.ndarray'> <class 'numpy.ndarray'> <class 'numpy.float64'> <class 'numpy.ndarray'> [0 1]
+I0528 18:10:50.147143 47420695765888 utils.py:317] The largest eigen-value is [0.322601].
+
+I0528 18:10:50.147293 47420695765888 utils.py:319] The identity matrix need to add: a nugget 0.0001 and the factor to ensure condition number is 3.226012902875132e-05.
+I0528 18:10:50.148142 47420695765888 utils.py:317] The largest eigen-value is [0.333223].
+
+I0528 18:10:50.148224 47420695765888 utils.py:319] The identity matrix need to add: a nugget 0.0001 and the factor to ensure condition number is 3.332230330513141e-05.
+I0528 18:10:50.148993 47420695765888 utils.py:317] The largest eigen-value is [924.530904].
+
+I0528 18:10:50.149072 47420695765888 utils.py:319] The identity matrix need to add: a nugget 0.0001 and the factor to ensure condition number is 0.09245309035773228.
+I0528 18:10:50.149836 47420695765888 utils.py:317] The largest eigen-value is [1024.624244].
+
+I0528 18:10:50.149914 47420695765888 utils.py:319] The identity matrix need to add: a nugget 0.0001 and the factor to ensure condition number is 0.10246242437332638.
+The eigenvalues for fisher_info_mat_train is [0.322601 0.203371 0.141399 0.132745 0.000819 0.005039 0.020014 0.061995 0.041837 0.050127 0.053905].
+
+The eigenvalues for fisher_info_mat_PI is [0.333223 0.199848 0.176273 0.111905 0.072274 0.063936 0.054646 0.037395 0.023353 0.000822 0.004896].
+
+The eigenvalues for S_train is [0.536465 0.236576 0.162812 0.135699 0.105428 0.001082 0.005839 0.058843 0.052116 0.043976 0.03076 ].
+
+The eigenvalues for S_PI is [0.486145 0.181578 0.154106 0.099476 0.085183 0.070733 0.043865 0.030064 0.027615 0.000976 0.004708].
+
+The mean of score from train is [-3.820427e-06 -5.348454e-06 -2.961533e-06  6.709947e-06  5.022553e-06 -4.369078e-07  1.680973e-05 -9.172422e-07
+ -3.927591e-07 -1.870670e-05  2.115640e-06].
+
+The mean of score from PI is [ 0.004182  0.008376  0.002551 -0.012936 -0.005456 -0.001629 -0.000174  0.001468  0.01348  -0.000422 -0.024979].
+
+The offset is 0; the condition number is 0.0001.
+Plot three metrics together.
+
+Calculate ewma score with shape (43910, 11) takes 0.18163728713989258s.
+Calculate Hotelling T2 of score with shape (41910, 11) takes 0.4746253490447998s.
+Calculate ewma score with shape (59875, 11) takes 0.2069988250732422s.
+Calculate Hotelling T2 of score with shape (59875, 11) takes 0.516228199005127s.
+Calculate ewma score with shape (43910, 1) takes 0.16703128814697266s.
+Calculate ewma score with shape (59875, 1) takes 0.22556352615356445s.
+Calculate ewma score with shape (43910, 1) takes 0.14805984497070312s.
+Calculate ewma score with shape (59875, 1) takes 0.19939351081848145s.
+(41910,) (59875,) (41910,) (59875,) (41910,) (59875,)
+From HotellingT2CC_Other_Score2----------
+
+Plot Hotelling T2 without scaling.
+
+Calculate ewma score with shape (43910, 11) takes 0.18277502059936523s.
+Calculate Hotelling T2 of score with shape (41910, 11) takes 0.47257232666015625s.
+Calculate ewma score with shape (59875, 11) takes 0.20732569694519043s.
+Calculate Hotelling T2 of score with shape (59875, 11) takes 0.5132021903991699s.
+Calculate ewma score with shape (43910, 1) takes 0.1768019199371338s.
+Calculate Hotelling T2 of score with shape (41910, 1) takes 0.4894719123840332s.
+Calculate ewma score with shape (59875, 1) takes 0.20432114601135254s.
+Calculate Hotelling T2 of score with shape (59875, 1) takes 0.6165075302124023s.
+Calculate ewma score with shape (43910, 1) takes 0.17722058296203613s.
+Calculate Hotelling T2 of score with shape (41910, 1) takes 0.4832465648651123s.
+Calculate ewma score with shape (59875, 1) takes 0.20145797729492188s.
+Calculate Hotelling T2 of score with shape (59875, 1) takes 0.6191797256469727s.
+Calculate ewma score with shape (43910, 1) takes 0.17624163627624512s.
+Calculate Hotelling T2 of score with shape (41910, 1) takes 0.4906477928161621s.
+Calculate ewma score with shape (59875, 1) takes 0.19811201095581055s.
+Calculate Hotelling T2 of score with shape (59875, 1) takes 0.6218447685241699s.
+Calculate ewma score with shape (43910, 1) takes 0.17785310745239258s.
+Calculate Hotelling T2 of score with shape (41910, 1) takes 0.48604345321655273s.
+Calculate ewma score with shape (59875, 1) takes 0.20085716247558594s.
+Calculate Hotelling T2 of score with shape (59875, 1) takes 0.61956787109375s.
+Calculate ewma score with shape (43910, 1) takes 0.17799878120422363s.
+Calculate Hotelling T2 of score with shape (41910, 1) takes 0.48406362533569336s.
+Calculate ewma score with shape (59875, 1) takes 0.19916605949401855s.
+Calculate Hotelling T2 of score with shape (59875, 1) takes 0.6152529716491699s.
+Calculate ewma score with shape (43910, 1) takes 0.18097615242004395s.
+Calculate Hotelling T2 of score with shape (41910, 1) takes 0.48332762718200684s.
+Calculate ewma score with shape (59875, 1) takes 0.20216679573059082s.
+Calculate Hotelling T2 of score with shape (59875, 1) takes 0.6110007762908936s.
+Calculate ewma score with shape (43910, 1) takes 0.17494511604309082s.
+Calculate Hotelling T2 of score with shape (41910, 1) takes 0.47440147399902344s.
+Calculate ewma score with shape (59875, 1) takes 0.20261502265930176s.
+Calculate Hotelling T2 of score with shape (59875, 1) takes 0.6081712245941162s.
+Calculate ewma score with shape (43910, 1) takes 0.18001508712768555s.
+Calculate Hotelling T2 of score with shape (41910, 1) takes 0.4852910041809082s.
+Calculate ewma score with shape (59875, 1) takes 0.20207476615905762s.
+Calculate Hotelling T2 of score with shape (59875, 1) takes 0.6227130889892578s.
+Calculate ewma score with shape (43910, 1) takes 0.17693543434143066s.
+Calculate Hotelling T2 of score with shape (41910, 1) takes 0.4797534942626953s.
+Calculate ewma score with shape (59875, 1) takes 0.20114898681640625s.
+Calculate Hotelling T2 of score with shape (59875, 1) takes 0.6043479442596436s.
+Calculate ewma score with shape (43910, 1) takes 0.17627739906311035s.
+Calculate Hotelling T2 of score with shape (41910, 1) takes 0.48370885848999023s.
+Calculate ewma score with shape (59875, 1) takes 0.19866347312927246s.
+Calculate Hotelling T2 of score with shape (59875, 1) takes 0.604485273361206s.
+Calculate ewma score with shape (43910, 1) takes 0.17656278610229492s.
+Calculate Hotelling T2 of score with shape (41910, 1) takes 0.47861790657043457s.
+Calculate ewma score with shape (59875, 1) takes 0.20108819007873535s.
+Calculate Hotelling T2 of score with shape (59875, 1) takes 0.6111624240875244s.
+Plot Hotelling T2 with scaling.
+
+Calculate ewma score with shape (43910, 11) takes 0.18302249908447266s.
+Calculate Hotelling T2 of score with shape (41910, 11) takes 0.48355841636657715s.
+Calculate ewma score with shape (59875, 11) takes 0.20973968505859375s.
+Calculate Hotelling T2 of score with shape (59875, 11) takes 0.5162737369537354s.
+Calculate ewma score with shape (43910, 1) takes 0.17645621299743652s.
+Calculate Hotelling T2 of score with shape (41910, 1) takes 0.48455810546875s.
+Calculate ewma score with shape (59875, 1) takes 0.19993162155151367s.
+Calculate Hotelling T2 of score with shape (59875, 1) takes 0.620093584060669s.
+Calculate ewma score with shape (43910, 1) takes 0.17951011657714844s.
+Calculate Hotelling T2 of score with shape (41910, 1) takes 0.4760262966156006s.
+Calculate ewma score with shape (59875, 1) takes 0.19873666763305664s.
+Calculate Hotelling T2 of score with shape (59875, 1) takes 0.6099569797515869s.
+Calculate ewma score with shape (43910, 1) takes 0.17912602424621582s.
+Calculate Hotelling T2 of score with shape (41910, 1) takes 0.4774763584136963s.
+Calculate ewma score with shape (59875, 1) takes 0.1999654769897461s.
+Calculate Hotelling T2 of score with shape (59875, 1) takes 0.6165475845336914s.
+Calculate ewma score with shape (43910, 1) takes 0.1795365810394287s.
+Calculate Hotelling T2 of score with shape (41910, 1) takes 0.48648595809936523s.
+Calculate ewma score with shape (59875, 1) takes 0.20232367515563965s.
+Calculate Hotelling T2 of score with shape (59875, 1) takes 0.6174571514129639s.
+Calculate ewma score with shape (43910, 1) takes 0.18109726905822754s.
+Calculate Hotelling T2 of score with shape (41910, 1) takes 0.4929683208465576s.
+Calculate ewma score with shape (59875, 1) takes 0.20374202728271484s.
+Calculate Hotelling T2 of score with shape (59875, 1) takes 0.6101553440093994s.
+Calculate ewma score with shape (43910, 1) takes 0.1776573657989502s.
+Calculate Hotelling T2 of score with shape (41910, 1) takes 0.4896531105041504s.
+Calculate ewma score with shape (59875, 1) takes 0.20026230812072754s.
+Calculate Hotelling T2 of score with shape (59875, 1) takes 0.6115927696228027s.
+Calculate ewma score with shape (43910, 1) takes 0.1770176887512207s.
+Calculate Hotelling T2 of score with shape (41910, 1) takes 0.48471641540527344s.
+Calculate ewma score with shape (59875, 1) takes 0.20024681091308594s.
+Calculate Hotelling T2 of score with shape (59875, 1) takes 0.6159725189208984s.
+Calculate ewma score with shape (43910, 1) takes 0.17898225784301758s.
+Calculate Hotelling T2 of score with shape (41910, 1) takes 0.48351120948791504s.
+Calculate ewma score with shape (59875, 1) takes 0.20235753059387207s.
+Calculate Hotelling T2 of score with shape (59875, 1) takes 0.6178104877471924s.
+Calculate ewma score with shape (43910, 1) takes 0.17860770225524902s.
+Calculate Hotelling T2 of score with shape (41910, 1) takes 0.481281042098999s.
+Calculate ewma score with shape (59875, 1) takes 0.2003488540649414s.
+Calculate Hotelling T2 of score with shape (59875, 1) takes 0.6065821647644043s.
+Calculate ewma score with shape (43910, 1) takes 0.1774446964263916s.
+Calculate Hotelling T2 of score with shape (41910, 1) takes 0.48694705963134766s.
+Calculate ewma score with shape (59875, 1) takes 0.2004716396331787s.
+Calculate Hotelling T2 of score with shape (59875, 1) takes 0.6093399524688721s.
+Calculate ewma score with shape (43910, 1) takes 0.17754101753234863s.
+Calculate Hotelling T2 of score with shape (41910, 1) takes 0.48021507263183594s.
+Calculate ewma score with shape (59875, 1) takes 0.20073628425598145s.
+Calculate Hotelling T2 of score with shape (59875, 1) takes 0.6166198253631592s.
+Plot individual EWMA plots.
+
+Calculate ewma score with shape (43910, 11) takes 0.18210983276367188s.
+Calculate Hotelling T2 of score with shape (41910, 11) takes 0.47190046310424805s.
+Calculate ewma score with shape (59875, 11) takes 0.20800113677978516s.
+Calculate Hotelling T2 of score with shape (59875, 11) takes 0.5052595138549805s.
+/home/ghhgkz/scratch/CD_github/control_chart/hotelling.py:3794: UserWarning: This figure includes Axes that are not compatible with tight_layout, so results might be incorrect.
+  plt.tight_layout()
+/home/ghhgkz/scratch/CD_github/control_chart/hotelling.py:3794: UserWarning: This figure includes Axes that are not compatible with tight_layout, so results might be incorrect.
+  plt.tight_layout()
+Plot individual EWMA plots after scaling.
+
+Calculate ewma score with shape (43910, 11) takes 0.18255186080932617s.
+Calculate Hotelling T2 of score with shape (41910, 11) takes 0.4708700180053711s.
+Calculate ewma score with shape (59875, 11) takes 0.20893144607543945s.
+Calculate Hotelling T2 of score with shape (59875, 11) takes 0.5058035850524902s.
+/home/ghhgkz/scratch/CD_github/control_chart/hotelling.py:3794: UserWarning: This figure includes Axes that are not compatible with tight_layout, so results might be incorrect.
+  plt.tight_layout()
+/home/ghhgkz/scratch/CD_github/control_chart/hotelling.py:3794: UserWarning: This figure includes Axes that are not compatible with tight_layout, so results might be incorrect.
+  plt.tight_layout()
+2020-05-28 18:12:01.931757: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer.so.6'; dlerror: libnvinfer.so.6: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /opt/mvapich2/intel/ib/lib:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/compiler/lib/intel64_lin:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/ipp/../compiler/lib/intel64:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/ipp/lib/intel64:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/mkl/lib/intel64:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/tbb/lib/intel64/gcc4.4
+2020-05-28 18:12:01.931868: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer_plugin.so.6'; dlerror: libnvinfer_plugin.so.6: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /opt/mvapich2/intel/ib/lib:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/compiler/lib/intel64_lin:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/ipp/../compiler/lib/intel64:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/ipp/lib/intel64:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/mkl/lib/intel64:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/tbb/lib/intel64/gcc4.4
+2020-05-28 18:12:01.931881: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:30] Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.
+I0528 18:12:06.494713 46987529454464 utils.py:128] Shape of X_rest, X_train, y, and T2 are: (196587, 68), (196587, 10), (196587,), (196587,)
+I0528 18:12:06.495399 46987529454464 concept_drift_credit_risk.py:77] Shape of X_rest, X_train, y, and T2 are: (196587, 68), (196587, 10), (196587,), (196587,)
+I0528 18:12:06.495480 46987529454464 concept_drift_credit_risk.py:101] Shape of X_train, y_train, and T2_train are: (57359, 10), (57359,), (57359,)
+I0528 18:12:06.496057 46987529454464 concept_drift_credit_risk.py:116] Ratio of positive samples in three time intervals (train+val, Phase-I, Phase-II): 0.015453260479736714, 0.01059413027916965, 0.027173277661795406.
+I0528 18:12:06.496857 46987529454464 concept_drift_credit_risk.py:123] Ratio of positive samples after applying upsample weights in three time intervals (train+val, Phase-I, Phase-II): 0.10532041850188595, 0.07433699437449773, 0.17320671961164222.
+2020-05-28 18:12:06.512328: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcuda.so.1'; dlerror: libcuda.so.1: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /opt/mvapich2/intel/ib/lib:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/compiler/lib/intel64_lin:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/ipp/../compiler/lib/intel64:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/ipp/lib/intel64:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/mkl/lib/intel64:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/tbb/lib/intel64/gcc4.4
+2020-05-28 18:12:06.512361: E tensorflow/stream_executor/cuda/cuda_driver.cc:351] failed call to cuInit: UNKNOWN ERROR (303)
+2020-05-28 18:12:06.512384: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:156] kernel driver does not appear to be running on this host (comet-02-59.sdsc.edu): /proc/driver/nvidia/version does not exist
+2020-05-28 18:12:06.512616: I tensorflow/core/platform/cpu_feature_guard.cc:142] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2020-05-28 18:12:06.519892: I tensorflow/core/platform/profile_utils/cpu_utils.cc:94] CPU Frequency: 2494425000 Hz
+2020-05-28 18:12:06.520848: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x55a63d107a50 initialized for platform Host (this does not guarantee that XLA will be used). Devices:
+2020-05-28 18:12:06.520865: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Host, Default Version
+The response weight for positive samples is: 7.5.
+The mean and std are: [-0.036802 -0.117906 -0.196091 -0.076746 -0.095205 -0.101732  0.055064 -4.412748  0.114855  0.050514], [ 0.933835  0.908693  0.789754  0.787697  0.808305  0.767613  0.969786 13.828319  0.790857  0.968729].
+I0528 18:12:07.849326 46987529454464 classifiers.py:655] The parameter we are using for training are: 1e-07, 1000, 1000, 1e-05.
+I0528 18:12:07.874750 46987529454464 classifiers.py:402] The new model has weights [<tf.Variable 'dense_2/kernel:0' shape=(10, 50) dtype=float32, numpy=
+array([[-2.117898e-01,  2.539190e-01,  8.283535e-02, -4.139668e-02, ...,  1.581914e-01,  1.384884e-02,  8.673212e-02,
+         4.060826e-02],
+       [ 4.475942e-02, -3.000899e-01,  7.053021e-02, -1.197519e-01, ...,  3.573981e-02,  1.943371e-02, -2.123233e-01,
+        -2.130706e-01],
+       [-2.796489e-02, -9.520428e-02,  9.896797e-02,  2.661586e-01, ..., -1.118028e-01,  2.118503e-01,  1.347244e-01,
+        -1.035603e-01],
+       [ 2.062263e-01, -2.941866e-01, -2.830146e-01,  9.225583e-02, ..., -2.504751e-01, -7.770240e-03,  2.048856e-02,
+         2.599499e-02],
+       ...,
+       [ 6.374362e-02, -3.102244e-01, -2.523235e-01, -7.226501e-02, ..., -2.047831e-01,  2.720133e-01, -3.132272e-01,
+        -3.131032e-04],
+       [-9.838012e-02, -1.503886e-01, -2.281165e-01, -7.442266e-03, ..., -3.915578e-02, -7.796395e-02,  1.533410e-01,
+         2.111093e-01],
+       [-2.023712e-01,  3.143741e-01, -2.909464e-01,  1.820263e-01, ...,  2.598597e-01,  8.716148e-02,  2.857951e-01,
+         8.792040e-02],
+       [ 2.791927e-01,  1.766539e-01,  2.285204e-01, -5.692855e-02, ...,  2.411617e-01, -2.370036e-02,  2.304842e-01,
+        -1.736363e-01]], dtype=float32)>, <tf.Variable 'dense_2/bias:0' shape=(50,) dtype=float32, numpy=
+array([0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+       0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.], dtype=float32)>, <tf.Variable 'dense_3/kernel:0' shape=(50, 2) dtype=float32, numpy=
+array([[ 0.006866, -0.038363],
+       [-0.06214 ,  0.334583],
+       [ 0.128172, -0.104725],
+       [-0.043434,  0.068657],
+       ...,
+       [ 0.255727,  0.069853],
+       [-0.088103,  0.137214],
+       [-0.134998, -0.088032],
+       [-0.331166,  0.021251]], dtype=float32)>, <tf.Variable 'dense_3/bias:0' shape=(2,) dtype=float32, numpy=array([0., 0.], dtype=float32)>].
+I0528 18:12:08.951999 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 57): (1e-07,1000,1000,1e-05) tf.Tensor(1.1583753, shape=(), dtype=float32), 0.11170739961805304, 0.11065117404986687, 0.9984709480122325.
+I0528 18:12:09.911772 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 114): (1e-07,1000,1000,1e-05) tf.Tensor(1.1480131, shape=(), dtype=float32), 0.11185244276839026, 0.11066724772419136, 0.9984709480122325.
+I0528 18:12:10.834394 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 171): (1e-07,1000,1000,1e-05) tf.Tensor(1.1385505, shape=(), dtype=float32), 0.11199748591872749, 0.11068332606905903, 0.9984709480122325.
+I0528 18:12:11.759716 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 228): (1e-07,1000,1000,1e-05) tf.Tensor(1.1294874, shape=(), dtype=float32), 0.11214252906906472, 0.11069940908650586, 0.9984709480122325.
+I0528 18:12:12.725528 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 285): (1e-07,1000,1000,1e-05) tf.Tensor(1.1207235, shape=(), dtype=float32), 0.1122633983610124, 0.11071281517184586, 0.9984709480122325.
+I0528 18:12:13.656381 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 342): (1e-07,1000,1000,1e-05) tf.Tensor(1.1121926, shape=(), dtype=float32), 0.11243261536973917, 0.11073158914728683, 0.9984709480122325.
+I0528 18:12:14.605541 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 399): (1e-07,1000,1000,1e-05) tf.Tensor(1.1037897, shape=(), dtype=float32), 0.11260183237846592, 0.1107503694909505, 0.9984709480122325.
+I0528 18:12:15.569422 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 456): (1e-07,1000,1000,1e-05) tf.Tensor(1.0955033, shape=(), dtype=float32), 0.1128435709623613, 0.11077720960666941, 0.9984709480122325.
+I0528 18:12:16.509390 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 513): (1e-07,1000,1000,1e-05) tf.Tensor(1.0872946, shape=(), dtype=float32), 0.1130369618294776, 0.11079869106774937, 0.9984709480122325.
+I0528 18:12:17.454450 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 570): (1e-07,1000,1000,1e-05) tf.Tensor(1.0791738, shape=(), dtype=float32), 0.11318200497981483, 0.11068267248696495, 0.9969418960244648.
+I0528 18:12:18.430670 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 627): (1e-07,1000,1000,1e-05) tf.Tensor(1.0711267, shape=(), dtype=float32), 0.11347209128048928, 0.11071489217184581, 0.9969418960244648.
+I0528 18:12:19.524605 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 684): (1e-07,1000,1000,1e-05) tf.Tensor(1.0631237, shape=(), dtype=float32), 0.11378635143955326, 0.11074981800533851, 0.9969418960244648.
+I0528 18:12:20.441371 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 741): (1e-07,1000,1000,1e-05) tf.Tensor(1.0552162, shape=(), dtype=float32), 0.1140039161650591, 0.11077401033955486, 0.9969418960244648.
+I0528 18:12:21.361449 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 798): (1e-07,1000,1000,1e-05) tf.Tensor(1.0473678, shape=(), dtype=float32), 0.11446321947446032, 0.11082511776989946, 0.9969418960244648.
+I0528 18:12:22.286668 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 855): (1e-07,1000,1000,1e-05) tf.Tensor(1.0395252, shape=(), dtype=float32), 0.11492252278386153, 0.11087627238053592, 0.9969418960244648.
+I0528 18:12:23.218170 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 912): (1e-07,1000,1000,1e-05) tf.Tensor(1.0317094, shape=(), dtype=float32), 0.11540599995165228, 0.11093017038135285, 0.9969418960244648.
+I0528 18:12:24.181353 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 969): (1e-07,1000,1000,1e-05) tf.Tensor(1.023927, shape=(), dtype=float32), 0.11572026011071627, 0.11083276583325226, 0.9954128440366973.
+I0528 18:12:25.121237 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 1026): (1e-07,1000,1000,1e-05) tf.Tensor(1.0161995, shape=(), dtype=float32), 0.11642130200401286, 0.11091099374498016, 0.9954128440366973.
+I0528 18:12:26.059609 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 1083): (1e-07,1000,1000,1e-05) tf.Tensor(1.0084969, shape=(), dtype=float32), 0.11712234389730945, 0.11098933216425544, 0.9954128440366973.
+I0528 18:12:26.985109 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 1140): (1e-07,1000,1000,1e-05) tf.Tensor(1.0007609, shape=(), dtype=float32), 0.1179926027993328, 0.11108673394763785, 0.9954128440366973.
+I0528 18:12:27.917939 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 1197): (1e-07,1000,1000,1e-05) tf.Tensor(0.9930988, shape=(), dtype=float32), 0.11910460028525154, 0.11107856061715736, 0.9938837920489296.
+I0528 18:12:28.840078 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 1254): (1e-07,1000,1000,1e-05) tf.Tensor(0.98547584, shape=(), dtype=float32), 0.12021659777117026, 0.11107036330741774, 0.9923547400611621.
+I0528 18:12:29.784182 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 1311): (1e-07,1000,1000,1e-05) tf.Tensor(0.9778751, shape=(), dtype=float32), 0.12154615998259483, 0.11095323256326711, 0.9892966360856269.
+I0528 18:12:30.726864 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 1368): (1e-07,1000,1000,1e-05) tf.Tensor(0.97031486, shape=(), dtype=float32), 0.12360093794570551, 0.1111847596602347, 0.9892966360856269.
+I0528 18:12:31.647660 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 1425): (1e-07,1000,1000,1e-05) tf.Tensor(0.9627686, shape=(), dtype=float32), 0.12599414992626973, 0.11145564168819982, 0.9892966360856269.
+I0528 18:12:32.569042 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 1482): (1e-07,1000,1000,1e-05) tf.Tensor(0.9552665, shape=(), dtype=float32), 0.12855657891556072, 0.11174714402033112, 0.9892966360856269.
+I0528 18:12:33.503779 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 1539): (1e-07,1000,1000,1e-05) tf.Tensor(0.94776016, shape=(), dtype=float32), 0.13128822491357844, 0.11179063088045954, 0.9862385321100917.
+I0528 18:12:34.547161 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 1596): (1e-07,1000,1000,1e-05) tf.Tensor(0.9403051, shape=(), dtype=float32), 0.13476926052167187, 0.1117854833092881, 0.981651376146789.
+I0528 18:12:35.521584 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 1653): (1e-07,1000,1000,1e-05) tf.Tensor(0.9328667, shape=(), dtype=float32), 0.13856455628882927, 0.1119524202214059, 0.9785932721712538.
+I0528 18:12:36.449237 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 1710): (1e-07,1000,1000,1e-05) tf.Tensor(0.9254702, shape=(), dtype=float32), 0.14330263253317863, 0.11223079436081723, 0.9755351681957186.
+I0528 18:12:37.374531 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 1767): (1e-07,1000,1000,1e-05) tf.Tensor(0.91805637, shape=(), dtype=float32), 0.14895931539633042, 0.11289466366692788, 0.9755351681957186.
+I0528 18:12:38.336712 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 1824): (1e-07,1000,1000,1e-05) tf.Tensor(0.91068214, shape=(), dtype=float32), 0.15522034471922064, 0.11363867684478371, 0.9755351681957186.
+I0528 18:12:39.334340 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 1881): (1e-07,1000,1000,1e-05) tf.Tensor(0.9033846, shape=(), dtype=float32), 0.16191650349312253, 0.11444532711477846, 0.9755351681957186.
+I0528 18:12:40.276148 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 1938): (1e-07,1000,1000,1e-05) tf.Tensor(0.8961236, shape=(), dtype=float32), 0.17044987550462928, 0.11493240793494587, 0.9694189602446484.
+I0528 18:12:41.204754 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 1995): (1e-07,1000,1000,1e-05) tf.Tensor(0.88882434, shape=(), dtype=float32), 0.1793942031087582, 0.11534028396290669, 0.9617737003058104.
+I0528 18:12:42.141730 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 2052): (1e-07,1000,1000,1e-05) tf.Tensor(0.8815351, shape=(), dtype=float32), 0.18954722363236395, 0.1159112620740898, 0.9541284403669725.
+I0528 18:12:43.070926 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 2109): (1e-07,1000,1000,1e-05) tf.Tensor(0.8742519, shape=(), dtype=float32), 0.20216597771170255, 0.11667295970656454, 0.944954128440367.
+I0528 18:12:44.002241 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 2166): (1e-07,1000,1000,1e-05) tf.Tensor(0.86702037, shape=(), dtype=float32), 0.2160417724272971, 0.11777460613712466, 0.9373088685015291.
+I0528 18:12:44.949422 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 2223): (1e-07,1000,1000,1e-05) tf.Tensor(0.8597946, shape=(), dtype=float32), 0.23284260400802573, 0.11946865454137824, 0.9311926605504587.
+I0528 18:12:45.867346 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 2280): (1e-07,1000,1000,1e-05) tf.Tensor(0.8526067, shape=(), dtype=float32), 0.25077960693306256, 0.12109475858507616, 0.9220183486238532.
+I0528 18:12:46.788205 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 2337): (1e-07,1000,1000,1e-05) tf.Tensor(0.8454761, shape=(), dtype=float32), 0.2701670413614717, 0.12301669070677931, 0.9128440366972477.
+I0528 18:12:47.717590 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 2394): (1e-07,1000,1000,1e-05) tf.Tensor(0.83836544, shape=(), dtype=float32), 0.2902555176831774, 0.12515125847047434, 0.9036697247706422.
+I0528 18:12:48.639530 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 2451): (1e-07,1000,1000,1e-05) tf.Tensor(0.83124954, shape=(), dtype=float32), 0.3135591171706916, 0.12712129751393325, 0.8868501529051988.
+I0528 18:12:49.559878 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 2508): (1e-07,1000,1000,1e-05) tf.Tensor(0.8241613, shape=(), dtype=float32), 0.3370561075253221, 0.12859279490180778, 0.863914373088685.
+I0528 18:12:50.493918 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 2565): (1e-07,1000,1000,1e-05) tf.Tensor(0.81713027, shape=(), dtype=float32), 0.3623419634007784, 0.13085884584123544, 0.8440366972477065.
+I0528 18:12:51.398547 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 2622): (1e-07,1000,1000,1e-05) tf.Tensor(0.81018573, shape=(), dtype=float32), 0.3884739043198685, 0.13312320713956866, 0.8211009174311926.
+I0528 18:12:52.302781 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 2679): (1e-07,1000,1000,1e-05) tf.Tensor(0.80323297, shape=(), dtype=float32), 0.4165397539101216, 0.1356285863328117, 0.7951070336391437.
+I0528 18:12:53.199174 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 2736): (1e-07,1000,1000,1e-05) tf.Tensor(0.7963355, shape=(), dtype=float32), 0.4436386491647932, 0.1371954819158566, 0.7614678899082569.
+I0528 18:12:54.123928 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 2793): (1e-07,1000,1000,1e-05) tf.Tensor(0.78950214, shape=(), dtype=float32), 0.47110015229530783, 0.1409239965132207, 0.7415902140672783.
+I0528 18:12:55.044135 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 2850): (1e-07,1000,1000,1e-05) tf.Tensor(0.7826576, shape=(), dtype=float32), 0.49798148282447363, 0.1429579639186626, 0.7079510703363915.
+I0528 18:12:55.944609 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 2907): (1e-07,1000,1000,1e-05) tf.Tensor(0.7758504, shape=(), dtype=float32), 0.5247419440616917, 0.14592919522959902, 0.6788990825688074.
+I0528 18:12:56.846014 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 2964): (1e-07,1000,1000,1e-05) tf.Tensor(0.7690605, shape=(), dtype=float32), 0.5519858824667006, 0.14995234034013946, 0.6529051987767585.
+I0528 18:12:57.746731 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 3021): (1e-07,1000,1000,1e-05) tf.Tensor(0.7622776, shape=(), dtype=float32), 0.5780211279522325, 0.15336993970714902, 0.6223241590214067.
+I0528 18:12:58.651052 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 3078): (1e-07,1000,1000,1e-05) tf.Tensor(0.7555911, shape=(), dtype=float32), 0.5998017743612057, 0.15406389001213103, 0.5825688073394495.
+I0528 18:12:59.566346 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 3135): (1e-07,1000,1000,1e-05) tf.Tensor(0.74893004, shape=(), dtype=float32), 0.6235163294413422, 0.15744548286604362, 0.5519877675840978.
+I0528 18:13:00.515661 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 3192): (1e-07,1000,1000,1e-05) tf.Tensor(0.74229884, shape=(), dtype=float32), 0.6456595837261585, 0.16101694915254236, 0.5229357798165137.
+I0528 18:13:01.424268 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 3249): (1e-07,1000,1000,1e-05) tf.Tensor(0.7357303, shape=(), dtype=float32), 0.665603016897527, 0.1627432402886087, 0.4877675840978593.
+I0528 18:13:02.324523 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 3306): (1e-07,1000,1000,1e-05) tf.Tensor(0.72919106, shape=(), dtype=float32), 0.6849421036091571, 0.16741405082212257, 0.4648318042813456.
+I0528 18:13:03.221431 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 3363): (1e-07,1000,1000,1e-05) tf.Tensor(0.7227104, shape=(), dtype=float32), 0.7019121521986125, 0.16909944515578318, 0.4327217125382263.
+I0528 18:13:04.174131 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 3420): (1e-07,1000,1000,1e-05) tf.Tensor(0.71629786, shape=(), dtype=float32), 0.720598544733725, 0.17565055762081785, 0.41284403669724773.
+I0528 18:13:05.098544 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 3477): (1e-07,1000,1000,1e-05) tf.Tensor(0.7099185, shape=(), dtype=float32), 0.7350303381922789, 0.17615423642820904, 0.37920489296636084.
+I0528 18:13:06.019704 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 3534): (1e-07,1000,1000,1e-05) tf.Tensor(0.7035913, shape=(), dtype=float32), 0.7513235187468272, 0.18475980121479846, 0.3654434250764526.
+I0528 18:13:06.915331 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 3591): (1e-07,1000,1000,1e-05) tf.Tensor(0.69727254, shape=(), dtype=float32), 0.7651509657456427, 0.19005671533727525, 0.3440366972477064.
+I0528 18:13:07.809452 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 3648): (1e-07,1000,1000,1e-05) tf.Tensor(0.691009, shape=(), dtype=float32), 0.7765852007638939, 0.19046986992301565, 0.31345565749235477.
+I0528 18:13:08.709652 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 3705): (1e-07,1000,1000,1e-05) tf.Tensor(0.6848377, shape=(), dtype=float32), 0.7863272656948775, 0.19154480961343565, 0.2889908256880734.
+I0528 18:13:09.627611 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 3762): (1e-07,1000,1000,1e-05) tf.Tensor(0.67870635, shape=(), dtype=float32), 0.7950540285735006, 0.18809980806142035, 0.25688073394495414.
+I0528 18:13:10.534677 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 3819): (1e-07,1000,1000,1e-05) tf.Tensor(0.6725637, shape=(), dtype=float32), 0.8043609640534726, 0.19236828286364432, 0.2400611620795107.
+I0528 18:13:11.460850 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 3876): (1e-07,1000,1000,1e-05) tf.Tensor(0.6665178, shape=(), dtype=float32), 0.812966857640148, 0.19478260869565217, 0.22018348623853212.
+I0528 18:13:12.353256 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 3933): (1e-07,1000,1000,1e-05) tf.Tensor(0.66052043, shape=(), dtype=float32), 0.8197113641308289, 0.19722455845248107, 0.20489296636085627.
+I0528 18:13:13.241586 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 3990): (1e-07,1000,1000,1e-05) tf.Tensor(0.6546546, shape=(), dtype=float32), 0.8264316967631203, 0.2000922083909636, 0.18960244648318042.
+I0528 18:13:14.277189 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 4047): (1e-07,1000,1000,1e-05) tf.Tensor(0.6487365, shape=(), dtype=float32), 0.8336596804215921, 0.2119089316987741, 0.18501529051987767.
+I0528 18:13:15.192678 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 4104): (1e-07,1000,1000,1e-05) tf.Tensor(0.6429351, shape=(), dtype=float32), 0.8396064495854183, 0.2184505885573501, 0.1743119266055046.
+I0528 18:13:16.094516 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 4161): (1e-07,1000,1000,1e-05) tf.Tensor(0.6371919, shape=(), dtype=float32), 0.8450697415814539, 0.2295420974889217, 0.16972477064220184.
+I0528 18:13:16.988548 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 4218): (1e-07,1000,1000,1e-05) tf.Tensor(0.6315134, shape=(), dtype=float32), 0.8491309497908961, 0.2322061191626409, 0.15749235474006115.
+I0528 18:13:17.886083 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 4275): (1e-07,1000,1000,1e-05) tf.Tensor(0.6258102, shape=(), dtype=float32), 0.8533130272922861, 0.2409596662030598, 0.15137614678899083.
+I0528 18:13:18.786226 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 4332): (1e-07,1000,1000,1e-05) tf.Tensor(0.62025326, shape=(), dtype=float32), 0.8564314550245364, 0.2444611340593316, 0.14220183486238533.
+I0528 18:13:19.701075 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 4389): (1e-07,1000,1000,1e-05) tf.Tensor(0.61477613, shape=(), dtype=float32), 0.8593564918896706, 0.252, 0.13761467889908258.
+I0528 18:13:20.601018 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 4446): (1e-07,1000,1000,1e-05) tf.Tensor(0.609297, shape=(), dtype=float32), 0.8621123117460778, 0.2569084628670121, 0.12996941896024464.
+I0528 18:13:21.498072 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 4503): (1e-07,1000,1000,1e-05) tf.Tensor(0.60391885, shape=(), dtype=float32), 0.8648681316024851, 0.2626641651031895, 0.12232415902140673.
+I0528 18:13:22.397094 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 4560): (1e-07,1000,1000,1e-05) tf.Tensor(0.5985755, shape=(), dtype=float32), 0.8672371697246598, 0.26731160896130346, 0.11467889908256881.
+I0528 18:13:23.293874 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 4617): (1e-07,1000,1000,1e-05) tf.Tensor(0.5934072, shape=(), dtype=float32), 0.8696545555636135, 0.27832244008714596, 0.11162079510703364.
+I0528 18:13:24.206801 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 4674): (1e-07,1000,1000,1e-05) tf.Tensor(0.58824205, shape=(), dtype=float32), 0.8713950733676602, 0.2862903225806452, 0.10856269113149847.
+I0528 18:13:25.116798 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 4731): (1e-07,1000,1000,1e-05) tf.Tensor(0.5831293, shape=(), dtype=float32), 0.8730630695965383, 0.2929230769230769, 0.10397553516819572.
+I0528 18:13:26.015576 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 4788): (1e-07,1000,1000,1e-05) tf.Tensor(0.57808053, shape=(), dtype=float32), 0.8736915899146663, 0.2844770153231179, 0.09327217125382263.
+I0528 18:13:26.905806 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 4845): (1e-07,1000,1000,1e-05) tf.Tensor(0.5730667, shape=(), dtype=float32), 0.8748761089757536, 0.28364688856729375, 0.0856269113149847.
+I0528 18:13:27.796038 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 4902): (1e-07,1000,1000,1e-05) tf.Tensor(0.56813574, shape=(), dtype=float32), 0.8768583653636957, 0.30153846153846153, 0.0856269113149847.
+I0528 18:13:28.694331 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 4959): (1e-07,1000,1000,1e-05) tf.Tensor(0.5632997, shape=(), dtype=float32), 0.8777527981241086, 0.2968617472434266, 0.0764525993883792.
+I0528 18:13:29.610886 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 5016): (1e-07,1000,1000,1e-05) tf.Tensor(0.5586265, shape=(), dtype=float32), 0.8788406217516378, 0.3037974683544304, 0.07339449541284404.
+I0528 18:13:30.512335 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 5073): (1e-07,1000,1000,1e-05) tf.Tensor(0.5540046, shape=(), dtype=float32), 0.8800009669543356, 0.31513409961685823, 0.07186544342507645.
+I0528 18:13:31.412009 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 5130): (1e-07,1000,1000,1e-05) tf.Tensor(0.5493151, shape=(), dtype=float32), 0.8808953997147485, 0.324269889224572, 0.07033639143730887.
+I0528 18:13:32.307221 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 5187): (1e-07,1000,1000,1e-05) tf.Tensor(0.5447579, shape=(), dtype=float32), 0.8813063553073706, 0.31956521739130433, 0.06422018348623854.
+I0528 18:13:33.200145 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 5244): (1e-07,1000,1000,1e-05) tf.Tensor(0.54023623, shape=(), dtype=float32), 0.8812821814489811, 0.3010752688172043, 0.05504587155963303.
+I0528 18:13:34.363125 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 5301): (1e-07,1000,1000,1e-05) tf.Tensor(0.53581935, shape=(), dtype=float32), 0.881548093891266, 0.29464285714285715, 0.05045871559633028.
+I0528 18:13:35.256574 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 5358): (1e-07,1000,1000,1e-05) tf.Tensor(0.53146243, shape=(), dtype=float32), 0.88186235405033, 0.2796005706134094, 0.04281345565749235.
+I0528 18:13:36.263318 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 5415): (1e-07,1000,1000,1e-05) tf.Tensor(0.52712923, shape=(), dtype=float32), 0.8825633959436265, 0.2872340425531915, 0.04128440366972477.
+I0528 18:13:37.156289 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 5472): (1e-07,1000,1000,1e-05) tf.Tensor(0.52293706, shape=(), dtype=float32), 0.883119394686586, 0.2883031301482702, 0.0382262996941896.
+I0528 18:13:38.059367 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 5529): (1e-07,1000,1000,1e-05) tf.Tensor(0.51880455, shape=(), dtype=float32), 0.8836995672879349, 0.29525483304042177, 0.03669724770642202.
+I0528 18:13:38.953053 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 5586): (1e-07,1000,1000,1e-05) tf.Tensor(0.5147015, shape=(), dtype=float32), 0.8841830444557256, 0.29558541266794625, 0.03363914373088685.
+I0528 18:13:39.850742 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 5643): (1e-07,1000,1000,1e-05) tf.Tensor(0.5107405, shape=(), dtype=float32), 0.8846665216235163, 0.3073852295409182, 0.03363914373088685.
+I0528 18:13:40.745462 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 5700): (1e-07,1000,1000,1e-05) tf.Tensor(0.5067551, shape=(), dtype=float32), 0.8852950419416443, 0.32421052631578945, 0.03363914373088685.
+I0528 18:13:41.643045 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 5757): (1e-07,1000,1000,1e-05) tf.Tensor(0.50282484, shape=(), dtype=float32), 0.8855609543839292, 0.32666666666666666, 0.03211009174311927.
+I0528 18:13:42.543601 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 5814): (1e-07,1000,1000,1e-05) tf.Tensor(0.49896458, shape=(), dtype=float32), 0.8857543452510456, 0.321256038647343, 0.0290519877675841.
+I0528 18:13:43.446522 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 5871): (1e-07,1000,1000,1e-05) tf.Tensor(0.49518773, shape=(), dtype=float32), 0.8859960838349409, 0.3230769230769231, 0.027522935779816515.
+I0528 18:13:44.483631 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 5928): (1e-07,1000,1000,1e-05) tf.Tensor(0.49153462, shape=(), dtype=float32), 0.8865279087195107, 0.3423913043478261, 0.027522935779816515.
+I0528 18:13:45.396862 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 5985): (1e-07,1000,1000,1e-05) tf.Tensor(0.48796004, shape=(), dtype=float32), 0.8864795610027316, 0.32748538011695905, 0.024464831804281346.
+I0528 18:13:46.289855 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 6042): (1e-07,1000,1000,1e-05) tf.Tensor(0.48439983, shape=(), dtype=float32), 0.8865279087195107, 0.3141025641025641, 0.021406727828746176.
+I0528 18:13:47.191798 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 6099): (1e-07,1000,1000,1e-05) tf.Tensor(0.4808799, shape=(), dtype=float32), 0.8867454734450165, 0.314878892733564, 0.019877675840978593.
+I0528 18:13:48.087132 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 6156): (1e-07,1000,1000,1e-05) tf.Tensor(0.47750342, shape=(), dtype=float32), 0.8867696473034061, 0.30656934306569344, 0.01834862385321101.
+I0528 18:13:49.071094 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 6213): (1e-07,1000,1000,1e-05) tf.Tensor(0.47419244, shape=(), dtype=float32), 0.887035559745691, 0.3193916349809886, 0.01834862385321101.
+I0528 18:13:49.993531 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 6270): (1e-07,1000,1000,1e-05) tf.Tensor(0.47094658, shape=(), dtype=float32), 0.8871564290376387, 0.32558139534883723, 0.01834862385321101.
+I0528 18:13:50.883510 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 6327): (1e-07,1000,1000,1e-05) tf.Tensor(0.46776345, shape=(), dtype=float32), 0.8872772983295864, 0.33201581027667987, 0.01834862385321101.
+I0528 18:13:51.779582 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 6384): (1e-07,1000,1000,1e-05) tf.Tensor(0.4646183, shape=(), dtype=float32), 0.8875432107718713, 0.34710743801652894, 0.01834862385321101.
+I0528 18:13:52.669814 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 6441): (1e-07,1000,1000,1e-05) tf.Tensor(0.46155176, shape=(), dtype=float32), 0.8875673846302609, 0.3392070484581498, 0.016819571865443424.
+I0528 18:13:53.566404 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 6498): (1e-07,1000,1000,1e-05) tf.Tensor(0.45851198, shape=(), dtype=float32), 0.8877366016389876, 0.35, 0.016819571865443424.
+I0528 18:13:54.572841 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 6555): (1e-07,1000,1000,1e-05) tf.Tensor(0.4555953, shape=(), dtype=float32), 0.8878816447893249, 0.3598130841121495, 0.016819571865443424.
+I0528 18:13:55.469782 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 6612): (1e-07,1000,1000,1e-05) tf.Tensor(0.45271552, shape=(), dtype=float32), 0.8877849493557667, 0.33157894736842103, 0.013761467889908258.
+I0528 18:13:56.372159 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 6669): (1e-07,1000,1000,1e-05) tf.Tensor(0.44988778, shape=(), dtype=float32), 0.888026687939662, 0.35, 0.013761467889908258.
+I0528 18:13:57.268338 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 6726): (1e-07,1000,1000,1e-05) tf.Tensor(0.44702932, shape=(), dtype=float32), 0.8877607754973771, 0.3006134969325153, 0.010703363914373088.
+I0528 18:13:58.160534 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 6783): (1e-07,1000,1000,1e-05) tf.Tensor(0.44431055, shape=(), dtype=float32), 0.8878574709309353, 0.3081761006289308, 0.010703363914373088.
+I0528 18:13:59.147377 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 6840): (1e-07,1000,1000,1e-05) tf.Tensor(0.4416705, shape=(), dtype=float32), 0.8880025140812725, 0.3202614379084967, 0.010703363914373088.
+I0528 18:14:00.067174 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 6897): (1e-07,1000,1000,1e-05) tf.Tensor(0.43907124, shape=(), dtype=float32), 0.8880992095148307, 0.3288590604026846, 0.010703363914373088.
+I0528 18:14:00.966063 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 6954): (1e-07,1000,1000,1e-05) tf.Tensor(0.4365989, shape=(), dtype=float32), 0.8882200788067783, 0.3402777777777778, 0.010703363914373088.
+I0528 18:14:01.982924 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 7011): (1e-07,1000,1000,1e-05) tf.Tensor(0.43411338, shape=(), dtype=float32), 0.8881233833732202, 0.31343283582089554, 0.009174311926605505.
+I0528 18:14:02.874329 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 7068): (1e-07,1000,1000,1e-05) tf.Tensor(0.43167162, shape=(), dtype=float32), 0.888026687939662, 0.28225806451612906, 0.00764525993883792.
+I0528 18:14:03.833203 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 7125): (1e-07,1000,1000,1e-05) tf.Tensor(0.4293284, shape=(), dtype=float32), 0.8880750356564411, 0.28688524590163933, 0.00764525993883792.
+I0528 18:14:04.736042 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 7182): (1e-07,1000,1000,1e-05) tf.Tensor(0.42707145, shape=(), dtype=float32), 0.8879299925061039, 0.24561403508771928, 0.0061162079510703364.
+I0528 18:14:05.632370 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 7239): (1e-07,1000,1000,1e-05) tf.Tensor(0.4248284, shape=(), dtype=float32), 0.888026687939662, 0.2545454545454545, 0.0061162079510703364.
+I0528 18:14:06.531407 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 7296): (1e-07,1000,1000,1e-05) tf.Tensor(0.4226883, shape=(), dtype=float32), 0.8879299925061039, 0.21, 0.0045871559633027525.
+I0528 18:14:07.429030 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 7353): (1e-07,1000,1000,1e-05) tf.Tensor(0.4205829, shape=(), dtype=float32), 0.8880025140812725, 0.21649484536082475, 0.0045871559633027525.
+I0528 18:14:08.320879 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 7410): (1e-07,1000,1000,1e-05) tf.Tensor(0.41854885, shape=(), dtype=float32), 0.8880992095148307, 0.22580645161290322, 0.0045871559633027525.
+I0528 18:14:09.260542 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 7467): (1e-07,1000,1000,1e-05) tf.Tensor(0.41653013, shape=(), dtype=float32), 0.8881475572316098, 0.23076923076923078, 0.0045871559633027525.
+I0528 18:14:10.180371 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 7524): (1e-07,1000,1000,1e-05) tf.Tensor(0.41455194, shape=(), dtype=float32), 0.8881959049483888, 0.23595505617977527, 0.0045871559633027525.
+I0528 18:14:11.070394 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 7581): (1e-07,1000,1000,1e-05) tf.Tensor(0.41263276, shape=(), dtype=float32), 0.888292600381947, 0.24705882352941178, 0.0045871559633027525.
+I0528 18:14:12.036019 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 7638): (1e-07,1000,1000,1e-05) tf.Tensor(0.41080755, shape=(), dtype=float32), 0.888340948098726, 0.25301204819277107, 0.0045871559633027525.
+I0528 18:14:13.017599 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 7695): (1e-07,1000,1000,1e-05) tf.Tensor(0.4090214, shape=(), dtype=float32), 0.8883651219571156, 0.25609756097560976, 0.0045871559633027525.
+I0528 18:14:14.114331 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 7752): (1e-07,1000,1000,1e-05) tf.Tensor(0.40723217, shape=(), dtype=float32), 0.8884859912490632, 0.2727272727272727, 0.0045871559633027525.
+I0528 18:14:15.070098 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 7809): (1e-07,1000,1000,1e-05) tf.Tensor(0.40557298, shape=(), dtype=float32), 0.8884859912490632, 0.2727272727272727, 0.0045871559633027525.
+I0528 18:14:16.069313 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 7866): (1e-07,1000,1000,1e-05) tf.Tensor(0.40394828, shape=(), dtype=float32), 0.8885585128242319, 0.28378378378378377, 0.0045871559633027525.
+I0528 18:14:16.974452 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 7923): (1e-07,1000,1000,1e-05) tf.Tensor(0.40235612, shape=(), dtype=float32), 0.8886793821161796, 0.30434782608695654, 0.0045871559633027525.
+I0528 18:14:17.882123 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 7980): (1e-07,1000,1000,1e-05) tf.Tensor(0.40083838, shape=(), dtype=float32), 0.8887277298329587, 0.31343283582089554, 0.0045871559633027525.
+I0528 18:14:18.775744 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 8037): (1e-07,1000,1000,1e-05) tf.Tensor(0.39932644, shape=(), dtype=float32), 0.8887277298329587, 0.31343283582089554, 0.0045871559633027525.
+I0528 18:14:19.691985 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 8094): (1e-07,1000,1000,1e-05) tf.Tensor(0.39787352, shape=(), dtype=float32), 0.8887519036913482, 0.3181818181818182, 0.0045871559633027525.
+I0528 18:14:20.632893 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 8151): (1e-07,1000,1000,1e-05) tf.Tensor(0.39644265, shape=(), dtype=float32), 0.8887760775497378, 0.3230769230769231, 0.0045871559633027525.
+I0528 18:14:21.526099 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 8208): (1e-07,1000,1000,1e-05) tf.Tensor(0.39504522, shape=(), dtype=float32), 0.8888244252665168, 0.3333333333333333, 0.0045871559633027525.
+I0528 18:14:22.415092 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 8265): (1e-07,1000,1000,1e-05) tf.Tensor(0.39370266, shape=(), dtype=float32), 0.8888485991249063, 0.3387096774193548, 0.0045871559633027525.
+I0528 18:14:23.301623 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 8322): (1e-07,1000,1000,1e-05) tf.Tensor(0.39235878, shape=(), dtype=float32), 0.8888485991249063, 0.3387096774193548, 0.0045871559633027525.
+I0528 18:14:24.231791 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 8379): (1e-07,1000,1000,1e-05) tf.Tensor(0.39110196, shape=(), dtype=float32), 0.8887035559745691, 0.25925925925925924, 0.0030581039755351682.
+I0528 18:14:25.146008 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 8436): (1e-07,1000,1000,1e-05) tf.Tensor(0.389946, shape=(), dtype=float32), 0.8887035559745691, 0.25925925925925924, 0.0030581039755351682.
+I0528 18:14:26.070168 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 8493): (1e-07,1000,1000,1e-05) tf.Tensor(0.38879701, shape=(), dtype=float32), 0.8887519036913482, 0.2692307692307692, 0.0030581039755351682.
+I0528 18:14:26.974548 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 8550): (1e-07,1000,1000,1e-05) tf.Tensor(0.3877082, shape=(), dtype=float32), 0.8885826866826214, 0.15555555555555556, 0.0015290519877675841.
+I0528 18:14:27.866840 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 8607): (1e-07,1000,1000,1e-05) tf.Tensor(0.38669565, shape=(), dtype=float32), 0.88865520825779, 0.16666666666666666, 0.0015290519877675841.
+I0528 18:14:28.756829 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 8664): (1e-07,1000,1000,1e-05) tf.Tensor(0.3856961, shape=(), dtype=float32), 0.88865520825779, 0.16666666666666666, 0.0015290519877675841.
+I0528 18:14:29.671945 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 8721): (1e-07,1000,1000,1e-05) tf.Tensor(0.38466927, shape=(), dtype=float32), 0.88865520825779, 0.16666666666666666, 0.0015290519877675841.
+I0528 18:14:30.605935 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 8778): (1e-07,1000,1000,1e-05) tf.Tensor(0.3837042, shape=(), dtype=float32), 0.88865520825779, 0.16666666666666666, 0.0015290519877675841.
+I0528 18:14:31.505755 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 8835): (1e-07,1000,1000,1e-05) tf.Tensor(0.38276538, shape=(), dtype=float32), 0.88865520825779, 0.16666666666666666, 0.0015290519877675841.
+I0528 18:14:32.403005 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 8892): (1e-07,1000,1000,1e-05) tf.Tensor(0.38185462, shape=(), dtype=float32), 0.8887277298329587, 0.1794871794871795, 0.0015290519877675841.
+I0528 18:14:33.300399 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 8949): (1e-07,1000,1000,1e-05) tf.Tensor(0.38095766, shape=(), dtype=float32), 0.8887519036913482, 0.18421052631578946, 0.0015290519877675841.
+I0528 18:14:34.287378 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 9006): (1e-07,1000,1000,1e-05) tf.Tensor(0.38009915, shape=(), dtype=float32), 0.8887760775497378, 0.1891891891891892, 0.0015290519877675841.
+I0528 18:14:35.211798 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 9063): (1e-07,1000,1000,1e-05) tf.Tensor(0.37932444, shape=(), dtype=float32), 0.8888002514081272, 0.19444444444444445, 0.0015290519877675841.
+I0528 18:14:36.117942 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 9120): (1e-07,1000,1000,1e-05) tf.Tensor(0.378576, shape=(), dtype=float32), 0.8888244252665168, 0.2, 0.0015290519877675841.
+I0528 18:14:37.010915 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 9177): (1e-07,1000,1000,1e-05) tf.Tensor(0.37783238, shape=(), dtype=float32), 0.8888727729832958, 0.21212121212121213, 0.0015290519877675841.
+I0528 18:14:37.908983 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 9234): (1e-07,1000,1000,1e-05) tf.Tensor(0.3771372, shape=(), dtype=float32), 0.8888727729832958, 0.21212121212121213, 0.0015290519877675841.
+I0528 18:14:38.798607 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 9291): (1e-07,1000,1000,1e-05) tf.Tensor(0.37647036, shape=(), dtype=float32), 0.8889211207000749, 0.22580645161290322, 0.0015290519877675841.
+I0528 18:14:39.721317 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 9348): (1e-07,1000,1000,1e-05) tf.Tensor(0.37579173, shape=(), dtype=float32), 0.8889452945584645, 0.23333333333333334, 0.0015290519877675841.
+I0528 18:14:40.620730 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 9405): (1e-07,1000,1000,1e-05) tf.Tensor(0.37521073, shape=(), dtype=float32), 0.8889452945584645, 0.23333333333333334, 0.0015290519877675841.
+I0528 18:14:41.522300 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 9462): (1e-07,1000,1000,1e-05) tf.Tensor(0.3746416, shape=(), dtype=float32), 0.8889452945584645, 0.23333333333333334, 0.0015290519877675841.
+I0528 18:14:42.411949 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 9519): (1e-07,1000,1000,1e-05) tf.Tensor(0.37408543, shape=(), dtype=float32), 0.888969468416854, 0.2413793103448276, 0.0015290519877675841.
+I0528 18:14:43.302180 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 9576): (1e-07,1000,1000,1e-05) tf.Tensor(0.3735348, shape=(), dtype=float32), 0.888969468416854, 0.2413793103448276, 0.0015290519877675841.
+I0528 18:14:44.271902 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 9633): (1e-07,1000,1000,1e-05) tf.Tensor(0.37302667, shape=(), dtype=float32), 0.8889936422752436, 0.25, 0.0015290519877675841.
+I0528 18:14:45.181895 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 9690): (1e-07,1000,1000,1e-05) tf.Tensor(0.3725587, shape=(), dtype=float32), 0.8889936422752436, 0.25, 0.0015290519877675841.
+I0528 18:14:46.073158 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 9747): (1e-07,1000,1000,1e-05) tf.Tensor(0.37208086, shape=(), dtype=float32), 0.8889936422752436, 0.25, 0.0015290519877675841.
+I0528 18:14:46.966781 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 9804): (1e-07,1000,1000,1e-05) tf.Tensor(0.37163332, shape=(), dtype=float32), 0.8889936422752436, 0.25, 0.0015290519877675841.
+I0528 18:14:47.865033 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 9861): (1e-07,1000,1000,1e-05) tf.Tensor(0.3712182, shape=(), dtype=float32), 0.8889936422752436, 0.25, 0.0015290519877675841.
+I0528 18:14:48.760356 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 9918): (1e-07,1000,1000,1e-05) tf.Tensor(0.37082997, shape=(), dtype=float32), 0.8889936422752436, 0.25, 0.0015290519877675841.
+I0528 18:14:49.676553 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 9975): (1e-07,1000,1000,1e-05) tf.Tensor(0.3704868, shape=(), dtype=float32), 0.8889936422752436, 0.25, 0.0015290519877675841.
+I0528 18:14:50.576881 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 10032): (1e-07,1000,1000,1e-05) tf.Tensor(0.37017676, shape=(), dtype=float32), 0.8889936422752436, 0.25, 0.0015290519877675841.
+I0528 18:14:51.480932 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 10089): (1e-07,1000,1000,1e-05) tf.Tensor(0.36985567, shape=(), dtype=float32), 0.8889936422752436, 0.25, 0.0015290519877675841.
+I0528 18:14:52.389664 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 10146): (1e-07,1000,1000,1e-05) tf.Tensor(0.36953446, shape=(), dtype=float32), 0.8889936422752436, 0.25, 0.0015290519877675841.
+I0528 18:14:53.290052 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 10203): (1e-07,1000,1000,1e-05) tf.Tensor(0.36923274, shape=(), dtype=float32), 0.8890419899920227, 0.2692307692307692, 0.0015290519877675841.
+I0528 18:14:54.235406 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 10260): (1e-07,1000,1000,1e-05) tf.Tensor(0.3689711, shape=(), dtype=float32), 0.8890419899920227, 0.2692307692307692, 0.0015290519877675841.
+I0528 18:14:55.145320 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 10317): (1e-07,1000,1000,1e-05) tf.Tensor(0.36870164, shape=(), dtype=float32), 0.8890419899920227, 0.2692307692307692, 0.0015290519877675841.
+I0528 18:14:56.045452 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 10374): (1e-07,1000,1000,1e-05) tf.Tensor(0.36844078, shape=(), dtype=float32), 0.8890661638504122, 0.28, 0.0015290519877675841.
+I0528 18:14:56.945123 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 10431): (1e-07,1000,1000,1e-05) tf.Tensor(0.36820683, shape=(), dtype=float32), 0.8890661638504122, 0.28, 0.0015290519877675841.
+I0528 18:14:57.839442 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 10488): (1e-07,1000,1000,1e-05) tf.Tensor(0.3680063, shape=(), dtype=float32), 0.8890661638504122, 0.28, 0.0015290519877675841.
+I0528 18:14:58.732015 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 10545): (1e-07,1000,1000,1e-05) tf.Tensor(0.3678027, shape=(), dtype=float32), 0.8890903377088017, 0.2916666666666667, 0.0015290519877675841.
+I0528 18:14:59.640637 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 10602): (1e-07,1000,1000,1e-05) tf.Tensor(0.36762425, shape=(), dtype=float32), 0.8891145115671912, 0.30434782608695654, 0.0015290519877675841.
+I0528 18:15:00.530308 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 10659): (1e-07,1000,1000,1e-05) tf.Tensor(0.36745885, shape=(), dtype=float32), 0.8891386854255807, 0.3181818181818182, 0.0015290519877675841.
+I0528 18:15:01.420478 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 10716): (1e-07,1000,1000,1e-05) tf.Tensor(0.36729985, shape=(), dtype=float32), 0.8891386854255807, 0.3181818181818182, 0.0015290519877675841.
+I0528 18:15:02.319543 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 10773): (1e-07,1000,1000,1e-05) tf.Tensor(0.3671528, shape=(), dtype=float32), 0.8891386854255807, 0.3181818181818182, 0.0015290519877675841.
+I0528 18:15:03.207124 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 10830): (1e-07,1000,1000,1e-05) tf.Tensor(0.36704722, shape=(), dtype=float32), 0.8891386854255807, 0.3181818181818182, 0.0015290519877675841.
+I0528 18:15:04.203245 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 10887): (1e-07,1000,1000,1e-05) tf.Tensor(0.3669316, shape=(), dtype=float32), 0.8891386854255807, 0.3181818181818182, 0.0015290519877675841.
+I0528 18:15:05.113510 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 10944): (1e-07,1000,1000,1e-05) tf.Tensor(0.36683252, shape=(), dtype=float32), 0.8891386854255807, 0.3181818181818182, 0.0015290519877675841.
+I0528 18:15:06.012527 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 11001): (1e-07,1000,1000,1e-05) tf.Tensor(0.36673614, shape=(), dtype=float32), 0.8891386854255807, 0.3181818181818182, 0.0015290519877675841.
+I0528 18:15:06.909595 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 11058): (1e-07,1000,1000,1e-05) tf.Tensor(0.36663392, shape=(), dtype=float32), 0.8891386854255807, 0.3181818181818182, 0.0015290519877675841.
+I0528 18:15:07.801720 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 11115): (1e-07,1000,1000,1e-05) tf.Tensor(0.3665481, shape=(), dtype=float32), 0.8891386854255807, 0.3181818181818182, 0.0015290519877675841.
+I0528 18:15:08.705844 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 11172): (1e-07,1000,1000,1e-05) tf.Tensor(0.36648414, shape=(), dtype=float32), 0.8891386854255807, 0.3181818181818182, 0.0015290519877675841.
+I0528 18:15:09.631803 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 11229): (1e-07,1000,1000,1e-05) tf.Tensor(0.3664196, shape=(), dtype=float32), 0.8891386854255807, 0.3181818181818182, 0.0015290519877675841.
+I0528 18:15:10.532148 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 11286): (1e-07,1000,1000,1e-05) tf.Tensor(0.3663619, shape=(), dtype=float32), 0.8891386854255807, 0.3181818181818182, 0.0015290519877675841.
+I0528 18:15:11.435566 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 11343): (1e-07,1000,1000,1e-05) tf.Tensor(0.3663217, shape=(), dtype=float32), 0.8891386854255807, 0.3181818181818182, 0.0015290519877675841.
+I0528 18:15:12.342096 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 11400): (1e-07,1000,1000,1e-05) tf.Tensor(0.36628374, shape=(), dtype=float32), 0.8891628592839703, 0.3333333333333333, 0.0015290519877675841.
+I0528 18:15:13.240637 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 11457): (1e-07,1000,1000,1e-05) tf.Tensor(0.36623418, shape=(), dtype=float32), 0.8891870331423598, 0.35, 0.0015290519877675841.
+I0528 18:15:14.198567 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 11514): (1e-07,1000,1000,1e-05) tf.Tensor(0.36618552, shape=(), dtype=float32), 0.8891870331423598, 0.35, 0.0015290519877675841.
+I0528 18:15:15.120064 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 11571): (1e-07,1000,1000,1e-05) tf.Tensor(0.3661487, shape=(), dtype=float32), 0.8891870331423598, 0.35, 0.0015290519877675841.
+I0528 18:15:16.099203 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 11628): (1e-07,1000,1000,1e-05) tf.Tensor(0.36614114, shape=(), dtype=float32), 0.8891870331423598, 0.35, 0.0015290519877675841.
+I0528 18:15:17.003911 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 11685): (1e-07,1000,1000,1e-05) tf.Tensor(0.36612207, shape=(), dtype=float32), 0.8891870331423598, 0.35, 0.0015290519877675841.
+I0528 18:15:17.936083 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 11742): (1e-07,1000,1000,1e-05) tf.Tensor(0.36610243, shape=(), dtype=float32), 0.8892112070007494, 0.3684210526315789, 0.0015290519877675841.
+I0528 18:15:18.835555 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 11799): (1e-07,1000,1000,1e-05) tf.Tensor(0.3660585, shape=(), dtype=float32), 0.8890419899920227, 0.0, 0.0.
+I0528 18:15:19.707842 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 11856): (1e-07,1000,1000,1e-05) tf.Tensor(0.36607143, shape=(), dtype=float32), 0.8890661638504122, 0.0, 0.0.
+I0528 18:15:20.581936 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 11913): (1e-07,1000,1000,1e-05) tf.Tensor(0.36609975, shape=(), dtype=float32), 0.8890661638504122, 0.0, 0.0.
+I0528 18:15:21.457983 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 11970): (1e-07,1000,1000,1e-05) tf.Tensor(0.36609432, shape=(), dtype=float32), 0.8890903377088017, 0.0, 0.0.
+I0528 18:15:22.334304 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 12027): (1e-07,1000,1000,1e-05) tf.Tensor(0.36610368, shape=(), dtype=float32), 0.8890903377088017, 0.0, 0.0.
+I0528 18:15:23.209662 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 12084): (1e-07,1000,1000,1e-05) tf.Tensor(0.36611015, shape=(), dtype=float32), 0.8890903377088017, 0.0, 0.0.
+I0528 18:15:24.090344 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 12141): (1e-07,1000,1000,1e-05) tf.Tensor(0.3661124, shape=(), dtype=float32), 0.8890903377088017, 0.0, 0.0.
+I0528 18:15:24.966813 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 12198): (1e-07,1000,1000,1e-05) tf.Tensor(0.3661284, shape=(), dtype=float32), 0.8890903377088017, 0.0, 0.0.
+I0528 18:15:25.843700 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 12255): (1e-07,1000,1000,1e-05) tf.Tensor(0.3661227, shape=(), dtype=float32), 0.8890903377088017, 0.0, 0.0.
+I0528 18:15:26.719114 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 12312): (1e-07,1000,1000,1e-05) tf.Tensor(0.36612603, shape=(), dtype=float32), 0.8890903377088017, 0.0, 0.0.
+I0528 18:15:27.595601 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 12369): (1e-07,1000,1000,1e-05) tf.Tensor(0.36616835, shape=(), dtype=float32), 0.8890903377088017, 0.0, 0.0.
+I0528 18:15:28.472506 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 12426): (1e-07,1000,1000,1e-05) tf.Tensor(0.36615437, shape=(), dtype=float32), 0.8890903377088017, 0.0, 0.0.
+I0528 18:15:29.350837 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 12483): (1e-07,1000,1000,1e-05) tf.Tensor(0.3661382, shape=(), dtype=float32), 0.8890903377088017, 0.0, 0.0.
+I0528 18:15:30.232975 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 12540): (1e-07,1000,1000,1e-05) tf.Tensor(0.36614457, shape=(), dtype=float32), 0.8890903377088017, 0.0, 0.0.
+I0528 18:15:31.107921 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 12597): (1e-07,1000,1000,1e-05) tf.Tensor(0.36614692, shape=(), dtype=float32), 0.8890903377088017, 0.0, 0.0.
+I0528 18:15:31.981042 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 12654): (1e-07,1000,1000,1e-05) tf.Tensor(0.36614582, shape=(), dtype=float32), 0.8890903377088017, 0.0, 0.0.
+I0528 18:15:32.854035 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 12711): (1e-07,1000,1000,1e-05) tf.Tensor(0.36609846, shape=(), dtype=float32), 0.8890903377088017, 0.0, 0.0.
+I0528 18:15:33.725652 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 12768): (1e-07,1000,1000,1e-05) tf.Tensor(0.36608347, shape=(), dtype=float32), 0.8890903377088017, 0.0, 0.0.
+I0528 18:15:34.655071 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 12825): (1e-07,1000,1000,1e-05) tf.Tensor(0.36605504, shape=(), dtype=float32), 0.8890903377088017, 0.0, 0.0.
+I0528 18:15:35.563222 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 12882): (1e-07,1000,1000,1e-05) tf.Tensor(0.36603928, shape=(), dtype=float32), 0.8890903377088017, 0.0, 0.0.
+I0528 18:15:36.466887 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 12939): (1e-07,1000,1000,1e-05) tf.Tensor(0.36602136, shape=(), dtype=float32), 0.8890903377088017, 0.0, 0.0.
+I0528 18:15:37.369941 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 12996): (1e-07,1000,1000,1e-05) tf.Tensor(0.36594534, shape=(), dtype=float32), 0.8890903377088017, 0.0, 0.0.
+I0528 18:15:38.355648 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 13053): (1e-07,1000,1000,1e-05) tf.Tensor(0.36590445, shape=(), dtype=float32), 0.8890903377088017, 0.0, 0.0.
+I0528 18:15:39.323224 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 13110): (1e-07,1000,1000,1e-05) tf.Tensor(0.3658712, shape=(), dtype=float32), 0.8890903377088017, 0.0, 0.0.
+I0528 18:15:40.201456 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 13167): (1e-07,1000,1000,1e-05) tf.Tensor(0.365907, shape=(), dtype=float32), 0.8890903377088017, 0.0, 0.0.
+I0528 18:15:41.078116 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 13224): (1e-07,1000,1000,1e-05) tf.Tensor(0.36591384, shape=(), dtype=float32), 0.8890903377088017, 0.0, 0.0.
+I0528 18:15:41.998490 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 13281): (1e-07,1000,1000,1e-05) tf.Tensor(0.36586648, shape=(), dtype=float32), 0.8890903377088017, 0.0, 0.0.
+I0528 18:15:42.921101 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 13338): (1e-07,1000,1000,1e-05) tf.Tensor(0.36580026, shape=(), dtype=float32), 0.8890903377088017, 0.0, 0.0.
+I0528 18:15:43.827647 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 13395): (1e-07,1000,1000,1e-05) tf.Tensor(0.3657816, shape=(), dtype=float32), 0.8890903377088017, 0.0, 0.0.
+I0528 18:15:44.754831 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 13452): (1e-07,1000,1000,1e-05) tf.Tensor(0.36574683, shape=(), dtype=float32), 0.8890903377088017, 0.0, 0.0.
+I0528 18:15:45.671653 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 13509): (1e-07,1000,1000,1e-05) tf.Tensor(0.36572996, shape=(), dtype=float32), 0.8890903377088017, 0.0, 0.0.
+I0528 18:15:46.600321 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 13566): (1e-07,1000,1000,1e-05) tf.Tensor(0.36569545, shape=(), dtype=float32), 0.8890903377088017, 0.0, 0.0.
+I0528 18:15:47.485423 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 13623): (1e-07,1000,1000,1e-05) tf.Tensor(0.36575323, shape=(), dtype=float32), 0.8890903377088017, 0.0, 0.0.
+I0528 18:15:48.369430 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 13680): (1e-07,1000,1000,1e-05) tf.Tensor(0.36579132, shape=(), dtype=float32), 0.8890903377088017, 0.0, 0.0.
+I0528 18:15:49.253390 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 13737): (1e-07,1000,1000,1e-05) tf.Tensor(0.3658409, shape=(), dtype=float32), 0.8890903377088017, 0.0, 0.0.
+I0528 18:15:50.137799 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 13794): (1e-07,1000,1000,1e-05) tf.Tensor(0.36588427, shape=(), dtype=float32), 0.8890903377088017, 0.0, 0.0.
+I0528 18:15:51.022196 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 13851): (1e-07,1000,1000,1e-05) tf.Tensor(0.36585927, shape=(), dtype=float32), 0.8890903377088017, 0.0, 0.0.
+I0528 18:15:51.907867 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 13908): (1e-07,1000,1000,1e-05) tf.Tensor(0.36588994, shape=(), dtype=float32), 0.8890903377088017, 0.0, 0.0.
+I0528 18:15:52.793084 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 13965): (1e-07,1000,1000,1e-05) tf.Tensor(0.36574045, shape=(), dtype=float32), 0.8890903377088017, 0.0, 0.0.
+I0528 18:15:53.714927 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 14022): (1e-07,1000,1000,1e-05) tf.Tensor(0.36568877, shape=(), dtype=float32), 0.8890903377088017, 0.0, 0.0.
+I0528 18:15:54.651651 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 14079): (1e-07,1000,1000,1e-05) tf.Tensor(0.36563492, shape=(), dtype=float32), 0.8890903377088017, 0.0, 0.0.
+I0528 18:15:55.539459 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 14136): (1e-07,1000,1000,1e-05) tf.Tensor(0.36571476, shape=(), dtype=float32), 0.8890903377088017, 0.0, 0.0.
+I0528 18:15:56.427994 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 14193): (1e-07,1000,1000,1e-05) tf.Tensor(0.36569008, shape=(), dtype=float32), 0.8890903377088017, 0.0, 0.0.
+I0528 18:15:57.315927 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 14250): (1e-07,1000,1000,1e-05) tf.Tensor(0.36564955, shape=(), dtype=float32), 0.8890661638504122, 0.0, 0.0.
+I0528 18:15:58.255087 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 14307): (1e-07,1000,1000,1e-05) tf.Tensor(0.3655824, shape=(), dtype=float32), 0.8890661638504122, 0.0, 0.0.
+I0528 18:15:59.213901 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 14364): (1e-07,1000,1000,1e-05) tf.Tensor(0.3655425, shape=(), dtype=float32), 0.8890661638504122, 0.0, 0.0.
+I0528 18:16:00.143692 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 14421): (1e-07,1000,1000,1e-05) tf.Tensor(0.36551127, shape=(), dtype=float32), 0.8890661638504122, 0.0, 0.0.
+I0528 18:16:01.059672 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 14478): (1e-07,1000,1000,1e-05) tf.Tensor(0.36547703, shape=(), dtype=float32), 0.8890661638504122, 0.0, 0.0.
+I0528 18:16:02.023456 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 14535): (1e-07,1000,1000,1e-05) tf.Tensor(0.36538988, shape=(), dtype=float32), 0.8890661638504122, 0.0, 0.0.
+I0528 18:16:02.942270 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 14592): (1e-07,1000,1000,1e-05) tf.Tensor(0.3652902, shape=(), dtype=float32), 0.8890661638504122, 0.0, 0.0.
+I0528 18:16:03.899464 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 14649): (1e-07,1000,1000,1e-05) tf.Tensor(0.3652649, shape=(), dtype=float32), 0.8890661638504122, 0.0, 0.0.
+I0528 18:16:04.833277 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 14706): (1e-07,1000,1000,1e-05) tf.Tensor(0.36525726, shape=(), dtype=float32), 0.8890661638504122, 0.0, 0.0.
+I0528 18:16:05.753569 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 14763): (1e-07,1000,1000,1e-05) tf.Tensor(0.36519936, shape=(), dtype=float32), 0.8890661638504122, 0.0, 0.0.
+I0528 18:16:06.768884 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 14820): (1e-07,1000,1000,1e-05) tf.Tensor(0.36515233, shape=(), dtype=float32), 0.8890661638504122, 0.0, 0.0.
+I0528 18:16:07.664173 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 14877): (1e-07,1000,1000,1e-05) tf.Tensor(0.36520332, shape=(), dtype=float32), 0.8890661638504122, 0.0, 0.0.
+I0528 18:16:08.558254 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 14934): (1e-07,1000,1000,1e-05) tf.Tensor(0.36524105, shape=(), dtype=float32), 0.8890661638504122, 0.0, 0.0.
+I0528 18:16:09.451162 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 14991): (1e-07,1000,1000,1e-05) tf.Tensor(0.36526477, shape=(), dtype=float32), 0.8890661638504122, 0.0, 0.0.
+I0528 18:16:10.342063 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 15048): (1e-07,1000,1000,1e-05) tf.Tensor(0.3653611, shape=(), dtype=float32), 0.8890661638504122, 0.0, 0.0.
+I0528 18:16:11.229432 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 15105): (1e-07,1000,1000,1e-05) tf.Tensor(0.36535794, shape=(), dtype=float32), 0.8890661638504122, 0.0, 0.0.
+I0528 18:16:12.120153 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 15162): (1e-07,1000,1000,1e-05) tf.Tensor(0.36535043, shape=(), dtype=float32), 0.8890661638504122, 0.0, 0.0.
+I0528 18:16:13.010539 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 15219): (1e-07,1000,1000,1e-05) tf.Tensor(0.36532545, shape=(), dtype=float32), 0.8890661638504122, 0.0, 0.0.
+I0528 18:16:13.901378 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 15276): (1e-07,1000,1000,1e-05) tf.Tensor(0.36532566, shape=(), dtype=float32), 0.8890661638504122, 0.0, 0.0.
+I0528 18:16:14.794684 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 15333): (1e-07,1000,1000,1e-05) tf.Tensor(0.36517912, shape=(), dtype=float32), 0.8890661638504122, 0.0, 0.0.
+I0528 18:16:15.733394 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 15390): (1e-07,1000,1000,1e-05) tf.Tensor(0.36507085, shape=(), dtype=float32), 0.8890661638504122, 0.0, 0.0.
+I0528 18:16:16.660678 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 15447): (1e-07,1000,1000,1e-05) tf.Tensor(0.3650121, shape=(), dtype=float32), 0.8890661638504122, 0.0, 0.0.
+I0528 18:16:17.587738 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 15504): (1e-07,1000,1000,1e-05) tf.Tensor(0.3648326, shape=(), dtype=float32), 0.8890661638504122, 0.0, 0.0.
+I0528 18:16:18.519500 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 15561): (1e-07,1000,1000,1e-05) tf.Tensor(0.3648155, shape=(), dtype=float32), 0.8890661638504122, 0.0, 0.0.
+I0528 18:16:19.416893 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 15618): (1e-07,1000,1000,1e-05) tf.Tensor(0.36489177, shape=(), dtype=float32), 0.8890661638504122, 0.0, 0.0.
+I0528 18:16:20.312357 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 15675): (1e-07,1000,1000,1e-05) tf.Tensor(0.36498085, shape=(), dtype=float32), 0.8890661638504122, 0.0, 0.0.
+I0528 18:16:21.209022 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 15732): (1e-07,1000,1000,1e-05) tf.Tensor(0.36495042, shape=(), dtype=float32), 0.8890661638504122, 0.0, 0.0.
+I0528 18:16:22.113415 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 15789): (1e-07,1000,1000,1e-05) tf.Tensor(0.36485255, shape=(), dtype=float32), 0.8890661638504122, 0.0, 0.0.
+I0528 18:16:23.016853 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 15846): (1e-07,1000,1000,1e-05) tf.Tensor(0.36493886, shape=(), dtype=float32), 0.8890661638504122, 0.0, 0.0.
+I0528 18:16:23.915511 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 15903): (1e-07,1000,1000,1e-05) tf.Tensor(0.36500433, shape=(), dtype=float32), 0.8890661638504122, 0.0, 0.0.
+I0528 18:16:24.815381 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 15960): (1e-07,1000,1000,1e-05) tf.Tensor(0.36491242, shape=(), dtype=float32), 0.8890661638504122, 0.0, 0.0.
+I0528 18:16:25.719306 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 16017): (1e-07,1000,1000,1e-05) tf.Tensor(0.36490735, shape=(), dtype=float32), 0.8890661638504122, 0.0, 0.0.
+I0528 18:16:26.622615 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 16074): (1e-07,1000,1000,1e-05) tf.Tensor(0.36482182, shape=(), dtype=float32), 0.8890661638504122, 0.0, 0.0.
+I0528 18:16:27.561896 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 16131): (1e-07,1000,1000,1e-05) tf.Tensor(0.364772, shape=(), dtype=float32), 0.8890661638504122, 0.0, 0.0.
+I0528 18:16:28.530340 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 16188): (1e-07,1000,1000,1e-05) tf.Tensor(0.364721, shape=(), dtype=float32), 0.8890661638504122, 0.0, 0.0.
+I0528 18:16:29.564396 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 16245): (1e-07,1000,1000,1e-05) tf.Tensor(0.36463085, shape=(), dtype=float32), 0.8890661638504122, 0.0, 0.0.
+I0528 18:16:30.499575 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 16302): (1e-07,1000,1000,1e-05) tf.Tensor(0.3645938, shape=(), dtype=float32), 0.8890661638504122, 0.0, 0.0.
+I0528 18:16:31.401326 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 16359): (1e-07,1000,1000,1e-05) tf.Tensor(0.36461136, shape=(), dtype=float32), 0.8890661638504122, 0.0, 0.0.
+I0528 18:16:32.336475 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 16416): (1e-07,1000,1000,1e-05) tf.Tensor(0.3645103, shape=(), dtype=float32), 0.8890661638504122, 0.0, 0.0.
+I0528 18:16:33.239156 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 16473): (1e-07,1000,1000,1e-05) tf.Tensor(0.36454177, shape=(), dtype=float32), 0.8890661638504122, 0.0, 0.0.
+I0528 18:16:34.204416 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 16530): (1e-07,1000,1000,1e-05) tf.Tensor(0.36446697, shape=(), dtype=float32), 0.8890661638504122, 0.0, 0.0.
+I0528 18:16:35.129546 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 16587): (1e-07,1000,1000,1e-05) tf.Tensor(0.36445478, shape=(), dtype=float32), 0.8890661638504122, 0.0, 0.0.
+I0528 18:16:36.031375 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 16644): (1e-07,1000,1000,1e-05) tf.Tensor(0.36448213, shape=(), dtype=float32), 0.8890661638504122, 0.0, 0.0.
+I0528 18:16:36.932957 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 16701): (1e-07,1000,1000,1e-05) tf.Tensor(0.3644591, shape=(), dtype=float32), 0.8890661638504122, 0.0, 0.0.
+I0528 18:16:37.876793 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 16758): (1e-07,1000,1000,1e-05) tf.Tensor(0.3644025, shape=(), dtype=float32), 0.8890661638504122, 0.0, 0.0.
+I0528 18:16:38.814068 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 16815): (1e-07,1000,1000,1e-05) tf.Tensor(0.36433148, shape=(), dtype=float32), 0.8890661638504122, 0.0, 0.0.
+I0528 18:16:39.720123 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 16872): (1e-07,1000,1000,1e-05) tf.Tensor(0.36435288, shape=(), dtype=float32), 0.8890661638504122, 0.0, 0.0.
+I0528 18:16:40.668053 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 16929): (1e-07,1000,1000,1e-05) tf.Tensor(0.36418876, shape=(), dtype=float32), 0.8890419899920227, 0.0, 0.0.
+I0528 18:16:41.576330 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 16986): (1e-07,1000,1000,1e-05) tf.Tensor(0.364225, shape=(), dtype=float32), 0.8890419899920227, 0.0, 0.0.
+I0528 18:16:42.477694 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 17043): (1e-07,1000,1000,1e-05) tf.Tensor(0.36421803, shape=(), dtype=float32), 0.8890419899920227, 0.0, 0.0.
+I0528 18:16:43.385482 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 17100): (1e-07,1000,1000,1e-05) tf.Tensor(0.36428192, shape=(), dtype=float32), 0.8890419899920227, 0.0, 0.0.
+I0528 18:16:44.295614 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 17157): (1e-07,1000,1000,1e-05) tf.Tensor(0.36436504, shape=(), dtype=float32), 0.8890419899920227, 0.0, 0.0.
+I0528 18:16:45.196259 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 17214): (1e-07,1000,1000,1e-05) tf.Tensor(0.36427644, shape=(), dtype=float32), 0.8890419899920227, 0.0, 0.0.
+I0528 18:16:46.109067 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 17271): (1e-07,1000,1000,1e-05) tf.Tensor(0.36429802, shape=(), dtype=float32), 0.8890419899920227, 0.0, 0.0.
+I0528 18:16:47.012338 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 17328): (1e-07,1000,1000,1e-05) tf.Tensor(0.3643697, shape=(), dtype=float32), 0.8890419899920227, 0.0, 0.0.
+I0528 18:16:47.912498 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 17385): (1e-07,1000,1000,1e-05) tf.Tensor(0.36430502, shape=(), dtype=float32), 0.8890419899920227, 0.0, 0.0.
+I0528 18:16:48.823054 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 17442): (1e-07,1000,1000,1e-05) tf.Tensor(0.36421847, shape=(), dtype=float32), 0.8890419899920227, 0.0, 0.0.
+I0528 18:16:49.733201 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 17499): (1e-07,1000,1000,1e-05) tf.Tensor(0.3642263, shape=(), dtype=float32), 0.8890419899920227, 0.0, 0.0.
+I0528 18:16:50.634127 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 17556): (1e-07,1000,1000,1e-05) tf.Tensor(0.3642781, shape=(), dtype=float32), 0.8890419899920227, 0.0, 0.0.
+I0528 18:16:51.542784 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 17613): (1e-07,1000,1000,1e-05) tf.Tensor(0.36427552, shape=(), dtype=float32), 0.8890419899920227, 0.0, 0.0.
+I0528 18:16:52.448867 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 17670): (1e-07,1000,1000,1e-05) tf.Tensor(0.3643549, shape=(), dtype=float32), 0.8890419899920227, 0.0, 0.0.
+I0528 18:16:53.350783 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 17727): (1e-07,1000,1000,1e-05) tf.Tensor(0.36426416, shape=(), dtype=float32), 0.8890419899920227, 0.0, 0.0.
+I0528 18:16:54.254483 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 17784): (1e-07,1000,1000,1e-05) tf.Tensor(0.36425498, shape=(), dtype=float32), 0.8890419899920227, 0.0, 0.0.
+I0528 18:16:55.159698 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 17841): (1e-07,1000,1000,1e-05) tf.Tensor(0.36419192, shape=(), dtype=float32), 0.8890419899920227, 0.0, 0.0.
+I0528 18:16:56.108124 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 17898): (1e-07,1000,1000,1e-05) tf.Tensor(0.3641512, shape=(), dtype=float32), 0.8890419899920227, 0.0, 0.0.
+I0528 18:16:57.049975 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 17955): (1e-07,1000,1000,1e-05) tf.Tensor(0.36411336, shape=(), dtype=float32), 0.8890419899920227, 0.0, 0.0.
+I0528 18:16:57.952136 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 18012): (1e-07,1000,1000,1e-05) tf.Tensor(0.36415353, shape=(), dtype=float32), 0.8890419899920227, 0.0, 0.0.
+I0528 18:16:58.858768 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 18069): (1e-07,1000,1000,1e-05) tf.Tensor(0.36417565, shape=(), dtype=float32), 0.8890419899920227, 0.0, 0.0.
+I0528 18:16:59.827990 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 18126): (1e-07,1000,1000,1e-05) tf.Tensor(0.36403456, shape=(), dtype=float32), 0.8890178161336331, 0.0, 0.0.
+I0528 18:17:00.733381 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 18183): (1e-07,1000,1000,1e-05) tf.Tensor(0.36408758, shape=(), dtype=float32), 0.8890419899920227, 0.0, 0.0.
+I0528 18:17:01.668408 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 18240): (1e-07,1000,1000,1e-05) tf.Tensor(0.36399686, shape=(), dtype=float32), 0.8890178161336331, 0.0, 0.0.
+I0528 18:17:02.545901 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 18297): (1e-07,1000,1000,1e-05) tf.Tensor(0.36400348, shape=(), dtype=float32), 0.8890178161336331, 0.0, 0.0.
+I0528 18:17:03.412911 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 18354): (1e-07,1000,1000,1e-05) tf.Tensor(0.36415014, shape=(), dtype=float32), 0.8890178161336331, 0.0, 0.0.
+I0528 18:17:04.276132 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 18411): (1e-07,1000,1000,1e-05) tf.Tensor(0.3640141, shape=(), dtype=float32), 0.8890178161336331, 0.0, 0.0.
+I0528 18:17:05.187231 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 18468): (1e-07,1000,1000,1e-05) tf.Tensor(0.36381027, shape=(), dtype=float32), 0.8891870331423598, 0.35, 0.0015290519877675841.
+I0528 18:17:06.051978 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 18525): (1e-07,1000,1000,1e-05) tf.Tensor(0.36383256, shape=(), dtype=float32), 0.8890178161336331, 0.0, 0.0.
+I0528 18:17:06.951014 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 18582): (1e-07,1000,1000,1e-05) tf.Tensor(0.36380705, shape=(), dtype=float32), 0.8890178161336331, 0.0, 0.0.
+I0528 18:17:07.815368 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 18639): (1e-07,1000,1000,1e-05) tf.Tensor(0.36390698, shape=(), dtype=float32), 0.8890178161336331, 0.0, 0.0.
+I0528 18:17:08.682451 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 18696): (1e-07,1000,1000,1e-05) tf.Tensor(0.3639064, shape=(), dtype=float32), 0.8890178161336331, 0.0, 0.0.
+I0528 18:17:09.549149 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 18753): (1e-07,1000,1000,1e-05) tf.Tensor(0.3638202, shape=(), dtype=float32), 0.8891870331423598, 0.35, 0.0015290519877675841.
+I0528 18:17:10.439983 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 18810): (1e-07,1000,1000,1e-05) tf.Tensor(0.3637711, shape=(), dtype=float32), 0.8891628592839703, 0.3333333333333333, 0.0015290519877675841.
+I0528 18:17:11.338713 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 18867): (1e-07,1000,1000,1e-05) tf.Tensor(0.3636507, shape=(), dtype=float32), 0.8891628592839703, 0.3333333333333333, 0.0015290519877675841.
+I0528 18:17:12.234476 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 18924): (1e-07,1000,1000,1e-05) tf.Tensor(0.3636405, shape=(), dtype=float32), 0.8891628592839703, 0.3333333333333333, 0.0015290519877675841.
+I0528 18:17:13.138081 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 18981): (1e-07,1000,1000,1e-05) tf.Tensor(0.3635635, shape=(), dtype=float32), 0.8891628592839703, 0.3333333333333333, 0.0015290519877675841.
+I0528 18:17:14.038100 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 19038): (1e-07,1000,1000,1e-05) tf.Tensor(0.36353263, shape=(), dtype=float32), 0.8891628592839703, 0.3333333333333333, 0.0015290519877675841.
+I0528 18:17:14.903075 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 19095): (1e-07,1000,1000,1e-05) tf.Tensor(0.3635483, shape=(), dtype=float32), 0.8891628592839703, 0.3333333333333333, 0.0015290519877675841.
+I0528 18:17:15.818831 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 19152): (1e-07,1000,1000,1e-05) tf.Tensor(0.3634897, shape=(), dtype=float32), 0.8891628592839703, 0.3333333333333333, 0.0015290519877675841.
+I0528 18:17:16.687338 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 19209): (1e-07,1000,1000,1e-05) tf.Tensor(0.36351678, shape=(), dtype=float32), 0.8891628592839703, 0.3333333333333333, 0.0015290519877675841.
+I0528 18:17:17.553166 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 19266): (1e-07,1000,1000,1e-05) tf.Tensor(0.3636021, shape=(), dtype=float32), 0.8889936422752436, 0.0, 0.0.
+I0528 18:17:18.419345 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 19323): (1e-07,1000,1000,1e-05) tf.Tensor(0.36355585, shape=(), dtype=float32), 0.8891628592839703, 0.3333333333333333, 0.0015290519877675841.
+I0528 18:17:19.358865 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 19380): (1e-07,1000,1000,1e-05) tf.Tensor(0.363487, shape=(), dtype=float32), 0.8891628592839703, 0.3333333333333333, 0.0015290519877675841.
+I0528 18:17:20.225704 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 19437): (1e-07,1000,1000,1e-05) tf.Tensor(0.36351097, shape=(), dtype=float32), 0.8891628592839703, 0.3333333333333333, 0.0015290519877675841.
+I0528 18:17:21.140183 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 19494): (1e-07,1000,1000,1e-05) tf.Tensor(0.36345848, shape=(), dtype=float32), 0.8891628592839703, 0.3333333333333333, 0.0015290519877675841.
+I0528 18:17:22.031866 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 19551): (1e-07,1000,1000,1e-05) tf.Tensor(0.3632388, shape=(), dtype=float32), 0.8890903377088017, 0.2916666666666667, 0.0015290519877675841.
+I0528 18:17:22.899463 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 19608): (1e-07,1000,1000,1e-05) tf.Tensor(0.36328512, shape=(), dtype=float32), 0.8890903377088017, 0.2916666666666667, 0.0015290519877675841.
+I0528 18:17:23.764574 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 19665): (1e-07,1000,1000,1e-05) tf.Tensor(0.3633325, shape=(), dtype=float32), 0.8890903377088017, 0.2916666666666667, 0.0015290519877675841.
+I0528 18:17:24.631047 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 19722): (1e-07,1000,1000,1e-05) tf.Tensor(0.36329263, shape=(), dtype=float32), 0.8890903377088017, 0.2916666666666667, 0.0015290519877675841.
+I0528 18:17:25.499829 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 19779): (1e-07,1000,1000,1e-05) tf.Tensor(0.36330137, shape=(), dtype=float32), 0.8890903377088017, 0.2916666666666667, 0.0015290519877675841.
+I0528 18:17:26.365460 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 19836): (1e-07,1000,1000,1e-05) tf.Tensor(0.3634002, shape=(), dtype=float32), 0.8890903377088017, 0.2916666666666667, 0.0015290519877675841.
+I0528 18:17:27.234639 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 19893): (1e-07,1000,1000,1e-05) tf.Tensor(0.36344415, shape=(), dtype=float32), 0.8890903377088017, 0.2916666666666667, 0.0015290519877675841.
+I0528 18:17:28.109089 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 19950): (1e-07,1000,1000,1e-05) tf.Tensor(0.36332297, shape=(), dtype=float32), 0.8890903377088017, 0.2916666666666667, 0.0015290519877675841.
+I0528 18:17:29.008484 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 20007): (1e-07,1000,1000,1e-05) tf.Tensor(0.36314172, shape=(), dtype=float32), 0.8890661638504122, 0.28, 0.0015290519877675841.
+I0528 18:17:29.963794 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 20064): (1e-07,1000,1000,1e-05) tf.Tensor(0.36313704, shape=(), dtype=float32), 0.8890661638504122, 0.28, 0.0015290519877675841.
+I0528 18:17:30.865675 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 20121): (1e-07,1000,1000,1e-05) tf.Tensor(0.3630843, shape=(), dtype=float32), 0.8890661638504122, 0.28, 0.0015290519877675841.
+I0528 18:17:31.736541 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 20178): (1e-07,1000,1000,1e-05) tf.Tensor(0.36315325, shape=(), dtype=float32), 0.8890661638504122, 0.28, 0.0015290519877675841.
+I0528 18:17:32.607513 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 20235): (1e-07,1000,1000,1e-05) tf.Tensor(0.36314481, shape=(), dtype=float32), 0.8890661638504122, 0.28, 0.0015290519877675841.
+I0528 18:17:33.484420 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 20292): (1e-07,1000,1000,1e-05) tf.Tensor(0.36318162, shape=(), dtype=float32), 0.8890661638504122, 0.28, 0.0015290519877675841.
+I0528 18:17:34.349286 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 20349): (1e-07,1000,1000,1e-05) tf.Tensor(0.36327487, shape=(), dtype=float32), 0.8890661638504122, 0.28, 0.0015290519877675841.
+I0528 18:17:35.214848 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 20406): (1e-07,1000,1000,1e-05) tf.Tensor(0.36332554, shape=(), dtype=float32), 0.8890661638504122, 0.28, 0.0015290519877675841.
+I0528 18:17:36.079770 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 20463): (1e-07,1000,1000,1e-05) tf.Tensor(0.3632953, shape=(), dtype=float32), 0.8890661638504122, 0.28, 0.0015290519877675841.
+I0528 18:17:36.943039 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 20520): (1e-07,1000,1000,1e-05) tf.Tensor(0.36343104, shape=(), dtype=float32), 0.8890661638504122, 0.28, 0.0015290519877675841.
+I0528 18:17:37.806549 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 20577): (1e-07,1000,1000,1e-05) tf.Tensor(0.36351293, shape=(), dtype=float32), 0.8890661638504122, 0.28, 0.0015290519877675841.
+I0528 18:17:38.667705 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 20634): (1e-07,1000,1000,1e-05) tf.Tensor(0.36341828, shape=(), dtype=float32), 0.8890661638504122, 0.28, 0.0015290519877675841.
+I0528 18:17:39.532018 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 20691): (1e-07,1000,1000,1e-05) tf.Tensor(0.36331162, shape=(), dtype=float32), 0.8890419899920227, 0.2692307692307692, 0.0015290519877675841.
+I0528 18:17:40.394388 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 20748): (1e-07,1000,1000,1e-05) tf.Tensor(0.36330786, shape=(), dtype=float32), 0.8890419899920227, 0.2692307692307692, 0.0015290519877675841.
+I0528 18:17:41.257665 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 20805): (1e-07,1000,1000,1e-05) tf.Tensor(0.36333916, shape=(), dtype=float32), 0.8890419899920227, 0.2692307692307692, 0.0015290519877675841.
+I0528 18:17:42.122967 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 20862): (1e-07,1000,1000,1e-05) tf.Tensor(0.36337245, shape=(), dtype=float32), 0.8890419899920227, 0.2692307692307692, 0.0015290519877675841.
+I0528 18:17:42.987460 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 20919): (1e-07,1000,1000,1e-05) tf.Tensor(0.36331442, shape=(), dtype=float32), 0.8890419899920227, 0.2692307692307692, 0.0015290519877675841.
+I0528 18:17:43.852241 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 20976): (1e-07,1000,1000,1e-05) tf.Tensor(0.36313352, shape=(), dtype=float32), 0.8890419899920227, 0.2692307692307692, 0.0015290519877675841.
+I0528 18:17:44.715363 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 21033): (1e-07,1000,1000,1e-05) tf.Tensor(0.36330077, shape=(), dtype=float32), 0.8890419899920227, 0.2692307692307692, 0.0015290519877675841.
+I0528 18:17:45.577572 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 21090): (1e-07,1000,1000,1e-05) tf.Tensor(0.36326692, shape=(), dtype=float32), 0.8890419899920227, 0.2692307692307692, 0.0015290519877675841.
+I0528 18:17:46.442072 46987529454464 classifiers.py:510] Validation Cross-entropy Loss, Accuracy, Precision, Recall at step (round 0, 21147): (1e-07,1000,1000,1e-05) tf.Tensor(0.36328864, shape=(), dtype=float32), 0.8890419899920227, 0.2692307692307692, 0.0015290519877675841.
+I0528 18:17:46.823712 46987529454464 classifiers.py:596] The best_index 20121.
+I0528 18:17:46.827966 46987529454464 classifiers.py:600] The variables for the best model is [<tf.Variable 'dense_2/kernel:0' shape=(10, 50) dtype=float32, numpy=
+array([[-0.139992,  0.190269,  0.144444, -0.060852, ...,  0.219472, -0.039891,  0.128368, -0.013405],
+       [ 0.140048, -0.384055,  0.15692 , -0.150688, ...,  0.122386, -0.061276, -0.153189, -0.291734],
+       [ 0.036813, -0.152395,  0.146347,  0.261939, ..., -0.058603,  0.154428,  0.191842, -0.161849],
+       [ 0.143917, -0.237457, -0.365483,  0.115093, ..., -0.328517,  0.024082, -0.005926,  0.072322],
+       ...,
+       [ 0.05077 , -0.328608, -0.232829, -0.083186, ..., -0.183406,  0.269034, -0.314434, -0.014365],
+       [-0.119819, -0.153819, -0.239516,  0.007041, ..., -0.041118, -0.060358,  0.156984,  0.221395],
+       [-0.135625,  0.254896, -0.22749 ,  0.15168 , ...,  0.310274,  0.033577,  0.304672,  0.033903],
+       [ 0.299878,  0.133046,  0.269713, -0.076486, ...,  0.286584, -0.053185,  0.245969, -0.214849]], dtype=float32)>, <tf.Variable 'dense_2/bias:0' shape=(50,) dtype=float32, numpy=
+array([ 0.073027, -0.054443,  0.060805, -0.033578, -0.048757, -0.04864 ,  0.105297,  0.066404, -0.044364,  0.064878,
+       -0.054053, -0.053317,  0.060512,  0.060367,  0.068779,  0.064535, -0.053155, -0.038102,  0.05815 , -0.022945,
+        0.066465,  0.070854, -0.050978, -0.053246, -0.048291, -0.043702,  0.071972, -0.054152,  0.036209,  0.062728,
+        0.065973, -0.051506, -0.051381,  0.059976, -0.049547,  0.064607,  0.07098 ,  0.049377,  0.059299,  0.048584,
+        0.059967,  0.064726,  0.068176, -0.045604,  0.053928, -0.050357,  0.063967, -0.048737,  0.023381, -0.052405],
+      dtype=float32)>, <tf.Variable 'dense_3/kernel:0' shape=(50, 2) dtype=float32, numpy=
+array([[ 0.062155, -0.093606],
+       [-0.004375,  0.276253],
+       [ 0.194726, -0.17131 ],
+       [ 0.012925,  0.012259],
+       ...,
+       [ 0.321756,  0.003176],
+       [-0.031659,  0.080691],
+       [-0.072986, -0.149633],
+       [-0.28115 , -0.028137]], dtype=float32)>, <tf.Variable 'dense_3/bias:0' shape=(2,) dtype=float32, numpy=array([ 0.055903, -0.055903], dtype=float32)>].
+The final model checkpoint file name is 2020_05_28_18_12_06_496938_best_model.h5.
+
+Calculate scores for train...
+[Parallel(n_jobs=10)]: Using backend LokyBackend with 10 concurrent workers.
+2020-05-28 18:17:50.946207: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer.so.6'; dlerror: libnvinfer.so.6: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /opt/mvapich2/intel/ib/lib:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/compiler/lib/intel64_lin:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/ipp/../compiler/lib/intel64:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/ipp/lib/intel64:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/mkl/lib/intel64:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/tbb/lib/intel64/gcc4.4
+2020-05-28 18:17:50.946207: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer.so.6'; dlerror: libnvinfer.so.6: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /opt/mvapich2/intel/ib/lib:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/compiler/lib/intel64_lin:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/ipp/../compiler/lib/intel64:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/ipp/lib/intel64:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/mkl/lib/intel64:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/tbb/lib/intel64/gcc4.4
+2020-05-28 18:17:50.946207: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer.so.6'; dlerror: libnvinfer.so.6: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /opt/mvapich2/intel/ib/lib:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/compiler/lib/intel64_lin:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/ipp/../compiler/lib/intel64:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/ipp/lib/intel64:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/mkl/lib/intel64:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/tbb/lib/intel64/gcc4.4
+2020-05-28 18:17:50.946533: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer_plugin.so.6'; dlerror: libnvinfer_plugin.so.6: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /opt/mvapich2/intel/ib/lib:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/compiler/lib/intel64_lin:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/ipp/../compiler/lib/intel64:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/ipp/lib/intel64:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/mkl/lib/intel64:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/tbb/lib/intel64/gcc4.4
+2020-05-28 18:17:50.946547: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:30] Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.
+2020-05-28 18:17:50.946551: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer_plugin.so.6'; dlerror: libnvinfer_plugin.so.6: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /opt/mvapich2/intel/ib/lib:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/compiler/lib/intel64_lin:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/ipp/../compiler/lib/intel64:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/ipp/lib/intel64:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/mkl/lib/intel64:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/tbb/lib/intel64/gcc4.4
+2020-05-28 18:17:50.946562: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer_plugin.so.6'; dlerror: libnvinfer_plugin.so.6: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /opt/mvapich2/intel/ib/lib:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/compiler/lib/intel64_lin:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/ipp/../compiler/lib/intel64:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/ipp/lib/intel64:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/mkl/lib/intel64:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/tbb/lib/intel64/gcc4.4
+2020-05-28 18:17:50.946571: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:30] Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.
+2020-05-28 18:17:50.946577: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:30] Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.
+2020-05-28 18:17:50.946884: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer.so.6'; dlerror: libnvinfer.so.6: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /opt/mvapich2/intel/ib/lib:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/compiler/lib/intel64_lin:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/ipp/../compiler/lib/intel64:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/ipp/lib/intel64:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/mkl/lib/intel64:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/tbb/lib/intel64/gcc4.4
+2020-05-28 18:17:50.946889: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer.so.6'; dlerror: libnvinfer.so.6: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /opt/mvapich2/intel/ib/lib:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/compiler/lib/intel64_lin:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/ipp/../compiler/lib/intel64:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/ipp/lib/intel64:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/mkl/lib/intel64:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/tbb/lib/intel64/gcc4.4
+2020-05-28 18:17:50.946985: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer_plugin.so.6'; dlerror: libnvinfer_plugin.so.6: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /opt/mvapich2/intel/ib/lib:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/compiler/lib/intel64_lin:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/ipp/../compiler/lib/intel64:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/ipp/lib/intel64:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/mkl/lib/intel64:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/tbb/lib/intel64/gcc4.4
+2020-05-28 18:17:50.946990: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer_plugin.so.6'; dlerror: libnvinfer_plugin.so.6: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /opt/mvapich2/intel/ib/lib:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/compiler/lib/intel64_lin:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/ipp/../compiler/lib/intel64:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/ipp/lib/intel64:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/mkl/lib/intel64:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/tbb/lib/intel64/gcc4.4
+2020-05-28 18:17:50.946998: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:30] Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.
+2020-05-28 18:17:50.947008: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:30] Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.
+2020-05-28 18:17:50.946206: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer.so.6'; dlerror: libnvinfer.so.6: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /opt/mvapich2/intel/ib/lib:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/compiler/lib/intel64_lin:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/ipp/../compiler/lib/intel64:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/ipp/lib/intel64:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/mkl/lib/intel64:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/tbb/lib/intel64/gcc4.4
+2020-05-28 18:17:50.948600: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer_plugin.so.6'; dlerror: libnvinfer_plugin.so.6: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /opt/mvapich2/intel/ib/lib:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/compiler/lib/intel64_lin:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/ipp/../compiler/lib/intel64:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/ipp/lib/intel64:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/mkl/lib/intel64:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/tbb/lib/intel64/gcc4.4
+2020-05-28 18:17:50.948614: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:30] Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.
+2020-05-28 18:17:50.949140: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer.so.6'; dlerror: libnvinfer.so.6: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /opt/mvapich2/intel/ib/lib:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/compiler/lib/intel64_lin:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/ipp/../compiler/lib/intel64:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/ipp/lib/intel64:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/mkl/lib/intel64:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/tbb/lib/intel64/gcc4.4
+2020-05-28 18:17:50.949235: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer_plugin.so.6'; dlerror: libnvinfer_plugin.so.6: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /opt/mvapich2/intel/ib/lib:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/compiler/lib/intel64_lin:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/ipp/../compiler/lib/intel64:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/ipp/lib/intel64:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/mkl/lib/intel64:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/tbb/lib/intel64/gcc4.4
+2020-05-28 18:17:50.949247: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:30] Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.
+2020-05-28 18:17:50.949240: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer.so.6'; dlerror: libnvinfer.so.6: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /opt/mvapich2/intel/ib/lib:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/compiler/lib/intel64_lin:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/ipp/../compiler/lib/intel64:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/ipp/lib/intel64:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/mkl/lib/intel64:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/tbb/lib/intel64/gcc4.4
+2020-05-28 18:17:50.949274: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer.so.6'; dlerror: libnvinfer.so.6: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /opt/mvapich2/intel/ib/lib:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/compiler/lib/intel64_lin:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/ipp/../compiler/lib/intel64:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/ipp/lib/intel64:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/mkl/lib/intel64:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/tbb/lib/intel64/gcc4.4
+2020-05-28 18:17:50.949336: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer_plugin.so.6'; dlerror: libnvinfer_plugin.so.6: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /opt/mvapich2/intel/ib/lib:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/compiler/lib/intel64_lin:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/ipp/../compiler/lib/intel64:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/ipp/lib/intel64:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/mkl/lib/intel64:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/tbb/lib/intel64/gcc4.4
+2020-05-28 18:17:50.949348: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:30] Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.
+2020-05-28 18:17:50.949368: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer_plugin.so.6'; dlerror: libnvinfer_plugin.so.6: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /opt/mvapich2/intel/ib/lib:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/compiler/lib/intel64_lin:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/ipp/../compiler/lib/intel64:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/ipp/lib/intel64:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/mkl/lib/intel64:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/tbb/lib/intel64/gcc4.4
+2020-05-28 18:17:50.949380: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:30] Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.
+2020-05-28 18:17:50.951596: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer.so.6'; dlerror: libnvinfer.so.6: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /opt/mvapich2/intel/ib/lib:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/compiler/lib/intel64_lin:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/ipp/../compiler/lib/intel64:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/ipp/lib/intel64:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/mkl/lib/intel64:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/tbb/lib/intel64/gcc4.4
+2020-05-28 18:17:50.951692: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libnvinfer_plugin.so.6'; dlerror: libnvinfer_plugin.so.6: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /opt/mvapich2/intel/ib/lib:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/compiler/lib/intel64_lin:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/ipp/../compiler/lib/intel64:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/ipp/lib/intel64:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/mkl/lib/intel64:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/tbb/lib/intel64/gcc4.4
+2020-05-28 18:17:50.951708: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:30] Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.
+2020-05-28 18:17:54.740165: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcuda.so.1'; dlerror: libcuda.so.1: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /opt/mvapich2/intel/ib/lib:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/compiler/lib/intel64_lin:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/ipp/../compiler/lib/intel64:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/ipp/lib/intel64:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/mkl/lib/intel64:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/tbb/lib/intel64/gcc4.4
+2020-05-28 18:17:54.740197: E tensorflow/stream_executor/cuda/cuda_driver.cc:351] failed call to cuInit: UNKNOWN ERROR (303)
+2020-05-28 18:17:54.740220: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:156] kernel driver does not appear to be running on this host (comet-02-59.sdsc.edu): /proc/driver/nvidia/version does not exist
+2020-05-28 18:17:54.740442: I tensorflow/core/platform/cpu_feature_guard.cc:142] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2020-05-28 18:17:54.748464: I tensorflow/core/platform/profile_utils/cpu_utils.cc:94] CPU Frequency: 2494425000 Hz
+2020-05-28 18:17:54.748700: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x56162508b120 initialized for platform Host (this does not guarantee that XLA will be used). Devices:
+2020-05-28 18:17:54.748717: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Host, Default Version
+2020-05-28 18:17:55.172045: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcuda.so.1'; dlerror: libcuda.so.1: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /opt/mvapich2/intel/ib/lib:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/compiler/lib/intel64_lin:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/ipp/../compiler/lib/intel64:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/ipp/lib/intel64:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/mkl/lib/intel64:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/tbb/lib/intel64/gcc4.4
+2020-05-28 18:17:55.172071: E tensorflow/stream_executor/cuda/cuda_driver.cc:351] failed call to cuInit: UNKNOWN ERROR (303)
+2020-05-28 18:17:55.172091: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:156] kernel driver does not appear to be running on this host (comet-02-59.sdsc.edu): /proc/driver/nvidia/version does not exist
+2020-05-28 18:17:55.172315: I tensorflow/core/platform/cpu_feature_guard.cc:142] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2020-05-28 18:17:55.180595: I tensorflow/core/platform/profile_utils/cpu_utils.cc:94] CPU Frequency: 2494425000 Hz
+2020-05-28 18:17:55.180842: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x55c34ae46080 initialized for platform Host (this does not guarantee that XLA will be used). Devices:
+2020-05-28 18:17:55.180860: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Host, Default Version
+2020-05-28 18:17:55.674287: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcuda.so.1'; dlerror: libcuda.so.1: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /opt/mvapich2/intel/ib/lib:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/compiler/lib/intel64_lin:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/ipp/../compiler/lib/intel64:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/ipp/lib/intel64:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/mkl/lib/intel64:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/tbb/lib/intel64/gcc4.4
+2020-05-28 18:17:55.674313: E tensorflow/stream_executor/cuda/cuda_driver.cc:351] failed call to cuInit: UNKNOWN ERROR (303)
+2020-05-28 18:17:55.674332: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:156] kernel driver does not appear to be running on this host (comet-02-59.sdsc.edu): /proc/driver/nvidia/version does not exist
+2020-05-28 18:17:55.674562: I tensorflow/core/platform/cpu_feature_guard.cc:142] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2020-05-28 18:17:55.682764: I tensorflow/core/platform/profile_utils/cpu_utils.cc:94] CPU Frequency: 2494425000 Hz
+2020-05-28 18:17:55.683003: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x5629a94120e0 initialized for platform Host (this does not guarantee that XLA will be used). Devices:
+2020-05-28 18:17:55.683022: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Host, Default Version
+2020-05-28 18:17:55.696271: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcuda.so.1'; dlerror: libcuda.so.1: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /opt/mvapich2/intel/ib/lib:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/compiler/lib/intel64_lin:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/ipp/../compiler/lib/intel64:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/ipp/lib/intel64:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/mkl/lib/intel64:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/tbb/lib/intel64/gcc4.4
+2020-05-28 18:17:55.696294: E tensorflow/stream_executor/cuda/cuda_driver.cc:351] failed call to cuInit: UNKNOWN ERROR (303)
+2020-05-28 18:17:55.696313: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:156] kernel driver does not appear to be running on this host (comet-02-59.sdsc.edu): /proc/driver/nvidia/version does not exist
+2020-05-28 18:17:55.696532: I tensorflow/core/platform/cpu_feature_guard.cc:142] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2020-05-28 18:17:55.705140: I tensorflow/core/platform/profile_utils/cpu_utils.cc:94] CPU Frequency: 2494425000 Hz
+2020-05-28 18:17:55.705344: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x561131cc6120 initialized for platform Host (this does not guarantee that XLA will be used). Devices:
+2020-05-28 18:17:55.705358: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Host, Default Version
+2020-05-28 18:17:55.706081: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcuda.so.1'; dlerror: libcuda.so.1: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /opt/mvapich2/intel/ib/lib:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/compiler/lib/intel64_lin:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/ipp/../compiler/lib/intel64:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/ipp/lib/intel64:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/mkl/lib/intel64:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/tbb/lib/intel64/gcc4.4
+2020-05-28 18:17:55.706105: E tensorflow/stream_executor/cuda/cuda_driver.cc:351] failed call to cuInit: UNKNOWN ERROR (303)
+2020-05-28 18:17:55.706127: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:156] kernel driver does not appear to be running on this host (comet-02-59.sdsc.edu): /proc/driver/nvidia/version does not exist
+2020-05-28 18:17:55.706354: I tensorflow/core/platform/cpu_feature_guard.cc:142] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2020-05-28 18:17:55.715777: I tensorflow/core/platform/profile_utils/cpu_utils.cc:94] CPU Frequency: 2494425000 Hz
+2020-05-28 18:17:55.716025: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x55c3f1199080 initialized for platform Host (this does not guarantee that XLA will be used). Devices:
+2020-05-28 18:17:55.716039: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Host, Default Version
+2020-05-28 18:17:55.725179: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcuda.so.1'; dlerror: libcuda.so.1: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /opt/mvapich2/intel/ib/lib:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/compiler/lib/intel64_lin:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/ipp/../compiler/lib/intel64:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/ipp/lib/intel64:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/mkl/lib/intel64:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/tbb/lib/intel64/gcc4.4
+2020-05-28 18:17:55.725204: E tensorflow/stream_executor/cuda/cuda_driver.cc:351] failed call to cuInit: UNKNOWN ERROR (303)
+2020-05-28 18:17:55.725223: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:156] kernel driver does not appear to be running on this host (comet-02-59.sdsc.edu): /proc/driver/nvidia/version does not exist
+2020-05-28 18:17:55.725444: I tensorflow/core/platform/cpu_feature_guard.cc:142] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2020-05-28 18:17:55.746164: I tensorflow/core/platform/profile_utils/cpu_utils.cc:94] CPU Frequency: 2494425000 Hz
+2020-05-28 18:17:55.746411: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x559687caf080 initialized for platform Host (this does not guarantee that XLA will be used). Devices:
+2020-05-28 18:17:55.746425: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Host, Default Version
+2020-05-28 18:17:55.827862: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcuda.so.1'; dlerror: libcuda.so.1: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /opt/mvapich2/intel/ib/lib:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/compiler/lib/intel64_lin:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/ipp/../compiler/lib/intel64:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/ipp/lib/intel64:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/mkl/lib/intel64:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/tbb/lib/intel64/gcc4.4
+2020-05-28 18:17:55.827894: E tensorflow/stream_executor/cuda/cuda_driver.cc:351] failed call to cuInit: UNKNOWN ERROR (303)
+2020-05-28 18:17:55.827915: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:156] kernel driver does not appear to be running on this host (comet-02-59.sdsc.edu): /proc/driver/nvidia/version does not exist
+2020-05-28 18:17:55.828148: I tensorflow/core/platform/cpu_feature_guard.cc:142] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2020-05-28 18:17:55.855184: I tensorflow/core/platform/profile_utils/cpu_utils.cc:94] CPU Frequency: 2494425000 Hz
+2020-05-28 18:17:55.855411: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x560806077080 initialized for platform Host (this does not guarantee that XLA will be used). Devices:
+2020-05-28 18:17:55.855430: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Host, Default Version
+2020-05-28 18:17:55.896992: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcuda.so.1'; dlerror: libcuda.so.1: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /opt/mvapich2/intel/ib/lib:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/compiler/lib/intel64_lin:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/ipp/../compiler/lib/intel64:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/ipp/lib/intel64:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/mkl/lib/intel64:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/tbb/lib/intel64/gcc4.4
+2020-05-28 18:17:55.897020: E tensorflow/stream_executor/cuda/cuda_driver.cc:351] failed call to cuInit: UNKNOWN ERROR (303)
+2020-05-28 18:17:55.897041: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:156] kernel driver does not appear to be running on this host (comet-02-59.sdsc.edu): /proc/driver/nvidia/version does not exist
+2020-05-28 18:17:55.897271: I tensorflow/core/platform/cpu_feature_guard.cc:142] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2020-05-28 18:17:55.907317: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcuda.so.1'; dlerror: libcuda.so.1: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /opt/mvapich2/intel/ib/lib:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/compiler/lib/intel64_lin:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/ipp/../compiler/lib/intel64:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/ipp/lib/intel64:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/mkl/lib/intel64:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/tbb/lib/intel64/gcc4.4
+2020-05-28 18:17:55.907342: E tensorflow/stream_executor/cuda/cuda_driver.cc:351] failed call to cuInit: UNKNOWN ERROR (303)
+2020-05-28 18:17:55.907363: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:156] kernel driver does not appear to be running on this host (comet-02-59.sdsc.edu): /proc/driver/nvidia/version does not exist
+2020-05-28 18:17:55.907588: I tensorflow/core/platform/cpu_feature_guard.cc:142] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2020-05-28 18:17:55.936173: I tensorflow/core/platform/profile_utils/cpu_utils.cc:94] CPU Frequency: 2494425000 Hz
+2020-05-28 18:17:55.941177: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x55db030df120 initialized for platform Host (this does not guarantee that XLA will be used). Devices:
+2020-05-28 18:17:55.941196: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Host, Default Version
+2020-05-28 18:17:55.942170: I tensorflow/core/platform/profile_utils/cpu_utils.cc:94] CPU Frequency: 2494425000 Hz
+2020-05-28 18:17:55.942398: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x55f34bcb7080 initialized for platform Host (this does not guarantee that XLA will be used). Devices:
+2020-05-28 18:17:55.942418: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Host, Default Version
+2020-05-28 18:17:55.948927: W tensorflow/stream_executor/platform/default/dso_loader.cc:55] Could not load dynamic library 'libcuda.so.1'; dlerror: libcuda.so.1: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /opt/mvapich2/intel/ib/lib:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/compiler/lib/intel64_lin:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/ipp/../compiler/lib/intel64:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/ipp/lib/intel64:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/mkl/lib/intel64:/opt/intel/2018.1.163/compilers_and_libraries_2018.1.163/linux/tbb/lib/intel64/gcc4.4
+2020-05-28 18:17:55.948952: E tensorflow/stream_executor/cuda/cuda_driver.cc:351] failed call to cuInit: UNKNOWN ERROR (303)
+2020-05-28 18:17:55.948985: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:156] kernel driver does not appear to be running on this host (comet-02-59.sdsc.edu): /proc/driver/nvidia/version does not exist
+2020-05-28 18:17:55.949214: I tensorflow/core/platform/cpu_feature_guard.cc:142] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2020-05-28 18:17:55.991171: I tensorflow/core/platform/profile_utils/cpu_utils.cc:94] CPU Frequency: 2494425000 Hz
+2020-05-28 18:17:55.991419: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x560081ecc030 initialized for platform Host (this does not guarantee that XLA will be used). Devices:
+2020-05-28 18:17:55.991438: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Host, Default Version
+[Parallel(n_jobs=10)]: Done   7 out of  10 | elapsed:   53.3s remaining:   22.8s
+[Parallel(n_jobs=10)]: Done  10 out of  10 | elapsed:   56.8s finished
+I0528 18:18:44.982826 46987529454464 classifiers.py:743] The penalization parameter is 1e-07
+
+I0528 18:18:45.031578 46987529454464 classifiers.py:745] Condition # for Fisher Info Mat before adding nugget: 2.238792780836771e+18
+I0528 18:18:45.086758 46987529454464 classifiers.py:750] Condition # for Fisher Info Mat after adding penalization nugget: 1.4735484210910902e+16
+I0528 18:18:46.453409 46987529454464 utils.py:317] The largest eigen-value is [2.212148].
+
+I0528 18:18:46.453565 46987529454464 utils.py:319] The identity matrix need to add: a nugget 0.0001 and the factor to ensure condition number is 0.00022121475521638163.
+I0528 18:18:46.516244 46987529454464 classifiers.py:2090] The positive samples: 811; The negative samples: 56548
+I0528 18:18:46.539587 46987529454464 utils.py:129] Note: NumExpr detected 24 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.
+I0528 18:18:46.539817 46987529454464 utils.py:141] NumExpr defaulting to 8 threads.
+I0528 18:18:46.544180 46987529454464 classifiers.py:2100] The accuracy is 0.6257292085174769
+I0528 18:18:46.548468 46987529454464 classifiers.py:2104] The accuracy is 0.6257292085174769
+I0528 18:18:46.575357 46987529454464 classifiers.py:2108] The precision is 0.14362606232294617
+I0528 18:18:46.601931 46987529454464 classifiers.py:2112] The recall is 0.625154130702836
+I0528 18:18:46.613910 46987529454464 classifiers.py:2152] The accuracy is 0.10998794696665327
+I0528 18:18:46.617282 46987529454464 classifiers.py:2156] The accuracy is 0.10998794696665327
+I0528 18:18:46.640701 46987529454464 classifiers.py:2160] The precision is 0.0928838215057991
+I0528 18:18:46.663219 46987529454464 classifiers.py:2164] The recall is 0.998766954377312
+I0528 18:18:46.675282 46987529454464 classifiers.py:2196] The accuracy is 0.9087665729208517
+I0528 18:18:46.678366 46987529454464 classifiers.py:2200] The accuracy is 0.9087665729208517
+/home/ghhgkz/.local/lib/python3.7/site-packages/sklearn/metrics/_classification.py:1272: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+I0528 18:18:46.704221 46987529454464 classifiers.py:2204] The precision is 0.0
+I0528 18:18:46.727050 46987529454464 classifiers.py:2208] The recall is 0.0
+I0528 18:18:46.727182 46987529454464 classifiers.py:689] 
+The original code gives: [0.09722892940044403];
+My modified code gives: [0.02953645959496498];
+For accuracy gives: [0.6147593259811401].
+Calculate scores for Phase-I...
+[Parallel(n_jobs=10)]: Using backend LokyBackend with 10 concurrent workers.
+[Parallel(n_jobs=10)]: Done   7 out of  10 | elapsed:   33.5s remaining:   14.4s
+[Parallel(n_jobs=10)]: Done  10 out of  10 | elapsed:   34.1s finished
+I0528 18:19:21.055924 46987529454464 classifiers.py:923] The calculation for Phase-I takes 34.31595468521118 seconds.
+I0528 18:19:21.738808 46987529454464 classifiers.py:743] The penalization parameter is 1e-07
+
+I0528 18:19:21.784329 46987529454464 classifiers.py:745] Condition # for Fisher Info Mat before adding nugget: 1.9986691842732928e+18
+I0528 18:19:21.838923 46987529454464 classifiers.py:750] Condition # for Fisher Info Mat after adding penalization nugget: 1.015335615816573e+16
+I0528 18:19:22.834901 46987529454464 utils.py:317] The largest eigen-value is [1.71606].
+
+I0528 18:19:22.835056 46987529454464 utils.py:319] The identity matrix need to add: a nugget 0.0001 and the factor to ensure condition number is 0.000171605968654661.
+I0528 18:19:22.884099 46987529454464 classifiers.py:677] 
+Current classification threshold is: 0.09722892940044403.
+Calculate scores for Phase-II...
+[Parallel(n_jobs=10)]: Using backend LokyBackend with 10 concurrent workers.
+[Parallel(n_jobs=10)]: Done   7 out of  10 | elapsed:   47.9s remaining:   20.5s
+[Parallel(n_jobs=10)]: Done  10 out of  10 | elapsed:   48.9s finished
+I0528 18:20:12.057001 46987529454464 classifiers.py:973] The calculation for Phase-II takes 49.162023305892944 seconds.
+I0528 18:20:12.063473 46987529454464 classifiers.py:677] 
+Current classification threshold is: 0.09722892940044403.
+(array([[ 4.494567e+03,  3.016348e+01, -3.119991e+01, -6.380989e-02, ...,  4.657655e+00, -4.657655e+00,  4.345473e+00,
+        -4.345473e+00],
+       [ 3.016348e+01,  4.409130e+03,  5.612273e+01,  1.281382e-01, ..., -6.917192e+00,  6.917183e+00, -2.492654e+00,
+         2.492647e+00],
+       [-3.119991e+01,  5.612273e+01,  4.309592e+03, -2.120565e-01, ..., -4.729579e+00,  4.729588e+00,  9.181591e+00,
+        -9.181570e+00],
+       [-6.380989e-02,  1.281382e-01, -2.120565e-01,  4.520494e+03, ...,  1.714970e-02, -1.714969e-02,  1.401578e-02,
+        -1.401577e-02],
+       ...,
+       [ 4.657655e+00, -6.917192e+00, -4.729579e+00,  1.714970e-02, ...,  4.275688e+03,  2.448060e+02, -8.998592e+01,
+         8.998593e+01],
+       [-4.657655e+00,  6.917183e+00,  4.729588e+00, -1.714969e-02, ...,  2.448060e+02,  4.275688e+03,  8.998592e+01,
+        -8.998592e+01],
+       [ 4.345473e+00, -2.492654e+00,  9.181591e+00,  1.401578e-02, ..., -8.998592e+01,  8.998592e+01,  4.337504e+03,
+         1.829901e+02],
+       [-4.345473e+00,  2.492647e+00, -9.181570e+00, -1.401577e-02, ...,  8.998593e+01, -8.998592e+01,  1.829901e+02,
+         4.337504e+03]]), False, False)
+The eigenvalues for fisher_info_mat_train is [1.517232e+01+0.000000e+00j 5.022184e-01+0.000000e+00j 4.525910e-01+0.000000e+00j 4.135390e-01+0.000000e+00j ...
+ 1.000000e-07+7.078036e-18j 1.000000e-07-7.078036e-18j 1.000000e-07+0.000000e+00j 1.000000e-07+0.000000e+00j].
+
+The eigenvalues for fisher_info_mat_PI is [1.125353e+01+0.000000e+00j 4.736118e-01+0.000000e+00j 3.854367e-01+0.000000e+00j 3.520307e-01+0.000000e+00j ...
+ 1.000000e-07+0.000000e+00j 1.000000e-07+9.552591e-18j 1.000000e-07-9.552591e-18j 1.000000e-07+0.000000e+00j].
+
+The eigenvalues for S_train is [2.212369e+00+0.00000e+00j 7.299997e-02+0.00000e+00j 6.831653e-02+0.00000e+00j 6.061189e-02+0.00000e+00j ...
+ 2.212148e-04-8.30838e-18j 2.212148e-04+0.00000e+00j 2.212148e-04+0.00000e+00j 2.212148e-04+0.00000e+00j].
+
+The eigenvalues for S_PI is [1.716231e+00+0.000000e+00j 7.587073e-02+0.000000e+00j 5.839332e-02+0.000000e+00j 5.470092e-02+0.000000e+00j ...
+ 1.716060e-04+1.075471e-17j 1.716060e-04-1.075471e-17j 1.716060e-04+0.000000e+00j 1.716060e-04+0.000000e+00j].
+
+The mean of score from train is [ 1.067280e-04 -1.438076e-04  2.495743e-04  4.958016e-07 ...  1.023502e-05 -1.022088e-05  1.366116e-03 -1.366116e-03].
+
+The mean of score from PI is [-3.903645e-05  6.076529e-05 -5.852389e-05 -1.777190e-07 ...  9.560145e-03 -9.560131e-03  1.942707e-02 -1.942707e-02].
+
+The offset is 0; the condition number is 0.0001.
+Plot three metrics together.
+
+Calculate ewma score with shape (43910, 652) takes 0.39134812355041504s.
+Calculate Hotelling T2 of score with shape (41910, 652) takes 39.488131046295166s.
+Calculate ewma score with shape (59875, 652) takes 0.5665793418884277s.
+Calculate Hotelling T2 of score with shape (59875, 652) takes 3.1885228157043457s.
+Calculate ewma score with shape (43910, 1) takes 0.16734814643859863s.
+Calculate ewma score with shape (59875, 1) takes 0.22829461097717285s.
+Calculate ewma score with shape (43910, 1) takes 0.14658308029174805s.
+Calculate ewma score with shape (59875, 1) takes 0.19898152351379395s.
+(41910,) (59875,) (41910,) (59875,) (41910,) (59875,)
+From HotellingT2CC_Other_Score2----------
+
+Plot Hotelling T2 without scaling.
+
+Calculate ewma score with shape (43910, 652) takes 0.38472962379455566s.
+Calculate Hotelling T2 of score with shape (41910, 652) takes 39.585211515426636s.
+Calculate ewma score with shape (59875, 652) takes 0.5661096572875977s.
+Calculate Hotelling T2 of score with shape (59875, 652) takes 3.544435739517212s.
