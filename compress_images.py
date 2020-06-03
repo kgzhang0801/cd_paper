@@ -23,15 +23,20 @@ def compressMe(folder, file, verbose=False, quality=85):
 os.chdir(os.path.expanduser('~/Documents/OneDrive/Northwestern/Study/Courses/Concept_Drift/paper_draft/cd_paper'))
 
 # %%
-ls_folders_files = [('./figures/v14/credit_default/logi_scal_PI_train_sample_weights/', 'pos_single_credit_mlines_with_regu_1e-08_0_0001_0_001_99_0.png'),
-                    ('./figures/v14/credit_default/logi_scal_PI_train_sample_weights/', 'pos_single_credit_fisher_mlines_with_regu_1e-08_0_0001_0_001_99_0.png'),
-                    ('./figures/v14/bike_sharing/reg_lin_A/quadr/', 'PII_pos_single_retro_bike_fisher_mlines_with_regu_1e-08_0_0001_0_01_99_99.png'),
-                    ('./figures/v14/bike_sharing/reg_lin_B_1/quadr/', 'PII_pos_single_retro_bike_fisher_mlines_with_regu_1e-08_0_0001_0_01_99_99.png'),
-                    ('./figures/v14/bike_sharing/reg_lin_C/quadr/', 'PII_pos_single_retro_bike_fisher_mlines_with_regu_1e-08_0_0001_0_01_99_99.png'),
-                    ('./figures/v14/bike_sharing/reg_lin_C_2/quadr/', 'PII_pos_single_retro_bike_fisher_mlines_with_regu_1e-08_0_0001_0_01_99_99.png'),
-                    ('./figures/v14/bike_sharing/reg_lin_PI_D_2/quadr/', 'pos_single_bike_fisher_mlines_with_regu_1e-08_0_0001_0_01_99_99.png')]
+# ls_folders_files = [('./figures/v14/credit_default/logi_scal_PI_train_sample_weights/', 'pos_single_credit_mlines_with_regu_1e-08_0_0001_0_001_99_0.png'),
+#                     ('./figures/v14/credit_default/logi_scal_PI_train_sample_weights/', 'pos_single_credit_fisher_mlines_with_regu_1e-08_0_0001_0_001_99_0.png'),
+#                     ('./figures/v14/bike_sharing/reg_lin_A/quadr/', 'PII_pos_single_retro_bike_fisher_mlines_with_regu_1e-08_0_0001_0_01_99_99.png'),
+#                     ('./figures/v14/bike_sharing/reg_lin_B_1/quadr/', 'PII_pos_single_retro_bike_fisher_mlines_with_regu_1e-08_0_0001_0_01_99_99.png'),
+#                     ('./figures/v14/bike_sharing/reg_lin_C/quadr/', 'PII_pos_single_retro_bike_fisher_mlines_with_regu_1e-08_0_0001_0_01_99_99.png'),
+#                     ('./figures/v14/bike_sharing/reg_lin_C_2/quadr/', 'PII_pos_single_retro_bike_fisher_mlines_with_regu_1e-08_0_0001_0_01_99_99.png'),
+#                     ('./figures/v14/bike_sharing/reg_lin_PI_D_2/quadr/', 'pos_single_bike_fisher_mlines_with_regu_1e-08_0_0001_0_01_99_99.png')]
+ls_folders_files = [('./figures/v14/sim_2/reg/', 'neg_single_1_sim2_mlines_with_regu_1e-08_0_005.png'),
+                    ('./figures/v14/sim_4/reg/', 'PII_neg_single_1_sim4_mlines_with_regu_1e-08_0_005.png'),
+                    ('./figures/v14/sim_4/reg/', 'PII_neg_single_1_sim4_fisher_mlines_with_regu_1e-08_0_005.png'),
+                    ('./figures/v14/sim_6/reg/', 'PII_neg_single_1_sim6_mlines_with_regu_1e-08_0_005.png'),
+                    ('./figures/v14/sim_6/reg/', 'PII_neg_single_1_sim6_fisher_mlines_with_regu_1e-08_0_005.png')]
 for folder, file in ls_folders_files:
-    compressMe(folder, file, verbose=True, quality=65)
+    compressMe(folder, file, verbose=True, quality=75)
 
 # %%
 
