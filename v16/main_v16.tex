@@ -341,21 +341,21 @@ where $\widehat {\bm { \Sigma}}$ and $\bar {\bm{s}}$ are the covariance matrix a
 
 \begin{figure}[!htbp]
 \centering
-\includegraphics[width = 1\linewidth, trim=.35in .69in .35in .69in, clip]{../figures/v14/flow_chart/Retrospective_1.png}
+\includegraphics[width = 1\linewidth, trim=.35in .68in .35in .69in, clip]{../figures/v14/flow_chart/Retrospective_2.png}
 \caption{Step $1$ of the score-based concept drift framework. A retrospective analysis to determine whether the training data to which the model is fitted are stable~(as in the top plot) vs. whether concept drift occurred over the training data~(as in the bottom plot).}
   \label{fig:proc_mon_score_retro}
 \end{figure}
 
 \begin{figure}
 \centering
-\includegraphics[width = 1\linewidth, trim=.35in .49in .35in .49in, clip]{../figures/v14/flow_chart/Monitoring_1.png}
+\includegraphics[width = 1\linewidth, trim=.35in .48in .35in .49in, clip]{../figures/v14/flow_chart/Monitoring_2.png}
 \caption{Step $2$ of the score-based concept drift framework. A retrospective analysis first splits the stationary data from Step $1$ into a training set~(to which the model is fitted) and a Phase-I set~(which is used to establish the control limit for Phase-II). Then a prospective Phase-II analysis is used to monitor new data for concept drift as each new $(\bm{X}, Y)$ observation is collected.}
 \label{fig:proc_mon_score_monitoring}
 \end{figure}
 
 \begin{figure}
 \centering
-\includegraphics[width = 1\linewidth, trim=.35in .20in .35in .20in, clip]{../figures/v14/flow_chart/Diagnose_1.png}
+\includegraphics[width = 1\linewidth, trim=.35in .21in .35in .21in, clip]{../figures/v14/flow_chart/Diagnose_2.png}
 \caption{Step $3$ of the score-based concept drift approach. A diagnostic analysis to help identify the nature of the concept drift once it is detected in either the retrospective stage in Step $1$ or the Phase-II monitoring stage in Step $2$. The left and right plots depict two different types of concept drift -- an abrupt change~(the left plots) and a gradual change~(the right plots). The legend numbers are indices of covariates in our models.}
 \label{fig:proc_mon_score_diagnosis}
 \end{figure}
@@ -665,7 +665,7 @@ The results analogous to Figure~\ref{fig:bike_sharing} but for this normalized m
 \end{subfigure}
 \begin{subfigure}[t]{0.374\linewidth}
      \centering
-         \includegraphics[width=1.0\textwidth, trim=.0in .0in .0in .0in, clip]{../figures/v14/bike_sharing/reg_lin_PI_D_2/quadr/pos_single_bike_fisher_mlines_with_regu_1e-08_0_0001_0_01_99_99.png}
+         \includegraphics[width=1.0\textwidth, trim=.0in .0in .0in .0in, clip]{../figures/v14/bike_sharing/reg_lin_PI_D_2/quadr/Compressed_pos_single_bike_fisher_mlines_with_regu_1e-08_0_0001_0_01_99_99.png}
      \captionsetup{width=.95\linewidth}
      \caption{}
      \label{fig:bs_norm_prospective}
@@ -693,11 +693,6 @@ In simulation and real data examples, we have demonstrated that our score-based 
 % needed in general before appendices/bibliography.
 
 %\newpage
-
-%
-%\vskip 0.2in
-%\bibliography{sample} % For PC
-\bibliography{sample.bib} % For mac
 
 \vspace{1in}
 
@@ -1182,6 +1177,11 @@ In real applications, concept drift often occur gradually. In this example, all 
 % In summary, we demonstrated the efficacy and effectiveness of using MEWMA control charts to monitor the score function in detecting concept drifts. We also use simulation to demonstrate the diagnostic capability of the score-based approach. We focus on the linear regression and logistic regression for proof-of-concept here, to show the challenges and resolutions. For the linear regression, component EWMA control charts of decoupled score vectors as described in Section~\ref{s:decou_cd} would correctly show whether or not covariates have concept drift, even when multicolinearity exists among covariates, as shown in Figure~\ref{fig:lin_reg_not_ind_X}. For the logistic regression, the nonlinearity of the sigmoid function would further complicate the diagnosis problem. Even for uncorrelated covariates, mean drifts of some covariates would falsely appear in component EWMA control charts of those truly without concept drift but correlated with others with concept drifts, as shown in Figure~\ref{fig:log_reg_ind_X}. However, if we assume the argument of the sigmoid function $\bm{x}^T\bm{\theta}$ being small enough (i.e., $\ll 4$), Equation~(\ref{eqn:cd_mean_shift}) approximately holds and we can use the Fisher decoupling as done in the linear regression, as shown in Figure~\ref{fig:log_reg_not_ind_X_1}. We argue that this assumption about the argument $\bm{x}^T\bm{\theta}$ is practical valuable. When $\bm{x}^T\bm{\theta}$ is large the model is very confident with predictions~(the sigmoid function is in plateau regions) and a small concept drift would not make much difference in the overall prediction accuracy. However, when $\bm{x}^T\bm{\theta}$ is small the data are most confusing for the model and a small concept drift can have a big impact on prediction error, so that people may want to understand the origins of concept drift. One thing worth highlighting is that we obtained consistent results across experimental data sets with abrupt and gradual concept drifts, which further justify the capability of the score-based approach in different parametric models.
 
 \end{appendices}
+
+%
+%\vskip 0.2in
+%\bibliography{sample} % For PC
+\bibliography{sample.bib} % For mac
 
 %\listofchanges
 \end{document}
